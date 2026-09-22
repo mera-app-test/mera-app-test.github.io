@@ -9,3 +9,7 @@
 - Ekran „Provera uređaja" samo u test/dev build-u; produkcijski build proverava scripts/assert-prod-bundle.mjs.
 - GitHub Actions: provera (tipovi, granice, testovi) → build → objava; okruženje po organizaciji.
 - 5 automatskih testova.
+
+## 0.1.1 — odluke posle provera
+- Upisane odluke vlasnika (docs/DECISIONS/0002): §9 trajno skladište pri prvom čuvanju; USDA FDC primarni izvor (docs/DATA_SOURCES.md); AI ključ lokalno samo u V1.
+- Dodata samoprovera pravila granica (`npm run lint:layers:selftest`), deo `npm run check` i CI.

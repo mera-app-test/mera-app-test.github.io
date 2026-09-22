@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Mera — personalizovano upravljanje telesnom masom kroz ishranu (V1, lokalni podaci)",
+  "description": "Mera \u2014 personalizovano upravljanje telesnom masom kroz ishranu (V1, lokalni podaci)",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.node.json",
     "test": "vitest run",
     "lint:layers": "node scripts/check-layers.mjs",
-    "check": "npm run typecheck && npm run lint:layers && npm run test"
+    "check": "npm run typecheck && npm run lint:layers && npm run lint:layers:selftest && npm run test",
+    "lint:layers:selftest": "node scripts/check-layers-selftest.mjs"
   },
   "dependencies": {
     "react": "19.3.0",

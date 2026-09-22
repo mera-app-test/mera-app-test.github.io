@@ -403,7 +403,7 @@ Posebna baza: `mera_secrets` sa jednim skladištem za AI ključ. Razlog: nikad s
 
 Posebna baza: `mera_safety_snapshots` — automatska kopija podataka pre migracije ili importa (§10.3, §11.3). Čuvaju se poslednje 2–3 kopije.
 
-Pri prvom pokretanju: `navigator.storage.persist()`. Rezultat se čuva u `settings` i prikazuje u podešavanjima.
+Zahtev `navigator.storage.persist()` šalje se pri prvom stvarnom čuvanju korisničkih podataka (npr. posle prvog unosa telesne mase), kao posledica korisnikove akcije — ne pri otvaranju aplikacije. Rezultat se čuva u `settings` i prikazuje u podešavanjima. *(Izmenjeno 2026-09-23, odluka vlasnika — docs/DECISIONS/0002.)*
 **[POTVRĐENO]** (MDN): podrazumevano je skladištenje „best-effort"; sa trajnim skladištem podaci se brišu samo kada korisnik to izabere u podešavanjima pregledača, a pregledač ne mora odobriti zahtev. Zato trajno skladište ne zamenjuje zaseban origin ni backup, već ih dopunjuje.
 
 ---
@@ -540,6 +540,7 @@ Nijedna numerička granica (safety pragovi, tolerancije, koeficijenti) nije u ko
 
 - `ModelAdapter` je port; implementacija za izabranog provajdera je u `infrastructure/ai-providers` (MS §47).
 - Ključ se čita iz `SecretStore` samo u adapteru. UI i orkestrator ga ne vide.
+- **Ovo je rešenje samo za V1 (lična/testna faza).** U serverskoj/komercijalnoj verziji AI ključ se seli na server/proxy i ne postoji na klijentu (§12.1). *(Dopunjeno 2026-09-23, odluka vlasnika — docs/DECISIONS/0002.)*
 - Poziv ide direktno iz pregledača ka provajderu. Da li provajder to dozvoljava (CORS) i pod kojim uslovima — [PROVERITI] za izabranog provajdera.
 - Alati (MS §34) pozivaju `application` use case-ove. Pisanje ide samo kroz use case → validacija → safety → ChangeSet.
 - Strukturirani izlazi AI-ja se validiraju Zod šemama pre bilo kakve upotrebe. Nevalidan izlaz → ograničen broj ponovnih pokušaja → poruka korisniku. Neprovereni rezultat se nikad ne prikazuje (MS §24).

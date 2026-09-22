@@ -36,6 +36,8 @@ jobs:
         run: npm run typecheck
       - name: Granice slojeva
         run: npm run lint:layers
+      - name: Samoprovera pravila granica
+        run: npm run lint:layers:selftest
       - name: Testovi
         run: npm test
 
