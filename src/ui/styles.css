@@ -184,3 +184,29 @@ body {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* Rezervna kopija */
+.section-title { font-size: 28px; margin: 0 0 16px; }
+.subsection-title { font-size: 20px; margin: 28px 0 8px; }
+.facts { margin: 0 0 16px; display: grid; gap: 10px; }
+.facts div { display: grid; gap: 2px; }
+.facts dt { font-size: 14px; color: var(--ink-soft); }
+.facts dd { margin: 0; font-weight: 600; }
+.block { width: 100%; margin-top: 10px; }
+.back { margin-top: 28px; }
+.notice-ok { color: var(--ok); font-size: 15px; margin: 10px 0 0; }
+.confirm-box { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.confirm-box p { margin: 0 0 8px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; column-gap: 12px; }
+.reminder {
+  background: var(--amber-bg);
+  border: 1px solid #e8d3ae;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  display: grid;
+  gap: 8px;
+}
+.reminder p { margin: 0; color: var(--amber); font-weight: 600; }
+.startup-error { color: var(--danger); overflow-wrap: anywhere; }

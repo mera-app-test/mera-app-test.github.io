@@ -1,6 +1,6 @@
 {
   "name": "mera",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "description": "Mera \u2014 personalizovano upravljanje telesnom masom kroz ishranu (V1, lokalni podaci)",
@@ -15,8 +15,10 @@
     "lint:layers:selftest": "node scripts/check-layers-selftest.mjs"
   },
   "dependencies": {
+    "idb": "8.0.3",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "zod": "4.6.5"
   },
   "devDependencies": {
     "@types/node": "22.20.4",
@@ -24,6 +26,7 @@
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.1.1",
     "dependency-cruiser": "18.4.0",
+    "fake-indexeddb": "6.2.5",
     "typescript": "6.0.3",
     "vite": "8.3.0",
     "vite-plugin-pwa": "1.3.0",

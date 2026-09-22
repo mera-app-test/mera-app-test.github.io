@@ -4,11 +4,12 @@ import { formatVersionLabel, isTestEnvironment } from "../application";
 import { ServicesContext } from "./ServicesContext";
 import { ExitGuard } from "./components/ExitGuard";
 import { TodayScreen } from "./screens/TodayScreen";
+import { BackupScreen } from "./screens/BackupScreen";
 
 /** Ekran provere uređaja postoji samo u test/dev build-u; composition root ga predaje ili ne. */
 export type DiagnosticsScreenComponent = ComponentType<{ onClose: () => void }>;
 
-type Screen = "today" | "diagnostics";
+type Screen = "today" | "backup" | "diagnostics";
 
 interface AppProps {
   services: AppServices;
@@ -36,7 +37,8 @@ export function App({ services, DiagnosticsScreen }: AppProps) {
           </div>
         )}
         <main className="main">
-          {screen === "today" && <TodayScreen />}
+          {screen === "today" && <TodayScreen onOpenBackup={() => setScreen("backup")} />}
+          {screen === "backup" && <BackupScreen onClose={() => setScreen("today")} />}
           {screen === "diagnostics" && DiagnosticsScreen && (
             <Suspense fallback={<p className="muted">Učitavam proveru…</p>}>
               <DiagnosticsScreen onClose={() => setScreen("today")} />
@@ -45,10 +47,17 @@ export function App({ services, DiagnosticsScreen }: AppProps) {
         </main>
         <footer className="footer">
           <span className="muted">Verzija {formatVersionLabel(services.build)}</span>
-          {showTest && DiagnosticsScreen && screen === "today" && (
-            <button type="button" className="link-btn" onClick={() => setScreen("diagnostics")}>
-              Provera uređaja
-            </button>
+          {screen === "today" && (
+            <span className="footer-links">
+              <button type="button" className="link-btn" onClick={() => setScreen("backup")}>
+                Rezervna kopija
+              </button>
+              {showTest && DiagnosticsScreen && (
+                <button type="button" className="link-btn" onClick={() => setScreen("diagnostics")}>
+                  Provera uređaja
+                </button>
+              )}
+            </span>
           )}
         </footer>
         <ExitGuard onBack={handleBack} />

@@ -1,10 +1,33 @@
-// Glavni ekran „DANAS" (MS §15). U koraku 1 nema podataka ni plana — samo prazno stanje.
+// Glavni ekran „DANAS" (MS §15). Plan još ne postoji — prazno stanje i podsetnik za rezervnu kopiju.
+import { useEffect, useState } from "react";
+import type { BackupStatus } from "../../application";
+import { useServices } from "../ServicesContext";
+
 const dateFormatter = new Intl.DateTimeFormat("sr-Latn-RS", { weekday: "long", day: "numeric", month: "long" });
 
-export function TodayScreen() {
+export function TodayScreen({ onOpenBackup }: { onOpenBackup: () => void }) {
+  const { backup } = useServices();
+  const [status, setStatus] = useState<BackupStatus | null>(null);
   const today = dateFormatter.format(new Date());
+
+  useEffect(() => {
+    let alive = true;
+    void backup.status().then((s) => alive && setStatus(s));
+    return () => {
+      alive = false;
+    };
+  }, [backup]);
+
   return (
     <section className="today" aria-labelledby="today-title">
+      {status?.due && (
+        <div className="reminder" role="status">
+          <p>{status.lastExportAt === null ? "Još nema rezervne kopije tvojih podataka." : "Prošlo je 7 dana od poslednje rezervne kopije."}</p>
+          <button type="button" className="btn btn-primary" onClick={onOpenBackup}>
+            Sačuvaj rezervnu kopiju
+          </button>
+        </div>
+      )}
       <header className="today-head">
         <h1 id="today-title" className="today-title">Danas</h1>
         <p className="today-date">{today}</p>

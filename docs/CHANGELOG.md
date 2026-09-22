@@ -13,3 +13,14 @@
 ## 0.1.1 — odluke posle provera
 - Upisane odluke vlasnika (docs/DECISIONS/0002): §9 trajno skladište pri prvom čuvanju; USDA FDC primarni izvor (docs/DATA_SOURCES.md); AI ključ lokalno samo u V1.
 - Dodata samoprovera pravila granica (`npm run lint:layers:selftest`), deo `npm run check` i CI.
+
+## 0.2.0 — korak 2: podaci i rezervna kopija (nije objavljeno)
+- Zod šeme (šema podataka v1): zajednička polja, merenje mase, audit događaj, podešavanja.
+- Data portovi: repozitorijumi, ChangeSet/UnitOfWork sa optimističkom kontrolom verzije, BackupStore, tipizirane greške.
+- LocalDataProvider nad IndexedDB (`idb` 8.0.3, ISC); tajne u posebnoj bazi; zaštitne kopije u posebnoj bazi (najviše 3).
+- Migracioni okvir: strukturni koraci + čiste transformacije; zaštitna kopija pre migracije, provera posle, vraćanje pri neuspehu.
+- JSON izvoz/uvoz: kanonski JSON, SHA-256 kontrolni zbir, provera šeme, migracija starijih kopija, zamena svih podataka uz zaštitnu kopiju i audit.
+- Nedeljni podsetnik na glavnom ekranu; ekran „Rezervna kopija".
+- Trajno skladište: funkcija za zahtev posle prvog stvarnog čuvanja (povezuje se sa unosom mase u koraku 3).
+- Testovi: 45 (ugovorni testovi porta, migracije sa probnim v2, backup format, use case-ovi). Ugovorni testovi provereni namernim kvarom implementacije.
+- Tehničke napomene: docs/DECISIONS/0003.
