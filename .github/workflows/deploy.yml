@@ -1,0 +1,75 @@
+# Provera i objava Mere na GitHub Pages.
+# Osnova: zvanični Vite primer (docs/guide/static-deploy-github-pages.yaml), akcije fiksirane na SHA.
+# Isti fajl postoji u oba repozitorijuma:
+#   mera-app-test/mera-app-test.github.io  → MERA_ENV=test (https://mera-app-test.github.io/)
+#   mera-app/mera-app.github.io            → MERA_ENV=prod (https://mera-app.github.io/)
+name: Provera i objava
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 22
+          cache: 'npm'
+      - name: Instalacija
+        run: npm ci
+      - name: Provera tipova
+        run: npm run typecheck
+      - name: Granice slojeva
+        run: npm run lint:layers
+      - name: Testovi
+        run: npm test
+
+  deploy:
+    needs: check
+    # Objavljuje se samo iz dve Mera organizacije.
+    if: github.repository_owner == 'mera-app' || github.repository_owner == 'mera-app-test'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    env:
+      MERA_ENV: ${{ github.repository_owner == 'mera-app' && 'prod' || 'test' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 22
+          cache: 'npm'
+      - name: Instalacija
+        run: npm ci
+      - name: Build (${{ env.MERA_ENV }})
+        run: npm run build
+      - name: Produkcija ne sme sadržati test kod
+        if: env.MERA_ENV == 'prod'
+        run: node scripts/assert-prod-bundle.mjs
+      - name: Setup Pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
+        with:
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
