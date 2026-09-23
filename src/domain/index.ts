@@ -42,6 +42,7 @@ export {
 export { matchesQuery, normalizeForSearch } from "./text/search";
 export {
   deriveQuestions,
+  entriesMissingExpertReview,
   evaluate,
   searchKnowledge,
   testCondition,

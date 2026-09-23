@@ -102,6 +102,18 @@ export const EntrySchema = z
       .optional(),
     sources: z.array(SourceSchema),
     approved: z.object({ by: z.string(), date: z.iso.date(), decision: z.string() }).strict().optional(),
+    /** Slojevi provere (DECISIONS/0013). */
+    review: z
+      .object({
+        /** Sloj 2: kriterijumi primenjeni (izvori, originali, opšta prihvaćenost). */
+        criteria: z.object({ by: z.string(), date: z.iso.date(), consensus: z.enum(["SMERNICA", "DVA_IZVORA"]) }).strict().optional(),
+        /** Sloj 3: nezavisna provera drugog AI sistema. */
+        independentAi: z.object({ system: z.string(), date: z.iso.date(), result: z.enum(["POTVRDJENO", "PRIMEDBE"]), notes: z.string().optional() }).strict().optional(),
+        /** Sloj 4: diplomirani nutricionista-dijetetičar. */
+        expert: z.object({ name: z.string(), date: z.iso.date(), result: z.enum(["POTVRDJENO", "PRIMEDBE"]) }).strict().optional(),
+      })
+      .strict()
+      .optional(),
     notes: z.string().optional(),
   })
   .strict();

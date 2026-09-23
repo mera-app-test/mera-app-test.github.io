@@ -73,3 +73,9 @@
 - Sadržaj 0.1.0: 10 stavki iz prvog predloga, sve PREDLOG; aplikacija koristi samo ODOBRENO.
 - Test ekran „Baza znanja": pravila sa izvorima (original proveren ili ne) i probni upitnik sa rezultatom.
 - Testovi: 123 (+13).
+
+## 0.5.1 — kriterijumi i slojevi provere; baza znanja 0.2.0 (test)
+- DECISIONS/0013: vlasnik postavlja kriterijume; provera u 4 sloja (kriterijumi, razvojni agent, nezavisni AI, nutricionista pre drugih korisnika). Build to proverava.
+- Baza 0.2.0: izvori pročitani u originalu (Mifflin 1990 sažetak, AHA/ACC/TOS 2013, WHO NLiS, NICE PH27). Ispravke: 1200/1500 kcal nisu minimum iz smernice nego donja granica jednog od načina — koristi se kao oprezno dno; trudnoća po NICE. E-001 još ne ispunjava kriterijum 2 (fali drugi izvor nivoa 1–2) — uhvatila automatska provera.
+- Paket za nezavisnu AI proveru: docs/REVIZIJA/kb-0.2.0.md (scripts/kb-review-package.mjs).
+- Ekran „Baza znanja": status slojeva provere za svaku stavku.

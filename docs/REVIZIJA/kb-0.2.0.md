@@ -1,0 +1,135 @@
+# Nezavisna provera baze znanja Mere — verzija 0.2.0
+
+## Uputstvo za recenzenta (AI sistem)
+Ti si nezavisni recenzent. Za SVAKU stavku ispod proveri:
+1. Da li navedeni izvori (otvori URL/DOI; ne oslanjaj se na sećanje) zaista potvrđuju tvrdnju i brojeve — tačno onako kako piše.
+2. Da li je tvrdnja opšte prihvaćena u struci (zvanična smernica ili bar dva nezavisna pouzdana izvora: zvanične ustanove, stručne smernice, sistematski pregledi).
+3. Da li postoji novija ili važnija smernica koja kaže drugačije.
+4. Da li je bezbednosno pravilo dovoljno oprezno.
+Ne koristi forume, blogove, sajtove sa kalkulatorima ni Wikipediju kao dokaz. Ako nešto ne možeš da proveriš u izvoru, napiši to — ne pretpostavljaj.
+
+**Format odgovora (za svaku stavku):**
+`ID — POTVRĐENO` ili `ID — PRIMEDBE: <šta tačno nije u redu, uz izvor>`
+
+## E-001 — Potrošnja energije u mirovanju (Mifflin-St Jeor)
+
+**Tvrdnja:** Potrošnja u mirovanju računa se formulom Mifflin-St Jeor: 10 × masa (kg) + 6,25 × visina (cm) − 5 × godine, plus 5 za muškarce ili minus 161 za žene. To je početna procena; stvarni trend mase je kasnije ispravlja.
+
+**Proračun:** Potrošnja u mirovanju = add(mul(10, Telesna masa), mul(6.25, Visina), mul(-5, Godine), [Pol: m=5, z=-161])
+
+**Izvori:**
+- (nivo 3, original pročitan) Mifflin MD, St Jeor ST, Hill LA, Scott BJ, Daugherty SA, Koh YO. A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr 1990;51(2):241–247. https://ajcn.nutrition.org/article/S0002-9165(23)16698-6/fulltext doi:10.1093/ajcn/51.2.241
+  - potkrepljuje: Sažetak (original, izdavač): pojednostavljena formula po polu — muškarci 10·kg + 6,25·cm − 5·god + 5; žene … − 161; izvedena na 498 zdravih osoba od 19 do 78 godina, normalne mase i gojaznih.
+- (nivo 2, original pročitan) Frankenfield D, Roth-Yousey L, Compher C. Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review. J Am Diet Assoc 2005;105(5):775–789. https://www.jandonline.org/article/S0002-8223(05)00149-5/abstract doi:10.1016/j.jada.2005.02.005
+  - potkrepljuje: Mifflin-St Jeor je od često korišćenih formula najčešće u granici ±10 % od izmerenog; greške kod pojedinca postoje (pročitan sažetak na stranici izdavača).
+
+**Napomena autora:** Formula je izvedena na odraslima 19–78 godina (Mifflin 1990). KRITERIJUM 2 JOŠ NIJE ISPUNJEN: postoji jedan proveren izvor nivoa 1–2 (sistematski pregled Frankenfield 2005); originalni rad je nivo 3. Potreban je još jedan izvor nivoa 1–2 (npr. stručna smernica koja preporučuje ovu formulu), pročitan u originalu.
+
+## E-002 — Nivo fizičke aktivnosti (PAL)
+
+**Tvrdnja:** Kretanje se prevodi u faktor aktivnosti prema primerima FAO/WHO/UNU (2004): mahom sedim 1,53; dosta na nogama ili redovno vežbam 1,76; težak fizički posao ili mnogo sporta 2,25.
+
+**Proračun:** Nivo aktivnosti (PAL) = [Kretanje: sedi=1.53, aktivan=1.76, tezak=2.25]
+
+**Izvori:**
+- (nivo 1, original pročitan) FAO/WHO/UNU. Human energy requirements. Report of a Joint FAO/WHO/UNU Expert Consultation. Rome: FAO; 2004. Poglavlje 5, tabela 5.1. https://www.fao.org/4/y5686e/y5686e07.htm
+  - potkrepljuje: Primeri PAL: sedeći/lak 1,53; aktivan/umereno aktivan 1,76; veoma aktivan 2,25; opsezi 1,40–1,69 / 1,70–1,99 / 2,00–2,40.
+
+## E-003 — Dnevna potrošnja energije
+
+**Tvrdnja:** Dnevna potrošnja = potrošnja u mirovanju × faktor aktivnosti (FAO/WHO/UNU 2004).
+
+**Proračun:** Dnevna potrošnja = mul(Potrošnja u mirovanju, Nivo aktivnosti (PAL))
+
+**Izvori:**
+- (nivo 1, original pročitan) FAO/WHO/UNU. Human energy requirements. Report of a Joint FAO/WHO/UNU Expert Consultation. Rome: FAO; 2004. Poglavlje 5, tabela 5.1. https://www.fao.org/4/y5686e/y5686e07.htm
+  - potkrepljuje: Primeri PAL: sedeći/lak 1,53; aktivan/umereno aktivan 1,76; veoma aktivan 2,25; opsezi 1,40–1,69 / 1,70–1,99 / 2,00–2,40.
+
+## E-004 — Dnevni cilj za održavanje mase
+
+**Tvrdnja:** Za održavanje mase dnevni cilj je jednak dnevnoj potrošnji.
+
+**Važi kada:** Cilj eq "odrzavanje"
+
+**Proračun:** Dnevni cilj = Dnevna potrošnja
+
+**Izvori:**
+- (nivo 1, original pročitan) FAO/WHO/UNU. Human energy requirements. Report of a Joint FAO/WHO/UNU Expert Consultation. Rome: FAO; 2004. Poglavlje 5, tabela 5.1. https://www.fao.org/4/y5686e/y5686e07.htm
+  - potkrepljuje: Primeri PAL: sedeći/lak 1,53; aktivan/umereno aktivan 1,76; veoma aktivan 2,25; opsezi 1,40–1,69 / 1,70–1,99 / 2,00–2,40.
+
+## E-005 — Dnevni cilj za mršavljenje
+
+**Tvrdnja:** Za mršavljenje dnevni cilj je dnevna potrošnja umanjena za 500 kcal, što obično daje oko pola kilograma nedeljno. Mera ne ide ispod 1200 kcal za žene i 1500 kcal za muškarce: to su donje vrednosti opsega unosa koji smernica navodi kao jedan od načina, a Mera ih koristi kao oprezno dno. Unos ispod 800 kcal dnevno smernica dozvoljava samo uz medicinski nadzor.
+
+**Važi kada:** Cilj eq "mrsavljenje"
+
+**Proračun:** Dnevni cilj = max(sub(Dnevna potrošnja, 500), [Pol: m=1500, z=1200])
+
+**Izvori:**
+- (nivo 1, original pročitan) NHLBI Obesity Education Initiative Expert Panel. Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report. NIH Publication 98-4083; 1998. https://www.ncbi.nlm.nih.gov/books/NBK2009/
+  - potkrepljuje: Manjak od 500–1000 kcal/dan kao deo programa mršavljenja; oko 0,5–1 kg nedeljno.
+- (nivo 2, original pročitan) Jensen MD i sar. 2013 AHA/ACC/TOS Guideline for the Management of Overweight and Obesity in Adults. Circulation 2014;129(25 Suppl 2):S102–S138. https://pmc.ncbi.nlm.nih.gov/articles/PMC5819889/ doi:10.1161/01.cir.0000437739.71477.ee
+  - potkrepljuje: Preporuka 3a (NHLBI ocena A): za smanjenje unosa može se koristiti bilo koji od načina — 1200–1500 kcal/dan žene i 1500–1800 kcal/dan muškarci (prilagođeno masi), ILI manjak od 500 ili 750 kcal/dan (u tekstu dokaza i 30 % manjka), ILI određeni tipovi dijeta. Dijete ispod 800 kcal/dan samo uz medicinski nadzor. Smernica je za odrasle.
+
+**Napomena autora:** ISPRAVKA posle čitanja originala: 1200/1500 u smernici NISU propisani minimum, već donja granica jednog od tri ravnopravna načina. Kao dno ih koristimo po kriterijumu 3 (opreznija varijanta). Otvoreno za odluku o proizvodu: fiksnih 500 kcal ili procenat (smernica navodi i 30 % manjka) i da li korisnik bira brzinu (500 ili 750).
+
+## E-006 — Indeks telesne mase (ITM)
+
+**Tvrdnja:** ITM = masa (kg) / visina (m)². Koristi se samo za bezbednosnu proveru, ne kao ocena korisnika.
+
+**Proračun:** Indeks telesne mase = div(Telesna masa, pow(div(Visina, 100), 2))
+
+**Izvori:**
+- (nivo 1, original pročitan) WHO. Nutrition Landscape Information System (NLiS) — Body mass index: moderate and severe thinness, underweight, overweight, obesity. https://apps.who.int/nutrition/landscape/help.aspx?menu=0&helpid=420
+  - potkrepljuje: ITM = kg/m²; ITM < 18,5 pothranjenost; < 17 mršavost (umereni rizik); < 16 znatno povećan rizik. Vrednosti važe za odrasle, oba pola.
+
+## S-001 — Mlađi od 18 godina
+
+**Tvrdnja:** Mera ne pravi plan za osobe mlađe od 18 godina: formula za potrošnju izvedena je na odraslima (19–78 godina), a smernice za mršavljenje odnose se na odrasle. Za mlađe je potreban pedijatar ili nutricionista.
+
+**Bezbednost:** kada Godine lt 18 → BLOCKED. Poruka: „Mera je namenjena odraslima. Za plan ishrane mlađih od 18 godina obrati se pedijatru ili nutricionisti."
+
+**Izvori:**
+- (nivo 3, original pročitan) Mifflin MD, St Jeor ST, Hill LA, Scott BJ, Daugherty SA, Koh YO. A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr 1990;51(2):241–247. https://ajcn.nutrition.org/article/S0002-9165(23)16698-6/fulltext doi:10.1093/ajcn/51.2.241
+  - potkrepljuje: Sažetak (original, izdavač): pojednostavljena formula po polu — muškarci 10·kg + 6,25·cm − 5·god + 5; žene … − 161; izvedena na 498 zdravih osoba od 19 do 78 godina, normalne mase i gojaznih.
+- (nivo 2, original pročitan) Jensen MD i sar. 2013 AHA/ACC/TOS Guideline for the Management of Overweight and Obesity in Adults. Circulation 2014;129(25 Suppl 2):S102–S138. https://pmc.ncbi.nlm.nih.gov/articles/PMC5819889/ doi:10.1161/01.cir.0000437739.71477.ee
+  - potkrepljuje: Preporuka 3a (NHLBI ocena A): za smanjenje unosa može se koristiti bilo koji od načina — 1200–1500 kcal/dan žene i 1500–1800 kcal/dan muškarci (prilagođeno masi), ILI manjak od 500 ili 750 kcal/dan (u tekstu dokaza i 30 % manjka), ILI određeni tipovi dijeta. Dijete ispod 800 kcal/dan samo uz medicinski nadzor. Smernica je za odrasle.
+- (nivo 1, original pročitan) NHLBI Obesity Education Initiative Expert Panel. Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report. NIH Publication 98-4083; 1998. https://www.ncbi.nlm.nih.gov/books/NBK2009/
+  - potkrepljuje: Manjak od 500–1000 kcal/dan kao deo programa mršavljenja; oko 0,5–1 kg nedeljno.
+
+## S-002 — Trudnoća i dojenje
+
+**Tvrdnja:** U trudnoći se ne mršavi: smernica NICE ne preporučuje programe mršavljenja u trudnoći. Tokom dojenja Mera za sada takođe ne pravi manjak kalorija (oprezna varijanta dok se izvor za dojenje ne proveri u originalu). Plan ishrane u oba slučaja dogovoriti sa lekarom.
+
+**Važi kada:** Pol eq "z"
+
+**Bezbednost:** kada Trudnoća ili dojenje eq true → REQUIRES_CLINICAL_REVIEW. Poruka: „U trudnoći i dojenju plan ishrane dogovori sa lekarom. Mera ne pravi manjak kalorija."
+
+**Izvori:**
+- (nivo 1, original pročitan) NICE. Weight management before, during and after pregnancy. Public health guideline PH27 (2010). https://www.nice.org.uk/guidance/ph27/chapter/Recommendations
+  - potkrepljuje: Programi mršavljenja se ne preporučuju u trudnoći jer mogu da naškode detetu. (Proveriti da li je PH27 zamenjen novom smernicom NG247 iz 2025.)
+- (nivo 1, NIJE pročitan original) NICE PH27 — preporuka o dojenju (navedeno u: Clinical guidelines for the management of weight during pregnancy, PMC10007759).
+  - potkrepljuje: Zdrava ishrana, umerena aktivnost i postepen gubitak mase ne utiču loše na dojenje. VIĐENO SAMO KAO NAVOD — proveriti u originalu.
+
+**Napomena autora:** Po NICE (navod), postepeno mršavljenje tokom dojenja nije štetno — kada se potvrdi u originalu, dojenje se može odvojiti od trudnoće (novo pitanje) ili ostati oprezno. Odluka o proizvodu.
+
+## S-003 — Pothranjenost i mršavljenje
+
+**Tvrdnja:** Ako je ITM ispod 18,5, Mera ne pravi plan za mršavljenje.
+
+**Važi kada:** Cilj eq "mrsavljenje"
+
+**Bezbednost:** kada Indeks telesne mase lt 18.5 → BLOCKED. Poruka: „Tvoja masa je već ispod preporučenog opsega (ITM ispod 18,5), pa Mera ne pravi plan za mršavljenje. Posavetuj se sa lekarom."
+
+**Izvori:**
+- (nivo 1, original pročitan) WHO. Nutrition Landscape Information System (NLiS) — Body mass index: moderate and severe thinness, underweight, overweight, obesity. https://apps.who.int/nutrition/landscape/help.aspx?menu=0&helpid=420
+  - potkrepljuje: ITM = kg/m²; ITM < 18,5 pothranjenost; < 17 mršavost (umereni rizik); < 16 znatno povećan rizik. Vrednosti važe za odrasle, oba pola.
+
+## X-001 — Početni broj je procena
+
+**Tvrdnja:** Dnevni cilj iz formule je početna procena. Kod pojedinca formula može da pogreši, pa Mera posle nekoliko nedelja poredi plan sa stvarnim trendom mase i predlaže korekciju.
+
+**Izvori:**
+- (nivo 2, original pročitan) Frankenfield D, Roth-Yousey L, Compher C. Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review. J Am Diet Assoc 2005;105(5):775–789. https://www.jandonline.org/article/S0002-8223(05)00149-5/abstract doi:10.1016/j.jada.2005.02.005
+  - potkrepljuje: Mifflin-St Jeor je od često korišćenih formula najčešće u granici ±10 % od izmerenog; greške kod pojedinca postoje (pročitan sažetak na stranici izdavača).
+

@@ -21,6 +21,11 @@ function condFacts(c: Condition, out: Set<string>): Set<string> {
   return out;
 }
 
+/** Stavke koje smeju da se koriste za druge korisnike (sloj 4, DECISIONS/0013). */
+export function entriesMissingExpertReview(kb: KnowledgeFile): string[] {
+  return kb.entries.filter((e) => e.status === "ODOBRENO" && e.review?.expert?.result !== "POTVRDJENO").map((e) => e.id);
+}
+
 /** Vraća listu grešaka; prazna lista = baza je ispravna. */
 export function validateKnowledge(kb: KnowledgeFile): string[] {
   const errors: string[] = [];
@@ -46,6 +51,11 @@ export function validateKnowledge(kb: KnowledgeFile): string[] {
       if (!e.approved) errors.push(`${e.id}: ODOBRENO bez podatka o odobrenju`);
       if (!e.sources.some((s) => s.tier <= 2 && s.checkedOriginal))
         errors.push(`${e.id}: ODOBRENO traži bar jedan izvor nivoa 1 ili 2 proveren u originalu (AI_RULES §1)`);
+      // DECISIONS/0013: opšte prihvaćeno = smernica ili dva nezavisna izvora; slojevi 2 i 3 obavezni.
+      const strong = e.sources.filter((s) => s.tier <= 2 && s.checkedOriginal).length;
+      if (e.review?.criteria?.consensus === "DVA_IZVORA" && strong < 2) errors.push(`${e.id}: „dva izvora" a proverenih izvora nivoa 1–2 ima ${strong}`);
+      if (!e.review?.criteria) errors.push(`${e.id}: ODOBRENO bez primene kriterijuma (sloj 2, DECISIONS/0013)`);
+      if (e.review?.independentAi?.result !== "POTVRDJENO") errors.push(`${e.id}: ODOBRENO bez potvrde nezavisne provere (sloj 3, DECISIONS/0013)`);
     }
     if (e.kind !== "explanation" && e.sources.length === 0) errors.push(`${e.id}: nema izvora`);
   }

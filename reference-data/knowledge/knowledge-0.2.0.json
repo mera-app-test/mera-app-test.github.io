@@ -1,6 +1,6 @@
 {
  "id": "knowledge",
- "version": "0.1.0",
+ "version": "0.2.0",
  "document": "docs/KNOWLEDGE_BASE.md; DECISIONS/0011, 0012",
  "facts": [
   {
@@ -152,7 +152,7 @@
  "entries": [
   {
    "status": "PREDLOG",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "tags": [
     "bmr",
     "rmr",
@@ -223,9 +223,11 @@
     {
      "tier": 3,
      "citation": "Mifflin MD, St Jeor ST, Hill LA, Scott BJ, Daugherty SA, Koh YO. A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr 1990;51(2):241–247.",
-     "checkedOriginal": false,
+     "checkedOriginal": true,
      "accessed": "2026-09-23",
-     "supports": "Koeficijenti formule."
+     "supports": "Sažetak (original, izdavač): pojednostavljena formula po polu — muškarci 10·kg + 6,25·cm − 5·god + 5; žene … − 161; izvedena na 498 zdravih osoba od 19 do 78 godina, normalne mase i gojaznih.",
+     "url": "https://ajcn.nutrition.org/article/S0002-9165(23)16698-6/fulltext",
+     "doi": "10.1093/ajcn/51.2.241"
     },
     {
      "tier": 2,
@@ -236,11 +238,12 @@
      "url": "https://www.jandonline.org/article/S0002-8223(05)00149-5/abstract",
      "doi": "10.1016/j.jada.2005.02.005"
     }
-   ]
+   ],
+   "notes": "Formula je izvedena na odraslima 19–78 godina (Mifflin 1990). KRITERIJUM 2 JOŠ NIJE ISPUNJEN: postoji jedan proveren izvor nivoa 1–2 (sistematski pregled Frankenfield 2005); originalni rad je nivo 3. Potreban je još jedan izvor nivoa 1–2 (npr. stručna smernica koja preporučuje ovu formulu), pročitan u originalu."
   },
   {
    "status": "PREDLOG",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "tags": [
     "aktivnost",
     "kretanje",
@@ -275,11 +278,18 @@
      "supports": "Primeri PAL: sedeći/lak 1,53; aktivan/umereno aktivan 1,76; veoma aktivan 2,25; opsezi 1,40–1,69 / 1,70–1,99 / 2,00–2,40.",
      "url": "https://www.fao.org/4/y5686e/y5686e07.htm"
     }
-   ]
+   ],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "SMERNICA"
+    }
+   }
   },
   {
    "status": "PREDLOG",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "tags": [
     "tdee",
     "dnevna potrošnja",
@@ -315,11 +325,18 @@
      "supports": "Primeri PAL: sedeći/lak 1,53; aktivan/umereno aktivan 1,76; veoma aktivan 2,25; opsezi 1,40–1,69 / 1,70–1,99 / 2,00–2,40.",
      "url": "https://www.fao.org/4/y5686e/y5686e07.htm"
     }
-   ]
+   ],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "SMERNICA"
+    }
+   }
   },
   {
    "status": "PREDLOG",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "tags": [
     "održavanje",
     "cilj",
@@ -352,11 +369,18 @@
      "supports": "Primeri PAL: sedeći/lak 1,53; aktivan/umereno aktivan 1,76; veoma aktivan 2,25; opsezi 1,40–1,69 / 1,70–1,99 / 2,00–2,40.",
      "url": "https://www.fao.org/4/y5686e/y5686e07.htm"
     }
-   ]
+   ],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "SMERNICA"
+    }
+   }
   },
   {
    "status": "PREDLOG",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "tags": [
     "mršavljenje",
     "deficit",
@@ -369,7 +393,7 @@
    "area": "cilj",
    "title": "Dnevni cilj za mršavljenje",
    "kind": "calculation",
-   "statement": "Za mršavljenje dnevni cilj je 500 kcal manje od dnevne potrošnje, što obično daje oko pola kilograma nedeljno. Cilj nikad nije ispod 1200 kcal za žene i 1500 kcal za muškarce.",
+   "statement": "Za mršavljenje dnevni cilj je dnevna potrošnja umanjena za 500 kcal, što obično daje oko pola kilograma nedeljno. Mera ne ide ispod 1200 kcal za žene i 1500 kcal za muškarce: to su donje vrednosti opsega unosa koji smernica navodi kao jedan od načina, a Mera ih koristi kao oprezno dno. Unos ispod 800 kcal dnevno smernica dozvoljava samo uz medicinski nadzor.",
    "appliesWhen": {
     "fact": "goal",
     "op": "eq",
@@ -418,16 +442,25 @@
     {
      "tier": 2,
      "citation": "Jensen MD i sar. 2013 AHA/ACC/TOS Guideline for the Management of Overweight and Obesity in Adults. Circulation 2014;129(25 Suppl 2):S102–S138.",
-     "checkedOriginal": false,
+     "checkedOriginal": true,
      "accessed": "2026-09-23",
-     "supports": "Manjak 500 ili 750 kcal/dan; unos 1200–1500 kcal žene, 1500–1800 kcal muškarci. VIĐENO SAMO KAO NAVOD u protokolu kliničke studije — proveriti u originalu."
+     "supports": "Preporuka 3a (NHLBI ocena A): za smanjenje unosa može se koristiti bilo koji od načina — 1200–1500 kcal/dan žene i 1500–1800 kcal/dan muškarci (prilagođeno masi), ILI manjak od 500 ili 750 kcal/dan (u tekstu dokaza i 30 % manjka), ILI određeni tipovi dijeta. Dijete ispod 800 kcal/dan samo uz medicinski nadzor. Smernica je za odrasle.",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5819889/",
+     "doi": "10.1161/01.cir.0000437739.71477.ee"
     }
    ],
-   "notes": "Otvoreno (razgovor sa vlasnikom): isti manjak za sve ili zavisan od mase; izbor brzine; granice 1200/1500 proveriti u originalu."
+   "notes": "ISPRAVKA posle čitanja originala: 1200/1500 u smernici NISU propisani minimum, već donja granica jednog od tri ravnopravna načina. Kao dno ih koristimo po kriterijumu 3 (opreznija varijanta). Otvoreno za odluku o proizvodu: fiksnih 500 kcal ili procenat (smernica navodi i 30 % manjka) i da li korisnik bira brzinu (500 ili 750).",
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "SMERNICA"
+    }
+   }
   },
   {
    "status": "PREDLOG",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "tags": [
     "itm",
     "bmi"
@@ -472,16 +505,24 @@
    "sources": [
     {
      "tier": 1,
-     "citation": "WHO. Body mass index (BMI) — definicija i klasifikacija odraslih.",
-     "checkedOriginal": false,
+     "citation": "WHO. Nutrition Landscape Information System (NLiS) — Body mass index: moderate and severe thinness, underweight, overweight, obesity.",
+     "checkedOriginal": true,
      "accessed": "2026-09-23",
-     "supports": "Definicija ITM i granica 18,5 za pothranjenost. NIJE PROVERENO u ovoj sesiji — proveriti u originalu."
+     "supports": "ITM = kg/m²; ITM < 18,5 pothranjenost; < 17 mršavost (umereni rizik); < 16 znatno povećan rizik. Vrednosti važe za odrasle, oba pola.",
+     "url": "https://apps.who.int/nutrition/landscape/help.aspx?menu=0&helpid=420"
     }
-   ]
+   ],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "SMERNICA"
+    }
+   }
   },
   {
    "status": "PREDLOG",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "tags": [
     "maloletni",
     "deca",
@@ -491,7 +532,7 @@
    "area": "bezbednost",
    "title": "Mlađi od 18 godina",
    "kind": "safety",
-   "statement": "Mera ne pravi plan za osobe mlađe od 18 godina: formule i smernice koje koristi odnose se na odrasle. Za mlađe je potreban pedijatar ili nutricionista.",
+   "statement": "Mera ne pravi plan za osobe mlađe od 18 godina: formula za potrošnju izvedena je na odraslima (19–78 godina), a smernice za mršavljenje odnose se na odrasle. Za mlađe je potreban pedijatar ili nutricionista.",
    "inputs": [
     "ageYears"
    ],
@@ -506,6 +547,24 @@
    },
    "sources": [
     {
+     "tier": 3,
+     "citation": "Mifflin MD, St Jeor ST, Hill LA, Scott BJ, Daugherty SA, Koh YO. A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr 1990;51(2):241–247.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Sažetak (original, izdavač): pojednostavljena formula po polu — muškarci 10·kg + 6,25·cm − 5·god + 5; žene … − 161; izvedena na 498 zdravih osoba od 19 do 78 godina, normalne mase i gojaznih.",
+     "url": "https://ajcn.nutrition.org/article/S0002-9165(23)16698-6/fulltext",
+     "doi": "10.1093/ajcn/51.2.241"
+    },
+    {
+     "tier": 2,
+     "citation": "Jensen MD i sar. 2013 AHA/ACC/TOS Guideline for the Management of Overweight and Obesity in Adults. Circulation 2014;129(25 Suppl 2):S102–S138.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Preporuka 3a (NHLBI ocena A): za smanjenje unosa može se koristiti bilo koji od načina — 1200–1500 kcal/dan žene i 1500–1800 kcal/dan muškarci (prilagođeno masi), ILI manjak od 500 ili 750 kcal/dan (u tekstu dokaza i 30 % manjka), ILI određeni tipovi dijeta. Dijete ispod 800 kcal/dan samo uz medicinski nadzor. Smernica je za odrasle.",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5819889/",
+     "doi": "10.1161/01.cir.0000437739.71477.ee"
+    },
+    {
      "tier": 1,
      "citation": "NHLBI Obesity Education Initiative Expert Panel. Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report. NIH Publication 98-4083; 1998.",
      "checkedOriginal": true,
@@ -513,11 +572,18 @@
      "supports": "Manjak od 500–1000 kcal/dan kao deo programa mršavljenja; oko 0,5–1 kg nedeljno.",
      "url": "https://www.ncbi.nlm.nih.gov/books/NBK2009/"
     }
-   ]
+   ],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "DVA_IZVORA"
+    }
+   }
   },
   {
    "status": "PREDLOG",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "tags": [
     "trudnoća",
     "dojenje",
@@ -527,7 +593,7 @@
    "area": "bezbednost",
    "title": "Trudnoća i dojenje",
    "kind": "safety",
-   "statement": "U trudnoći i tokom dojenja Mera ne pravi manjak kalorija; plan ishrane treba dogovoriti sa lekarom.",
+   "statement": "U trudnoći se ne mršavi: smernica NICE ne preporučuje programe mršavljenja u trudnoći. Tokom dojenja Mera za sada takođe ne pravi manjak kalorija (oprezna varijanta dok se izvor za dojenje ne proveri u originalu). Plan ishrane u oba slučaja dogovoriti sa lekarom.",
    "appliesWhen": {
     "fact": "sex",
     "op": "eq",
@@ -548,17 +614,33 @@
    },
    "sources": [
     {
-     "tier": 2,
-     "citation": "Izvor za trudnoću i dojenje — pronaći (zvanična smernica).",
+     "tier": 1,
+     "citation": "NICE. Weight management before, during and after pregnancy. Public health guideline PH27 (2010).",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Programi mršavljenja se ne preporučuju u trudnoći jer mogu da naškode detetu. (Proveriti da li je PH27 zamenjen novom smernicom NG247 iz 2025.)",
+     "url": "https://www.nice.org.uk/guidance/ph27/chapter/Recommendations"
+    },
+    {
+     "tier": 1,
+     "citation": "NICE PH27 — preporuka o dojenju (navedeno u: Clinical guidelines for the management of weight during pregnancy, PMC10007759).",
      "checkedOriginal": false,
      "accessed": "2026-09-23",
-     "supports": "NIJE PRONAĐEN pouzdan izvor u ovoj sesiji."
+     "supports": "Zdrava ishrana, umerena aktivnost i postepen gubitak mase ne utiču loše na dojenje. VIĐENO SAMO KAO NAVOD — proveriti u originalu."
     }
-   ]
+   ],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "SMERNICA"
+    }
+   },
+   "notes": "Po NICE (navod), postepeno mršavljenje tokom dojenja nije štetno — kada se potvrdi u originalu, dojenje se može odvojiti od trudnoće (novo pitanje) ili ostati oprezno. Odluka o proizvodu."
   },
   {
    "status": "PREDLOG",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "tags": [
     "pothranjenost",
     "itm",
@@ -585,21 +667,29 @@
      "value": 18.5
     },
     "status": "BLOCKED",
-    "message": "Tvoja masa je već ispod preporučenog opsega, pa Mera ne pravi plan za mršavljenje. Posavetuj se sa lekarom."
+    "message": "Tvoja masa je već ispod preporučenog opsega (ITM ispod 18,5), pa Mera ne pravi plan za mršavljenje. Posavetuj se sa lekarom."
    },
    "sources": [
     {
      "tier": 1,
-     "citation": "WHO. Body mass index (BMI) — klasifikacija odraslih.",
-     "checkedOriginal": false,
+     "citation": "WHO. Nutrition Landscape Information System (NLiS) — Body mass index: moderate and severe thinness, underweight, overweight, obesity.",
+     "checkedOriginal": true,
      "accessed": "2026-09-23",
-     "supports": "Granica 18,5 za pothranjenost. NIJE PROVERENO u ovoj sesiji."
+     "supports": "ITM = kg/m²; ITM < 18,5 pothranjenost; < 17 mršavost (umereni rizik); < 16 znatno povećan rizik. Vrednosti važe za odrasle, oba pola.",
+     "url": "https://apps.who.int/nutrition/landscape/help.aspx?menu=0&helpid=420"
     }
-   ]
+   ],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "SMERNICA"
+    }
+   }
   },
   {
    "status": "PREDLOG",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "tags": [
     "procena",
     "tačnost",

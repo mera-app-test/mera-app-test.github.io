@@ -68,6 +68,12 @@ function Entries({ entries }: { entries: readonly KnowledgeEntry[] }) {
                   <div className="kb-detail">
                     <p>{e.statement}</p>
                     {e.safety && <p className="muted">Poruka korisniku: „{e.safety.message}"</p>}
+                    <h3 className="kb-h">Provera (DECISIONS/0013)</h3>
+                    <ul className="kb-sources">
+                      <li><span className={e.review?.criteria ? "kb-orig ok" : "kb-orig no"}>{e.review?.criteria ? `✓ kriterijumi ispunjeni (${e.review.criteria.consensus === "SMERNICA" ? "smernica" : "dva izvora"})` : "✗ kriterijumi još nisu ispunjeni"}</span></li>
+                      <li><span className={e.review?.independentAi?.result === "POTVRDJENO" ? "kb-orig ok" : "kb-orig no"}>{e.review?.independentAi ? `nezavisna AI provera: ${e.review.independentAi.result === "POTVRDJENO" ? "✓ potvrđeno" : "primedbe"}` : "✗ nezavisna AI provera nije urađena"}</span></li>
+                      <li><span className={e.review?.expert?.result === "POTVRDJENO" ? "kb-orig ok" : "kb-orig no"}>{e.review?.expert ? `nutricionista: ${e.review.expert.result === "POTVRDJENO" ? "✓ potvrđeno" : "primedbe"}` : "✗ nutricionista nije pregledao (obavezno pre drugih korisnika)"}</span></li>
+                    </ul>
                     <h3 className="kb-h">Izvori</h3>
                     <ul className="kb-sources">
                       {e.sources.map((s, i) => (

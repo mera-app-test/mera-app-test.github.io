@@ -2,7 +2,7 @@
 import { describe, expect, it } from "vitest";
 import { KnowledgeFileSchema, type KnowledgeFile } from "../../src/schemas";
 import { deriveQuestions, evaluate, searchKnowledge, validateKnowledge } from "../../src/domain";
-import raw from "../../reference-data/knowledge/knowledge-0.1.0.json";
+import raw from "../../reference-data/knowledge/knowledge-0.2.0.json";
 
 const kb = KnowledgeFileSchema.parse(raw);
 const ALL = ["PREDLOG", "ODOBRENO"] as const;
@@ -34,6 +34,32 @@ describe("provere hvataju greške", () => {
       k.entries[0]!.sources = k.entries[0]!.sources.filter((s) => !s.checkedOriginal);
     });
     expect(errs.some((e) => e.includes("E-001") && e.includes("originalu"))).toBe(true);
+  });
+  it("ODOBRENO bez slojeva 2 i 3 (DECISIONS/0013) se odbija", () => {
+    const errs = broken((k) => {
+      delete k.entries[0]!.review;
+      k.entries[0]!.status = "ODOBRENO";
+      k.entries[0]!.approved = { by: "vlasnik", date: "2026-09-23", decision: "test" };
+    });
+    expect(errs.some((e) => e.includes("E-001") && e.includes("sloj 2"))).toBe(true);
+    expect(errs.some((e) => e.includes("E-001") && e.includes("sloj 3"))).toBe(true);
+  });
+  it("sa slojem 2 ali bez nezavisne provere (sloj 3) i dalje se odbija", () => {
+    const errs = broken((k) => {
+      const e = k.entries.find((x) => x.id === "E-002")!;
+      e.status = "ODOBRENO";
+      e.approved = { by: "vlasnik", date: "2026-09-23", decision: "test" };
+    });
+    expect(errs.filter((e) => e.startsWith("E-002"))).toEqual(["E-002: ODOBRENO bez potvrde nezavisne provere (sloj 3, DECISIONS/0013)"]);
+  });
+  it("„dva izvora\" sa samo jednim proverenim izvorom nivoa 1–2 se odbija", () => {
+    const errs = broken((k) => {
+      const e = k.entries.find((x) => x.id === "E-001")!;
+      e.status = "ODOBRENO";
+      e.approved = { by: "vlasnik", date: "2026-09-23", decision: "test" };
+      e.review = { criteria: { by: "test", date: "2026-09-23", consensus: "DVA_IZVORA" }, independentAi: { system: "test", date: "2026-09-23", result: "POTVRDJENO" } };
+    });
+    expect(errs.filter((e) => e.startsWith("E-001"))).toEqual(["E-001: „dva izvora\" a proverenih izvora nivoa 1–2 ima 1"]);
   });
   it("korišćenje činjenice koja nije u inputs se odbija", () => {
     const errs = broken((k) => { k.entries[0]!.inputs = ["massKg"]; });
