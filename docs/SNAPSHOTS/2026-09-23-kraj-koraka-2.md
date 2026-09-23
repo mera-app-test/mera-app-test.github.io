@@ -9,7 +9,7 @@
 - 45 automatskih testova.
 
 ## Sledeće: korak 3 — unos telesne mase
-Predlog UI čeka potvrdu vlasnika:
+Predlog UI (radi se po DECISIONS/0005 — napraviti, objaviti na test, vlasnik koriguje):
 - na ekranu „Danas", ispod dela za plan: kartica „Masa" (poslednje merenje + dugme „Unesi masu");
 - unos: jedno polje, brojčana tastatura, prihvata zarez (npr. 92,4), dugme „Sačuvaj";
 - lista poslednjih merenja sa brisanjem pogrešnog unosa;
