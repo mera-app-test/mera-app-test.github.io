@@ -5,7 +5,7 @@ export const TRACKED = [
   { key: "fat", ids: ["1004"], name: /^Total lipid \(fat\)$/, unit: "G" },
   { key: "saturatedFat", ids: ["1258"], name: /^Fatty acids, total saturated$/, unit: "G" },
   { key: "carbohydrateByDifference", ids: ["1005"], name: /^Carbohydrate, by difference$/, unit: "G" },
-  { key: "sugars", ids: ["2000", "1063"], name: /^(Sugars, total including NLEA|Sugars, Total( NLEA)?)$/i, unit: "G" },
+  { key: "sugars", ids: ["2000", "1063"], name: /^(Sugars, total including NLEA|Total Sugars|Sugars, Total( NLEA)?)$/i, unit: "G" },
   { key: "fiber", ids: ["1079"], name: /^Fiber, total dietary$/, unit: "G" },
   { key: "sodium", ids: ["1093"], name: /^Sodium, Na$/, unit: "MG" },
   { key: "water", ids: ["1051"], name: /^Water$/, unit: "G" },
