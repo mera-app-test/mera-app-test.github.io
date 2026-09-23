@@ -1,6 +1,6 @@
 # NUTRITION_ENGINE — metode i parametri proračuna
 
-**Status:** deo T ODOBREN (DECISIONS/0007); delovi N, P i K ODOBRENI (DECISIONS/0008); vrednosti namirnica čekaju odobrenje izveštaja uvoza; energetski deo (korak 5) još ne postoji. Nijedna vrednost nije ugrađena u kod pre odobrenja vlasnika (DECISIONS/0005, MS §39).
+**Status:** deo T ODOBREN (DECISIONS/0007); delovi N, P i K ODOBRENI (DECISIONS/0008); vrednosti namirnica 1.1.0 odobrene (DECISIONS/0009); deo E (energija i cilj) je PREDLOG; energetski deo (korak 5) još ne postoji. Nijedna vrednost nije ugrađena u kod pre odobrenja vlasnika (DECISIONS/0005, MS §39).
 Posle odobrenja vrednosti idu u verzionisan `FormulaSet` (ARCHITECTURE §13), ne kao konstante u kodu.
 
 Oznake: **[IZVOR]** — tvrdnja potkrepljena navedenim izvorom · **[PROCENA]** — statistička ili praktična odluka bez naučnog izvora za tačan broj; obrazložena, ali to je izbor, ne činjenica.
@@ -208,7 +208,37 @@ Nutrijenti recepta = zbir sastojaka u obliku u kome se mere (obično sirovo). Ma
 6. P1–P3 — nivoi, prikaz, zaokruživanje.
 7. K1–K5 — oblici, izvori prinosa, retencija.
 
-### N7. Predlog R1 — nepotpun Foundation zapis (ČEKA ODLUKU)
+### N7. R1 — nepotpun Foundation zapis (ODOBRENO, DECISIONS/0009)
 Problem (nađen pri uvozu): noviji Foundation zapisi (NDB 100xxx) često nemaju vlakna, šećere ili masti, a nemaju SR par za dopunu po N2. Po odobrenom pravilu takva namirnica ostaje bez energije (12 namirnica — DECISIONS/0008).
 Predlog: ako Foundation zapis posle N2 nema proteine, masti, UH ili vlakna, koristi se SR Legacy zapis iste namirnice i istog oblika, ako postoji.
 Posledica: potpuni podaci za 11 od 12 namirnica; vrednosti iz 2018. umesto novijih analiza. Alternativa: ostaviti nepotpuno dok USDA ne dopuni zapise.
+
+---
+
+## Deo E — Dnevna energija i cilj (MS §10, §11; korak 5) — PREDLOG, čeka odobrenje
+
+### E1. Pitanja pri prvom pokretanju
+Pol, godine, visina, masa, kretanje (3 izbora), cilj (smršati / održati). Ženama jedno bezbednosno pitanje: trudnoća ili dojenje (da/ne). Ništa više.
+
+### E2. Energija u mirovanju — Mifflin-St Jeor
+Muškarci: 10·kg + 6,25·cm − 5·godine + 5 · Žene: 10·kg + 6,25·cm − 5·godine − 161.
+**[IZVOR]** Mifflin MD i sar., Am J Clin Nutr 1990;51:241–247. Sistematski pregled (Frankenfield i sar., J Am Diet Assoc 2005;105:775–789): najpouzdanija od često korišćenih formula, ali ima pojedinačnih grešaka — zato je početni broj procena, a trend mase ga kasnije koriguje (MS §3, §11).
+
+### E3. Kretanje (PAL)
+Tri izbora sa vrednostima iz primera FAO/WHO/UNU (2004), *Human energy requirements*, Tabela 5.1:
+- mahom sedim (kancelarija, vožnja): 1,53
+- dosta sam na nogama ili vežbam redovno: 1,76
+- težak fizički posao ili mnogo sporta: 2,25
+Dnevna potrošnja = energija u mirovanju × PAL.
+
+### E4. Cilj
+- **Održavanje:** dnevna potrošnja.
+- **Mršavljenje:** dnevna potrošnja − 500 kcal. **[IZVOR]** 2013 AHA/ACC/TOS smernice (Jensen MD i sar., Circulation 2014;129:S102–S138): manjak od 500 ili 750 kcal/dan; NHLBI 1998: manjak 500–1000 kcal/dan, oko 0,5–1 kg nedeljno.
+- **Povećanje mase / mišića:** nije u ovom koraku — predlog sa izvorom posebno.
+
+### E5. Bezbednosne granice (SAFETY_RULES, prvi deo)
+- Mlađi od 18: BLOCKED (formule i smernice su za odrasle).
+- Trudnoća ili dojenje: REQUIRES_CLINICAL_REVIEW — nema manjka kalorija.
+- ITM < 18,5 i cilj mršavljenje: BLOCKED (WHO: pothranjenost).
+- Donja granica unosa pri mršavljenju: 1200 kcal žene, 1500 kcal muškarci (donje granice iz 2013 AHA/ACC/TOS). Ako manjak od 500 spušta ispod granice, cilj = granica.
+- Prikaz: „≈" (procena, MS §30).

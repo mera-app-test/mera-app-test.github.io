@@ -16,7 +16,7 @@ import {
   sumItems,
   weakest,
 } from "../../src/domain";
-import foodsRaw from "../../reference-data/foods/foods-1.0.0.json";
+import foodsRaw from "../../reference-data/foods/foods-1.1.0.json";
 import energyRaw from "../../reference-data/formulas/energy-label-1.0.0.json";
 import displayRaw from "../../reference-data/formulas/display-1.0.0.json";
 // @ts-expect-error — .mjs alat za uvoz nema tipove; koristi se samo za proveru slaganja.
@@ -32,10 +32,10 @@ const food = (id: string): Food => {
 };
 
 describe("referentni fajl namirnica", () => {
-  it("prolazi šemu, ima 96 namirnica sa jedinstvenim ID-jem i čeka odobrenje", () => {
+  it("prolazi šemu, ima 96 namirnica sa jedinstvenim ID-jem, odobreno", () => {
     expect(file.foods).toHaveLength(96);
     expect(new Set(file.foods.map((f) => f.id)).size).toBe(96);
-    expect(file.status).toBe("CEKA_ODOBRENJE");
+    expect(file.status).toBe("ODOBRENO");
   });
   it("svaka namirnica ima izvor iz FDC i ćirilični naziv", () => {
     for (const f of file.foods) {
@@ -72,13 +72,21 @@ describe("energija po Prilogu 13 — ručno izračunati slučajevi", () => {
 });
 
 describe("nepoznato nije nula", () => {
-  it("sočivo (Foundation bez vlakana): energija se ne računa", () => {
-    const e = energyPer100g(food("sociva"), energy);
+  const noFiber = (): Food => {
+    const f = food("sociva");
+    const { fiber: _drop, ...rest } = f.values;
+    return { ...f, values: rest, missing: ["fiber"] };
+  };
+  it("svaka namirnica u 1.1.0 ima energiju (R1)", () => {
+    for (const f of file.foods) expect(energyPer100g(f, energy).ok, f.id).toBe(true);
+  });
+  it("namirnica bez vlakana: energija se ne računa, vlakna nisu 0", () => {
+    const e = energyPer100g(noFiber(), energy);
     expect(e).toEqual({ ok: false, reason: "missing", missing: ["fiber"] });
-    expect(nutrientsForAmount(food("sociva"), 100).fiber.value).toBeNull();
+    expect(nutrientsForAmount(noFiber(), 100).fiber.value).toBeNull();
   });
   it("zbir sa jednom nepoznatom vrednošću je nepotpun", () => {
-    const a = { nutrients: nutrientsForAmount(food("sociva"), 50), energy: energyForAmount(food("sociva"), energy, 50) };
+    const a = { nutrients: nutrientsForAmount(noFiber(), 50), energy: energyForAmount(noFiber(), energy, 50) };
     const b = { nutrients: nutrientsForAmount(food("jaje"), 50), energy: energyForAmount(food("jaje"), energy, 50) };
     const s = sumItems([a, b]);
     expect(s.nutrients.fiber.complete).toBe(false);

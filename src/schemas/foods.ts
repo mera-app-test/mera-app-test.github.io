@@ -57,8 +57,8 @@ export const FoodSchema = FoodCoreSchema.extend({
   form: z.string(),
   mapping: z.enum(["TACNO", "BLISKO"]),
   note: z.string().optional(),
-  /** Predlog R1 (čeka odluku vlasnika) — aplikacija ga ne koristi u proračunima. */
-  alternativeR1: FoodCoreSchema.optional(),
+  /** R1 (DECISIONS/0009): korišćen SR Legacy zapis jer noviji Foundation zapis nije imao podatke za energiju. */
+  r1: z.literal(true).optional(),
 });
 export type Food = z.infer<typeof FoodSchema>;
 

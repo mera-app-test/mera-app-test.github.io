@@ -2,7 +2,7 @@
 // Neispravan fajl zaustavlja pokretanje umesto tihe greške.
 import { DisplayRuleSetSchema, EnergyFormulaSetSchema, FoodsFileSchema, type Food } from "../../schemas";
 import type { ReferenceDataProvider } from "../../ports/data";
-import foodsRaw from "../../../reference-data/foods/foods-1.0.0.json";
+import foodsRaw from "../../../reference-data/foods/foods-1.1.0.json";
 import energyRaw from "../../../reference-data/formulas/energy-label-1.0.0.json";
 import displayRaw from "../../../reference-data/formulas/display-1.0.0.json";
 

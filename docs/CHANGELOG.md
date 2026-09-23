@@ -58,3 +58,8 @@
 - ReferenceDataProvider port + statička implementacija; `FoodService` (pretraga, detalj, „Zašto?").
 - Ekran „Namirnice": pretraga, lista sa kcal/100 g, detail sa unosom grama, prelaz sirovo/kuvano, tabela kao na deklaraciji, „Zašto?". Gest „nazad" iz detalja vraća na listu.
 - Testovi: 109 (+21: zlatni slučajevi energije, slaganje alata i aplikacije za svih 96 namirnica, linearnost, zbir, nepoznato ≠ 0, prikaz, pretraga, servis).
+
+## 0.4.1 — R1, razumna preciznost (test)
+- DECISIONS/0009: način rada — opšte prihvaćeno i provereno, bez mikroskopske preciznosti; manje odluka za vlasnika.
+- Uvoz namirnica 1.1.0 sa pravilom R1: svih 96 namirnica ima energiju; status ODOBRENO.
+- NUTRITION_ENGINE.md deo E (dnevna energija, cilj, bezbednosne granice) — predlog za korak 5.
