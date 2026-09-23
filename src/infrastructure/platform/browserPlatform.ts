@@ -5,6 +5,12 @@ export function createBrowserClock(): Clock {
   return {
     nowIso: () => new Date().toISOString(),
     timeZone: () => Intl.DateTimeFormat().resolvedOptions().timeZone,
+    isoAtLocalDate: (localDate) => {
+      const [y, m, d] = localDate.split("-").map(Number);
+      const t = new Date();
+      t.setFullYear(y!, m! - 1, d!);
+      return t.toISOString();
+    },
     localDate: () => {
       // en-CA daje oblik YYYY-MM-DD; vremenska zona je zona uređaja.
       return new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());

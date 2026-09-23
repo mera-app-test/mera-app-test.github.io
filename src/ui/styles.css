@@ -219,3 +219,82 @@ body {
 .diag-busy { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--amber-bg); color: var(--amber); font-weight: 700; }
 .diag-listening { font-size: 20px; text-align: center; }
 .diag-step .diag-item { margin-top: 2px; }
+
+/* Masa — broj je glavni element kartice; sve ostalo je tiho. */
+.weight-card {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 10px;
+}
+.weight-card-title { font-size: 20px; font-weight: 650; margin: 0; }
+.weight-latest {
+  display: grid;
+  justify-items: start;
+  gap: 2px;
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.weight-value { font-size: 52px; line-height: 1; font-weight: 750; letter-spacing: -0.02em; }
+.weight-unit { font-size: 22px; font-weight: 600; color: var(--ink-soft); letter-spacing: 0; }
+.weight-when { color: var(--ink-soft); font-size: 16px; }
+.weight-empty { margin: 0; color: var(--ink-soft); }
+.weight-all { justify-self: start; }
+.weight-card .block { margin-top: 4px; }
+
+.weight-form { display: grid; gap: 12px; }
+.weight-label { font-size: 15px; color: var(--ink-soft); }
+.weight-input-row { display: flex; align-items: baseline; gap: 10px; }
+.weight-input {
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  font-size: 40px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  padding: 8px 14px;
+  min-height: 68px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--ink);
+}
+.weight-input:focus { outline: 3px solid #7fb3a3; outline-offset: 1px; border-color: var(--spruce); }
+.weight-input::placeholder { color: #b7c4be; }
+.weight-input-unit { font-size: 24px; font-weight: 600; color: var(--ink-soft); }
+.weight-date { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; min-height: var(--tap); }
+.weight-date-label { font-size: 15px; color: var(--ink-soft); width: 100%; }
+.weight-date-input {
+  font: inherit;
+  min-height: var(--tap);
+  padding: 6px 10px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--ink);
+}
+.weight-notice { min-height: 1.45em; margin: 0; }
+
+.weight-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.weight-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.weight-row.fresh { background: linear-gradient(90deg, #e3eee9, transparent); }
+.weight-row-main { display: grid; gap: 1px; }
+.weight-row-value { font-size: 20px; font-weight: 700; }
+.weight-row-when { font-size: 15px; color: var(--ink-soft); }
+.weight-confirm { width: 100%; }
+.weight-confirm p { margin: 0 0 8px; }
+.btn-quiet { background: none; color: var(--ink-soft); border-color: var(--line); font-weight: 600; padding: 8px 14px; }
+.btn-danger { background: var(--danger); color: #fff; }

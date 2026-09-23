@@ -17,7 +17,7 @@ async function setup(saveWorks = true) {
   const saved: { name: string; text: string }[] = [];
   const svc = createBackupService({
     data,
-    clock: { nowIso: () => now, localDate: () => now.slice(0, 10), timeZone: () => "Europe/Belgrade" },
+    clock: { nowIso: () => now, localDate: () => now.slice(0, 10), timeZone: () => "Europe/Belgrade", isoAtLocalDate: (d: string) => `${d}T10:00:00.000Z` },
     ids: { newId: ids },
     hasher: createBrowserHasher(),
     files: { saveTextFile: async (name, text) => { if (saveWorks) saved.push({ name, text }); return saveWorks; } },

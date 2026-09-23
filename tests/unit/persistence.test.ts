@@ -15,7 +15,7 @@ function fakes(opts: { persisted: boolean | null; grant: boolean | null }) {
     isPersisted: async () => opts.persisted,
     requestPersist: async () => { requests += 1; return opts.grant; },
   };
-  const clock: Clock = { nowIso: () => "2026-09-23T10:00:00.000Z", localDate: () => "2026-09-23", timeZone: () => "Europe/Belgrade" };
+  const clock: Clock = { nowIso: () => "2026-09-23T10:00:00.000Z", localDate: () => "2026-09-23", timeZone: () => "Europe/Belgrade", isoAtLocalDate: (d: string) => `${d}T10:00:00.000Z` };
   return { settings, persistence, clock, get: () => s, requests: () => requests };
 }
 

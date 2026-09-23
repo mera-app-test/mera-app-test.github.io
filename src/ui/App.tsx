@@ -5,11 +5,12 @@ import { ServicesContext } from "./ServicesContext";
 import { ExitGuard } from "./components/ExitGuard";
 import { TodayScreen } from "./screens/TodayScreen";
 import { BackupScreen } from "./screens/BackupScreen";
+import { WeightScreen } from "./screens/WeightScreen";
 
 /** Ekran provere uređaja postoji samo u test/dev build-u; composition root ga predaje ili ne. */
 export type DiagnosticsScreenComponent = ComponentType<{ onClose: () => void }>;
 
-type Screen = "today" | "backup" | "diagnostics";
+type Screen = "today" | "backup" | "diagnostics" | "weight-entry" | "weight-list";
 
 interface AppProps {
   services: AppServices;
@@ -37,7 +38,16 @@ export function App({ services, DiagnosticsScreen }: AppProps) {
           </div>
         )}
         <main className="main">
-          {screen === "today" && <TodayScreen onOpenBackup={() => setScreen("backup")} />}
+          {screen === "today" && (
+            <TodayScreen
+              onOpenBackup={() => setScreen("backup")}
+              onEnterWeight={() => setScreen("weight-entry")}
+              onOpenWeights={() => setScreen("weight-list")}
+            />
+          )}
+          {(screen === "weight-entry" || screen === "weight-list") && (
+            <WeightScreen focusInput={screen === "weight-entry"} onClose={() => setScreen("today")} />
+          )}
           {screen === "backup" && <BackupScreen onClose={() => setScreen("today")} />}
           {screen === "diagnostics" && DiagnosticsScreen && (
             <Suspense fallback={<p className="muted">Učitavam proveru…</p>}>

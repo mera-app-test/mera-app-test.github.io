@@ -5,6 +5,8 @@ export interface Clock {
   /** Lokalni datum korisnika YYYY-MM-DD. */
   localDate(): string;
   timeZone(): string;
+  /** Trenutno vreme dana, ali na dati lokalni datum, kao UTC ISO (za unos merenja za raniji dan). */
+  isoAtLocalDate(localDate: string): string;
 }
 
 export interface IdGenerator {

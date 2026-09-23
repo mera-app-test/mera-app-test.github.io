@@ -1,11 +1,18 @@
-// Glavni ekran „DANAS" (MS §15). Plan još ne postoji — prazno stanje i podsetnik za rezervnu kopiju.
+// Glavni ekran „DANAS" (MS §15). Plan još ne postoji — prazno stanje, kartica „Masa" i podsetnik za rezervnu kopiju.
 import { useEffect, useState } from "react";
 import type { BackupStatus } from "../../application";
 import { useServices } from "../ServicesContext";
+import { WeightCard } from "../components/WeightCard";
 
 const dateFormatter = new Intl.DateTimeFormat("sr-Latn-RS", { weekday: "long", day: "numeric", month: "long" });
 
-export function TodayScreen({ onOpenBackup }: { onOpenBackup: () => void }) {
+interface TodayProps {
+  onOpenBackup: () => void;
+  onEnterWeight: () => void;
+  onOpenWeights: () => void;
+}
+
+export function TodayScreen({ onOpenBackup, onEnterWeight, onOpenWeights }: TodayProps) {
   const { backup } = useServices();
   const [status, setStatus] = useState<BackupStatus | null>(null);
   const today = dateFormatter.format(new Date());
@@ -38,6 +45,7 @@ export function TodayScreen({ onOpenBackup }: { onOpenBackup: () => void }) {
           Mera je u izradi. Ovde će stajati obroci za danas, sa količinama i kalorijama.
         </p>
       </div>
+      <WeightCard onEnter={onEnterWeight} onOpenList={onOpenWeights} />
     </section>
   );
 }

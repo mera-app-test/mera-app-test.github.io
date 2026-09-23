@@ -28,3 +28,12 @@
 ## 0.2.1 — ispravka ekrana „Provera uređaja" (test)
 - Problem (prijavio vlasnik): posle dodira dugmeta nije se videla nikakva reakcija. Uzrok: rezultat se upisivao na dno stranice, ispod svih dugmadi — greška u dizajnu ekrana.
 - Ispravka: numerisani koraci sa uputstvom; rezultat se prikazuje odmah ispod dugmeta; tokom slušanja govora vidljivo „Slušam… govori sada".
+
+## 0.3.0 — korak 3: unos telesne mase (test)
+- Ekran „Danas": kartica „Masa" — poslednje merenje, dugme „Unesi masu", „Sva merenja".
+- Ekran „Masa": jedno polje sa brojčanom tastaturom (prihvata zarez i tačku), izbor ranijeg dana, lista merenja za 90 dana, brisanje uz potvrdu.
+- Use case-ovi `logWeight` i `deleteWeight` preko ChangeSet-a sa audit zapisom.
+- Zahtev za trajno skladište posle prvog uspešnog unosa (ARCHITECTURE §9, DECISIONS/0002); neuspeh zahteva ne poništava unos.
+- Trend se NE prikazuje: metod i parametri predloženi u docs/NUTRITION_ENGINE.md (deo T), čekaju odobrenje.
+- Tehničke napomene: docs/DECISIONS/0006.
+- Testovi: 74 (+29: provera unosa, lokalni datumi, use case-ovi mase nad LocalDataProvider-om).

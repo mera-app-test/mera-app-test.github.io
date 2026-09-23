@@ -10,3 +10,5 @@ export { createBackupService } from "./backup/backupService";
 export { ensurePersistentStorageAfterSave } from "./storage/persistence";
 export { auditEvent, newBase, nextRevision, softDeleted, type RecordContext } from "./records";
 export type { ParsedBackup, ParseError } from "../backup";
+export type { WeightService, WeightOverview, WeightEntryView, LogWeightResult, RemoveWeightResult } from "./weight/weightService";
+export { createWeightService } from "./weight/weightService";

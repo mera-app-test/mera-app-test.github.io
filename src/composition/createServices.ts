@@ -1,6 +1,6 @@
 // COMPOSITION ROOT — jedino mesto gde se biraju implementacije portova (ARCHITECTURE.md §6.1, §12.1).
 // Prelazak na server menja samo ovaj fajl i infrastructure/, ne UI ni domain.
-import { createBackupService, type AppServices, type BuildInfo } from "../application";
+import { createBackupService, createWeightService, type AppServices, type BuildInfo } from "../application";
 import { createLocalDataProvider } from "../infrastructure/data-local";
 import {
   createBrowserClock,
@@ -27,14 +27,18 @@ export async function createServices(): Promise<AppServices> {
     onVersionChange: () => location.reload(),
   });
 
+  const persistence = createBrowserStoragePersistence();
+  const appVersion = `${build.version}+${build.sha}`;
+  const weight = createWeightService({ data, clock, ids, persistence, appVersion });
+
   const backup = createBackupService({
     data,
     clock,
     ids,
     hasher: createBrowserHasher(),
     files: createBrowserFileExporter(),
-    persistence: createBrowserStoragePersistence(),
-    appVersion: `${build.version}+${build.sha}`,
+    persistence,
+    appVersion,
   });
 
   // U produkciji je __MERA_ENV__ === "prod", pa bundler izbacuje ceo dijagnostički kod.
@@ -49,5 +53,5 @@ export async function createServices(): Promise<AppServices> {
         }
       : null;
 
-  return { build, backup, loadDiagnostics };
+  return { build, backup, weight, loadDiagnostics };
 }
