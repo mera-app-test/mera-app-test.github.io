@@ -240,5 +240,5 @@ Dnevna potrošnja = energija u mirovanju × PAL.
 - Mlađi od 18: BLOCKED (formule i smernice su za odrasle).
 - Trudnoća ili dojenje: REQUIRES_CLINICAL_REVIEW — nema manjka kalorija.
 - ITM < 18,5 i cilj mršavljenje: BLOCKED (WHO: pothranjenost).
-- Donja granica unosa pri mršavljenju: 1200 kcal žene, 1500 kcal muškarci (donje granice iz 2013 AHA/ACC/TOS). Ako manjak od 500 spušta ispod granice, cilj = granica.
+- Donja granica unosa pri mršavljenju: 1200 kcal žene, 1500 kcal muškarci (donje granice iz 2013 AHA/ACC/TOS — **viđeno samo kao sekundarni navod; proveriti u originalu**, DECISIONS/0010). Ako manjak od 500 spušta ispod granice, cilj = granica.
 - Prikaz: „≈" (procena, MS §30).

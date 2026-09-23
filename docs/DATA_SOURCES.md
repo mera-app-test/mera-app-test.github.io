@@ -3,6 +3,7 @@
 **Status:** odobreno za V1 (docs/DECISIONS/0002). Uvoz podataka počinje u koraku 4 (ARCHITECTURE §17).
 
 ## Pravila
+- Hijerarhija i isključeni izvori: docs/AI_RULES.md §1 (DECISIONS/0010).
 - AI nikad nije izvor nutritivne vrednosti (MS §6, §20).
 - Svaka vrednost ima izvor, verziju izvora, datum i nivo pouzdanosti (ARCHITECTURE §8.4).
 - Vrednost bez navedenog i proverljivog izvora se ne unosi.
