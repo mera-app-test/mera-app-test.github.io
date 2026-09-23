@@ -1,8 +1,10 @@
 // Faza 2 uvoza: pravi fajl namirnica i izveštaj za vlasnika (NUTRITION_ENGINE.md N6).
 import { readFileSync } from "node:fs";
-import { TRACKED, FDC_ENERGY, REQUIRED, pick } from "./nutrients.mjs";
+import { TRACKED, FDC_ENERGY, pick } from "./nutrients.mjs";
 import { toCyrillic, stripDiacritics } from "./translit.mjs";
 import { energyKcal } from "./energy.mjs";
+
+const ENERGY_INPUTS = ["protein", "fat", "carbohydrateByDifference", "fiber"];
 
 const energyFactors = JSON.parse(readFileSync(new URL("../../reference-data/formulas/energy-label-1.0.0.json", import.meta.url), "utf8")).kcalPerGram;
 
@@ -55,15 +57,21 @@ export function buildFoods(datasets, selection, meta) {
   const dsByKey = Object.fromEntries(datasets.map((d) => [d.key, d]));
   const foods = [];
   const lines = [
-    `# Izveštaj uvoza namirnica ${selection.version} — ČEKA ODOBRENJE VLASNIKA`, "",
+    `# Izveštaj uvoza namirnica ${selection.version}`, "",
     "Vrednosti na 100 g jestivog dela, preuzete iz zvaničnih FDC arhiva (nijedan broj nije prekucan).",
     "Energija A = Prilog 13 (4·P + 4·(UH−vlakna) + 9·M + 2·vlakna); FDC = energija koju objavljuje USDA (2048 → 1008 → 2047).",
-    "Oznaka * = vrednost dopunjena iz SR Legacy po istom NDB broju (N2). „—\" = nepoznato.", "",
+    "Oznaka * = vrednost dopunjena iz SR Legacy po istom NDB broju (N2). R1 = korišćen SR Legacy zapis jer novi nije imao podatke za energiju. „—\" = nepoznato.", "",
     `Izvori: ${JSON.stringify(meta)}`, "",
   ];
   let group = "";
   for (const item of selection.items) {
-    const v = values(dsByKey, item.primary);
+    // R1 (DECISIONS/0009): ako izabrani zapis posle dopune nema podatke za energiju, uzima se SR Legacy zapis iste namirnice.
+    let v = values(dsByKey, item.primary);
+    let r1Applied = false;
+    if (item.alternativeR1 && ENERGY_INPUTS.some((k) => !v.values[k])) {
+      v = values(dsByKey, item.alternativeR1);
+      r1Applied = true;
+    }
     const food = {
       id: item.id,
       names: { srLatn: item.srLatn, srCyrl: toCyrillic(item.srLatn), aliases: item.aliases, searchKeys: [...new Set([item.srLatn, ...item.aliases].map((s) => stripDiacritics(s).toLowerCase()))] },
@@ -71,6 +79,7 @@ export function buildFoods(datasets, selection, meta) {
       ...v,
       values: v.values,
       note: item.note || undefined,
+      ...(r1Applied ? { r1: true } : {}),
     };
     foods.push(food);
     if (item.group !== group) {
@@ -81,18 +90,12 @@ export function buildFoods(datasets, selection, meta) {
     const cell = (k) => (x[k] ? `${r1(x[k].value)}${x[k].origin === "SR_FILL" ? "*" : ""}` : "—");
     const e = energyKcal(plain(x), energyFactors);
     const fdcE = v.fdcEnergy.energyAtwaterSpecific ?? v.fdcEnergy.energy ?? v.fdcEnergy.energyAtwaterGeneral;
-    lines.push(`| ${item.srLatn}${item.form ? `, ${item.form}` : ""} (${item.mapping === "TACNO" ? "T" : "B"}) | ${v.source.dataset} ${v.source.fdcId} ${v.source.description} | ${e.ok ? Math.round(e.kcal) : e.reason} | ${fdcE != null ? Math.round(fdcE) : "—"} | ${cell("protein")} | ${cell("fat")} | ${cell("saturatedFat")} | ${cell("carbohydrateByDifference")} | ${cell("sugars")} | ${cell("fiber")} | ${x.sodium ? Math.round(x.sodium.value) + (x.sodium.origin === "SR_FILL" ? "*" : "") : "—"} | ${v.missing.join(", ") || "—"} |`);
-    if (item.alternativeR1 && REQUIRED.some((k) => !x[k])) {
-      const alt = values(dsByKey, item.alternativeR1);
-      const ea = energyKcal(plain(alt.values), energyFactors);
-      lines.push(`| ↳ *predlog R1:* | ${alt.source.dataset} ${alt.source.fdcId} ${alt.source.description} | ${ea.ok ? Math.round(ea.kcal) : ea.reason} | ${Math.round(alt.fdcEnergy.energy ?? NaN)} | ${["protein","fat","saturatedFat","carbohydrateByDifference","sugars","fiber"].map((k) => alt.values[k] ? r1(alt.values[k].value) : "—").join(" | ")} | ${alt.values.sodium ? Math.round(alt.values.sodium.value) : "—"} | ${alt.missing.join(", ") || "—"} |`);
-      food.alternativeR1 = alt;
-    }
+    lines.push(`| ${item.srLatn}${item.form ? `, ${item.form}` : ""} (${item.mapping === "TACNO" ? "T" : "B"})${r1Applied ? " R1" : ""} | ${v.source.dataset} ${v.source.fdcId} ${v.source.description} | ${e.ok ? Math.round(e.kcal) : e.reason} | ${fdcE != null ? Math.round(fdcE) : "—"} | ${cell("protein")} | ${cell("fat")} | ${cell("saturatedFat")} | ${cell("carbohydrateByDifference")} | ${cell("sugars")} | ${cell("fiber")} | ${x.sodium ? Math.round(x.sodium.value) + (x.sodium.origin === "SR_FILL" ? "*" : "") : "—"} | ${v.missing.join(", ") || "—"} |`);
   }
   lines.push("", "## Ćirilica (ručna provera)", "", ...selection.items.map((i) => `- ${i.srLatn} → ${toCyrillic(i.srLatn)}`));
   const file = {
-    id: "foods", version: selection.version, status: "CEKA_ODOBRENJE",
-    document: "docs/NUTRITION_ENGINE.md delovi N, P, K; DECISIONS/0008",
+    id: "foods", version: selection.version, status: "ODOBRENO",
+    document: "docs/NUTRITION_ENGINE.md delovi N, P, K; DECISIONS/0008, 0009",
     attribution: "U.S. Department of Agriculture, Agricultural Research Service. FoodData Central (Foundation Foods, SR Legacy). fdc.nal.usda.gov. CC0 1.0.",
     sources: meta,
     foods,
