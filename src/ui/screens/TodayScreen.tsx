@@ -10,9 +10,10 @@ interface TodayProps {
   onOpenBackup: () => void;
   onEnterWeight: () => void;
   onOpenWeights: () => void;
+  onOpenFoods: () => void;
 }
 
-export function TodayScreen({ onOpenBackup, onEnterWeight, onOpenWeights }: TodayProps) {
+export function TodayScreen({ onOpenBackup, onEnterWeight, onOpenWeights, onOpenFoods }: TodayProps) {
   const { backup } = useServices();
   const [status, setStatus] = useState<BackupStatus | null>(null);
   const today = dateFormatter.format(new Date());
@@ -46,6 +47,13 @@ export function TodayScreen({ onOpenBackup, onEnterWeight, onOpenWeights }: Toda
         </p>
       </div>
       <WeightCard onEnter={onEnterWeight} onOpenList={onOpenWeights} />
+      <section className="weight-card food-entry" aria-labelledby="foods-card-title">
+        <h2 id="foods-card-title" className="weight-card-title">Namirnice</h2>
+        <p className="weight-empty">Kalorije i sastav namirnica, sa izvorom svakog broja.</p>
+        <button type="button" className="btn btn-secondary block" onClick={onOpenFoods}>
+          Otvori namirnice
+        </button>
+      </section>
     </section>
   );
 }

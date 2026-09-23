@@ -17,3 +17,4 @@ export interface DataProvider {
   readonly backup: BackupStore;
   close(): void;
 }
+export type * from "./referenceData";

@@ -1,3 +1,4 @@
+import type { Display } from "../application";
 // Formatiranje za prikaz (samo prezentacija; bez poslovne logike).
 const dateTime = new Intl.DateTimeFormat("sr-Latn-RS", { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" });
 
@@ -38,4 +39,28 @@ export function formatKgPerWeek(value: number): string {
 }
 export function formatPercent(value: number): string {
   return `${signed1.format(value).replace("-", "−")} %`;
+}
+
+// Prikaz vrednosti prema pravilima iz domain/confidence (P2): broj, „≈", raspon, „< 0,5", nepoznato.
+
+const numberFormats = new Map<number, Intl.NumberFormat>();
+function num(value: number, decimals: number): string {
+  let f = numberFormats.get(decimals);
+  if (!f) numberFormats.set(decimals, (f = new Intl.NumberFormat("sr-Latn-RS", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })));
+  return f.format(value);
+}
+
+export function formatDisplay(d: Display, unit: string): string {
+  switch (d.kind) {
+    case "exact":
+      return `${num(d.value, d.decimals)} ${unit}`;
+    case "approx":
+      return `≈${num(d.value, d.decimals)} ${unit}`;
+    case "range":
+      return `${num(d.low, d.decimals)}–${num(d.high, d.decimals)} ${unit}`;
+    case "trace":
+      return `< ${num(d.below, 1)} ${unit}`;
+    case "unknown":
+      return "nepoznato";
+  }
 }

@@ -49,3 +49,12 @@
 - NUTRITION_ENGINE.md: delovi N (namirnice i nutrijenti), P (pouzdanost i prikaz), K (sirovo/kuvano) — PREDLOG, čeka odobrenje.
 - NAMIRNICE_V1.md: spisak kandidata (~90) i spisak namirnica koje namerno ne ulaze u V1.
 - DATA_SOURCES.md: predloženi dodatni izvori (prinosi, Prilog 13).
+
+## 0.4.0 — korak 4: namirnice i nutrition engine (test)
+- Odobren predlog koraka 4 (DECISIONS/0008): energija po Prilogu 13, 8 nutrijenata, nivoi pouzdanosti, prikaz, sirovo/kuvano kao posebni zapisi.
+- Alat za uvoz FDC u GitHub Actions (`scripts/fdc/`, `.github/workflows/uvoz-fdc.yml`): zvanične arhive, SHA-256, provera ID-jeva nutrijenata, dopuna po NDB broju, izveštaj. Nijedan broj nije prekucan.
+- `reference-data/foods/foods-1.0.0.json`: 96 namirnica, status CEKA_ODOBRENJE; produkcijski build pada dok nisu odobrene.
+- `domain/nutrition` (energija, skaliranje, zbir sa nepotpunim vrednostima, iskoristivi UH, so), `domain/confidence` (nivoi, prikaz, zaokruživanje), `domain/text` (pretraga latinica/ćirilica/bez dijakritika).
+- ReferenceDataProvider port + statička implementacija; `FoodService` (pretraga, detalj, „Zašto?").
+- Ekran „Namirnice": pretraga, lista sa kcal/100 g, detail sa unosom grama, prelaz sirovo/kuvano, tabela kao na deklaraciji, „Zašto?". Gest „nazad" iz detalja vraća na listu.
+- Testovi: 109 (+21: zlatni slučajevi energije, slaganje alata i aplikacije za svih 96 namirnica, linearnost, zbir, nepoznato ≠ 0, prikaz, pretraga, servis).

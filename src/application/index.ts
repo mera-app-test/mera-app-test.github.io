@@ -13,3 +13,6 @@ export type { ParsedBackup, ParseError } from "../backup";
 export type { WeightService, WeightOverview, WeightEntryView, LogWeightResult, RemoveWeightResult } from "./weight/weightService";
 export { createWeightService } from "./weight/weightService";
 export type { TrendAnalysis, AverageResult, SlopeResult } from "../domain";
+export type { FoodService, FoodListItem, FoodDetail, NutrientRow } from "./foods/foodService";
+export { createFoodService } from "./foods/foodService";
+export type { Display, ConfidenceLevel, DisplayNutrient } from "../domain";

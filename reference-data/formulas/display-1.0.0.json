@@ -1,0 +1,11 @@
+{
+  "id": "display",
+  "version": "1.0.0",
+  "approvedAt": "2026-09-23",
+  "approvedBy": "vlasnik projekta",
+  "document": "docs/NUTRITION_ENGINE.md, delovi P2 i P3; DECISIONS/0008",
+  "energy": { "exactStepKcal": 1, "approxStepKcal": 10 },
+  "grams": { "wholeFromG": 10, "decimalsBelow": 1, "traceBelowG": 0.5 },
+  "sodium": { "stepMg": 1 },
+  "salt": { "decimals": 1 }
+}

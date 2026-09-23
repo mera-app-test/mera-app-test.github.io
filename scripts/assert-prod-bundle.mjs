@@ -22,6 +22,12 @@ for (const f of files) {
 const manifest = JSON.parse(readFileSync("dist/manifest.webmanifest", "utf8"));
 if (manifest.name !== "Mera") hits.push(`manifest.name = "${manifest.name}" (očekivano "Mera")`);
 
+// Referentni podaci koji čekaju odobrenje vlasnika smeju samo na test adresu (NUTRITION_ENGINE.md N6).
+for (const name of readdirSync("reference-data/foods")) {
+  const ref = JSON.parse(readFileSync(join("reference-data/foods", name), "utf8"));
+  if (ref.status !== "ODOBRENO") hits.push(`reference-data/foods/${name}: status "${ref.status}" (produkcija traži "ODOBRENO")`);
+}
+
 if (hits.length) {
   console.error("✘ Produkcijski build sadrži test kod:\n  " + hits.join("\n  "));
   process.exit(1);

@@ -14,3 +14,29 @@ export {
   type SlopeResult,
   type TrendAnalysis,
 } from "./trend/trend";
+export {
+  DISPLAY_NUTRIENTS,
+  availableCarbohydrateForAmount,
+  energyForAmount,
+  energyPer100g,
+  nutrientsForAmount,
+  saltGramsFromSodiumMg,
+  sumItems,
+  type DisplayNutrient,
+  type EnergyResult,
+  type NutrientAmount,
+  type SumItem,
+  type SumResult,
+} from "./nutrition/nutrition";
+export {
+  LEVELS,
+  displayEnergy,
+  displayGrams,
+  displayMg,
+  displaySalt,
+  levelForValue,
+  weakest,
+  type ConfidenceLevel,
+  type Display,
+} from "./confidence/confidence";
+export { matchesQuery, normalizeForSearch } from "./text/search";

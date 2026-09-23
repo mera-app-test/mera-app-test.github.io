@@ -1,6 +1,6 @@
-# NAMIRNICE_V1 — početni skup namirnica (PREDLOG, čeka odobrenje)
+# NAMIRNICE_V1 — početni skup namirnica
 
-**Status:** predlog za korak 4 (NUTRITION_ENGINE.md deo N). Ništa nije uvezeno.
+**Status:** spisak odobren (DECISIONS/0008). Uvezeno: tačni FDC zapisi i vrednosti su u `docs/UVOZ/izvestaj-foods-1.0.0.md` i čekaju odobrenje. Hleb i kisela pavlaka se ne uvoze (odluka vlasnika).
 **Kako čitati:** kolona „FDC pojam" je pojam za pretragu u FDC, **ne** potvrđen zapis. Tačan zapis (FDC ID, opis, tip podataka, vrednosti) daje uvozni izveštaj (N6), koji vlasnik odobrava pre ulaska u aplikaciju. Ako FDC nema odgovarajući zapis, namirnica ispada iz spiska — ne zamenjuje se sličnom.
 **F** = očekivano Foundation · **SR** = očekivano SR Legacy · **K** = kuvan/pečen oblik (deo K2).
 **Mapiranje:** T = tačno · B = blisko (razlika u sorti/poreklu) · ? = odluka vlasnika.

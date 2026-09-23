@@ -6,3 +6,4 @@ export * from "./settings";
 export * from "./userData";
 export * from "./migrations";
 export * from "./formulas";
+export * from "./foods";

@@ -1,6 +1,6 @@
 # NUTRITION_ENGINE — metode i parametri proračuna
 
-**Status:** deo T ODOBREN (2026-09-23, DECISIONS/0007); delovi N, P i K su PREDLOG za korak 4 i čekaju odobrenje; energetski deo (korak 5) još ne postoji. Nijedna vrednost nije ugrađena u kod pre odobrenja vlasnika (DECISIONS/0005, MS §39).
+**Status:** deo T ODOBREN (DECISIONS/0007); delovi N, P i K ODOBRENI (DECISIONS/0008); vrednosti namirnica čekaju odobrenje izveštaja uvoza; energetski deo (korak 5) još ne postoji. Nijedna vrednost nije ugrađena u kod pre odobrenja vlasnika (DECISIONS/0005, MS §39).
 Posle odobrenja vrednosti idu u verzionisan `FormulaSet` (ARCHITECTURE §13), ne kao konstante u kodu.
 
 Oznake: **[IZVOR]** — tvrdnja potkrepljena navedenim izvorom · **[PROCENA]** — statistička ili praktična odluka bez naučnog izvora za tačan broj; obrazložena, ali to je izbor, ne činjenica.
@@ -66,9 +66,9 @@ Trend je procena, pa se prikazuje sa „≈" (MS §30), npr. „≈ −0,4 kg ne
 
 ---
 
-## Deo N — Namirnice i nutrijenti (MS §20, §22) — PREDLOG, čeka odobrenje
+## Deo N — Namirnice i nutrijenti (MS §20, §22) — ODOBRENO (DECISIONS/0008)
 
-Ništa iz ovog dela nije ugrađeno u kod ni u `reference-data/`. Spisak kandidata: `docs/NAMIRNICE_V1.md`.
+Kod: `src/domain/nutrition`, `src/domain/confidence`; podaci: `reference-data/foods/foods-1.0.0.json` (status CEKA_ODOBRENJE); izveštaj: `docs/UVOZ/izvestaj-foods-1.0.0.md`.
 
 ### N1. Koje skupove iz FoodData Central (FDC) koristimo
 **[IZVOR]** FDC ima pet tipova podataka; za generičke namirnice relevantna su dva (FDC Foundation Foods Documentation, fdc.nal.usda.gov/Foundation_Foods_Documentation):
@@ -100,7 +100,7 @@ Predlog — tačno lista iz MS §22, bez mikronutrijenata u V1:
 | Energija FDC (samo za poređenje, vidi N4) | 1008 (SR) / 2047, 2048 (Foundation) | kcal |
 
 **[IZVOR]** ID-jevi 1003, 1004, 1005, 1008/2047, 1051, 1079, 1258, 2000/1063: tabela šifara u FNDDS 2021–2023 dokumentaciji (ARS). 1093: uvozni alat proverava naziv u `nutrient.csv` iz zvaničnog preuzimanja pre upotrebe (i za sve ostale ID-jeve) — neslaganje zaustavlja uvoz.
-So na ekranu = natrijum × 2,5 **[PROVERITI]** tačan tekst definicije u Pravilniku o deklarisanju, označavanju i reklamiranju hrane (RS).
+So na ekranu = natrijum × 2,5 **[IZVOR]** Pravilnik o deklarisanju, označavanju i reklamiranju hrane, čl. 2 t. 28.
 Mikronutrijenti (MS §22 „relevantni") — predlog: ne u V1; za cilj telesne mase ne menjaju plan, a Foundation ih ima nepotpuno. Mesto u modelu postoji.
 
 ### N4. Energija — jedan metod za sve izvore
@@ -133,7 +133,7 @@ AI ne kuca nijedan nutritivni broj (MS §6, §20).
 
 ---
 
-## Deo P — Nivoi pouzdanosti i prikaz (MS §30, §31) — PREDLOG, čeka odobrenje
+## Deo P — Nivoi pouzdanosti i prikaz (MS §30, §31) — ODOBRENO (DECISIONS/0008)
 
 ### P1. Četiri nivoa (nazivi iz MS §30)
 Svaka stavka ima dve ocene; važi **slabija**:
@@ -171,7 +171,7 @@ Predlog **[PROCENA]**, usklađeno sa uobičajenim prikazom na deklaracijama:
 
 ---
 
-## Deo K — Sirovo / kuvano (MS §20; ARCHITECTURE §6.2 `domain/nutrition`) — PREDLOG, čeka odobrenje
+## Deo K — Sirovo / kuvano (MS §20; ARCHITECTURE §6.2 `domain/nutrition`) — ODOBRENO (DECISIONS/0008)
 
 ### K1. Oblik je deo namirnice
 „Pirinač, sirov" i „pirinač, kuvan" su dva zapisa sa svojim vrednostima i izvorom. Sistem nikad ne koristi vrednosti jednog oblika za drugi bez eksplicitne konverzije (MS §46: „pogrešan oblik namirnice").
@@ -199,7 +199,7 @@ Nutrijenti recepta = zbir sastojaka u obliku u kome se mere (obično sirovo). Ma
 
 ---
 
-## Odluke za vlasnika (korak 4)
+## Odluke za vlasnika (korak 4) — odobreno 2026-09-23; otvoreno: R1 (DECISIONS/0008)
 1. N1–N2 — Foundation → SR Legacy; dopuna samo po istom NDB broju.
 2. N3 — 8 nutrijenata iz MS §22, bez mikronutrijenata u V1.
 3. N4 — energija po Prilogu 13 (A, preporuka) ili FDC energija (B).
@@ -207,3 +207,8 @@ Nutrijenti recepta = zbir sastojaka u obliku u kome se mere (obično sirovo). Ma
 5. N6 — uvoz alatom + izveštaj na odobrenje.
 6. P1–P3 — nivoi, prikaz, zaokruživanje.
 7. K1–K5 — oblici, izvori prinosa, retencija.
+
+### N7. Predlog R1 — nepotpun Foundation zapis (ČEKA ODLUKU)
+Problem (nađen pri uvozu): noviji Foundation zapisi (NDB 100xxx) često nemaju vlakna, šećere ili masti, a nemaju SR par za dopunu po N2. Po odobrenom pravilu takva namirnica ostaje bez energije (12 namirnica — DECISIONS/0008).
+Predlog: ako Foundation zapis posle N2 nema proteine, masti, UH ili vlakna, koristi se SR Legacy zapis iste namirnice i istog oblika, ako postoji.
+Posledica: potpuni podaci za 11 od 12 namirnica; vrednosti iz 2018. umesto novijih analiza. Alternativa: ostaviti nepotpuno dok USDA ne dopuni zapise.
