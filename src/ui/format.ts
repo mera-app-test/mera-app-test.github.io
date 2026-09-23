@@ -24,3 +24,18 @@ export function formatDay(localDate: string, today: string, yesterday: string): 
   if (localDate === yesterday) return "juče";
   return dayFormat.format(new Date(`${localDate}T12:00:00Z`));
 }
+
+const signed2 = new Intl.NumberFormat("sr-Latn-RS", { minimumFractionDigits: 2, maximumFractionDigits: 2, signDisplay: "exceptZero" });
+const signed1 = new Intl.NumberFormat("sr-Latn-RS", { minimumFractionDigits: 1, maximumFractionDigits: 1, signDisplay: "exceptZero" });
+const one = new Intl.NumberFormat("sr-Latn-RS", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+/** Procena: prikazuje se sa „≈" (MS §30). */
+export function formatApproxKg(value: number): string {
+  return `≈ ${one.format(value)} kg`;
+}
+export function formatKgPerWeek(value: number): string {
+  return `≈ ${signed2.format(value).replace("-", "−")} kg nedeljno`;
+}
+export function formatPercent(value: number): string {
+  return `${signed1.format(value).replace("-", "−")} %`;
+}

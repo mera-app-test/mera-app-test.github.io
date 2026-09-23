@@ -37,3 +37,10 @@
 - Trend se NE prikazuje: metod i parametri predloženi u docs/NUTRITION_ENGINE.md (deo T), čekaju odobrenje.
 - Tehničke napomene: docs/DECISIONS/0006.
 - Testovi: 74 (+29: provera unosa, lokalni datumi, use case-ovi mase nad LocalDataProvider-om).
+
+## 0.3.1 — trend telesne mase (test); korak 3 završen
+- Odobren metod trenda (DECISIONS/0007); parametri kao verzionisan skup `reference-data/formulas/trend-1.0.0.json`, provera šemom pri učitavanju.
+- `domain/trend`: dnevna vrednost (T1 sa dopunom za naknadne unose), 7-dnevni prosek, 14/28-dnevni nagib, stopa u kg i %. Rezultat nosi verziju skupa parametara.
+- Prikaz trenda na kartici „Masa" i ekranu „Masa", sa „≈" (MS §30); kad nema dovoljno podataka piše koliko merenja nedostaje.
+- T5: vrednost ispod 30 ili iznad 300 kg traži potvrdu („Ispravi" / „Da, sačuvaj").
+- Testovi: 88 (+14: zlatni slučajevi trenda sa ručnim proračunom, property testovi, T5 kroz use case).

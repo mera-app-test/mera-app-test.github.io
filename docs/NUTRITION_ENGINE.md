@@ -1,6 +1,6 @@
 # NUTRITION_ENGINE — metode i parametri proračuna
 
-**Status:** NACRT. Nijedna vrednost iz ovog dokumenta nije ugrađena u kod dok je vlasnik ne odobri (DECISIONS/0005, MS §39).
+**Status:** deo T ODOBREN (2026-09-23, DECISIONS/0007); ostali delovi još ne postoje. Nijedna vrednost nije ugrađena u kod pre odobrenja vlasnika (DECISIONS/0005, MS §39).
 Posle odobrenja vrednosti idu u verzionisan `FormulaSet` (ARCHITECTURE §13), ne kao konstante u kodu.
 
 Oznake: **[IZVOR]** — tvrdnja potkrepljena navedenim izvorom · **[PROCENA]** — statistička ili praktična odluka bez naučnog izvora za tačan broj; obrazložena, ali to je izbor, ne činjenica.
@@ -9,14 +9,15 @@ Oznake: **[IZVOR]** — tvrdnja potkrepljena navedenim izvorom · **[PROCENA]** 
 
 ## Deo T — Trend telesne mase (MS §13; ARCHITECTURE §13 tačka 7)
 
-Status: **PREDLOG, čeka odobrenje** (korak 3 iz §17). Unos i lista merenja već rade; trend se ne prikazuje.
+Status: **ODOBRENO** 2026-09-23 (DECISIONS/0007). Parametri: `reference-data/formulas/trend-1.0.0.json`; kod: `src/domain/trend/`.
 
 ### Zašto se ne gleda jedno merenje
 - Telesna masa ima nedeljni obrazac: raste preko vikenda i opada radnim danima. **[IZVOR]** Turicchi J. i sar. (2020), *Weekly, seasonal and holiday body weight fluctuation patterns among individuals engaged in a European multi-centre behavioural weight loss maintenance intervention*, PLOS ONE 15(4): e0232152, doi:10.1371/journal.pone.0232152 (otvoren pristup, PMC7192384). Isti obrazac ranije: Orsama A-L. i sar. (2014), *Weight rhythms: weight increases during weekends and decreases during weekdays*, Obesity Facts 7(1):36–47.
 - Posledica za Meru: poređenje ponedeljka sa petkom može pokazati „promenu" koja je samo deo nedeljnog ciklusa. Zato su osnovne jedinice poređenja prozori od celih nedelja (7, 14, 28 dana).
 
 ### T1. Dnevna vrednost
-Predlog: ako u jednom danu postoji više merenja, dnevna vrednost je **prvo merenje tog dana** (po vremenu merenja).
+Odobreno: ako u jednom danu postoji više merenja, dnevna vrednost je **prvo merenje tog dana** (po vremenu merenja).
+**Dopuna (odobrena):** ako je bar jedno merenje tog dana uneto naknadno (vreme merenja nije poznato), dnevna vrednost je **prosek svih merenja tog dana**, jer se ne zna koje je bilo prvo.
 Obrazloženje **[PROCENA]**: uporediva merenja iz sličnih uslova su korisnija od proseka merenja iz različitih delova dana.
 Alternativa: prosek svih merenja u danu (jednostavniji, ali meša jutarnje i večernje vrednosti).
 
@@ -55,8 +56,8 @@ Obrazloženje **[PROCENA]**: automatsko izbacivanje može sakriti stvarnu promen
 ### T7. Prikaz
 Trend je procena, pa se prikazuje sa „≈" (MS §30), npr. „≈ −0,4 kg nedeljno (28 dana)". Kada uslovi iz T2/T3 nisu ispunjeni: „Za trend je potrebno još N merenja" umesto broja.
 
-### Šta treba odobriti
-1. T1 — prvo merenje u danu (ili prosek dana).
+### Odobreno (2026-09-23)
+1. T1 — prvo merenje u danu; za dan sa naknadnim unosom prosek dana.
 2. T2 — 7 dana, najmanje 4 vrednosti.
 3. T3 — linearna regresija; 14 dana/8 vrednosti, 28 dana/14 vrednosti, uslov krajeva.
 4. T4 — kg nedeljno + procenat.

@@ -2,6 +2,7 @@
 // Prelazak na server menja samo ovaj fajl i infrastructure/, ne UI ni domain.
 import { createBackupService, createWeightService, type AppServices, type BuildInfo } from "../application";
 import { createLocalDataProvider } from "../infrastructure/data-local";
+import { loadTrendFormulaSet } from "../infrastructure/reference-static/formulaSets";
 import {
   createBrowserClock,
   createBrowserFileExporter,
@@ -29,7 +30,7 @@ export async function createServices(): Promise<AppServices> {
 
   const persistence = createBrowserStoragePersistence();
   const appVersion = `${build.version}+${build.sha}`;
-  const weight = createWeightService({ data, clock, ids, persistence, appVersion });
+  const weight = createWeightService({ data, clock, ids, persistence, appVersion, trendFormulas: loadTrendFormulaSet() });
 
   const backup = createBackupService({
     data,

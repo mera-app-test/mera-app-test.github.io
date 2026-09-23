@@ -1,8 +1,8 @@
 // Use case-ovi za telesnu masu (ARCHITECTURE.md §6.2 `logWeight`, MS §12 MEASURED, §13).
-// Trend se ovde NE računa: metod i parametri čekaju odobrenje vlasnika (docs/NUTRITION_ENGINE.md, deo „Trend").
-import { addDays, isValidLocalDate } from "../../domain";
+// Trend: domain/trend sa odobrenim skupom parametara (docs/NUTRITION_ENGINE.md deo T, reference-data/formulas).
+import { addDays, analyzeTrend, isValidLocalDate, needsInputConfirmation, trendLookbackDays, type TrendAnalysis } from "../../domain";
 import { BODY_MASS_INPUT_MESSAGES, parseBodyMassInput } from "../../validation";
-import type { Measurement } from "../../schemas";
+import type { Measurement, TrendFormulaSet } from "../../schemas";
 import { isDataError, type ChangeSet, type DataProvider } from "../../ports/data";
 import type { Clock, IdGenerator, StoragePersistence } from "../../ports/platform";
 import { auditEvent, newBase, softDeleted, type RecordContext } from "../records";
@@ -25,7 +25,9 @@ export interface WeightOverview {
 
 export type LogWeightResult =
   | { readonly ok: true; readonly entry: WeightEntryView }
-  | { readonly ok: false; readonly message: string };
+  | { readonly ok: false; readonly message: string; readonly needsConfirmation?: false }
+  /** T5: vrednost je izvan uobičajenog opsega; čuva se tek kada korisnik potvrdi (`confirmed: true`). */
+  | { readonly ok: false; readonly message: string; readonly needsConfirmation: true; readonly valueKg: number };
 
 export type RemoveWeightResult = { readonly ok: true } | { readonly ok: false; readonly message: string };
 
@@ -34,7 +36,9 @@ export interface WeightService {
   /** Merenja za poslednjih `days` dana (uključujući danas), najnovije prvo. */
   listRecent(days: number): Promise<WeightEntryView[]>;
   /** `localDate` izostavljen = danas. Čuva samo ono što prođe proveru oblika broja i datuma. */
-  log(input: { readonly valueText: string; readonly localDate?: string }): Promise<LogWeightResult>;
+  log(input: { readonly valueText: string; readonly localDate?: string; readonly confirmed?: boolean }): Promise<LogWeightResult>;
+  /** 7-dnevni prosek, 14/28-dnevni trend i stopa promene (MS §13). */
+  trend(): Promise<TrendAnalysis>;
   remove(id: string): Promise<RemoveWeightResult>;
 }
 
@@ -44,6 +48,7 @@ export interface WeightDeps {
   readonly ids: IdGenerator;
   readonly persistence: StoragePersistence;
   readonly appVersion: string;
+  readonly trendFormulas: TrendFormulaSet;
 }
 
 const toView = (m: Measurement): WeightEntryView => ({
@@ -76,6 +81,10 @@ export function createWeightService(d: WeightDeps): WeightService {
     async log(input) {
       const parsed = parseBodyMassInput(input.valueText);
       if (!parsed.ok) return { ok: false, message: BODY_MASS_INPUT_MESSAGES[parsed.error] };
+
+      if (!input.confirmed && needsInputConfirmation(parsed.valueKg, d.trendFormulas)) {
+        return { ok: false, needsConfirmation: true, valueKg: parsed.valueKg, message: "Vrednost je neuobičajena. Proveri da li je tačno upisana." };
+      }
 
       const today = d.clock.localDate();
       const localDate = input.localDate ?? today;
@@ -115,6 +124,13 @@ export function createWeightService(d: WeightDeps): WeightService {
         /* rezultat se vidi na ekranu „Rezervna kopija" */
       }
       return { ok: true, entry: toView(record) };
+    },
+
+    async trend() {
+      const today = d.clock.localDate();
+      const from = addDays(today, -(trendLookbackDays(d.trendFormulas) - 1));
+      const list = await d.data.measurements.listRange("body_mass", from, today);
+      return analyzeTrend(list.map(toView), today, d.trendFormulas);
     },
 
     async remove(id) {

@@ -1,7 +1,8 @@
 // Unos telesne mase i pregled poslednjih merenja sa brisanjem pogrešnog unosa (MS §12, §13; ARCHITECTURE §17 korak 3).
-// Trend se ne prikazuje dok vlasnik ne odobri metod (docs/NUTRITION_ENGINE.md).
+// Trend po odobrenom skupu parametara (docs/NUTRITION_ENGINE.md deo T).
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
-import type { WeightEntryView, WeightOverview } from "../../application";
+import type { TrendAnalysis, WeightEntryView, WeightOverview } from "../../application";
+import { TrendSummary } from "../components/TrendSummary";
 import { useServices } from "../ServicesContext";
 import { formatDay, formatKg, formatTime } from "../format";
 
@@ -21,12 +22,16 @@ export function WeightScreen({ focusInput, onClose }: { focusInput: boolean; onC
   const [busy, setBusy] = useState(false);
   const [confirmId, setConfirmId] = useState<string | null>(null);
   const [freshId, setFreshId] = useState<string | null>(null);
+  const [trend, setTrend] = useState<TrendAnalysis | null>(null);
+  /** T5: vrednost izvan uobičajenog opsega čeka potvrdu korisnika. */
+  const [pendingConfirm, setPendingConfirm] = useState<number | null>(null);
   const input = useRef<HTMLInputElement>(null);
 
   const refresh = useCallback(async () => {
-    const [o, list] = await Promise.all([weight.overview(), weight.listRecent(LIST_DAYS)]);
+    const [o, list, t] = await Promise.all([weight.overview(), weight.listRecent(LIST_DAYS), weight.trend()]);
     setOverview(o);
     setEntries(list);
+    setTrend(t);
   }, [weight]);
 
   useEffect(() => {
@@ -39,12 +44,19 @@ export function WeightScreen({ focusInput, onClose }: { focusInput: boolean; onC
 
   const save = async (e: FormEvent) => {
     e.preventDefault();
+    await submit(false);
+  };
+
+  const submit = async (confirmed: boolean) => {
     if (busy) return;
     setBusy(true);
     setNotice(null);
+    setPendingConfirm(null);
     try {
-      const r = await weight.log({ valueText: value, ...(date ? { localDate: date } : {}) });
-      if (r.ok) {
+      const r = await weight.log({ valueText: value, ...(date ? { localDate: date } : {}), ...(confirmed ? { confirmed: true } : {}) });
+      if (!r.ok && r.needsConfirmation) {
+        setPendingConfirm(r.valueKg);
+      } else if (r.ok) {
         setValue("");
         setFreshId(r.entry.id);
         setNotice({ kind: "ok", text: `Sačuvano: ${formatKg(r.entry.valueKg)} kg.` });
@@ -95,7 +107,10 @@ export function WeightScreen({ focusInput, onClose }: { focusInput: boolean; onC
             enterKeyHint="done"
             placeholder="0,0"
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => {
+              setValue(e.target.value);
+              setPendingConfirm(null);
+            }}
             aria-describedby="weight-notice"
           />
           <span className="weight-input-unit" aria-hidden="true">kg</span>
@@ -136,13 +151,44 @@ export function WeightScreen({ focusInput, onClose }: { focusInput: boolean; onC
           )}
         </div>
 
-        <button type="submit" className="btn btn-primary block" disabled={busy}>
-          Sačuvaj
-        </button>
+        {pendingConfirm === null ? (
+          <button type="submit" className="btn btn-primary block" disabled={busy}>
+            Sačuvaj
+          </button>
+        ) : (
+          <div className="confirm-box" role="alertdialog" aria-labelledby="weight-confirm-q">
+            <p id="weight-confirm-q">
+              Da li je <strong>{formatKg(pendingConfirm)} kg</strong> tačno?
+            </p>
+            <div className="row">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                disabled={busy}
+                onClick={() => {
+                  setPendingConfirm(null);
+                  input.current?.focus();
+                }}
+              >
+                Ispravi
+              </button>
+              <button type="button" className="btn btn-primary" disabled={busy} onClick={() => void submit(true)}>
+                Da, sačuvaj
+              </button>
+            </div>
+          </div>
+        )}
         <p id="weight-notice" className={notice?.kind === "error" ? "error-text weight-notice" : "notice-ok weight-notice"} role="status">
           {notice?.text ?? ""}
         </p>
       </form>
+
+      {trend && entries && entries.length > 0 && (
+        <>
+          <h2 className="subsection-title">Trend</h2>
+          <TrendSummary trend={trend} />
+        </>
+      )}
 
       <h2 className="subsection-title">Merenja</h2>
       {entries === null ? (

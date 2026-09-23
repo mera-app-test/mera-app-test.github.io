@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { createWeightService } from "../../src/application";
 import { createLocalDataProvider } from "../../src/infrastructure/data-local";
 import { seqIds } from "../support/fixtures";
+import { loadTrendFormulaSet } from "../../src/infrastructure/reference-static/formulaSets";
 
 beforeEach(() => {
   globalThis.indexedDB = new IDBFactory();
@@ -32,6 +33,7 @@ async function setup(opts: { persistThrows?: boolean } = {}) {
       },
     },
     appVersion: "0.3.0+test",
+    trendFormulas: loadTrendFormulaSet(),
   });
   return { data, svc, setNow: (v: string) => (now = v), persistRequests: () => persistRequests };
 }
@@ -109,5 +111,28 @@ describe("telesna masa (use case nad LocalDataProvider-om)", () => {
     const r = await t.svc.log({ valueText: "92" });
     expect(r.ok).toBe(true);
     expect(await t.data.measurements.countActive()).toBe(1);
+  });
+});
+
+describe("T5 i trend kroz use case", () => {
+  it("924 kg traži potvrdu i ne upisuje; posle potvrde se upisuje", async () => {
+    const t = await setup();
+    const r = await t.svc.log({ valueText: "924" });
+    expect(r).toMatchObject({ ok: false, needsConfirmation: true, valueKg: 924 });
+    expect(await t.data.measurements.countActive()).toBe(0);
+    expect((await t.svc.log({ valueText: "924", confirmed: true })).ok).toBe(true);
+    expect(await t.data.measurements.countActive()).toBe(1);
+  });
+
+  it("trend koristi odobreni skup i merenja iz baze", async () => {
+    const t = await setup();
+    for (const [d, v] of [["2026-09-17", "93"], ["2026-09-19", "92,8"], ["2026-09-21", "92,6"], ["2026-09-22", "92,5"]] as const) {
+      await t.svc.log({ valueText: v, localDate: d });
+    }
+    await t.svc.log({ valueText: "92,4" });
+    const a = await t.svc.trend();
+    expect(a.formulaSetVersion).toBe("1.0.0");
+    expect(a.average).toMatchObject({ ok: true, days: 5 });
+    expect(a.average.ok && a.average.averageKg).toBeCloseTo((93 + 92.8 + 92.6 + 92.5 + 92.4) / 5, 10);
   });
 });

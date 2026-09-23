@@ -12,3 +12,4 @@ export { auditEvent, newBase, nextRevision, softDeleted, type RecordContext } fr
 export type { ParsedBackup, ParseError } from "../backup";
 export type { WeightService, WeightOverview, WeightEntryView, LogWeightResult, RemoveWeightResult } from "./weight/weightService";
 export { createWeightService } from "./weight/weightService";
+export type { TrendAnalysis, AverageResult, SlopeResult } from "../domain";
