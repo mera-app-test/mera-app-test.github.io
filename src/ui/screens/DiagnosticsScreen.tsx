@@ -66,56 +66,76 @@ export default function DiagnosticsScreen({ onClose }: { onClose: () => void }) 
   };
 
   const disabled = busy !== null || !svc;
+  const resultFor = (ids: readonly string[]) => results.filter((r) => ids.includes(r.id));
+
+  interface Step {
+    key: string;
+    title: string;
+    hint: string;
+    label: string;
+    resultIds: readonly string[];
+    act: () => void;
+  }
+  const steps: Step[] = svc
+    ? [
+        { key: "persist", title: "Trajno skladište", hint: "Dodirni dugme. Rezultat se pojavljuje odmah ispod.", label: "Zatraži trajno skladište", resultIds: ["persist"], act: () => void run("persist", svc.requestPersistentStorage) },
+        { key: "download", title: "Preuzimanje fajla", hint: "Dodirni dugme. Chrome treba da javi da je fajl preuzet.", label: "Preuzmi probni fajl", resultIds: ["download"], act: () => void run("download", svc.testFileDownload) },
+        { key: "import", title: "Uvoz fajla", hint: "Dodirni dugme i u Preuzimanjima izaberi fajl „mera-proba-….json”.", label: "Izaberi probni fajl za uvoz", resultIds: ["import"], act: () => fileInput.current?.click() },
+        { key: "share", title: "Deljenje fajla", hint: "Dodirni dugme. Treba da se otvori meni za deljenje; možeš ga zatvoriti.", label: "Podeli probni fajl", resultIds: ["share"], act: () => void run("share", svc.testFileShare) },
+        { key: "speech", title: "Govor na srpskom", hint: "Dodirni dugme, pa kada piše „Slušam” izgovori rečenicu, npr. „Danas sam doručkovao dva jaja”.", label: "Proveri govor na srpskom", resultIds: ["speech"], act: () => void run("speech", svc.testSpeech) },
+        { key: "speech-local", title: "Govor bez servera", hint: "Dodirni dugme. Proverava da li telefon prepoznaje srpski bez slanja zvuka na internet.", label: "Proveri govor bez servera", resultIds: ["speech-available-local"], act: () => void run("speech-local", svc.checkSpeechOnDevice) },
+        { key: "off", title: "Baza proizvoda (barkod)", hint: "Dodirni dugme. Proverava da li Mera može da pita Open Food Facts za proizvod.", label: "Proveri Open Food Facts", resultIds: ["off"], act: () => void run("off", svc.testOpenFoodFacts) },
+      ]
+    : [];
+  const autoIds = new Set(steps.flatMap((st) => st.resultIds));
+  const autoResults = results.filter((r) => !autoIds.has(r.id));
+
+  const renderResult = (r: ProbeResult) => (
+    <div key={r.id} className={`diag-item status-${r.status}`} role="status">
+      <span className="diag-status">{STATUS_TEXT[r.status]}</span>
+      <span className="diag-name">{r.naziv}</span>
+      <span className="diag-detail">{r.detalji}</span>
+    </div>
+  );
 
   return (
     <section className="diag" aria-labelledby="diag-title">
       <header className="diag-head">
         <h1 id="diag-title" className="diag-title">Provera uređaja</h1>
-        <p className="muted">Proverava da li telefon podržava ono što Mera koristi. Ne dira tvoje podatke.</p>
+        <p className="muted">Idi redom od 1 do {steps.length || 7}. Ispod svakog dugmeta se pojavi rezultat. Na kraju dodirni „Kopiraj izveštaj”.</p>
       </header>
 
-      <div className="diag-actions">
-        <button type="button" className="btn btn-secondary" disabled={disabled} onClick={() => svc && run("persist", svc.requestPersistentStorage)}>
-          Zatraži trajno skladište
-        </button>
-        <button type="button" className="btn btn-secondary" disabled={disabled} onClick={() => svc && run("download", svc.testFileDownload)}>
-          Preuzmi probni fajl
-        </button>
-        <button type="button" className="btn btn-secondary" disabled={disabled} onClick={() => svc && run("share", svc.testFileShare)}>
-          Podeli probni fajl
-        </button>
-        <button type="button" className="btn btn-secondary" disabled={disabled} onClick={() => fileInput.current?.click()}>
-          Izaberi probni fajl za uvoz
-        </button>
-        <input ref={fileInput} type="file" accept="application/json,.json,text/plain" hidden onChange={onFile} />
-        <button type="button" className="btn btn-secondary" disabled={disabled} onClick={() => svc && run("speech", svc.testSpeech)}>
-          {busy === "speech" ? "Slušam… izgovori rečenicu" : "Proveri govor na srpskom"}
-        </button>
-        <button type="button" className="btn btn-secondary" disabled={disabled} onClick={() => svc && run("speech-local", svc.checkSpeechOnDevice)}>
-          Proveri govor bez servera
-        </button>
-        <button type="button" className="btn btn-secondary" disabled={disabled} onClick={() => svc && run("off", svc.testOpenFoodFacts)}>
-          Proveri Open Food Facts
-        </button>
-      </div>
+      {!svc && <p className="muted">Učitavam proveru…</p>}
 
-      {busy === "auto" && <p className="muted">Pokrećem automatske provere…</p>}
-
-      <ul className="diag-list">
-        {results.map((r) => (
-          <li key={r.id} className={`diag-item status-${r.status}`}>
-            <span className="diag-status">{STATUS_TEXT[r.status]}</span>
-            <span className="diag-name">{r.naziv}</span>
-            <span className="diag-detail">{r.detalji}</span>
+      <ol className="diag-steps">
+        {steps.map((st, i) => (
+          <li key={st.key} className="diag-step">
+            <h2 className="diag-step-title">{i + 1}. {st.title}</h2>
+            <p className="diag-step-hint">{st.hint}</p>
+            <button type="button" className="btn btn-secondary block" disabled={disabled} onClick={st.act}>
+              {st.label}
+            </button>
+            {busy === st.key && (
+              <p className={st.key === "speech" ? "diag-busy diag-listening" : "diag-busy"} role="status">
+                {st.key === "speech" ? "🎤 Slušam… govori sada" : "Proveravam…"}
+              </p>
+            )}
+            {busy !== st.key && resultFor(st.resultIds).map(renderResult)}
           </li>
         ))}
-      </ul>
+      </ol>
+      <input ref={fileInput} type="file" accept="application/json,.json,text/plain" hidden onChange={onFile} />
+
+      <h2 className="diag-step-title">Automatske provere</h2>
+      <p className="diag-step-hint">Ovo se proveri samo. Ne moraš ništa da radiš.</p>
+      {busy === "auto" && <p className="diag-busy">Proveravam…</p>}
+      <div className="diag-list">{autoResults.map(renderResult)}</div>
 
       <div className="diag-footer">
         <button type="button" className="btn btn-primary" disabled={disabled || results.length === 0} onClick={copy}>
           Kopiraj izveštaj
         </button>
-        {copied === "da" && <p className="muted">Izveštaj je kopiran. Nalepi ga u razgovor.</p>}
+        {copied === "da" && <p className="notice-ok">Izveštaj je kopiran. Nalepi ga u razgovor.</p>}
         {copied === "ne" && <p className="error-text">Kopiranje nije uspelo. Napravi snimak ekrana.</p>}
         <button type="button" className="btn btn-secondary" onClick={onClose}>
           Nazad na Danas

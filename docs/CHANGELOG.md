@@ -24,3 +24,7 @@
 - Trajno skladište: funkcija za zahtev posle prvog stvarnog čuvanja (povezuje se sa unosom mase u koraku 3).
 - Testovi: 45 (ugovorni testovi porta, migracije sa probnim v2, backup format, use case-ovi). Ugovorni testovi provereni namernim kvarom implementacije.
 - Tehničke napomene: docs/DECISIONS/0003.
+
+## 0.2.1 — ispravka ekrana „Provera uređaja" (test)
+- Problem (prijavio vlasnik): posle dodira dugmeta nije se videla nikakva reakcija. Uzrok: rezultat se upisivao na dno stranice, ispod svih dugmadi — greška u dizajnu ekrana.
+- Ispravka: numerisani koraci sa uputstvom; rezultat se prikazuje odmah ispod dugmeta; tokom slušanja govora vidljivo „Slušam… govori sada".

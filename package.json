@@ -1,6 +1,6 @@
 {
   "name": "mera",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "type": "module",
   "description": "Mera \u2014 personalizovano upravljanje telesnom masom kroz ishranu (V1, lokalni podaci)",
