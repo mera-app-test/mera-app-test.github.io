@@ -1,179 +1,46 @@
 [
  {
-  "id": "ovsene-pahuljice",
-  "sr": "Ovsene pahuljice",
-  "form": "suvo",
-  "group": "zitarice",
-  "terms": [
-   "oats",
-   "rolled"
-  ],
-  "exclude": []
- },
- {
-  "id": "pirinac-beli",
-  "sr": "Pirinač beli",
-  "form": "sirovo",
-  "group": "zitarice",
-  "terms": [
-   "rice, white",
-   "raw"
-  ],
-  "exclude": [
-   "flour",
-   "glutinous"
-  ]
- },
- {
   "id": "pirinac-beli-kuvan",
-  "sr": "Pirinač beli",
-  "form": "kuvano",
-  "group": "zitarice",
+  "sr": "pirinac-beli-kuvan",
+  "form": "",
+  "group": "dopuna",
   "terms": [
-   "rice, white",
+   "rice, white, long-grain",
    "cooked"
   ],
   "exclude": [
+   "with salt",
    "enriched, cooked",
-   "glutinous",
-   "instant",
-   "parboiled"
+   " enriched"
   ]
  },
  {
-  "id": "pirinac-integralni",
-  "sr": "Pirinač integralni",
-  "form": "sirovo",
-  "group": "zitarice",
+  "id": "pirinac-beli-kuvan-2",
+  "sr": "pirinac-beli-kuvan-2",
+  "form": "",
+  "group": "dopuna",
   "terms": [
-   "rice, brown",
-   "raw"
-  ],
-  "exclude": [
-   "flour"
-  ]
- },
- {
-  "id": "heljda",
-  "sr": "Heljda",
-  "form": "suvo",
-  "group": "zitarice",
-  "terms": [
-   "buckwheat"
-  ],
-  "exclude": [
-   "flour",
-   "groats, roasted, cooked"
-  ]
- },
- {
-  "id": "proso",
-  "sr": "Proso",
-  "form": "suvo",
-  "group": "zitarice",
-  "terms": [
-   "millet"
-  ],
-  "exclude": [
-   "flour",
-   "cooked",
-   "puffed"
-  ]
- },
- {
-  "id": "bulgur",
-  "sr": "Bulgur",
-  "form": "suvo",
-  "group": "zitarice",
-  "terms": [
-   "bulgur"
-  ],
-  "exclude": [
-   "cooked"
-  ]
- },
- {
-  "id": "testenina",
-  "sr": "Testenina",
-  "form": "suvo",
-  "group": "zitarice",
-  "terms": [
-   "pasta",
-   "dry"
-  ],
-  "exclude": [
-   "whole",
-   "spinach",
-   "gluten",
-   "fresh",
-   "corn",
-   "vegetable"
-  ]
- },
- {
-  "id": "testenina-kuvana",
-  "sr": "Testenina",
-  "form": "kuvano",
-  "group": "zitarice",
-  "terms": [
-   "pasta",
-   "cooked"
-  ],
-  "exclude": [
-   "whole",
-   "spinach",
-   "gluten",
-   "fresh",
-   "corn",
-   "vegetable",
-   "homemade"
-  ]
- },
- {
-  "id": "brasno-psenicno",
-  "sr": "Pšenično brašno, belo",
-  "form": "suvo",
-  "group": "zitarice",
-  "terms": [
-   "wheat flour, white",
-   "all-purpose"
-  ],
-  "exclude": [
-   "bread",
-   "cake",
-   "self-rising",
-   "tortilla"
-  ]
- },
- {
-  "id": "brasno-razano",
-  "sr": "Ražano brašno",
-  "form": "suvo",
-  "group": "zitarice",
-  "terms": [
-   "flour, rye"
+   "rice, white, long-grain, regular, unenriched, cooked"
   ],
   "exclude": []
  },
  {
   "id": "kukuruzno-brasno",
-  "sr": "Kukuruzno brašno (palenta)",
-  "form": "suvo",
-  "group": "zitarice",
+  "sr": "kukuruzno-brasno",
+  "form": "",
+  "group": "dopuna",
   "terms": [
-   "cornmeal"
+   "cornmeal, degermed"
   ],
   "exclude": [
-   "self-rising",
-   "masa",
-   "bread"
+   "self-rising"
   ]
  },
  {
   "id": "pasulj-beli",
-  "sr": "Pasulj beli",
-  "form": "suvo",
-  "group": "mahunarke",
+  "sr": "pasulj-beli",
+  "form": "",
+  "group": "dopuna",
   "terms": [
    "beans"
   ],
@@ -183,915 +50,101 @@
    "sprouted",
    "snap",
    "baked",
-   "refried"
-  ]
- },
- {
-  "id": "pasulj-beli-kuvan",
-  "sr": "Pasulj beli",
-  "form": "kuvano",
-  "group": "mahunarke",
-  "terms": [
-   "beans",
-   "cooked, boiled, without salt"
-  ],
-  "exclude": [
-   "snap",
-   "sprouted",
-   "yardlong",
+   "refried",
    "black",
    "kidney",
    "pinto",
    "pink",
-   "small white"
-  ]
- },
- {
-  "id": "sociva",
-  "sr": "Sočivo",
-  "form": "suvo",
-  "group": "mahunarke",
-  "terms": [
-   "lentils"
-  ],
-  "exclude": [
-   "cooked",
-   "sprouted",
-   "canned",
-   "pink or red"
-  ]
- },
- {
-  "id": "sociva-kuvano",
-  "sr": "Sočivo",
-  "form": "kuvano",
-  "group": "mahunarke",
-  "terms": [
-   "lentils",
-   "cooked, boiled, without salt"
-  ],
-  "exclude": [
-   "sprouted"
-  ]
- },
- {
-  "id": "leblebija",
-  "sr": "Leblebija (slanutak)",
-  "form": "suvo",
-  "group": "mahunarke",
-  "terms": [
-   "chickpeas"
-  ],
-  "exclude": [
-   "canned",
-   "cooked",
-   "flour",
-   "hummus"
-  ]
- },
- {
-  "id": "leblebija-kuvana",
-  "sr": "Leblebija (slanutak)",
-  "form": "kuvano",
-  "group": "mahunarke",
-  "terms": [
-   "chickpeas",
-   "cooked, boiled, without salt"
-  ],
-  "exclude": []
- },
- {
-  "id": "grasak",
-  "sr": "Grašak",
-  "form": "smrznuto",
-  "group": "mahunarke",
-  "terms": [
-   "peas, green",
-   "frozen",
-   "unprepared"
-  ],
-  "exclude": [
-   "pods",
-   "snow",
-   "split"
-  ]
- },
- {
-  "id": "krompir",
-  "sr": "Krompir",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "potatoes",
-   "without skin",
-   "raw"
-  ],
-  "exclude": [
-   "sweet",
-   "flour"
-  ]
- },
- {
-  "id": "krompir-kuvan",
-  "sr": "Krompir",
-  "form": "kuvano",
-  "group": "povrce",
-  "terms": [
-   "potatoes, boiled",
-   "cooked without skin"
-  ],
-  "exclude": []
- },
- {
-  "id": "paradajz",
-  "sr": "Paradajz",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "tomato",
-   "raw"
-  ],
-  "exclude": [
-   "green",
+   "mung",
+   "lima",
+   "soy",
+   "fava",
    "yellow",
-   "orange",
-   "sun-dried",
-   "juice",
-   "paste",
-   "canned",
-   "cherry",
-   "grape"
-  ]
- },
- {
-  "id": "krastavac",
-  "sr": "Krastavac",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "cucumber",
-   "raw"
-  ],
-  "exclude": [
-   "peeled",
-   "pickle"
+   "french",
+   "adzuki",
+   "cranberry",
+   "hyacinth",
+   "winged",
+   "yardlong",
+   "chili",
+   "candies",
+   "jelly",
+   "mungo",
+   "broad"
   ]
  },
  {
   "id": "paprika-crvena",
-  "sr": "Paprika crvena",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "peppers, sweet, red, raw",
-   "peppers, bell, red"
-  ],
-  "exclude": []
- },
- {
-  "id": "paprika-zelena",
-  "sr": "Paprika zelena",
-  "form": "sirovo",
-  "group": "povrce",
+  "sr": "paprika-crvena",
+  "form": "",
+  "group": "dopuna",
   "terms": [
    "peppers",
-   "green",
-   "raw"
-  ],
-  "exclude": [
-   "hot",
-   "chili",
-   "jalapeno",
-   "serrano",
-   "poblano",
-   "banana",
-   "freeze"
-  ]
- },
- {
-  "id": "paprika-zuta",
-  "sr": "Paprika žuta",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "peppers",
-   "yellow",
-   "raw"
-  ],
-  "exclude": [
-   "hot",
-   "chili",
-   "banana",
-   "wax"
-  ]
- },
- {
-  "id": "luk-crni",
-  "sr": "Crni luk",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "onions",
-   "raw"
-  ],
-  "exclude": [
-   "spring",
-   "scallion",
-   "welsh",
-   "dehydrated",
-   "green",
-   "sweet",
-   "frozen",
-   "young"
-  ]
- },
- {
-  "id": "beli-luk",
-  "sr": "Beli luk",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "garlic",
-   "raw"
-  ],
-  "exclude": []
- },
- {
-  "id": "sargarepa",
-  "sr": "Šargarepa",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "carrots",
-   "raw"
-  ],
-  "exclude": [
-   "baby",
-   "juice",
-   "dehydrated",
-   "frozen"
-  ]
- },
- {
-  "id": "kupus-beli",
-  "sr": "Kupus beli",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "cabbage",
-   "raw"
-  ],
-  "exclude": [
    "red",
-   "savoy",
-   "chinese",
-   "napa",
-   "bok",
-   "pickled",
-   "swamp"
-  ]
- },
- {
-  "id": "kupus-crveni",
-  "sr": "Kupus crveni",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "cabbage, red",
-   "raw"
-  ],
-  "exclude": []
- },
- {
-  "id": "zelena-salata",
-  "sr": "Zelena salata",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "lettuce",
-   "green",
    "raw"
   ],
   "exclude": [
-   "romaine",
-   "iceberg",
-   "red"
+   "hot",
+   "chili",
+   "freeze",
+   "banana"
   ]
  },
  {
   "id": "spanac",
-  "sr": "Spanać",
-  "form": "sirovo",
-  "group": "povrce",
+  "sr": "spanac",
+  "form": "",
+  "group": "dopuna",
   "terms": [
-   "spinach",
-   "raw"
+   "spinach"
   ],
   "exclude": [
-   "baby",
    "frozen",
    "canned",
+   "vine",
+   "water",
    "mustard",
    "new zealand",
-   "water"
+   "souffle",
+   "dip"
   ]
  },
  {
-  "id": "boranija",
-  "sr": "Boranija",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "beans, snap",
-   "raw"
-  ],
-  "exclude": [
-   "yellow",
-   "frozen",
-   "canned"
-  ]
- },
- {
-  "id": "tikvica",
-  "sr": "Tikvica",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "zucchini",
-   "raw"
-  ],
-  "exclude": [
-   "baby"
-  ]
- },
- {
-  "id": "patlidzan",
-  "sr": "Plavi patlidžan",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "eggplant",
-   "raw"
-  ],
-  "exclude": []
- },
- {
-  "id": "karfiol",
-  "sr": "Karfiol",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "cauliflower",
-   "raw"
-  ],
-  "exclude": [
-   "green",
-   "frozen"
-  ]
- },
- {
-  "id": "brokoli",
-  "sr": "Brokoli",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "broccoli",
-   "raw"
-  ],
-  "exclude": [
-   "chinese",
-   "raab",
-   "leaves",
-   "stalks",
-   "flower clusters",
-   "frozen"
-  ]
- },
- {
-  "id": "sampinjoni",
-  "sr": "Šampinjoni",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "mushrooms, white"
-  ],
-  "exclude": [
-   "cooked",
-   "canned",
-   "stir-fried",
-   "microwaved",
-   "exposed",
-   "uv"
-  ]
- },
- {
-  "id": "cvekla",
-  "sr": "Cvekla",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "beets",
-   "raw"
-  ],
-  "exclude": [
-   "greens",
-   "canned",
-   "pickled"
-  ]
- },
- {
-  "id": "praziluk",
-  "sr": "Praziluk",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "leeks"
-  ],
-  "exclude": [
-   "freeze",
-   "cooked"
-  ]
- },
- {
-  "id": "blitva",
-  "sr": "Blitva",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "chard",
-   "raw"
-  ],
-  "exclude": []
- },
- {
-  "id": "rotkvice",
-  "sr": "Rotkvice",
-  "form": "sirovo",
-  "group": "povrce",
-  "terms": [
-   "radishes",
-   "raw"
-  ],
-  "exclude": [
-   "oriental",
-   "white icicle",
-   "daikon",
-   "hawaiian",
-   "seeds"
-  ]
- },
- {
-  "id": "jabuka",
-  "sr": "Jabuka",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "apples",
-   "with skin",
-   "raw"
-  ],
-  "exclude": [
-   "dried",
-   "juice",
-   "sauce",
-   "frozen",
-   "canned"
-  ]
- },
- {
-  "id": "kruska",
-  "sr": "Kruška",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "pear",
-   "raw"
-  ],
-  "exclude": [
-   "asian",
-   "prickly",
-   "dried",
-   "canned",
-   "balsam"
-  ]
- },
- {
-  "id": "banana",
-  "sr": "Banana",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "bananas",
-   "raw"
-  ],
-  "exclude": [
-   "dehydrated",
-   "overripe",
-   "underripe"
-  ]
- },
- {
-  "id": "pomorandza",
-  "sr": "Pomorandža",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "oranges, raw"
-  ],
-  "exclude": [
-   "peel",
-   "juice",
-   "mandarin"
-  ]
- },
- {
-  "id": "mandarina",
-  "sr": "Mandarina",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "mandarin"
-  ],
-  "exclude": [
-   "canned",
-   "juice"
-  ]
- },
- {
-  "id": "limun-sok",
-  "sr": "Limun (sok)",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "lemon juice",
-   "raw"
-  ],
-  "exclude": [
-   "canned",
-   "bottled",
-   "frozen"
-  ]
- },
- {
-  "id": "jagode",
-  "sr": "Jagode",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "strawberries",
-   "raw"
-  ],
-  "exclude": [
-   "frozen",
-   "canned"
-  ]
- },
- {
-  "id": "maline",
-  "sr": "Maline",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "raspberries",
-   "raw"
-  ],
-  "exclude": [
-   "frozen",
-   "canned"
-  ]
- },
- {
-  "id": "borovnice",
-  "sr": "Borovnice",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "blueberries",
-   "raw"
-  ],
-  "exclude": [
-   "frozen",
-   "canned",
-   "dried",
-   "wild"
-  ]
- },
- {
-  "id": "sljiva",
-  "sr": "Šljiva",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "plum",
-   "raw"
-  ],
-  "exclude": [
-   "dried",
-   "canned",
-   "java"
-  ]
- },
- {
-  "id": "kajsija",
-  "sr": "Kajsija",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "apricot",
-   "raw"
-  ],
-  "exclude": [
-   "dried",
-   "canned",
-   "frozen"
-  ]
- },
- {
-  "id": "breskva",
-  "sr": "Breskva",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "peaches",
-   "raw"
-  ],
-  "exclude": [
-   "dried",
-   "canned",
-   "frozen",
-   "spiced"
-  ]
- },
- {
-  "id": "tresnja",
-  "sr": "Trešnja",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "cherries, sweet",
-   "raw"
-  ],
-  "exclude": [
-   "canned",
-   "frozen",
-   "sour"
-  ]
- },
- {
-  "id": "grozdje",
-  "sr": "Grožđe",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "grapes",
-   "raw"
-  ],
-  "exclude": [
-   "juice",
-   "muscadine",
-   "american"
-  ]
- },
- {
-  "id": "kivi",
-  "sr": "Kivi",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "kiwifruit"
-  ],
-  "exclude": [
-   "gold"
-  ]
- },
- {
-  "id": "lubenica",
-  "sr": "Lubenica",
-  "form": "sirovo",
-  "group": "voce",
-  "terms": [
-   "watermelon",
-   "raw"
-  ],
-  "exclude": [
-   "rind",
-   "seeds",
-   "juice"
-  ]
- },
- {
-  "id": "piletina-belo",
-  "sr": "Pileće belo meso bez kože",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "chicken",
-   "breast",
-   "raw"
-  ],
-  "exclude": [
-   "skin, raw",
-   "with skin",
-   "skin only",
-   "meat and skin",
-   "ground",
-   "roasting",
-   "stewing",
-   "cornish"
-  ]
- },
- {
-  "id": "piletina-belo-peceno",
-  "sr": "Pileće belo meso bez kože",
-  "form": "pečeno",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "chicken, broilers or fryers, breast, meat only, cooked, roasted"
-  ],
-  "exclude": []
- },
- {
-  "id": "piletina-karabatak",
-  "sr": "Pileći karabatak bez kože",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
+  "id": "karabatak",
+  "sr": "karabatak",
+  "form": "",
+  "group": "dopuna",
   "terms": [
    "chicken",
    "thigh",
    "raw"
   ],
   "exclude": [
-   "skin",
    "meat and skin",
+   "skin only",
    "roasting",
-   "stewing"
+   "stewing",
+   "with added solution"
   ]
  },
  {
-  "id": "piletina-karabatak-peceno",
-  "sr": "Pileći karabatak bez kože",
-  "form": "pečeno",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "chicken, broilers or fryers, thigh, meat only, cooked, roasted"
-  ],
-  "exclude": []
- },
- {
-  "id": "curetina-mlevena",
-  "sr": "Ćureće mleveno meso",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "turkey, ground",
-   "raw"
-  ],
-  "exclude": [
-   "fat free",
-   "85%",
-   "patties"
-  ]
- },
- {
-  "id": "junece-mleveno-90",
-  "sr": "Juneće mleveno 90/10",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "beef, ground, 90%",
-   "raw"
-  ],
-  "exclude": []
- },
- {
-  "id": "junece-mleveno-80",
-  "sr": "Juneće mleveno 80/20",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "beef, ground, 80%",
-   "raw"
-  ],
-  "exclude": []
- },
- {
-  "id": "junetina-but",
-  "sr": "Junetina, but",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "beef, round, top round",
-   "raw"
-  ],
-  "exclude": [
-   "select",
-   "prime",
-   "separable lean and fat"
-  ]
- },
- {
-  "id": "svinjski-file",
-  "sr": "Svinjski file",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
+  "id": "krmenadla",
+  "sr": "krmenadla",
+  "form": "",
+  "group": "dopuna",
   "terms": [
    "pork",
-   "tenderloin",
-   "raw"
-  ],
-  "exclude": [
-   "separable lean and fat"
-  ]
- },
- {
-  "id": "svinjska-krmenadla",
-  "sr": "Svinjska krmenadla",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "pork",
-   "chop",
-   "raw"
+   "chop"
   ],
   "exclude": []
- },
- {
-  "id": "svinjsko-mleveno",
-  "sr": "Svinjsko mleveno",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "pork, ground",
-   "raw"
-  ],
-  "exclude": [
-   "96%",
-   "72%",
-   "84%"
-  ]
- },
- {
-  "id": "losos",
-  "sr": "Losos",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "salmon, atlantic, farm",
-   "raw"
-  ],
-  "exclude": [
-   "smoked",
-   "canned"
-  ]
- },
- {
-  "id": "bakalar",
-  "sr": "Bakalar",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "cod, atlantic",
-   "raw"
-  ],
-  "exclude": [
-   "dried",
-   "canned",
-   "pacific"
-  ]
- },
- {
-  "id": "pastrmka",
-  "sr": "Pastrmka",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "trout, rainbow, farmed, raw"
-  ],
-  "exclude": []
- },
- {
-  "id": "tuna-konzerva",
-  "sr": "Tuna u konzervi, u vodi, oceđena",
-  "form": "oceđeno",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "tuna, light, canned in water",
-   "drained solids"
-  ],
-  "exclude": [
-   "with salt",
-   "without salt"
-  ]
  },
  {
   "id": "jaje",
-  "sr": "Jaje",
-  "form": "sirovo",
-  "group": "meso-riba-jaja",
+  "sr": "jaje",
+  "form": "",
+  "group": "dopuna",
   "terms": [
-   "egg",
-   "whole",
-   "raw"
+   "egg"
   ],
   "exclude": [
    "dried",
@@ -1102,294 +155,121 @@
    "turkey",
    "substitute",
    "white",
-   "yolk"
-  ]
- },
- {
-  "id": "jaje-kuvano",
-  "sr": "Jaje",
-  "form": "tvrdo kuvano",
-  "group": "meso-riba-jaja",
-  "terms": [
-   "egg, whole, cooked, hard-boiled"
-  ],
-  "exclude": []
- },
- {
-  "id": "grcki-jogurt",
-  "sr": "Grčki jogurt (punomasni)",
-  "form": "",
-  "group": "mlecni",
-  "terms": [
-   "yogurt, greek",
-   "whole milk"
-  ],
-  "exclude": [
-   "strawberry",
-   "vanilla",
-   "fruit"
+   "yolk",
+   "cooked",
+   "fried",
+   "poached",
+   "scrambled",
+   "omelet",
+   "eggplant",
+   "noodles",
+   "roll",
+   "nog",
+   "bagel",
+   "bread",
+   "salad",
+   "pasta",
+   "custard",
+   "plant"
   ]
  },
  {
   "id": "jogurt-obrani",
-  "sr": "Jogurt, obrani",
+  "sr": "jogurt-obrani",
   "form": "",
-  "group": "mlecni",
+  "group": "dopuna",
   "terms": [
-   "yogurt, plain, nonfat"
+   "yogurt",
+   "skim"
   ],
   "exclude": [
+   "fruit",
+   "vanilla",
+   "coffee",
+   "frozen"
+  ]
+ },
+ {
+  "id": "jogurt-obrani-2",
+  "sr": "jogurt-obrani-2",
+  "form": "",
+  "group": "dopuna",
+  "terms": [
+   "yogurt",
+   "nonfat"
+  ],
+  "exclude": [
+   "fruit",
+   "vanilla",
+   "coffee",
+   "frozen",
    "greek"
   ]
  },
  {
-  "id": "feta",
-  "sr": "Feta sir",
-  "form": "",
-  "group": "mlecni",
-  "terms": [
-   "cheese, feta"
-  ],
-  "exclude": []
- },
- {
-  "id": "maslac",
-  "sr": "Maslac",
-  "form": "",
-  "group": "mlecni",
-  "terms": [
-   "butter",
-   "without salt"
-  ],
-  "exclude": [
-   "whipped",
-   "oil",
-   "light"
-  ]
- },
- {
-  "id": "parmezan",
-  "sr": "Parmezan",
-  "form": "",
-  "group": "mlecni",
-  "terms": [
-   "cheese, parmesan"
-  ],
-  "exclude": [
-   "low sodium",
-   "dry grated",
-   "shredded"
-  ]
- },
- {
-  "id": "mocarela",
-  "sr": "Mocarela",
-  "form": "",
-  "group": "mlecni",
-  "terms": [
-   "cheese, mozzarella",
-   "whole milk"
-  ],
-  "exclude": [
-   "low moisture",
-   "substitute"
-  ]
- },
- {
-  "id": "gauda",
-  "sr": "Gauda",
-  "form": "",
-  "group": "mlecni",
-  "terms": [
-   "cheese, gouda"
-  ],
-  "exclude": []
- },
- {
   "id": "ulje-suncokretovo",
-  "sr": "Suncokretovo ulje",
+  "sr": "ulje-suncokretovo",
   "form": "",
-  "group": "masti-orasasto",
+  "group": "dopuna",
   "terms": [
    "oil, sunflower"
   ],
-  "exclude": [
-   "linoleic",
-   "hydrogenated",
-   "mid-oleic",
-   "high oleic"
-  ]
+  "exclude": []
  },
  {
-  "id": "ulje-maslinovo",
-  "sr": "Maslinovo ulje",
+  "id": "ovsene-sr",
+  "sr": "ovsene-sr",
   "form": "",
-  "group": "masti-orasasto",
+  "group": "dopuna",
   "terms": [
-   "oil, olive"
+   "oats"
   ],
   "exclude": [
-   "extra light"
-  ]
- },
- {
-  "id": "orasi",
-  "sr": "Orasi",
-  "form": "sirovo",
-  "group": "masti-orasasto",
-  "terms": [
-   "walnuts, english"
-  ],
-  "exclude": [
-   "glazed",
-   "black"
-  ]
- },
- {
-  "id": "bademi",
-  "sr": "Bademi",
-  "form": "sirovo",
-  "group": "masti-orasasto",
-  "terms": [
-   "almonds"
-  ],
-  "exclude": [
-   "butter",
+   "bran",
    "flour",
-   "paste",
-   "oil",
-   "blanched",
-   "roasted",
-   "honey",
+   "cereals",
+   "snacks",
+   "bread",
+   "granola",
+   "cookies",
    "milk"
   ]
  },
  {
-  "id": "lesnici",
-  "sr": "Lešnici",
-  "form": "sirovo",
-  "group": "masti-orasasto",
+  "id": "krompir-sr",
+  "sr": "krompir-sr",
+  "form": "",
+  "group": "dopuna",
   "terms": [
-   "hazelnuts"
-  ],
-  "exclude": [
-   "blanched",
-   "roasted",
-   "oil"
-  ]
- },
- {
-  "id": "kikiriki",
-  "sr": "Kikiriki",
-  "form": "sirovo",
-  "group": "masti-orasasto",
-  "terms": [
-   "peanuts",
+   "potatoes",
    "raw"
   ],
   "exclude": [
-   "butter",
-   "oil",
+   "sweet",
    "flour",
-   "boiled"
+   "hash",
+   "french",
+   "frozen",
+   "mashed",
+   "au gratin",
+   "scalloped",
+   "chips",
+   "microwaved",
+   "baked",
+   "boiled",
+   "canned",
+   "dehydrated",
+   "puffs"
   ]
  },
  {
-  "id": "kikiriki-puter",
-  "sr": "Kikiriki puter",
+  "id": "jagode-sve",
+  "sr": "jagode-sve",
   "form": "",
-  "group": "masti-orasasto",
+  "group": "dopuna",
   "terms": [
-   "peanut butter"
-  ],
-  "exclude": [
-   "reduced",
-   "chunk",
-   "with omega",
-   "vitamin",
-   "sodium"
-  ]
- },
- {
-  "id": "semenke-suncokret",
-  "sr": "Semenke suncokreta",
-  "form": "sirovo",
-  "group": "masti-orasasto",
-  "terms": [
-   "sunflower seed",
-   "kernel"
-  ],
-  "exclude": [
-   "roasted",
-   "toasted",
-   "butter",
-   "flour"
-  ]
- },
- {
-  "id": "semenke-bundeva",
-  "sr": "Semenke bundeve",
-  "form": "sirovo",
-  "group": "masti-orasasto",
-  "terms": [
-   "pumpkin",
-   "seeds"
-  ],
-  "exclude": [
-   "roasted",
-   "whole",
-   "salted"
-  ]
- },
- {
-  "id": "laneno-seme",
-  "sr": "Laneno seme, mleveno",
-  "form": "",
-  "group": "masti-orasasto",
-  "terms": [
-   "flaxseed"
-  ],
-  "exclude": [
-   "oil"
-  ]
- },
- {
-  "id": "med",
-  "sr": "Med",
-  "form": "",
-  "group": "ostalo",
-  "terms": [
-   "honey"
-  ],
-  "exclude": [
-   "roll",
-   "loaf",
-   "bun",
-   "mustard",
-   "graham"
-  ]
- },
- {
-  "id": "secer",
-  "sr": "Šećer (beli)",
-  "form": "",
-  "group": "ostalo",
-  "terms": [
-   "sugars, granulated"
+   "strawberries, raw"
   ],
   "exclude": []
- },
- {
-  "id": "kakao",
-  "sr": "Kakao prah",
-  "form": "",
-  "group": "ostalo",
-  "terms": [
-   "cocoa, dry powder, unsweetened"
-  ],
-  "exclude": [
-   "alkali",
-   "with"
-  ]
  }
 ]
