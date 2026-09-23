@@ -1,0 +1,7939 @@
+{
+ "id": "foods",
+ "version": "1.1.0",
+ "status": "ODOBRENO",
+ "document": "docs/NUTRITION_ENGINE.md delovi N, P, K; DECISIONS/0008, 0009",
+ "attribution": "U.S. Department of Agriculture, Agricultural Research Service. FoodData Central (Foundation Foods, SR Legacy). fdc.nal.usda.gov. CC0 1.0.",
+ "sources": {
+  "foundation": {
+   "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_foundation_food_csv_2026-04-30.zip",
+   "bytes": 3825741,
+   "sha256": "70457ee9d9342f43bda2010318c85f04210c689fdeb9cd2da4c513b0e8dbc655"
+  },
+  "srLegacy": {
+   "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+   "bytes": 6074592,
+   "sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+  }
+ },
+ "foods": [
+  {
+   "id": "ovsene-pahuljice",
+   "names": {
+    "srLatn": "Ovsene pahuljice",
+    "srCyrl": "Овсене пахуљице",
+    "aliases": [
+     "ovas",
+     "zobene pahuljice"
+    ],
+    "searchKeys": [
+     "ovsene pahuljice",
+     "ovas",
+     "zobene pahuljice"
+    ]
+   },
+   "group": "zitarice",
+   "form": "suvo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2346396",
+    "ndb": "20038",
+    "description": "Oats, whole grain, rolled, old fashioned",
+    "published": "2022-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169705",
+    "ndb": "20038",
+    "description": "Oats (Includes foods for USDA's Food Distribution Program)"
+   },
+   "values": {
+    "protein": {
+     "value": 13.49645,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 5.89,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 1.217,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 68.65755,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 10.6,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 0.6675,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 10.25,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [
+    "sugars"
+   ],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 378.866123,
+    "energyAtwaterGeneral": 381.626
+   },
+   "portions": []
+  },
+  {
+   "id": "pirinac-beli",
+   "names": {
+    "srLatn": "Pirinač beli",
+    "srCyrl": "Пиринач бели",
+    "aliases": [
+     "riža"
+    ],
+    "searchKeys": [
+     "pirinac beli",
+     "riza"
+    ]
+   },
+   "group": "zitarice",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2512381",
+    "ndb": "20444",
+    "description": "Rice, white, long grain, unenriched, raw",
+    "published": "2023-04-20"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169756",
+    "ndb": "20444",
+    "description": "Rice, white, long-grain, regular, raw, unenriched"
+   },
+   "values": {
+    "protein": {
+     "value": 7.03885,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 1.033,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.18,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 80.31315,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.12,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 0.1488,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0.4625,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 11.19,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 369.637321,
+    "energyAtwaterGeneral": 358.705
+   },
+   "portions": []
+  },
+  {
+   "id": "pirinac-beli-kuvan",
+   "names": {
+    "srLatn": "Pirinač beli",
+    "srCyrl": "Пиринач бели",
+    "aliases": [
+     "riža"
+    ],
+    "searchKeys": [
+     "pirinac beli",
+     "riza"
+    ]
+   },
+   "group": "zitarice",
+   "form": "kuvano",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "169757",
+    "ndb": "20445",
+    "description": "Rice, white, long-grain, regular, unenriched, cooked without salt",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 2.69,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.28,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.077,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 28.17,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.05,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0.4,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 1,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 68.44,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 130
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 158
+    }
+   ]
+  },
+  {
+   "id": "pirinac-integralni",
+   "names": {
+    "srLatn": "Pirinač integralni",
+    "srCyrl": "Пиринач интегрални",
+    "aliases": [
+     "smeđi pirinač"
+    ],
+    "searchKeys": [
+     "pirinac integralni",
+     "smedji pirinac"
+    ]
+   },
+   "group": "zitarice",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2512380",
+    "ndb": "20036",
+    "description": "Rice, brown, long grain, unenriched, raw",
+    "published": "2023-04-20"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169703",
+    "ndb": "20036",
+    "description": "Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)"
+   },
+   "values": {
+    "protein": {
+     "value": 7.25305,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 3.306,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.591,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 76.68795,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.66,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 3.021,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 11.47,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 368.3584745,
+    "energyAtwaterGeneral": 365.518
+   },
+   "portions": []
+  },
+  {
+   "id": "heljda",
+   "names": {
+    "srLatn": "Heljda",
+    "srCyrl": "Хељда",
+    "aliases": [],
+    "searchKeys": [
+     "heljda"
+    ]
+   },
+   "group": "zitarice",
+   "form": "suvo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2512378",
+    "ndb": "20008",
+    "description": "Buckwheat, whole grain",
+    "published": "2023-04-20"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "170286",
+    "ndb": "20008",
+    "description": "Buckwheat"
+   },
+   "values": {
+    "protein": {
+     "value": 11.06534,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 3.039,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.741,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 71.13066,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 4.046,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 12.95,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [
+    "sugars"
+   ],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 331.6005206,
+    "energyAtwaterGeneral": 356.135
+   },
+   "portions": []
+  },
+  {
+   "id": "proso",
+   "names": {
+    "srLatn": "Proso",
+    "srCyrl": "Просо",
+    "aliases": [],
+    "searchKeys": [
+     "proso"
+    ]
+   },
+   "group": "zitarice",
+   "form": "suvo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2512379",
+    "ndb": "20031",
+    "description": "Millet, whole grain",
+    "published": "2023-04-20"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169702",
+    "ndb": "20031",
+    "description": "Millet, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 10.02177,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 4.194,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.723,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 74.44623,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 2.619,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 10.21,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [
+    "sugars"
+   ],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 380.6064975,
+    "energyAtwaterGeneral": 375.618
+   },
+   "portions": []
+  },
+  {
+   "id": "bulgur",
+   "names": {
+    "srLatn": "Bulgur",
+    "srCyrl": "Булгур",
+    "aliases": [],
+    "searchKeys": [
+     "bulgur"
+    ]
+   },
+   "group": "zitarice",
+   "form": "suvo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2710820",
+    "ndb": "20012",
+    "description": "Bulgur, dry, raw",
+    "published": "2024-10-31"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "170688",
+    "ndb": "20012",
+    "description": "Bulgur, dry"
+   },
+   "values": {
+    "protein": {
+     "value": 11.75625,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 2.421,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.232,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 75.88175,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.41,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 11.72,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 2.18,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 8.485,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 349.3017225,
+    "energyAtwaterGeneral": 372.341
+   },
+   "portions": []
+  },
+  {
+   "id": "testenina",
+   "names": {
+    "srLatn": "Testenina",
+    "srCyrl": "Тестенина",
+    "aliases": [
+     "pasta",
+     "makarone",
+     "špagete"
+    ],
+    "searchKeys": [
+     "testenina",
+     "pasta",
+     "makarone",
+     "spagete"
+    ]
+   },
+   "group": "zitarice",
+   "form": "suvo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "168927",
+    "ndb": "20420",
+    "description": "Pasta, dry, unenriched",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 13.04,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 1.51,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.277,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 74.67,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.67,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 3.2,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 6,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 9.9,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 371
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup spaghetti",
+     "gramWeight": 91
+    },
+    {
+     "amount": 2,
+     "description": "oz",
+     "gramWeight": 57
+    },
+    {
+     "amount": 1,
+     "description": "cup elbows",
+     "gramWeight": 122
+    },
+    {
+     "amount": 1,
+     "description": "cup penne",
+     "gramWeight": 95
+    },
+    {
+     "amount": 1,
+     "description": "cup farfalle",
+     "gramWeight": 81
+    },
+    {
+     "amount": 1,
+     "description": "cup rotini",
+     "gramWeight": 96
+    },
+    {
+     "amount": 1,
+     "description": "cup shells",
+     "gramWeight": 64
+    },
+    {
+     "amount": 1,
+     "description": "cup lasagna",
+     "gramWeight": 90
+    }
+   ],
+   "note": "Foundation zapis je obogaćeni špagete bez makronutrijenata; uzet SR neobogaćena testenina."
+  },
+  {
+   "id": "testenina-kuvana",
+   "names": {
+    "srLatn": "Testenina",
+    "srCyrl": "Тестенина",
+    "aliases": [
+     "pasta",
+     "makarone",
+     "špagete"
+    ],
+    "searchKeys": [
+     "testenina",
+     "pasta",
+     "makarone",
+     "spagete"
+    ]
+   },
+   "group": "zitarice",
+   "form": "kuvano",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "168928",
+    "ndb": "20421",
+    "description": "Pasta, cooked, unenriched, without added salt",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 5.8,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.93,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.176,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 30.86,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.56,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.8,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 1,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 62.13,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 158
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup spaghetti not packed",
+     "gramWeight": 124
+    },
+    {
+     "amount": 1,
+     "description": "cup spaghetti packed",
+     "gramWeight": 151
+    },
+    {
+     "amount": 1,
+     "description": "cup elbows not packed",
+     "gramWeight": 120
+    },
+    {
+     "amount": 1,
+     "description": "cup elbows packed",
+     "gramWeight": 132
+    },
+    {
+     "amount": 1,
+     "description": "cup penne",
+     "gramWeight": 107
+    },
+    {
+     "amount": 1,
+     "description": "cup rotini",
+     "gramWeight": 107
+    },
+    {
+     "amount": 1,
+     "description": "cup farfalle",
+     "gramWeight": 107
+    },
+    {
+     "amount": 1,
+     "description": "cup shells",
+     "gramWeight": 105
+    },
+    {
+     "amount": 1,
+     "description": "cup lasagne",
+     "gramWeight": 116
+    }
+   ]
+  },
+  {
+   "id": "brasno-psenicno",
+   "names": {
+    "srLatn": "Pšenično brašno, belo",
+    "srCyrl": "Пшенично брашно, бело",
+    "aliases": [
+     "brašno T-400",
+     "brašno T-500"
+    ],
+    "searchKeys": [
+     "psenicno brasno, belo",
+     "brasno t-400",
+     "brasno t-500"
+    ]
+   },
+   "group": "zitarice",
+   "form": "suvo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "169761",
+    "ndb": "20481",
+    "description": "Wheat flour, white, all-purpose, unenriched",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 10.33,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.98,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.155,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 76.31,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.27,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 2.7,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 2,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 11.92,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 364
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 125
+    }
+   ]
+  },
+  {
+   "id": "brasno-razano",
+   "names": {
+    "srLatn": "Ražano brašno",
+    "srCyrl": "Ражано брашно",
+    "aliases": [],
+    "searchKeys": [
+     "razano brasno"
+    ]
+   },
+   "group": "zitarice",
+   "form": "suvo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2512375",
+    "ndb": "100290",
+    "description": "Flour, rye",
+    "published": "2023-04-20"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 8.3952,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 1.908,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 77.1618,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 13.68,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 11.13,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [
+    "saturatedFat",
+    "sugars"
+   ],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 350.962038,
+    "energyAtwaterGeneral": 359.4
+   },
+   "portions": []
+  },
+  {
+   "id": "kukuruzno-brasno",
+   "names": {
+    "srLatn": "Kukuruzno brašno (palenta)",
+    "srCyrl": "Кукурузно брашно (палента)",
+    "aliases": [
+     "palenta",
+     "kačamak"
+    ],
+    "searchKeys": [
+     "kukuruzno brasno (palenta)",
+     "palenta",
+     "kacamak"
+    ]
+   },
+   "group": "zitarice",
+   "form": "suvo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "168929",
+    "ndb": "20422",
+    "description": "Cornmeal, degermed, unenriched, yellow",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 7.11,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 1.75,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.22,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 79.45,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1.61,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 3.9,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 7,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 11.18,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 370
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 157
+    }
+   ]
+  },
+  {
+   "id": "pasulj-beli",
+   "names": {
+    "srLatn": "Pasulj beli",
+    "srCyrl": "Пасуљ бели",
+    "aliases": [
+     "grah"
+    ],
+    "searchKeys": [
+     "pasulj beli",
+     "grah"
+    ]
+   },
+   "group": "mahunarke",
+   "form": "suvo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "175202",
+    "ndb": "16049",
+    "description": "Beans, white, mature seeds, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 23.36,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.85,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.219,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 60.27,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.11,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 15.2,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 16,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 11.32,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 333
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 202
+    },
+    {
+     "amount": 1,
+     "description": "tbsp",
+     "gramWeight": 12.6
+    }
+   ]
+  },
+  {
+   "id": "pasulj-beli-kuvan",
+   "names": {
+    "srLatn": "Pasulj beli",
+    "srCyrl": "Пасуљ бели",
+    "aliases": [
+     "grah"
+    ],
+    "searchKeys": [
+     "pasulj beli",
+     "grah"
+    ]
+   },
+   "group": "mahunarke",
+   "form": "kuvano",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "175203",
+    "ndb": "16050",
+    "description": "Beans, white, mature seeds, cooked, boiled, without salt",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 9.73,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.35,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.091,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 25.09,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.34,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 6.3,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 6,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 63.08,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 139
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 179
+    },
+    {
+     "amount": 1,
+     "description": "tbsp",
+     "gramWeight": 11.2
+    }
+   ]
+  },
+  {
+   "id": "sociva",
+   "names": {
+    "srLatn": "Sočivo",
+    "srCyrl": "Сочиво",
+    "aliases": [],
+    "searchKeys": [
+     "socivo"
+    ]
+   },
+   "group": "mahunarke",
+   "form": "suvo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "172420",
+    "ndb": "16069",
+    "description": "Lentils, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 24.63,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 1.06,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.154,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 63.35,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.03,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 10.7,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 6,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 8.26,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 352
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 192
+    },
+    {
+     "amount": 1,
+     "description": "tablespoon",
+     "gramWeight": 12
+    }
+   ],
+   "r1": true
+  },
+  {
+   "id": "sociva-kuvano",
+   "names": {
+    "srLatn": "Sočivo",
+    "srCyrl": "Сочиво",
+    "aliases": [],
+    "searchKeys": [
+     "socivo"
+    ]
+   },
+   "group": "mahunarke",
+   "form": "kuvano",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "172421",
+    "ndb": "16070",
+    "description": "Lentils, mature seeds, cooked, boiled, without salt",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 9.02,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.38,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.053,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 20.13,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1.8,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 7.9,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 2,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 69.64,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 116
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 198
+    },
+    {
+     "amount": 1,
+     "description": "tbsp",
+     "gramWeight": 12.3
+    }
+   ]
+  },
+  {
+   "id": "leblebija",
+   "names": {
+    "srLatn": "Leblebija (slanutak)",
+    "srCyrl": "Леблебија (сланутак)",
+    "aliases": [
+     "slanutak",
+     "naut"
+    ],
+    "searchKeys": [
+     "leblebija (slanutak)",
+     "slanutak",
+     "naut"
+    ]
+   },
+   "group": "mahunarke",
+   "form": "suvo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "173756",
+    "ndb": "16056",
+    "description": "Chickpeas (garbanzo beans, bengal gram), mature seeds, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 20.47,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 6.04,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.603,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 62.95,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 10.7,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 12.2,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 24,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 7.68,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 378
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 200
+    },
+    {
+     "amount": 1,
+     "description": "tbsp",
+     "gramWeight": 12.5
+    }
+   ],
+   "r1": true
+  },
+  {
+   "id": "leblebija-kuvana",
+   "names": {
+    "srLatn": "Leblebija (slanutak)",
+    "srCyrl": "Леблебија (сланутак)",
+    "aliases": [
+     "slanutak",
+     "naut"
+    ],
+    "searchKeys": [
+     "leblebija (slanutak)",
+     "slanutak",
+     "naut"
+    ]
+   },
+   "group": "mahunarke",
+   "form": "kuvano",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "173757",
+    "ndb": "16057",
+    "description": "Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 8.86,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 2.59,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.269,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 27.42,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 4.8,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 7.6,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 7,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 60.21,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 164
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 164
+    }
+   ]
+  },
+  {
+   "id": "grasak",
+   "names": {
+    "srLatn": "Grašak",
+    "srCyrl": "Грашак",
+    "aliases": [],
+    "searchKeys": [
+     "grasak"
+    ]
+   },
+   "group": "mahunarke",
+   "form": "smrznuto",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "170016",
+    "ndb": "11312",
+    "description": "Peas, green, frozen, unprepared (Includes foods for USDA's Food Distribution Program)",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 5.22,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.4,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.066,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 13.62,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 5,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 4.5,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 108,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 79.98,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 77
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 134
+    },
+    {
+     "amount": 1,
+     "description": "package",
+     "gramWeight": 284
+    }
+   ]
+  },
+  {
+   "id": "krompir",
+   "names": {
+    "srLatn": "Krompir",
+    "srCyrl": "Кромпир",
+    "aliases": [
+     "krumpir"
+    ],
+    "searchKeys": [
+     "krompir",
+     "krumpir"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "170026",
+    "ndb": "11352",
+    "description": "Potatoes, flesh and skin, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 2.05,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.09,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.025,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 17.49,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.82,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 2.1,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 6,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 79.25,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 77
+   },
+   "portions": [
+    {
+     "amount": 0.5,
+     "description": "cup, diced",
+     "gramWeight": 75
+    },
+    {
+     "amount": 1,
+     "description": "Potato large (3\" to 4-1/4\" dia)",
+     "gramWeight": 369
+    },
+    {
+     "amount": 1,
+     "description": "Potato medium (2-1/4\" to 3-1/4\" dia)",
+     "gramWeight": 213
+    },
+    {
+     "amount": 1,
+     "description": "Potato small (1-3/4\" to 2-1/2\" dia)",
+     "gramWeight": 170
+    }
+   ],
+   "note": "Foundation zapis (žuti krompir bez ljuske) nema vlakna; korišćen SR 'Potatoes, flesh and skin, raw' — razlika zbog ljuske je zanemarljiva za kalorije.",
+   "r1": true
+  },
+  {
+   "id": "krompir-kuvan",
+   "names": {
+    "srLatn": "Krompir",
+    "srCyrl": "Кромпир",
+    "aliases": [
+     "krumpir"
+    ],
+    "searchKeys": [
+     "krompir",
+     "krumpir"
+    ]
+   },
+   "group": "povrce",
+   "form": "kuvano",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "170440",
+    "ndb": "11367",
+    "description": "Potatoes, boiled, cooked without skin, flesh, without salt",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 1.71,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.1,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.026,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 20.01,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.89,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.8,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 5,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 77.46,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 86
+   },
+   "portions": [
+    {
+     "amount": 0.5,
+     "description": "cup",
+     "gramWeight": 78
+    },
+    {
+     "amount": 1,
+     "description": "large (3\" to 4-1/4\" dia.)",
+     "gramWeight": 300
+    },
+    {
+     "amount": 1,
+     "description": "medium (2-1/4\" to 3-1/4\" dia.)",
+     "gramWeight": 167
+    },
+    {
+     "amount": 1,
+     "description": "small (1-3/4\" to 2-1/2\" dia.)",
+     "gramWeight": 125
+    }
+   ]
+  },
+  {
+   "id": "paradajz",
+   "names": {
+    "srLatn": "Paradajz",
+    "srCyrl": "Парадајз",
+    "aliases": [
+     "rajčica"
+    ],
+    "searchKeys": [
+     "paradajz",
+     "rajcica"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "170457",
+    "ndb": "11529",
+    "description": "Tomatoes, red, ripe, raw, year round average",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.88,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.2,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.028,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 3.89,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.63,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.2,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 5,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 94.52,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 18
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup cherry tomatoes",
+     "gramWeight": 149
+    },
+    {
+     "amount": 1,
+     "description": "cup, chopped or sliced",
+     "gramWeight": 180
+    },
+    {
+     "amount": 1,
+     "description": "Italian tomato",
+     "gramWeight": 62
+    },
+    {
+     "amount": 1,
+     "description": "cherry",
+     "gramWeight": 17
+    },
+    {
+     "amount": 1,
+     "description": "large whole (3\" dia)",
+     "gramWeight": 182
+    },
+    {
+     "amount": 1,
+     "description": "medium whole (2-3/5\" dia)",
+     "gramWeight": 123
+    },
+    {
+     "amount": 1,
+     "description": "slice, medium (1/4\" thick)",
+     "gramWeight": 20
+    },
+    {
+     "amount": 1,
+     "description": "plum tomato",
+     "gramWeight": 62
+    },
+    {
+     "amount": 1,
+     "description": "small whole (2-2/5\" dia)",
+     "gramWeight": 91
+    },
+    {
+     "amount": 1,
+     "description": "slice, thick/large (1/2\" thick)",
+     "gramWeight": 27
+    },
+    {
+     "amount": 1,
+     "description": "wedge (1/4 of medium tomato)",
+     "gramWeight": 31
+    },
+    {
+     "amount": 1,
+     "description": "slice, thin/small",
+     "gramWeight": 15
+    },
+    {
+     "amount": 1,
+     "description": "NLEA serving",
+     "gramWeight": 148
+    }
+   ]
+  },
+  {
+   "id": "krastavac",
+   "names": {
+    "srLatn": "Krastavac",
+    "srCyrl": "Краставац",
+    "aliases": [],
+    "searchKeys": [
+     "krastavac"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2346406",
+    "ndb": "11205",
+    "description": "Cucumber, with peel, raw",
+    "published": "2022-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "168409",
+    "ndb": "11205",
+    "description": "Cucumber, with peel, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 0.625,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.1775,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.037,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 2.9525,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1.67,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 0.5,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 1.515,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 95.87,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 13.934925,
+    "energyAtwaterGeneral": 15.9075
+   },
+   "portions": []
+  },
+  {
+   "id": "paprika-crvena",
+   "names": {
+    "srLatn": "Paprika crvena",
+    "srCyrl": "Паприка црвена",
+    "aliases": [],
+    "searchKeys": [
+     "paprika crvena"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2258590",
+    "ndb": "11821",
+    "description": "Peppers, bell, red, raw",
+    "published": "2022-04-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "170108",
+    "ndb": "11821",
+    "description": "Peppers, sweet, red, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 0.895625,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.1256,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.059,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 6.653175,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 4.2,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 1.158,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 91.93,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 26.98843175,
+    "energyAtwaterGeneral": 31.3256
+   },
+   "portions": []
+  },
+  {
+   "id": "paprika-zelena",
+   "names": {
+    "srLatn": "Paprika zelena",
+    "srCyrl": "Паприка зелена",
+    "aliases": [],
+    "searchKeys": [
+     "paprika zelena"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2258588",
+    "ndb": "11333",
+    "description": "Peppers, bell, green, raw",
+    "published": "2022-04-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "170427",
+    "ndb": "11333",
+    "description": "Peppers, sweet, green, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 0.715,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.1063,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.058,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 4.7781,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.4,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 0.9419,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 94.12,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 19.692148,
+    "energyAtwaterGeneral": 22.9291
+   },
+   "portions": []
+  },
+  {
+   "id": "paprika-zuta",
+   "names": {
+    "srLatn": "Paprika žuta",
+    "srCyrl": "Паприка жута",
+    "aliases": [],
+    "searchKeys": [
+     "paprika zuta"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2258589",
+    "ndb": "11951",
+    "description": "Peppers, bell, yellow, raw",
+    "published": "2022-04-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169383",
+    "ndb": "11951",
+    "description": "Peppers, sweet, yellow, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 0.819375,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.1211,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.031,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 6.601725,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.071,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 92.08,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [
+    "sugars"
+   ],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 26.58104025,
+    "energyAtwaterGeneral": 30.7743
+   },
+   "portions": []
+  },
+  {
+   "id": "luk-crni",
+   "names": {
+    "srLatn": "Crni luk",
+    "srCyrl": "Црни лук",
+    "aliases": [
+     "luk"
+    ],
+    "searchKeys": [
+     "crni luk",
+     "luk"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "790646",
+    "ndb": "100253",
+    "description": "Onions, yellow, raw",
+    "published": "2020-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.83,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.05,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 8.61,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 5.82,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.9,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 1,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 90.1,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [
+    "saturatedFat"
+   ],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 36,
+    "energyAtwaterGeneral": 38,
+    "energy": 38
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "Edible",
+     "gramWeight": 143
+    }
+   ]
+  },
+  {
+   "id": "beli-luk",
+   "names": {
+    "srLatn": "Beli luk",
+    "srCyrl": "Бели лук",
+    "aliases": [
+     "češnjak"
+    ],
+    "searchKeys": [
+     "beli luk",
+     "cesnjak"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "1104647",
+    "ndb": "11215",
+    "description": "Garlic, raw",
+    "published": "2020-10-30"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169230",
+    "ndb": "11215",
+    "description": "Garlic, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 6.62,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.38,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.089,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 28.2,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 2.7,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 17,
+     "nutrientId": "1093",
+     "origin": "SR_FILL"
+    },
+    "water": {
+     "value": 63.1,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 130,
+    "energyAtwaterGeneral": 143,
+    "energy": 143
+   },
+   "portions": []
+  },
+  {
+   "id": "sargarepa",
+   "names": {
+    "srLatn": "Šargarepa",
+    "srCyrl": "Шаргарепа",
+    "aliases": [
+     "mrkva"
+    ],
+    "searchKeys": [
+     "sargarepa",
+     "mrkva"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2258586",
+    "ndb": "11124",
+    "description": "Carrots, mature, raw",
+    "published": "2022-04-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "170393",
+    "ndb": "11124",
+    "description": "Carrots, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 0.94125,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.3506,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.032,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 10.26755,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 4.74,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 3.095,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 86.65,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 87.72,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 44.978589,
+    "energyAtwaterGeneral": 47.9906
+   },
+   "portions": []
+  },
+  {
+   "id": "kupus-beli",
+   "names": {
+    "srLatn": "Kupus beli",
+    "srCyrl": "Купус бели",
+    "aliases": [],
+    "searchKeys": [
+     "kupus beli"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2346407",
+    "ndb": "11109",
+    "description": "Cabbage, green, raw",
+    "published": "2022-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169975",
+    "ndb": "11109",
+    "description": "Cabbage, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 0.96125,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.2275,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.034,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 6.38375,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 3.2,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 2.5,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 16.1,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 91.87,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 27.8695,
+    "energyAtwaterGeneral": 31.4275
+   },
+   "portions": []
+  },
+  {
+   "id": "kupus-crveni",
+   "names": {
+    "srLatn": "Kupus crveni",
+    "srCyrl": "Купус црвени",
+    "aliases": [],
+    "searchKeys": [
+     "kupus crveni"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2346408",
+    "ndb": "11112",
+    "description": "Cabbage, red, raw",
+    "published": "2022-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169977",
+    "ndb": "11112",
+    "description": "Cabbage, red, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 1.2425,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.2138,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.021,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 6.7899,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 3.83,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 2.1,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 11.72,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 91.14,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 29.943836,
+    "energyAtwaterGeneral": 34.0538
+   },
+   "portions": []
+  },
+  {
+   "id": "zelena-salata",
+   "names": {
+    "srLatn": "Zelena salata",
+    "srCyrl": "Зелена салата",
+    "aliases": [],
+    "searchKeys": [
+     "zelena salata"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2346391",
+    "ndb": "11253",
+    "description": "Lettuce, leaf, green, raw",
+    "published": "2022-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169249",
+    "ndb": "11253",
+    "description": "Lettuce, green leaf, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 1.09375,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.1563,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.02,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 4.06615,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.78,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 1.3,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 28.88,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 94.01,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 18.4931365,
+    "energyAtwaterGeneral": 22.0463
+   },
+   "portions": []
+  },
+  {
+   "id": "spanac",
+   "names": {
+    "srLatn": "Spanać",
+    "srCyrl": "Спанаћ",
+    "aliases": [],
+    "searchKeys": [
+     "spanac"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "1999633",
+    "ndb": "11457",
+    "description": "Spinach, mature",
+    "published": "2021-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "168462",
+    "ndb": "11457",
+    "description": "Spinach, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 2.90625,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.6044,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.063,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 2.64135,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.42,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 1.588,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 106.6,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 92.43,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 21.5796975,
+    "energyAtwaterGeneral": 27.63
+   },
+   "portions": []
+  },
+  {
+   "id": "boranija",
+   "names": {
+    "srLatn": "Boranija",
+    "srCyrl": "Боранија",
+    "aliases": [
+     "mahune"
+    ],
+    "searchKeys": [
+     "boranija",
+     "mahune"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2346400",
+    "ndb": "11052",
+    "description": "Beans, snap, green, raw",
+    "published": "2022-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169961",
+    "ndb": "11052",
+    "description": "Beans, snap, green, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 1.96875,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.275,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.05,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 7.41245,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.3338,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 3.011,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 89.66,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 33.5679465,
+    "energyAtwaterGeneral": 39.9998
+   },
+   "portions": []
+  },
+  {
+   "id": "tikvica",
+   "names": {
+    "srLatn": "Tikvica",
+    "srCyrl": "Тиквица",
+    "aliases": [],
+    "searchKeys": [
+     "tikvica"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2685568",
+    "ndb": "100331",
+    "description": "Squash, summer, green, zucchini, includes skin, raw",
+    "published": "2024-04-18"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.984375,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.205,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 3.27,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0.7525,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 95.01,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [
+    "saturatedFat",
+    "sugars"
+   ],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 16,
+    "energyAtwaterGeneral": 19
+   },
+   "portions": []
+  },
+  {
+   "id": "patlidzan",
+   "names": {
+    "srLatn": "Plavi patlidžan",
+    "srCyrl": "Плави патлиџан",
+    "aliases": [
+     "patlidžan"
+    ],
+    "searchKeys": [
+     "plavi patlidzan",
+     "patlidzan"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2685577",
+    "ndb": "11209",
+    "description": "Eggplant, raw",
+    "published": "2024-04-18"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169228",
+    "ndb": "11209",
+    "description": "Eggplant, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 0.851875,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.12,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.034,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 5.399325,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.354,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 2.448,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0.4425,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 93.11,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 22.35856525,
+    "energyAtwaterGeneral": 26.0848
+   },
+   "portions": []
+  },
+  {
+   "id": "karfiol",
+   "names": {
+    "srLatn": "Karfiol",
+    "srCyrl": "Карфиол",
+    "aliases": [],
+    "searchKeys": [
+     "karfiol"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2685573",
+    "ndb": "11135",
+    "description": "Cauliflower, raw",
+    "published": "2024-04-18"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169986",
+    "ndb": "11135",
+    "description": "Cauliflower, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 1.640625,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.2375,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.13,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 4.723075,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1.91,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 1.948,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 20,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 92.72,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 22.85237775,
+    "energyAtwaterGeneral": 27.5923
+   },
+   "portions": []
+  },
+  {
+   "id": "brokoli",
+   "names": {
+    "srLatn": "Brokoli",
+    "srCyrl": "Броколи",
+    "aliases": [],
+    "searchKeys": [
+     "brokoli"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "747447",
+    "ndb": "11090",
+    "description": "Broccoli, raw",
+    "published": "2019-12-16"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "170379",
+    "ndb": "11090",
+    "description": "Broccoli, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 2.57,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.34,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.039,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 6.27,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1.4,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 2.4,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 36,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 90,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 32,
+    "energyAtwaterGeneral": 39,
+    "energy": 31
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "chopped",
+     "gramWeight": 76
+    }
+   ]
+  },
+  {
+   "id": "sampinjoni",
+   "names": {
+    "srLatn": "Šampinjoni",
+    "srCyrl": "Шампињони",
+    "aliases": [
+     "pečurke",
+     "gljive"
+    ],
+    "searchKeys": [
+     "sampinjoni",
+     "pecurke",
+     "gljive"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "1999629",
+    "ndb": "11260",
+    "description": "Mushrooms, white button",
+    "published": "2021-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169251",
+    "ndb": "11260",
+    "description": "Mushrooms, white, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 2.890625,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.3708,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.05,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 4.079375,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1.98,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 1.717,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 6.443,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 91.83,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 24.8732585,
+    "energyAtwaterGeneral": 31.2172
+   },
+   "portions": []
+  },
+  {
+   "id": "cvekla",
+   "names": {
+    "srLatn": "Cvekla",
+    "srCyrl": "Цвекла",
+    "aliases": [
+     "cikla"
+    ],
+    "searchKeys": [
+     "cvekla",
+     "cikla"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2685576",
+    "ndb": "11080",
+    "description": "Beets, raw",
+    "published": "2024-04-18"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169145",
+    "ndb": "11080",
+    "description": "Beets, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 1.6875,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.3025,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.027,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 8.787,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 5.1015,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 3.119,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 111.6,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 88.16,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 40.965255,
+    "energyAtwaterGeneral": 44.6205
+   },
+   "portions": []
+  },
+  {
+   "id": "praziluk",
+   "names": {
+    "srLatn": "Praziluk",
+    "srCyrl": "Празилук",
+    "aliases": [],
+    "searchKeys": [
+     "praziluk"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "169246",
+    "ndb": "11246",
+    "description": "Leeks, (bulb and lower leaf-portion), raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 1.5,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.3,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.04,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 14.15,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 3.9,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.8,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 20,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 83,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 61
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 89
+    },
+    {
+     "amount": 1,
+     "description": "leek",
+     "gramWeight": 89
+    },
+    {
+     "amount": 1,
+     "description": "slice",
+     "gramWeight": 6
+    }
+   ],
+   "r1": true
+  },
+  {
+   "id": "blitva",
+   "names": {
+    "srLatn": "Blitva",
+    "srCyrl": "Блитва",
+    "aliases": [],
+    "searchKeys": [
+     "blitva"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "169991",
+    "ndb": "11147",
+    "description": "Chard, swiss, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 1.8,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.2,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.03,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 3.74,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1.1,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.6,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 213,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 92.66,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 19
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 36
+    },
+    {
+     "amount": 1,
+     "description": "leaf",
+     "gramWeight": 48
+    }
+   ]
+  },
+  {
+   "id": "rotkvice",
+   "names": {
+    "srLatn": "Rotkvice",
+    "srCyrl": "Ротквице",
+    "aliases": [],
+    "searchKeys": [
+     "rotkvice"
+    ]
+   },
+   "group": "povrce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2747665",
+    "ndb": "100400",
+    "description": "Radishes, red, raw",
+    "published": "2025-12-18"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.65625,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.08313,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 4.05682,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.644,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.314,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 51.16,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 94.68,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [
+    "saturatedFat"
+   ],
+   "fdcEnergy": {
+    "energyAtwaterGeneral": 19.60045
+   },
+   "portions": []
+  },
+  {
+   "id": "jabuka",
+   "names": {
+    "srLatn": "Jabuka",
+    "srCyrl": "Јабука",
+    "aliases": [],
+    "searchKeys": [
+     "jabuka"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "171688",
+    "ndb": "9003",
+    "description": "Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.26,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.17,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.028,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 13.81,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 10.39,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 2.4,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 1,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 85.56,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 52
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup, quartered or chopped",
+     "gramWeight": 125
+    },
+    {
+     "amount": 1,
+     "description": "cup slices",
+     "gramWeight": 109
+    },
+    {
+     "amount": 1,
+     "description": "large (3-1/4\" dia)",
+     "gramWeight": 223
+    },
+    {
+     "amount": 1,
+     "description": "medium (3\" dia)",
+     "gramWeight": 182
+    },
+    {
+     "amount": 1,
+     "description": "small (2-3/4\" dia)",
+     "gramWeight": 149
+    },
+    {
+     "amount": 1,
+     "description": "extra small (2-1/2\" dia)",
+     "gramWeight": 101
+    },
+    {
+     "amount": 1,
+     "description": "NLEA serving",
+     "gramWeight": 242
+    }
+   ]
+  },
+  {
+   "id": "kruska",
+   "names": {
+    "srLatn": "Kruška",
+    "srCyrl": "Крушка",
+    "aliases": [],
+    "searchKeys": [
+     "kruska"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "169118",
+    "ndb": "9252",
+    "description": "Pears, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.36,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.14,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.022,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 15.23,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 9.75,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 3.1,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 1,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 83.96,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 57
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup, slices",
+     "gramWeight": 140
+    },
+    {
+     "amount": 1,
+     "description": "cup, cubes",
+     "gramWeight": 161
+    },
+    {
+     "amount": 1,
+     "description": "small",
+     "gramWeight": 148
+    },
+    {
+     "amount": 1,
+     "description": "medium",
+     "gramWeight": 178
+    },
+    {
+     "amount": 1,
+     "description": "large",
+     "gramWeight": 230
+    },
+    {
+     "amount": 1,
+     "description": "NLEA serving",
+     "gramWeight": 166
+    }
+   ]
+  },
+  {
+   "id": "banana",
+   "names": {
+    "srLatn": "Banana",
+    "srCyrl": "Банана",
+    "aliases": [],
+    "searchKeys": [
+     "banana"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "1105314",
+    "ndb": "9040",
+    "description": "Bananas, ripe and slightly ripe, raw",
+    "published": "2020-04-01"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "173944",
+    "ndb": "9040",
+    "description": "Bananas, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 0.74,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.29,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.112,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 23,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 15.8,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.7,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 75.3,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 88,
+    "energyAtwaterGeneral": 98,
+    "energy": 97
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "Peeled",
+     "gramWeight": 115
+    }
+   ]
+  },
+  {
+   "id": "pomorandza",
+   "names": {
+    "srLatn": "Pomorandža",
+    "srCyrl": "Поморанџа",
+    "aliases": [
+     "narandža"
+    ],
+    "searchKeys": [
+     "pomorandza",
+     "narandza"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "169097",
+    "ndb": "9200",
+    "description": "Oranges, raw, all commercial varieties",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.94,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.12,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.015,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 11.75,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 9.35,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 2.4,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 86.75,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 47
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup, sections",
+     "gramWeight": 180
+    },
+    {
+     "amount": 1,
+     "description": "large (3-1/16\" dia)",
+     "gramWeight": 184
+    },
+    {
+     "amount": 1,
+     "description": "small (2-3/8\" dia)",
+     "gramWeight": 96
+    },
+    {
+     "amount": 1,
+     "description": "fruit (2-5/8\" dia)",
+     "gramWeight": 131
+    }
+   ]
+  },
+  {
+   "id": "mandarina",
+   "names": {
+    "srLatn": "Mandarina",
+    "srCyrl": "Мандарина",
+    "aliases": [],
+    "searchKeys": [
+     "mandarina"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2710832",
+    "ndb": "100358",
+    "description": "Mandarin, seedless, peeled, raw",
+    "published": "2024-10-31"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 1.039375,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.4575,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 13.421825,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 9.116,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.328,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 84.65,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [
+    "saturatedFat"
+   ],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 55.640145,
+    "energyAtwaterGeneral": 61.9623
+   },
+   "portions": []
+  },
+  {
+   "id": "limun-sok",
+   "names": {
+    "srLatn": "Limun (sok)",
+    "srCyrl": "Лимун (сок)",
+    "aliases": [],
+    "searchKeys": [
+     "limun (sok)"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "167747",
+    "ndb": "9152",
+    "description": "Lemon juice, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.35,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.24,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.04,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 6.9,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.52,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0.3,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 1,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 92.31,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 22
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 244
+    },
+    {
+     "amount": 1,
+     "description": "fl oz",
+     "gramWeight": 30.5
+    },
+    {
+     "amount": 1,
+     "description": "lemon yields",
+     "gramWeight": 48
+    },
+    {
+     "amount": 1,
+     "description": "wedge yields",
+     "gramWeight": 5.9
+    }
+   ]
+  },
+  {
+   "id": "jagode",
+   "names": {
+    "srLatn": "Jagode",
+    "srCyrl": "Јагоде",
+    "aliases": [],
+    "searchKeys": [
+     "jagode"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2346409",
+    "ndb": "9316",
+    "description": "Strawberries, raw",
+    "published": "2022-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "167762",
+    "ndb": "9316",
+    "description": "Strawberries, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 0.640625,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.22,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.015,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 7.964375,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 4.862,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 2,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 90.83,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 32.66565,
+    "energyAtwaterGeneral": 36.4
+   },
+   "portions": []
+  },
+  {
+   "id": "maline",
+   "names": {
+    "srLatn": "Maline",
+    "srCyrl": "Малине",
+    "aliases": [],
+    "searchKeys": [
+     "maline"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2346410",
+    "ndb": "9302",
+    "description": "Raspberries, raw",
+    "published": "2022-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "167755",
+    "ndb": "9302",
+    "description": "Raspberries, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 1.008125,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.1875,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.019,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 12.904375,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.6759,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 6.5,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 85.55,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 51.412425,
+    "energyAtwaterGeneral": 57.3375
+   },
+   "portions": []
+  },
+  {
+   "id": "borovnice",
+   "names": {
+    "srLatn": "Borovnice",
+    "srCyrl": "Боровнице",
+    "aliases": [],
+    "searchKeys": [
+     "borovnice"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2346411",
+    "ndb": "9050",
+    "description": "Blueberries, raw",
+    "published": "2022-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "171711",
+    "ndb": "9050",
+    "description": "Blueberries, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 0.703125,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.3063,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.028,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 14.571775,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 9.356,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 2.4,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 84.19,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 57.384621,
+    "energyAtwaterGeneral": 63.8563
+   },
+   "portions": []
+  },
+  {
+   "id": "sljiva",
+   "names": {
+    "srLatn": "Šljiva",
+    "srCyrl": "Шљива",
+    "aliases": [],
+    "searchKeys": [
+     "sljiva"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "169949",
+    "ndb": "9279",
+    "description": "Plums, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.7,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.28,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.017,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 11.42,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 9.92,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.4,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 87.23,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 46
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup, sliced",
+     "gramWeight": 165
+    },
+    {
+     "amount": 1,
+     "description": "fruit (2-1/8\" dia)",
+     "gramWeight": 66
+    },
+    {
+     "amount": 1,
+     "description": "NLEA serving",
+     "gramWeight": 151
+    }
+   ]
+  },
+  {
+   "id": "kajsija",
+   "names": {
+    "srLatn": "Kajsija",
+    "srCyrl": "Кајсија",
+    "aliases": [
+     "marelica"
+    ],
+    "searchKeys": [
+     "kajsija",
+     "marelica"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2710815",
+    "ndb": "9021",
+    "description": "Apricot, with skin, raw",
+    "published": "2024-10-31"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "171697",
+    "ndb": "9021",
+    "description": "Apricots, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 0.96125,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.405,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.027,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 10.23875,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 6.25,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.51,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 87.88,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 43.47915,
+    "energyAtwaterGeneral": 48.445
+   },
+   "portions": []
+  },
+  {
+   "id": "breskva",
+   "names": {
+    "srLatn": "Breskva",
+    "srCyrl": "Бресква",
+    "aliases": [],
+    "searchKeys": [
+     "breskva"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "325430",
+    "ndb": "9236",
+    "description": "Peaches, yellow, raw",
+    "published": "2019-04-01"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169928",
+    "ndb": "9236",
+    "description": "Peaches, yellow, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 0.91,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.27,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.019,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 10.1,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 8.39,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 1.5,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 13,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 88.3,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 42,
+    "energyAtwaterGeneral": 46,
+    "energy": 42
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "slices with skin",
+     "gramWeight": 154
+    },
+    {
+     "amount": 1,
+     "description": "small (2-1/2\" dia)",
+     "gramWeight": 147
+    },
+    {
+     "amount": 1,
+     "description": "medium (2-2/3\" dia)",
+     "gramWeight": 161
+    },
+    {
+     "amount": 1,
+     "description": "large (2-3/4\" dia)",
+     "gramWeight": 173
+    },
+    {
+     "amount": 1,
+     "description": "extra large (3\" dia)",
+     "gramWeight": 225
+    },
+    {
+     "amount": 1,
+     "description": "NLEA",
+     "gramWeight": 147
+    }
+   ]
+  },
+  {
+   "id": "tresnja",
+   "names": {
+    "srLatn": "Trešnja",
+    "srCyrl": "Трешња",
+    "aliases": [],
+    "searchKeys": [
+     "tresnja"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2346399",
+    "ndb": "9070",
+    "description": "Cherries, sweet, dark red, raw",
+    "published": "2022-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "171719",
+    "ndb": "9070",
+    "description": "Cherries, sweet, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 1.039375,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.1925,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.038,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 16.163125,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 13.872,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 2.1,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 82.18,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 63.290775,
+    "energyAtwaterGeneral": 70.5425
+   },
+   "portions": []
+  },
+  {
+   "id": "grozdje",
+   "names": {
+    "srLatn": "Grožđe",
+    "srCyrl": "Грожђе",
+    "aliases": [],
+    "searchKeys": [
+     "grozdje"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "174683",
+    "ndb": "9132",
+    "description": "Grapes, red or green (European type, such as Thompson seedless), raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.72,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.16,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.054,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 18.1,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 15.48,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0.9,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 2,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 80.54,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 69
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 151
+    },
+    {
+     "amount": 10,
+     "description": "grapes",
+     "gramWeight": 49
+    },
+    {
+     "amount": 1,
+     "description": "NLEA serving",
+     "gramWeight": 126
+    }
+   ]
+  },
+  {
+   "id": "kivi",
+   "names": {
+    "srLatn": "Kivi",
+    "srCyrl": "Киви",
+    "aliases": [],
+    "searchKeys": [
+     "kivi"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "327046",
+    "ndb": "9148",
+    "description": "Kiwifruit, green, raw",
+    "published": "2019-04-01"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "168153",
+    "ndb": "9148",
+    "description": "Kiwifruit, green, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 1.06,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.44,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.029,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 14,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 8.99,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 3,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 5,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 83.9,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 58,
+    "energyAtwaterGeneral": 64,
+    "energy": 58
+   },
+   "portions": []
+  },
+  {
+   "id": "lubenica",
+   "names": {
+    "srLatn": "Lubenica",
+    "srCyrl": "Лубеница",
+    "aliases": [],
+    "searchKeys": [
+     "lubenica"
+    ]
+   },
+   "group": "voce",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "167765",
+    "ndb": "9326",
+    "description": "Watermelon, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.61,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.15,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.016,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 7.55,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 6.2,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0.4,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 1,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 91.45,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 30
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup, balls",
+     "gramWeight": 154
+    },
+    {
+     "amount": 1,
+     "description": "cup, diced",
+     "gramWeight": 152
+    },
+    {
+     "amount": 1,
+     "description": "melon (15\" long x 7-1/2\" dia)",
+     "gramWeight": 4518
+    },
+    {
+     "amount": 1,
+     "description": "wedge (approx 1/16 of melon)",
+     "gramWeight": 286
+    },
+    {
+     "amount": 10,
+     "description": "watermelon balls",
+     "gramWeight": 122
+    },
+    {
+     "amount": 1,
+     "description": "NLEA serving",
+     "gramWeight": 280
+    }
+   ],
+   "r1": true
+  },
+  {
+   "id": "piletina-belo",
+   "names": {
+    "srLatn": "Pileće belo meso bez kože",
+    "srCyrl": "Пилеће бело месо без коже",
+    "aliases": [
+     "piletina",
+     "pileći file",
+     "pileće grudi"
+    ],
+    "searchKeys": [
+     "pilece belo meso bez koze",
+     "piletina",
+     "pileci file",
+     "pilece grudi"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "171077",
+    "ndb": "5062",
+    "description": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 22.5,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 2.62,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.563,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 45,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 73.9,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 120
+   },
+   "portions": [
+    {
+     "amount": 4,
+     "description": "oz",
+     "gramWeight": 113
+    },
+    {
+     "amount": 1,
+     "description": "piece",
+     "gramWeight": 272
+    },
+    {
+     "amount": 1,
+     "description": "package",
+     "gramWeight": 926
+    }
+   ],
+   "r1": true
+  },
+  {
+   "id": "piletina-belo-peceno",
+   "names": {
+    "srLatn": "Pileće belo meso bez kože",
+    "srCyrl": "Пилеће бело месо без коже",
+    "aliases": [
+     "piletina",
+     "pileći file",
+     "pileće grudi"
+    ],
+    "searchKeys": [
+     "pilece belo meso bez koze",
+     "piletina",
+     "pileci file",
+     "pilece grudi"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "pečeno",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "171477",
+    "ndb": "5064",
+    "description": "Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 31.02,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 3.57,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 1.01,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 74,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 65.26,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 165
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup, chopped or diced",
+     "gramWeight": 140
+    },
+    {
+     "amount": 1,
+     "description": "unit (yield from 1 lb ready-to-cook chicken)",
+     "gramWeight": 52
+    },
+    {
+     "amount": 0.5,
+     "description": "breast, bone and skin removed",
+     "gramWeight": 86
+    }
+   ]
+  },
+  {
+   "id": "piletina-karabatak",
+   "names": {
+    "srLatn": "Pileći karabatak bez kože",
+    "srCyrl": "Пилећи карабатак без коже",
+    "aliases": [
+     "piletina",
+     "batak"
+    ],
+    "searchKeys": [
+     "pileci karabatak bez koze",
+     "piletina",
+     "batak"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "173627",
+    "ndb": "5096",
+    "description": "Chicken, broilers or fryers, dark meat, thigh, meat only, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 19.66,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 4.12,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 1.097,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 95,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 76.22,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 121
+   },
+   "portions": [
+    {
+     "amount": 4,
+     "description": "oz",
+     "gramWeight": 113
+    },
+    {
+     "amount": 1,
+     "description": "thigh without skin",
+     "gramWeight": 149
+    }
+   ],
+   "r1": true
+  },
+  {
+   "id": "piletina-karabatak-peceno",
+   "names": {
+    "srLatn": "Pileći karabatak bez kože",
+    "srCyrl": "Пилећи карабатак без коже",
+    "aliases": [
+     "piletina",
+     "batak"
+    ],
+    "searchKeys": [
+     "pileci karabatak bez koze",
+     "piletina",
+     "batak"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "pečeno",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "172388",
+    "ndb": "5098",
+    "description": "Chicken, broilers or fryers, thigh, meat only, cooked, roasted",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 24.76,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 8.15,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 2.311,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 106,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 67,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 179
+   },
+   "portions": [
+    {
+     "amount": 3,
+     "description": "oz",
+     "gramWeight": 85
+    },
+    {
+     "amount": 1,
+     "description": "thigh without skin",
+     "gramWeight": 116
+    },
+    {
+     "amount": 1,
+     "description": "thigh with skin",
+     "gramWeight": 137
+    }
+   ]
+  },
+  {
+   "id": "curetina-mlevena",
+   "names": {
+    "srLatn": "Ćureće mleveno meso",
+    "srCyrl": "Ћуреће млевено месо",
+    "aliases": [
+     "ćuretina"
+    ],
+    "searchKeys": [
+     "curece mleveno meso",
+     "curetina"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2514747",
+    "ndb": "5665",
+    "description": "Turkey, ground, 93% lean/ 7% fat, raw",
+    "published": "2023-04-20"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "172850",
+    "ndb": "5665",
+    "description": "Turkey, ground, 93% lean, 7% fat, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 17.34375,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 9.591,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 2.264,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 80.18,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 72.89,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 157.5897,
+    "energyAtwaterGeneral": 152.615
+   },
+   "portions": []
+  },
+  {
+   "id": "junece-mleveno-90",
+   "names": {
+    "srLatn": "Juneće mleveno meso 90/10",
+    "srCyrl": "Јунеће млевено месо 90/10",
+    "aliases": [
+     "mleveno meso",
+     "junetina"
+    ],
+    "searchKeys": [
+     "junece mleveno meso 90/10",
+     "mleveno meso",
+     "junetina"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2514743",
+    "ndb": "23562",
+    "description": "Beef, ground, 90% lean meat / 10% fat, raw",
+    "published": "2023-04-20"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "174030",
+    "ndb": "23562",
+    "description": "Beef, ground, 90% lean meat / 10% fat, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 18.15625,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 12.85,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 5.051,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 61.64,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 69,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 190.134819,
+    "energyAtwaterGeneral": 184.8648
+   },
+   "portions": []
+  },
+  {
+   "id": "junece-mleveno-80",
+   "names": {
+    "srLatn": "Juneće mleveno meso 80/20",
+    "srCyrl": "Јунеће млевено месо 80/20",
+    "aliases": [
+     "mleveno meso",
+     "junetina"
+    ],
+    "searchKeys": [
+     "junece mleveno meso 80/20",
+     "mleveno meso",
+     "junetina"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2514744",
+    "ndb": "23572",
+    "description": "Beef, ground, 80% lean meat / 20% fat, raw",
+    "published": "2023-04-20"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "174036",
+    "ndb": "23572",
+    "description": "Beef, ground, 80% lean meat / 20% fat, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 17.53125,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 19.44,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 6.845,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 54.94,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 62.82,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 247.812675,
+    "energyAtwaterGeneral": 242.61
+   },
+   "portions": []
+  },
+  {
+   "id": "junetina-but",
+   "names": {
+    "srLatn": "Junetina, but",
+    "srCyrl": "Јунетина, бут",
+    "aliases": [
+     "junetina",
+     "govedina"
+    ],
+    "searchKeys": [
+     "junetina, but",
+     "junetina",
+     "govedina"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "171816",
+    "ndb": "23609",
+    "description": "Beef, round, top round, steak, separable lean only, trimmed to 1/8\" fat, all grades, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 22.91,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 4.09,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 1.399,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 61,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 75.02,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 135
+   },
+   "portions": [
+    {
+     "amount": 4,
+     "description": "oz",
+     "gramWeight": 113
+    },
+    {
+     "amount": 1,
+     "description": "lb",
+     "gramWeight": 453.6
+    }
+   ],
+   "r1": true
+  },
+  {
+   "id": "svinjski-file",
+   "names": {
+    "srLatn": "Svinjski file",
+    "srCyrl": "Свињски филе",
+    "aliases": [
+     "svinjetina",
+     "lungić"
+    ],
+    "searchKeys": [
+     "svinjski file",
+     "svinjetina",
+     "lungic"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "168249",
+    "ndb": "10060",
+    "description": "Pork, fresh, loin, tenderloin, separable lean only, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 20.95,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 2.17,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.698,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 53,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 76,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 109
+   },
+   "portions": [
+    {
+     "amount": 4,
+     "description": "oz",
+     "gramWeight": 113
+    },
+    {
+     "amount": 1,
+     "description": "lb",
+     "gramWeight": 453.6
+    },
+    {
+     "amount": 1,
+     "description": "roast",
+     "gramWeight": 505
+    }
+   ],
+   "r1": true
+  },
+  {
+   "id": "svinjska-krmenadla",
+   "names": {
+    "srLatn": "Svinjska krmenadla",
+    "srCyrl": "Свињска крменадла",
+    "aliases": [
+     "svinjetina"
+    ],
+    "searchKeys": [
+     "svinjska krmenadla",
+     "svinjetina"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "168263",
+    "ndb": "10094",
+    "description": "Pork, fresh, loin, center loin (chops), boneless, separable lean only, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 23.75,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 3.09,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.801,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 87,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 72.38,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 123
+   },
+   "portions": [
+    {
+     "amount": 4,
+     "description": "oz",
+     "gramWeight": 113
+    },
+    {
+     "amount": 1,
+     "description": "chop",
+     "gramWeight": 170
+    }
+   ],
+   "note": "Foundation 'Pork, chop, center cut' nije nađen u ovom izdanju; SR center loin (chops), boneless, lean only."
+  },
+  {
+   "id": "svinjsko-mleveno",
+   "names": {
+    "srLatn": "Svinjsko mleveno meso",
+    "srCyrl": "Свињско млевено месо",
+    "aliases": [
+     "mleveno meso",
+     "svinjetina"
+    ],
+    "searchKeys": [
+     "svinjsko mleveno meso",
+     "mleveno meso",
+     "svinjetina"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2514745",
+    "ndb": "10219",
+    "description": "Pork, ground, raw",
+    "published": "2023-04-20"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "167902",
+    "ndb": "10219",
+    "description": "Pork, fresh, ground, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 17.80625,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 17.49,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 6.283,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 53.63,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 63.87,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [
+    "sugars"
+   ],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 233.442059,
+    "energyAtwaterGeneral": 228.2728
+   },
+   "portions": []
+  },
+  {
+   "id": "losos",
+   "names": {
+    "srLatn": "Losos",
+    "srCyrl": "Лосос",
+    "aliases": [],
+    "searchKeys": [
+     "losos"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2684441",
+    "ndb": "15236",
+    "description": "Fish, salmon, Atlantic, farm raised, raw",
+    "published": "2024-04-18"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "175167",
+    "ndb": "15236",
+    "description": "Fish, salmon, Atlantic, farmed, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 20.31875,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 13.11,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 2.277,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 49.49,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 65.84,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 203.10632,
+    "energyAtwaterGeneral": 197.294
+   },
+   "portions": []
+  },
+  {
+   "id": "bakalar",
+   "names": {
+    "srLatn": "Bakalar",
+    "srCyrl": "Бакалар",
+    "aliases": [],
+    "searchKeys": [
+     "bakalar"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "171955",
+    "ndb": "15015",
+    "description": "Fish, cod, Atlantic, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 17.81,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.67,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.131,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 54,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 81.22,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 82
+   },
+   "portions": [
+    {
+     "amount": 3,
+     "description": "oz",
+     "gramWeight": 85
+    },
+    {
+     "amount": 1,
+     "description": "fillet",
+     "gramWeight": 231
+    }
+   ],
+   "r1": true
+  },
+  {
+   "id": "pastrmka",
+   "names": {
+    "srLatn": "Pastrmka",
+    "srCyrl": "Пастрмка",
+    "aliases": [],
+    "searchKeys": [
+     "pastrmka"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "173717",
+    "ndb": "15240",
+    "description": "Fish, trout, rainbow, farmed, raw",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 19.94,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 6.18,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 1.383,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 51,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 73.8,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 141
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "fillet",
+     "gramWeight": 79
+    },
+    {
+     "amount": 3,
+     "description": "oz",
+     "gramWeight": 85
+    }
+   ]
+  },
+  {
+   "id": "tuna-konzerva",
+   "names": {
+    "srLatn": "Tuna u konzervi, u vodi, oceđena",
+    "srCyrl": "Туна у конзерви, у води, оцеђена",
+    "aliases": [
+     "tunjevina"
+    ],
+    "searchKeys": [
+     "tuna u konzervi, u vodi, ocedjena",
+     "tunjevina"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "oceđeno",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "334194",
+    "ndb": "15121",
+    "description": "Fish, tuna, light, canned in water, drained solids",
+    "published": "2019-04-01"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "173709",
+    "ndb": "15121",
+    "description": "Fish, tuna, light, canned in water, drained solids (Includes foods for USDA's Food Distribution Program)"
+   },
+   "values": {
+    "protein": {
+     "value": 19,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.94,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.224,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0.08,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 219,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 79,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 90,
+    "energyAtwaterGeneral": 85,
+    "energy": 90
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "drained solids",
+     "gramWeight": 107
+    },
+    {
+     "amount": 1,
+     "description": "total can contents",
+     "gramWeight": 142
+    }
+   ]
+  },
+  {
+   "id": "jaje",
+   "names": {
+    "srLatn": "Jaje",
+    "srCyrl": "Јаје",
+    "aliases": [
+     "jaja"
+    ],
+    "searchKeys": [
+     "jaje",
+     "jaja"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "748967",
+    "ndb": "1123",
+    "description": "Eggs, Grade A, Large, egg whole",
+    "published": "2019-12-16"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "171287",
+    "ndb": "1123",
+    "description": "Egg, whole, raw, fresh"
+   },
+   "values": {
+    "protein": {
+     "value": 12.4,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 9.96,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 3.2,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0.96,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.2,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 129,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 75.8,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 147,
+    "energyAtwaterGeneral": 143,
+    "energy": 148
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "whole without shell",
+     "gramWeight": 50.3
+    }
+   ]
+  },
+  {
+   "id": "jaje-kuvano",
+   "names": {
+    "srLatn": "Jaje",
+    "srCyrl": "Јаје",
+    "aliases": [
+     "jaja"
+    ],
+    "searchKeys": [
+     "jaje",
+     "jaja"
+    ]
+   },
+   "group": "meso-riba-jaja",
+   "form": "tvrdo kuvano",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "173424",
+    "ndb": "1129",
+    "description": "Egg, whole, cooked, hard-boiled",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 12.58,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 10.61,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 3.267,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 1.12,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1.12,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 124,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 74.62,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 155
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup, chopped",
+     "gramWeight": 136
+    },
+    {
+     "amount": 1,
+     "description": "tbsp",
+     "gramWeight": 8.5
+    },
+    {
+     "amount": 1,
+     "description": "large",
+     "gramWeight": 50
+    }
+   ]
+  },
+  {
+   "id": "grcki-jogurt",
+   "names": {
+    "srLatn": "Grčki jogurt (punomasni)",
+    "srCyrl": "Грчки јогурт (пуномасни)",
+    "aliases": [],
+    "searchKeys": [
+     "grcki jogurt (punomasni)"
+    ]
+   },
+   "group": "mlecni",
+   "form": "",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2259794",
+    "ndb": "1293",
+    "description": "Yogurt, Greek, plain, whole milk",
+    "published": "2022-04-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "171304",
+    "ndb": "1293",
+    "description": "Yogurt, Greek, plain, whole milk"
+   },
+   "values": {
+    "protein": {
+     "value": 8.77888,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 4.394,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 2.393,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 4.75402,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 3.2474,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 33.76,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 81.32,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 94.507135,
+    "energyAtwaterGeneral": 93.6776
+   },
+   "portions": []
+  },
+  {
+   "id": "jogurt-obrani",
+   "names": {
+    "srLatn": "Jogurt, obrani",
+    "srCyrl": "Јогурт, обрани",
+    "aliases": [],
+    "searchKeys": [
+     "jogurt, obrani"
+    ]
+   },
+   "group": "mlecni",
+   "form": "",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "170887",
+    "ndb": "1118",
+    "description": "Yogurt, plain, skim milk",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 5.73,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.18,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0.116,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 7.68,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 7.68,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 77,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 85.23,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 56
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "container (6 oz)",
+     "gramWeight": 170
+    },
+    {
+     "amount": 1,
+     "description": "container (8 oz)",
+     "gramWeight": 227
+    },
+    {
+     "amount": 1,
+     "description": "cup (8 fl oz)",
+     "gramWeight": 245
+    }
+   ],
+   "r1": true
+  },
+  {
+   "id": "feta",
+   "names": {
+    "srLatn": "Feta sir",
+    "srCyrl": "Фета сир",
+    "aliases": [],
+    "searchKeys": [
+     "feta sir"
+    ]
+   },
+   "group": "mlecni",
+   "form": "",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2259796",
+    "ndb": "1019",
+    "description": "Cheese, feta, whole milk, crumbled",
+    "published": "2022-04-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "173420",
+    "ndb": "1019",
+    "description": "Cheese, feta"
+   },
+   "values": {
+    "protein": {
+     "value": 19.70782,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 19.08,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 11.17,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 5.58318,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1.6257,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 1034,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 51.89,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 273.472498,
+    "energyAtwaterGeneral": 272.884
+   },
+   "portions": []
+  },
+  {
+   "id": "maslac",
+   "names": {
+    "srLatn": "Maslac",
+    "srCyrl": "Маслац",
+    "aliases": [
+     "puter"
+    ],
+    "searchKeys": [
+     "maslac",
+     "puter"
+    ]
+   },
+   "group": "mlecni",
+   "form": "",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "173430",
+    "ndb": "1145",
+    "description": "Butter, without salt",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.85,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 81.11,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 50.489,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0.06,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.06,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 11,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 16.17,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 717
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "pat (1\" sq, 1/3\" high)",
+     "gramWeight": 5
+    },
+    {
+     "amount": 1,
+     "description": "tbsp",
+     "gramWeight": 14.2
+    },
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 227
+    },
+    {
+     "amount": 1,
+     "description": "stick",
+     "gramWeight": 113
+    }
+   ]
+  },
+  {
+   "id": "parmezan",
+   "names": {
+    "srLatn": "Parmezan",
+    "srCyrl": "Пармезан",
+    "aliases": [],
+    "searchKeys": [
+     "parmezan"
+    ]
+   },
+   "group": "mlecni",
+   "form": "",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "325036",
+    "ndb": "1032",
+    "description": "Cheese, parmesan, grated",
+    "published": "2019-04-01"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "171247",
+    "ndb": "1032",
+    "description": "Cheese, parmesan, grated"
+   },
+   "values": {
+    "protein": {
+     "value": 29.6,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 28,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 15.5,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 12.4,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0.07,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 1750,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 22.8,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 420,
+    "energyAtwaterGeneral": 420,
+    "energy": 421
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "",
+     "gramWeight": 7.6
+    }
+   ]
+  },
+  {
+   "id": "mocarela",
+   "names": {
+    "srLatn": "Mocarela",
+    "srCyrl": "Моцарела",
+    "aliases": [],
+    "searchKeys": [
+     "mocarela"
+    ]
+   },
+   "group": "mlecni",
+   "form": "",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "170845",
+    "ndb": "1026",
+    "description": "Cheese, mozzarella, whole milk",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 22.17,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 22.14,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 13.9,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 2.4,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 486,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 50.01,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 299
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup, shredded",
+     "gramWeight": 112
+    },
+    {
+     "amount": 1,
+     "description": "oz",
+     "gramWeight": 28.35
+    },
+    {
+     "amount": 6,
+     "description": "slices",
+     "gramWeight": 170
+    }
+   ]
+  },
+  {
+   "id": "gauda",
+   "names": {
+    "srLatn": "Gauda",
+    "srCyrl": "Гауда",
+    "aliases": [],
+    "searchKeys": [
+     "gauda"
+    ]
+   },
+   "group": "mlecni",
+   "form": "",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "171241",
+    "ndb": "1022",
+    "description": "Cheese, gouda",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 24.94,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 27.44,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 17.614,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 2.22,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.22,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 819,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 41.46,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 356
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "oz",
+     "gramWeight": 28.35
+    },
+    {
+     "amount": 1,
+     "description": "package (7 oz)",
+     "gramWeight": 198
+    }
+   ]
+  },
+  {
+   "id": "ulje-suncokretovo",
+   "names": {
+    "srLatn": "Suncokretovo ulje",
+    "srCyrl": "Сунцокретово уље",
+    "aliases": [
+     "ulje"
+    ],
+    "searchKeys": [
+     "suncokretovo ulje",
+     "ulje"
+    ]
+   },
+   "group": "masti-orasasto",
+   "form": "",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "171025",
+    "ndb": "4506",
+    "description": "Oil, sunflower, linoleic, (approx. 65%)",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 100,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 10.3,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 0,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 884
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "tbsp",
+     "gramWeight": 13.6
+    },
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 218
+    },
+    {
+     "amount": 1,
+     "description": "tsp",
+     "gramWeight": 4.5
+    }
+   ],
+   "r1": true
+  },
+  {
+   "id": "ulje-maslinovo",
+   "names": {
+    "srLatn": "Maslinovo ulje",
+    "srCyrl": "Маслиново уље",
+    "aliases": [],
+    "searchKeys": [
+     "maslinovo ulje"
+    ]
+   },
+   "group": "masti-orasasto",
+   "form": "",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "171413",
+    "ndb": "4053",
+    "description": "Oil, olive, salad or cooking",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 100,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 13.808,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 0,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 0,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 2,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 0,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 884
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "tablespoon",
+     "gramWeight": 13.5
+    },
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 216
+    },
+    {
+     "amount": 1,
+     "description": "tsp",
+     "gramWeight": 4.5
+    }
+   ]
+  },
+  {
+   "id": "orasi",
+   "names": {
+    "srLatn": "Orasi",
+    "srCyrl": "Ораси",
+    "aliases": [
+     "orah"
+    ],
+    "searchKeys": [
+     "orasi",
+     "orah"
+    ]
+   },
+   "group": "masti-orasasto",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2346394",
+    "ndb": "12155",
+    "description": "Nuts, walnuts, English, halves, raw",
+    "published": "2022-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "170187",
+    "ndb": "12155",
+    "description": "Nuts, walnuts, english"
+   },
+   "values": {
+    "protein": {
+     "value": 14.5644,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 69.74,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 6.054,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 10.9096,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.61,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 5.21,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 3.145,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 678.66434,
+    "energyAtwaterGeneral": 729.556
+   },
+   "portions": []
+  },
+  {
+   "id": "bademi",
+   "names": {
+    "srLatn": "Bademi",
+    "srCyrl": "Бадеми",
+    "aliases": [
+     "badem"
+    ],
+    "searchKeys": [
+     "bademi",
+     "badem"
+    ]
+   },
+   "group": "masti-orasasto",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2346393",
+    "ndb": "12061",
+    "description": "Nuts, almonds, whole, raw",
+    "published": "2022-10-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "170567",
+    "ndb": "12061",
+    "description": "Nuts, almonds"
+   },
+   "values": {
+    "protein": {
+     "value": 21.45038,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 51.09,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 3.785,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 20.03462,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 4.35,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 10.78,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 4.261,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 583.597022,
+    "energyAtwaterGeneral": 625.75
+   },
+   "portions": []
+  },
+  {
+   "id": "lesnici",
+   "names": {
+    "srLatn": "Lešnici",
+    "srCyrl": "Лешници",
+    "aliases": [
+     "lešnik"
+    ],
+    "searchKeys": [
+     "lesnici",
+     "lesnik"
+    ]
+   },
+   "group": "masti-orasasto",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2515375",
+    "ndb": "12120",
+    "description": "Nuts, hazelnuts or filberts, raw",
+    "published": "2023-04-20"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "170581",
+    "ndb": "12120",
+    "description": "Nuts, hazelnuts or filberts"
+   },
+   "values": {
+    "protein": {
+     "value": 13.4938,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 53.49,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 4.464,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 26.5012,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 4.34,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 8.41,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 4.309,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 602.39467,
+    "energyAtwaterGeneral": 641.39
+   },
+   "portions": []
+  },
+  {
+   "id": "kikiriki",
+   "names": {
+    "srLatn": "Kikiriki",
+    "srCyrl": "Кикирики",
+    "aliases": [],
+    "searchKeys": [
+     "kikiriki"
+    ]
+   },
+   "group": "masti-orasasto",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2515376",
+    "ndb": "16087",
+    "description": "Peanuts, raw",
+    "published": "2023-04-20"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "172430",
+    "ndb": "16087",
+    "description": "Peanuts, all types, raw"
+   },
+   "values": {
+    "protein": {
+     "value": 23.205,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 43.28,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 6.279,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 26.498,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 4.72,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 8.014,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 1.493,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 4.816,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 550.62181,
+    "energyAtwaterGeneral": 588.332
+   },
+   "portions": []
+  },
+  {
+   "id": "kikiriki-puter",
+   "names": {
+    "srLatn": "Kikiriki puter",
+    "srCyrl": "Кикирики путер",
+    "aliases": [],
+    "searchKeys": [
+     "kikiriki puter"
+    ]
+   },
+   "group": "masti-orasasto",
+   "form": "",
+   "mapping": "BLISKO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "324860",
+    "ndb": null,
+    "description": "Peanut butter, smooth style, with salt",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 22.5,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 51.1,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 10.1,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 22.3,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 10.5,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 4.8,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 429,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 1.18,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 597,
+    "energyAtwaterGeneral": 639,
+    "energy": 597
+   },
+   "portions": [
+    {
+     "amount": 2,
+     "description": "",
+     "gramWeight": 32
+    },
+    {
+     "amount": 1,
+     "description": "",
+     "gramWeight": 258
+    }
+   ]
+  },
+  {
+   "id": "semenke-suncokret",
+   "names": {
+    "srLatn": "Semenke suncokreta",
+    "srCyrl": "Семенке сунцокрета",
+    "aliases": [
+     "semenke"
+    ],
+    "searchKeys": [
+     "semenke suncokreta",
+     "semenke"
+    ]
+   },
+   "group": "masti-orasasto",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2515381",
+    "ndb": "12036",
+    "description": "Seeds, sunflower seed, kernel, raw",
+    "published": "2023-04-20"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "170562",
+    "ndb": "12036",
+    "description": "Seeds, sunflower seed kernels, dried"
+   },
+   "values": {
+    "protein": {
+     "value": 18.8733,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 48.44,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 4.455,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 24.5007,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 2.62,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 7.215,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 4.873,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 570.651,
+    "energyAtwaterGeneral": 609.456
+   },
+   "portions": []
+  },
+  {
+   "id": "semenke-bundeva",
+   "names": {
+    "srLatn": "Semenke bundeve",
+    "srCyrl": "Семенке бундеве",
+    "aliases": [
+     "bučine semenke"
+    ],
+    "searchKeys": [
+     "semenke bundeve",
+     "bucine semenke"
+    ]
+   },
+   "group": "masti-orasasto",
+   "form": "sirovo",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2515380",
+    "ndb": "12014",
+    "description": "Seeds, pumpkin seeds (pepitas), raw",
+    "published": "2023-04-20"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "170556",
+    "ndb": "12014",
+    "description": "Seeds, pumpkin and squash seed kernels, dried"
+   },
+   "values": {
+    "protein": {
+     "value": 29.9079,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 40.03,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 8.659,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 18.6751,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1.4,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 5.079,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 0,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 6.621,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 514.83917,
+    "energyAtwaterGeneral": 554.602
+   },
+   "portions": []
+  },
+  {
+   "id": "laneno-seme",
+   "names": {
+    "srLatn": "Laneno seme, mleveno",
+    "srCyrl": "Ланено семе, млевено",
+    "aliases": [],
+    "searchKeys": [
+     "laneno seme, mleveno"
+    ]
+   },
+   "group": "masti-orasasto",
+   "form": "",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "2262075",
+    "ndb": "12220",
+    "description": "Flaxseed, ground",
+    "published": "2022-04-28"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169414",
+    "ndb": "12220",
+    "description": "Seeds, flaxseed"
+   },
+   "values": {
+    "protein": {
+     "value": 18.0359,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 37.28,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 3.281,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 34.3551,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1.55,
+     "nutrientId": "2000",
+     "origin": "SR_FILL"
+    },
+    "fiber": {
+     "value": 23.13,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 36.74,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 6.804,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 514.44343,
+    "energyAtwaterGeneral": 545.084
+   },
+   "portions": []
+  },
+  {
+   "id": "med",
+   "names": {
+    "srLatn": "Med",
+    "srCyrl": "Мед",
+    "aliases": [],
+    "searchKeys": [
+     "med"
+    ]
+   },
+   "group": "ostalo",
+   "form": "",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "169640",
+    "ndb": "19296",
+    "description": "Honey",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 0.3,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 82.4,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 82.12,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0.2,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 4,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 17.1,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 304
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 339
+    },
+    {
+     "amount": 1,
+     "description": "tbsp",
+     "gramWeight": 21
+    },
+    {
+     "amount": 1,
+     "description": "packet (0.5 oz)",
+     "gramWeight": 14
+    }
+   ]
+  },
+  {
+   "id": "secer",
+   "names": {
+    "srLatn": "Šećer (beli)",
+    "srCyrl": "Шећер (бели)",
+    "aliases": [],
+    "searchKeys": [
+     "secer (beli)"
+    ]
+   },
+   "group": "ostalo",
+   "form": "",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "foundation",
+    "fdcId": "746784",
+    "ndb": "19335",
+    "description": "Sugars, granulated",
+    "published": "2019-12-16"
+   },
+   "fill": {
+    "dataset": "srLegacy",
+    "fdcId": "169655",
+    "ndb": "19335",
+    "description": "Sugars, granulated"
+   },
+   "values": {
+    "protein": {
+     "value": 0,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 0.32,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 0,
+     "nutrientId": "1258",
+     "origin": "SR_FILL"
+    },
+    "carbohydrateByDifference": {
+     "value": 99.6,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 99.8,
+     "nutrientId": "1063",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 0,
+     "nutrientId": "1079",
+     "origin": "SR_FILL"
+    },
+    "sodium": {
+     "value": 1,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 0.02,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energyAtwaterSpecific": 385,
+    "energyAtwaterGeneral": 401,
+    "energy": 385
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "",
+     "gramWeight": 4
+    },
+    {
+     "amount": 1,
+     "description": "",
+     "gramWeight": 188
+    }
+   ]
+  },
+  {
+   "id": "kakao",
+   "names": {
+    "srLatn": "Kakao prah",
+    "srCyrl": "Какао прах",
+    "aliases": [],
+    "searchKeys": [
+     "kakao prah"
+    ]
+   },
+   "group": "ostalo",
+   "form": "",
+   "mapping": "TACNO",
+   "source": {
+    "dataset": "srLegacy",
+    "fdcId": "169593",
+    "ndb": "19165",
+    "description": "Cocoa, dry powder, unsweetened",
+    "published": "2019-04-01"
+   },
+   "fill": null,
+   "values": {
+    "protein": {
+     "value": 19.6,
+     "nutrientId": "1003",
+     "origin": "PRIMARY"
+    },
+    "fat": {
+     "value": 13.7,
+     "nutrientId": "1004",
+     "origin": "PRIMARY"
+    },
+    "saturatedFat": {
+     "value": 8.07,
+     "nutrientId": "1258",
+     "origin": "PRIMARY"
+    },
+    "carbohydrateByDifference": {
+     "value": 57.9,
+     "nutrientId": "1005",
+     "origin": "PRIMARY"
+    },
+    "sugars": {
+     "value": 1.75,
+     "nutrientId": "2000",
+     "origin": "PRIMARY"
+    },
+    "fiber": {
+     "value": 37,
+     "nutrientId": "1079",
+     "origin": "PRIMARY"
+    },
+    "sodium": {
+     "value": 21,
+     "nutrientId": "1093",
+     "origin": "PRIMARY"
+    },
+    "water": {
+     "value": 3,
+     "nutrientId": "1051",
+     "origin": "PRIMARY"
+    }
+   },
+   "missing": [],
+   "fdcEnergy": {
+    "energy": 228
+   },
+   "portions": [
+    {
+     "amount": 1,
+     "description": "cup",
+     "gramWeight": 86
+    },
+    {
+     "amount": 1,
+     "description": "tbsp",
+     "gramWeight": 5.4
+    }
+   ]
+  }
+ ]
+}
