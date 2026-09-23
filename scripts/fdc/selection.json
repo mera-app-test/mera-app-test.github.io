@@ -1,0 +1,1493 @@
+{
+ "version": "1.0.0",
+ "items": [
+  {
+   "id": "ovsene-pahuljice",
+   "srLatn": "Ovsene pahuljice",
+   "form": "suvo",
+   "group": "zitarice",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346396"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "ovas",
+    "zobene pahuljice"
+   ],
+   "note": ""
+  },
+  {
+   "id": "pirinac-beli",
+   "srLatn": "Pirinač beli",
+   "form": "sirovo",
+   "group": "zitarice",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2512381"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "riža"
+   ],
+   "note": ""
+  },
+  {
+   "id": "pirinac-beli-kuvan",
+   "srLatn": "Pirinač beli",
+   "form": "kuvano",
+   "group": "zitarice",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "169757"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "riža"
+   ],
+   "note": ""
+  },
+  {
+   "id": "pirinac-integralni",
+   "srLatn": "Pirinač integralni",
+   "form": "sirovo",
+   "group": "zitarice",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2512380"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "smeđi pirinač"
+   ],
+   "note": ""
+  },
+  {
+   "id": "heljda",
+   "srLatn": "Heljda",
+   "form": "suvo",
+   "group": "zitarice",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2512378"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "proso",
+   "srLatn": "Proso",
+   "form": "suvo",
+   "group": "zitarice",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2512379"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "bulgur",
+   "srLatn": "Bulgur",
+   "form": "suvo",
+   "group": "zitarice",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2710820"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "testenina",
+   "srLatn": "Testenina",
+   "form": "suvo",
+   "group": "zitarice",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "168927"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "pasta",
+    "makarone",
+    "špagete"
+   ],
+   "note": "Foundation zapis je obogaćeni špagete bez makronutrijenata; uzet SR neobogaćena testenina."
+  },
+  {
+   "id": "testenina-kuvana",
+   "srLatn": "Testenina",
+   "form": "kuvano",
+   "group": "zitarice",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "168928"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "pasta",
+    "makarone",
+    "špagete"
+   ],
+   "note": ""
+  },
+  {
+   "id": "brasno-psenicno",
+   "srLatn": "Pšenično brašno, belo",
+   "form": "suvo",
+   "group": "zitarice",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "169761"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [
+    "brašno T-400",
+    "brašno T-500"
+   ],
+   "note": ""
+  },
+  {
+   "id": "brasno-razano",
+   "srLatn": "Ražano brašno",
+   "form": "suvo",
+   "group": "zitarice",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2512375"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "kukuruzno-brasno",
+   "srLatn": "Kukuruzno brašno (palenta)",
+   "form": "suvo",
+   "group": "zitarice",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "168929"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [
+    "palenta",
+    "kačamak"
+   ],
+   "note": ""
+  },
+  {
+   "id": "pasulj-beli",
+   "srLatn": "Pasulj beli",
+   "form": "suvo",
+   "group": "mahunarke",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "175202"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "grah"
+   ],
+   "note": ""
+  },
+  {
+   "id": "pasulj-beli-kuvan",
+   "srLatn": "Pasulj beli",
+   "form": "kuvano",
+   "group": "mahunarke",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "175203"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "grah"
+   ],
+   "note": ""
+  },
+  {
+   "id": "sociva",
+   "srLatn": "Sočivo",
+   "form": "suvo",
+   "group": "mahunarke",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2644283"
+   },
+   "alternativeR1": {
+    "dataset": "srLegacy",
+    "fdcId": "172420"
+   },
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "sociva-kuvano",
+   "srLatn": "Sočivo",
+   "form": "kuvano",
+   "group": "mahunarke",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "172421"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "leblebija",
+   "srLatn": "Leblebija (slanutak)",
+   "form": "suvo",
+   "group": "mahunarke",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2644282"
+   },
+   "alternativeR1": {
+    "dataset": "srLegacy",
+    "fdcId": "173756"
+   },
+   "mapping": "TACNO",
+   "aliases": [
+    "slanutak",
+    "naut"
+   ],
+   "note": ""
+  },
+  {
+   "id": "leblebija-kuvana",
+   "srLatn": "Leblebija (slanutak)",
+   "form": "kuvano",
+   "group": "mahunarke",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "173757"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "slanutak",
+    "naut"
+   ],
+   "note": ""
+  },
+  {
+   "id": "grasak",
+   "srLatn": "Grašak",
+   "form": "smrznuto",
+   "group": "mahunarke",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "170016"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "krompir",
+   "srLatn": "Krompir",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346403"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [
+    "krumpir"
+   ],
+   "note": "Foundation 'gold' (žuti) krompir; nema SR para bez ljuske."
+  },
+  {
+   "id": "krompir-kuvan",
+   "srLatn": "Krompir",
+   "form": "kuvano",
+   "group": "povrce",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "170440"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [
+    "krumpir"
+   ],
+   "note": ""
+  },
+  {
+   "id": "paradajz",
+   "srLatn": "Paradajz",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "170457"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "rajčica"
+   ],
+   "note": ""
+  },
+  {
+   "id": "krastavac",
+   "srLatn": "Krastavac",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346406"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "paprika-crvena",
+   "srLatn": "Paprika crvena",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2258590"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "paprika-zelena",
+   "srLatn": "Paprika zelena",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2258588"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "paprika-zuta",
+   "srLatn": "Paprika žuta",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2258589"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "luk-crni",
+   "srLatn": "Crni luk",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "790646"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "luk"
+   ],
+   "note": ""
+  },
+  {
+   "id": "beli-luk",
+   "srLatn": "Beli luk",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "1104647"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "češnjak"
+   ],
+   "note": ""
+  },
+  {
+   "id": "sargarepa",
+   "srLatn": "Šargarepa",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2258586"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "mrkva"
+   ],
+   "note": ""
+  },
+  {
+   "id": "kupus-beli",
+   "srLatn": "Kupus beli",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346407"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "kupus-crveni",
+   "srLatn": "Kupus crveni",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346408"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "zelena-salata",
+   "srLatn": "Zelena salata",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346391"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "spanac",
+   "srLatn": "Spanać",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "1999633"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "boranija",
+   "srLatn": "Boranija",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346400"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "mahune"
+   ],
+   "note": ""
+  },
+  {
+   "id": "tikvica",
+   "srLatn": "Tikvica",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2685568"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "patlidzan",
+   "srLatn": "Plavi patlidžan",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2685577"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "patlidžan"
+   ],
+   "note": ""
+  },
+  {
+   "id": "karfiol",
+   "srLatn": "Karfiol",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2685573"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "brokoli",
+   "srLatn": "Brokoli",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "747447"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "sampinjoni",
+   "srLatn": "Šampinjoni",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "1999629"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "pečurke",
+    "gljive"
+   ],
+   "note": ""
+  },
+  {
+   "id": "cvekla",
+   "srLatn": "Cvekla",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2685576"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "cikla"
+   ],
+   "note": ""
+  },
+  {
+   "id": "praziluk",
+   "srLatn": "Praziluk",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2727584"
+   },
+   "alternativeR1": {
+    "dataset": "srLegacy",
+    "fdcId": "169246"
+   },
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "blitva",
+   "srLatn": "Blitva",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "169991"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "rotkvice",
+   "srLatn": "Rotkvice",
+   "form": "sirovo",
+   "group": "povrce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2747665"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "jabuka",
+   "srLatn": "Jabuka",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "171688"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "kruska",
+   "srLatn": "Kruška",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "169118"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "banana",
+   "srLatn": "Banana",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "1105314"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "pomorandza",
+   "srLatn": "Pomorandža",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "169097"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "narandža"
+   ],
+   "note": ""
+  },
+  {
+   "id": "mandarina",
+   "srLatn": "Mandarina",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2710832"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "limun-sok",
+   "srLatn": "Limun (sok)",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "167747"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "jagode",
+   "srLatn": "Jagode",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346409"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "maline",
+   "srLatn": "Maline",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346410"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "borovnice",
+   "srLatn": "Borovnice",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346411"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "sljiva",
+   "srLatn": "Šljiva",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "169949"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "kajsija",
+   "srLatn": "Kajsija",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2710815"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "marelica"
+   ],
+   "note": ""
+  },
+  {
+   "id": "breskva",
+   "srLatn": "Breskva",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "325430"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "tresnja",
+   "srLatn": "Trešnja",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346399"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "grozdje",
+   "srLatn": "Grožđe",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "174683"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "kivi",
+   "srLatn": "Kivi",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "327046"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "lubenica",
+   "srLatn": "Lubenica",
+   "form": "sirovo",
+   "group": "voce",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2747675"
+   },
+   "alternativeR1": {
+    "dataset": "srLegacy",
+    "fdcId": "167765"
+   },
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "piletina-belo",
+   "srLatn": "Pileće belo meso bez kože",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2646170"
+   },
+   "alternativeR1": {
+    "dataset": "srLegacy",
+    "fdcId": "171077"
+   },
+   "mapping": "TACNO",
+   "aliases": [
+    "piletina",
+    "pileći file",
+    "pileće grudi"
+   ],
+   "note": ""
+  },
+  {
+   "id": "piletina-belo-peceno",
+   "srLatn": "Pileće belo meso bez kože",
+   "form": "pečeno",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "171477"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "piletina",
+    "pileći file",
+    "pileće grudi"
+   ],
+   "note": ""
+  },
+  {
+   "id": "piletina-karabatak",
+   "srLatn": "Pileći karabatak bez kože",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2646171"
+   },
+   "alternativeR1": {
+    "dataset": "srLegacy",
+    "fdcId": "173627"
+   },
+   "mapping": "TACNO",
+   "aliases": [
+    "piletina",
+    "batak"
+   ],
+   "note": ""
+  },
+  {
+   "id": "piletina-karabatak-peceno",
+   "srLatn": "Pileći karabatak bez kože",
+   "form": "pečeno",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "172388"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "piletina",
+    "batak"
+   ],
+   "note": ""
+  },
+  {
+   "id": "curetina-mlevena",
+   "srLatn": "Ćureće mleveno meso",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2514747"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [
+    "ćuretina"
+   ],
+   "note": ""
+  },
+  {
+   "id": "junece-mleveno-90",
+   "srLatn": "Juneće mleveno meso 90/10",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2514743"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [
+    "mleveno meso",
+    "junetina"
+   ],
+   "note": ""
+  },
+  {
+   "id": "junece-mleveno-80",
+   "srLatn": "Juneće mleveno meso 80/20",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2514744"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [
+    "mleveno meso",
+    "junetina"
+   ],
+   "note": ""
+  },
+  {
+   "id": "junetina-but",
+   "srLatn": "Junetina, but",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2646173"
+   },
+   "alternativeR1": {
+    "dataset": "srLegacy",
+    "fdcId": "171816"
+   },
+   "mapping": "BLISKO",
+   "aliases": [
+    "junetina",
+    "govedina"
+   ],
+   "note": ""
+  },
+  {
+   "id": "svinjski-file",
+   "srLatn": "Svinjski file",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2646169"
+   },
+   "alternativeR1": {
+    "dataset": "srLegacy",
+    "fdcId": "168249"
+   },
+   "mapping": "TACNO",
+   "aliases": [
+    "svinjetina",
+    "lungić"
+   ],
+   "note": ""
+  },
+  {
+   "id": "svinjska-krmenadla",
+   "srLatn": "Svinjska krmenadla",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "168263"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [
+    "svinjetina"
+   ],
+   "note": "Foundation 'Pork, chop, center cut' nije nađen u ovom izdanju; SR center loin (chops), boneless, lean only."
+  },
+  {
+   "id": "svinjsko-mleveno",
+   "srLatn": "Svinjsko mleveno meso",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2514745"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [
+    "mleveno meso",
+    "svinjetina"
+   ],
+   "note": ""
+  },
+  {
+   "id": "losos",
+   "srLatn": "Losos",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2684441"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "bakalar",
+   "srLatn": "Bakalar",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2684444"
+   },
+   "alternativeR1": {
+    "dataset": "srLegacy",
+    "fdcId": "171955"
+   },
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "pastrmka",
+   "srLatn": "Pastrmka",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "173717"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "tuna-konzerva",
+   "srLatn": "Tuna u konzervi, u vodi, oceđena",
+   "form": "oceđeno",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "334194"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [
+    "tunjevina"
+   ],
+   "note": ""
+  },
+  {
+   "id": "jaje",
+   "srLatn": "Jaje",
+   "form": "sirovo",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "748967"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "jaja"
+   ],
+   "note": ""
+  },
+  {
+   "id": "jaje-kuvano",
+   "srLatn": "Jaje",
+   "form": "tvrdo kuvano",
+   "group": "meso-riba-jaja",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "173424"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "jaja"
+   ],
+   "note": ""
+  },
+  {
+   "id": "grcki-jogurt",
+   "srLatn": "Grčki jogurt (punomasni)",
+   "form": "",
+   "group": "mlecni",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2259794"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "jogurt-obrani",
+   "srLatn": "Jogurt, obrani",
+   "form": "",
+   "group": "mlecni",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2647437"
+   },
+   "alternativeR1": {
+    "dataset": "srLegacy",
+    "fdcId": "170887"
+   },
+   "mapping": "BLISKO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "feta",
+   "srLatn": "Feta sir",
+   "form": "",
+   "group": "mlecni",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2259796"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "maslac",
+   "srLatn": "Maslac",
+   "form": "",
+   "group": "mlecni",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "173430"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "puter"
+   ],
+   "note": ""
+  },
+  {
+   "id": "parmezan",
+   "srLatn": "Parmezan",
+   "form": "",
+   "group": "mlecni",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "325036"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "mocarela",
+   "srLatn": "Mocarela",
+   "form": "",
+   "group": "mlecni",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "170845"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "gauda",
+   "srLatn": "Gauda",
+   "form": "",
+   "group": "mlecni",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "171241"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "ulje-suncokretovo",
+   "srLatn": "Suncokretovo ulje",
+   "form": "",
+   "group": "masti-orasasto",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "1750349"
+   },
+   "alternativeR1": {
+    "dataset": "srLegacy",
+    "fdcId": "171025"
+   },
+   "mapping": "TACNO",
+   "aliases": [
+    "ulje"
+   ],
+   "note": ""
+  },
+  {
+   "id": "ulje-maslinovo",
+   "srLatn": "Maslinovo ulje",
+   "form": "",
+   "group": "masti-orasasto",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "171413"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "orasi",
+   "srLatn": "Orasi",
+   "form": "sirovo",
+   "group": "masti-orasasto",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346394"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "orah"
+   ],
+   "note": ""
+  },
+  {
+   "id": "bademi",
+   "srLatn": "Bademi",
+   "form": "sirovo",
+   "group": "masti-orasasto",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2346393"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "badem"
+   ],
+   "note": ""
+  },
+  {
+   "id": "lesnici",
+   "srLatn": "Lešnici",
+   "form": "sirovo",
+   "group": "masti-orasasto",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2515375"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "lešnik"
+   ],
+   "note": ""
+  },
+  {
+   "id": "kikiriki",
+   "srLatn": "Kikiriki",
+   "form": "sirovo",
+   "group": "masti-orasasto",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2515376"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "kikiriki-puter",
+   "srLatn": "Kikiriki puter",
+   "form": "",
+   "group": "masti-orasasto",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "324860"
+   },
+   "alternativeR1": null,
+   "mapping": "BLISKO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "semenke-suncokret",
+   "srLatn": "Semenke suncokreta",
+   "form": "sirovo",
+   "group": "masti-orasasto",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2515381"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "semenke"
+   ],
+   "note": ""
+  },
+  {
+   "id": "semenke-bundeva",
+   "srLatn": "Semenke bundeve",
+   "form": "sirovo",
+   "group": "masti-orasasto",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2515380"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [
+    "bučine semenke"
+   ],
+   "note": ""
+  },
+  {
+   "id": "laneno-seme",
+   "srLatn": "Laneno seme, mleveno",
+   "form": "",
+   "group": "masti-orasasto",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "2262075"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "med",
+   "srLatn": "Med",
+   "form": "",
+   "group": "ostalo",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "169640"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "secer",
+   "srLatn": "Šećer (beli)",
+   "form": "",
+   "group": "ostalo",
+   "primary": {
+    "dataset": "foundation",
+    "fdcId": "746784"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  },
+  {
+   "id": "kakao",
+   "srLatn": "Kakao prah",
+   "form": "",
+   "group": "ostalo",
+   "primary": {
+    "dataset": "srLegacy",
+    "fdcId": "169593"
+   },
+   "alternativeR1": null,
+   "mapping": "TACNO",
+   "aliases": [],
+   "note": ""
+  }
+ ]
+}
