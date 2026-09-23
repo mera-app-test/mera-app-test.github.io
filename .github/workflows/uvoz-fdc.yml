@@ -1,0 +1,42 @@
+# Uvoz referentnih podataka iz USDA FoodData Central (NUTRITION_ENGINE.md N6, DECISIONS/0008).
+# Pokreće se guranjem na granu uvoz/zahtev; fajl scripts/fdc/faza sadrži fazu (kandidati | uvoz).
+# Rezultat se upisuje na granu uvoz/rezultat. U aplikaciju ulazi tek posle odobrenja vlasnika.
+name: Uvoz FDC
+
+on:
+  push:
+    branches: ['uvoz/zahtev']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: 'uvoz-fdc'
+  cancel-in-progress: false
+
+jobs:
+  uvoz:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 22
+      - name: Uvoz
+        run: node --max-old-space-size=6144 scripts/fdc/run.mjs "$(cat scripts/fdc/faza)" /tmp/izlaz
+      - name: Upis rezultata na granu uvoz/rezultat
+        if: always()
+        run: |
+          mkdir -p /tmp/izlaz
+          git config user.name "Mera uvoz"
+          git config user.email "uvoz@mera.invalid"
+          git fetch origin uvoz/rezultat || true
+          git switch --orphan uvoz-rezultat-tmp
+          git rm -rf --quiet . || true
+          cp -r /tmp/izlaz/. .
+          echo "run: ${{ github.run_id }} · commit zahteva: ${{ github.sha }}" > POKRETANJE.txt
+          git add -A
+          git commit -m "Uvoz FDC: $(cat POKRETANJE.txt)"
+          git push -f origin HEAD:refs/heads/uvoz/rezultat
