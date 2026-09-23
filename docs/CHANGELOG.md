@@ -44,3 +44,8 @@
 - Prikaz trenda na kartici „Masa" i ekranu „Masa", sa „≈" (MS §30); kad nema dovoljno podataka piše koliko merenja nedostaje.
 - T5: vrednost ispod 30 ili iznad 300 kg traži potvrdu („Ispravi" / „Da, sačuvaj").
 - Testovi: 88 (+14: zlatni slučajevi trenda sa ručnim proračunom, property testovi, T5 kroz use case).
+
+## Predlog koraka 4 (samo dokumentacija, bez promene aplikacije)
+- NUTRITION_ENGINE.md: delovi N (namirnice i nutrijenti), P (pouzdanost i prikaz), K (sirovo/kuvano) — PREDLOG, čeka odobrenje.
+- NAMIRNICE_V1.md: spisak kandidata (~90) i spisak namirnica koje namerno ne ulaze u V1.
+- DATA_SOURCES.md: predloženi dodatni izvori (prinosi, Prilog 13).

@@ -16,6 +16,15 @@
 | Srpska baza sastava namirnica (Institut za medicinska istraživanja) | nije u V1 | nije javno licencirana (deo DAP platforme) | pristup samo dogovorom | istražuje se paralelno |
 | Open Food Facts | proizvodi po barkodu (korak 8) | ODbL (potvrditi na zvaničnom sajtu) | atribucija; share-alike za izvedene baze | provera licence pre koraka 8 |
 
+## Predloženi dodatni izvori (korak 4 — čekaju odobrenje, NUTRITION_ENGINE.md delovi N i K)
+
+| Izvor | Uloga | Licenca | Status |
+|---|---|---|---|
+| FDC Foundation Foods + SR Legacy (unutar FDC) | Foundation prvo, SR Legacy za kuvane oblike i dopunu po istom NDB broju | CC0 1.0 | predlog |
+| USDA Table of Cooking Yields for Meat and Poultry, Release 2 (2014), doi:10.15482/USDA.ADC/1409031 | faktori prinosa za meso i živinu | javno dobro (američka državna publikacija) | predlog |
+| Bognár A. (2002), BFE-R--02-03, Bundesforschungsanstalt für Ernährung | faktori prinosa za ostale grupe | nije navedena; u V1 pojedinačni faktori uz citat, proveriti pre komercijalne faze | predlog |
+| Pravilnik o deklarisanju, označavanju i reklamiranju hrane (RS), Prilog 13 | faktori za izračunavanje energije (isti kao EU 1169/2011) | propis | predlog (N4-A) |
+
 ## Otvoreno
 - Kontakt sa Institutom za medicinska istraživanja (CENM) — uslovi pristupa i licenca.
 - Open Food Facts: način identifikacije aplikacije iz pregledača (User-Agent se ne može postaviti).

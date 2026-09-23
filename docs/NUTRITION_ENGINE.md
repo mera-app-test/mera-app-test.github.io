@@ -1,6 +1,6 @@
 # NUTRITION_ENGINE — metode i parametri proračuna
 
-**Status:** deo T ODOBREN (2026-09-23, DECISIONS/0007); ostali delovi još ne postoje. Nijedna vrednost nije ugrađena u kod pre odobrenja vlasnika (DECISIONS/0005, MS §39).
+**Status:** deo T ODOBREN (2026-09-23, DECISIONS/0007); delovi N, P i K su PREDLOG za korak 4 i čekaju odobrenje; energetski deo (korak 5) još ne postoji. Nijedna vrednost nije ugrađena u kod pre odobrenja vlasnika (DECISIONS/0005, MS §39).
 Posle odobrenja vrednosti idu u verzionisan `FormulaSet` (ARCHITECTURE §13), ne kao konstante u kodu.
 
 Oznake: **[IZVOR]** — tvrdnja potkrepljena navedenim izvorom · **[PROCENA]** — statistička ili praktična odluka bez naučnog izvora za tačan broj; obrazložena, ali to je izbor, ne činjenica.
@@ -63,3 +63,147 @@ Trend je procena, pa se prikazuje sa „≈" (MS §30), npr. „≈ −0,4 kg ne
 4. T4 — kg nedeljno + procenat.
 5. T5 — potvrda ispod 30 i iznad 300 kg.
 6. T6 — bez automatskog izbacivanja u V1.
+
+---
+
+## Deo N — Namirnice i nutrijenti (MS §20, §22) — PREDLOG, čeka odobrenje
+
+Ništa iz ovog dela nije ugrađeno u kod ni u `reference-data/`. Spisak kandidata: `docs/NAMIRNICE_V1.md`.
+
+### N1. Koje skupove iz FoodData Central (FDC) koristimo
+**[IZVOR]** FDC ima pet tipova podataka; za generičke namirnice relevantna su dva (FDC Foundation Foods Documentation, fdc.nal.usda.gov/Foundation_Foods_Documentation):
+- **Foundation Foods** — analitički podaci sa metapodacima o uzorcima; aktivno se dopunjuje (na dan provere stranica za preuzimanje navodi izdanje 12/2025). Uglavnom sirove namirnice; novije namirnice nemaju sve nutrijente.
+- **SR Legacy** — poslednje izdanje 04/2018, više se ne ažurira; širok obuhvat, uključujući **kuvane oblike** (kuvan pirinač, pečena piletina…).
+
+Predlog:
+1. Za svaku namirnicu prvo Foundation; SR Legacy kada Foundation nema tu namirnicu ili taj oblik (npr. kuvano).
+2. **Ne koristimo** Branded Foods (američki proizvodi) ni FNDDS (američka složena jela; recepti se ne poklapaju sa lokalnim).
+3. Licenca: CC0 1.0, navođenje izvora (DATA_SOURCES.md, već odobreno).
+
+### N2. Nedostajući nutrijent u Foundation zapisu
+**[IZVOR]** USDA u FNDDS 2019–2020 popunjava nedostajuće Foundation vrednosti iz SR Legacy zapisa sa **istim NDB brojem** (FNDDS 2019–2020 dokumentacija, ARS).
+Predlog: isto pravilo, samo za isti NDB broj; vrednost nosi oznaku „dopunjeno iz SR Legacy" i nivo najviše DOBRO POTVRĐENO (deo P). Bez istog NDB broja → nutrijent ostaje **nepoznat**, nikad 0.
+
+### N3. Nutrijenti u V1
+Predlog — tačno lista iz MS §22, bez mikronutrijenata u V1:
+
+| Nutrijent | FDC ID (nutrient id) | Jedinica |
+|---|---|---|
+| Proteini | 1003 | g |
+| Masti ukupno | 1004 | g |
+| Zasićene masne kiseline | 1258 | g |
+| Ugljeni hidrati „po razlici" (uključuje vlakna) | 1005 | g |
+| Šećeri ukupno | 2000 (SR Legacy) / 1063 (Foundation) | g |
+| Vlakna ukupno | 1079 | g |
+| Natrijum | 1093 | mg |
+| Voda (samo interno, za proveru prinosa) | 1051 | g |
+| Energija FDC (samo za poređenje, vidi N4) | 1008 (SR) / 2047, 2048 (Foundation) | kcal |
+
+**[IZVOR]** ID-jevi 1003, 1004, 1005, 1008/2047, 1051, 1079, 1258, 2000/1063: tabela šifara u FNDDS 2021–2023 dokumentaciji (ARS). 1093: uvozni alat proverava naziv u `nutrient.csv` iz zvaničnog preuzimanja pre upotrebe (i za sve ostale ID-jeve) — neslaganje zaustavlja uvoz.
+So na ekranu = natrijum × 2,5 **[PROVERITI]** tačan tekst definicije u Pravilniku o deklarisanju, označavanju i reklamiranju hrane (RS).
+Mikronutrijenti (MS §22 „relevantni") — predlog: ne u V1; za cilj telesne mase ne menjaju plan, a Foundation ih ima nepotpuno. Mesto u modelu postoji.
+
+### N4. Energija — jedan metod za sve izvore
+Problem **[IZVOR]**: Foundation računa energiju opštim Atwater faktorima (ID 2047), neke namirnice i specifičnim (2048); SR Legacy daje ID 1008; FDC ugljene hidrate daje „po razlici", **sa vlaknima** (Foundation Foods Documentation). Srpske deklaracije (korak 8) računaju energiju po Prilogu 13 Pravilnika o deklarisanju, označavanju i reklamiranju hrane: UH 4, proteini 4, masti 9, vlakna 2, alkohol 7 kcal/g… **[IZVOR]** (Pravilnik, Prilog 13; isti faktori kao EU Uredba 1169/2011).
+Ako se ne ujednači, ista količina hrane iz FDC i sa deklaracije dobija energiju po različitim pravilima.
+
+**Predlog (A):** Mera računa energiju sama, deterministički, po Prilogu 13, za sve izvore:
+`UH (iskoristivi) = UH po razlici − vlakna`; `kcal = 4·proteini + 4·UH + 9·masti + 2·vlakna (+7·alkohol)`.
+Vrednost nosi oznaku „izračunato (Prilog 13)". FDC energija se čuva i prikazuje u „Zašto?" radi poređenja; uvozni izveštaj pokazuje razliku za svaku namirnicu.
+Nedostatak: izvedena vrednost, a ne ona koju USDA objavljuje; ako vlakna nedostaju, energija se ne može izračunati → namirnica je nepotpuna.
+**Alternativa (B):** uzeti energiju koju objavljuje FDC (redosled 2048 → 1008 → 2047). Jednostavnije, ali različit metod od deklaracija.
+Moja preporuka: **A** — jedan metod u celoj aplikaciji, proverljiv u „Zašto?".
+
+### N5. Srpski nazivi i mapiranje
+- Srpski naziv nije nutritivna činjenica, ali **izbor FDC zapisa za srpsku namirnicu jeste** — zato svako mapiranje odobrava vlasnik.
+- Kvalitet mapiranja:
+  - **TAČNO** — ista namirnica, isti oblik (npr. „beli luk, sirov" ↔ *Garlic, raw*).
+  - **BLISKO** — ista vrsta, razlika u sorti/poreklu koja ne menja bitno sastav (npr. jabuka bez navedene sorte ↔ generička jabuka). Najviše DOBRO POTVRĐENO.
+  - **Nije dozvoljeno** — druga namirnica „slična po ukusu" (npr. kajmak ↔ američka pavlaka). Takva namirnica ne ulazi u V1 dok ne postoji deklaracija ili proverljiv lokalni izvor.
+- Svaka namirnica: naziv sr-Latn (odobren), sr-Cyrl (automatska transliteracija + ručna provera, jer „dž/lj/nj" na granici morfema nije uvek jedan glas), sinonimi i oblik bez dijakritika za pretragu („sargarepa", „krompir/krumpir").
+- Oblik (MS §20: sirovo, kuvano, pečeno, prženo, oceđeno, suvo) je deo identiteta zapisa (deo K).
+
+### N6. Kako vrednosti ulaze u aplikaciju (bez prepisivanja brojeva)
+Predlog: uvozni skript koji se pokreće u GitHub Actions (na ručni poziv):
+1. preuzima zvanične CSV arhive Foundation i SR Legacy sa fdc.nal.usda.gov, beleži SHA-256 i datum izdanja;
+2. uzima samo odobrene FDC zapise, proverava nazive nutrijenata po ID-ju;
+3. pravi `reference-data/foods/<verzija>.json` (vrednost, jedinica, izvor, NDB/FDC ID, poreklo, pouzdanost) i **izveštaj za vlasnika** (sve vrednosti, nedostajući nutrijenti, razlika energije A/B);
+4. tek posle odobrenja izveštaja fajl ulazi u aplikaciju kao nova verzija referentnih podataka.
+AI ne kuca nijedan nutritivni broj (MS §6, §20).
+
+---
+
+## Deo P — Nivoi pouzdanosti i prikaz (MS §30, §31) — PREDLOG, čeka odobrenje
+
+### P1. Četiri nivoa (nazivi iz MS §30)
+Svaka stavka ima dve ocene; važi **slabija**:
+
+| Nivo | Vrednost (izvor/mapiranje) | Količina |
+|---|---|---|
+| POUZDANO | deklaracija tačnog proizvoda; FDC TAČNO mapiranje, izmerena vrednost | izmereno vagom |
+| DOBRO POTVRĐENO | FDC BLISKO mapiranje; dopuna iz SR Legacy (N2); energija izračunata po N4 iz pouzdanih makronutrijenata | komad sa masom iz izvora (npr. FDC „1 veliko jaje") |
+| PROCENJENO | vrednost dobijena faktorom prinosa (deo K); recept sa pretpostavljenom retencijom | kućna mera (kašika, šolja); masa jela iz faktora prinosa |
+| NEDOVOLJNO POUZDANO | nepotvrđeno tumačenje unosa; namirnica bez odobrenog mapiranja | „otprilike", bez mere |
+
+Zbir (obrok, dan) ima nivo **najslabije** stavke koja u njega ulazi. Ako nutrijent nedostaje kod bar jedne stavke, zbir je **nepotpun** (nedostajuće se nikad ne računa kao 0).
+Obrazloženje **[PROCENA]**: pravilo „najslabija karika" je jednostavno i proverljivo; ne precenjuje pouzdanost. Nedostatak: jedna procenjena kašika ulja spušta ceo dan na „procenjeno" — to je tačno, jer je ulje energetski gusto.
+
+Napomena: i „pouzdana" vrednost je prosek uzoraka (Foundation prikazuje raspon uzoraka), a deklaracija ima zakonske tolerancije. „Pouzdano" znači „najbolji dostupan podatak za tačno tu namirnicu", ne „tačno do kalorije".
+
+### P2. Prikaz
+| Stanje | Prikaz | Primer |
+|---|---|---|
+| POUZDANO, DOBRO POTVRĐENO | broj | 500 kcal |
+| PROCENJENO | „≈" | ≈500 kcal |
+| postoji izričit interval ulaza | raspon | 480–530 kcal |
+| NEDOVOLJNO POUZDANO bez intervala | broj se ne prikazuje kao tačan | „≈500 kcal · nesigurno" |
+| nutrijent nedostaje | oznaka | „nepotpuno" |
+
+**Raspon se prikazuje samo kada ulaz nosi izričit interval iz izvora ili od korisnika** (npr. USDA tabela prinosa za meso daje raspon; korisnik kaže „150–200 g"). Mera ne izmišlja procenat nesigurnosti (npr. „±10 %") — za to ne postoji izvor koji bi važio za sve namirnice.
+Detalji uvek u „Zašto?": izvor, verzija, FDC ID, poreklo, nivo, osnova proračuna.
+
+### P3. Zaokruživanje (samo prikaz; čuva se nezaokruženo — ARCHITECTURE §8.1)
+Predlog **[PROCENA]**, usklađeno sa uobičajenim prikazom na deklaracijama:
+- kcal: ceo broj; uz „≈" i raspon — na 10 kcal (lažna preciznost bi bila u suprotnosti sa MS §30).
+- g (proteini, masti, UH, šećeri, vlakna, zasićene): ≥ 10 g ceo broj; < 10 g jedna decimala; < 0,5 g „< 0,5 g".
+- natrijum mg ceo broj; so g jedna decimala.
+**[PROVERITI]** pre implementacije: zvanične EU smernice o zaokruživanju za nutritivnu deklaraciju (Evropska komisija, 2012) — ako se razlikuju, predlažem da važe one.
+
+---
+
+## Deo K — Sirovo / kuvano (MS §20; ARCHITECTURE §6.2 `domain/nutrition`) — PREDLOG, čeka odobrenje
+
+### K1. Oblik je deo namirnice
+„Pirinač, sirov" i „pirinač, kuvan" su dva zapisa sa svojim vrednostima i izvorom. Sistem nikad ne koristi vrednosti jednog oblika za drugi bez eksplicitne konverzije (MS §46: „pogrešan oblik namirnice").
+
+### K2. Direktno izmeren kuvan oblik ima prednost
+Kada FDC ima kuvan oblik (uglavnom SR Legacy: kuvan pirinač, testenina, mahunarke, pečena piletina, kuvana jaja, kuvan krompir), koristi se taj zapis. To je analitički podatak za kuvanu hranu, pouzdaniji od preračuna.
+**[IZVOR]** USDA navodi da se faktori prinosa primenjuju kada analitički podaci za kuvanu hranu nisu dostupni (USDA Table of Cooking Yields for Meat and Poultry, Release 2, 2014, uvod).
+
+### K3. Faktor prinosa (promena mase pri pripremi)
+Koristi se za: preračun količine (npr. 80 g suve testenine → g kuvane) i masu gotovog jela u receptu.
+`masa kuvanog = masa sirovog × prinos`; nutrijenti na 100 g kuvanog = nutrijenti sirovog / prinos (uz retenciju, K4).
+Izvori po prioritetu:
+1. **Meso i živina:** USDA Table of Cooking Yields for Meat and Poultry, Release 2 (2014), ARS; doi:10.15482/USDA.ADC/1409031 — prinos po komadu mesa i načinu pripreme, sa n, SD i rasponom. Javno dobro (američka državna publikacija).
+2. **Ostale grupe (žitarice, mahunarke, povrće, riba):** Bognár A. (2002), *Tables on weight yield of food and retention factors of food constituents for the calculation of nutrient composition of cooked foods (dishes)*, BFE-R--02-03, Bundesforschungsanstalt für Ernährung, Karlsruhe — referenca koju koristi EuroFIR za proračun recepata. **Licenca za ponovnu upotrebu nije navedena**: u V1 samo pojedinačni faktori uz citat; pre komercijalne faze proveriti.
+3. Izvođenje prinosa iz sadržaja vode sirovog i kuvanog FDC zapisa — samo kao rezervna mogućnost, sa nivoom PROCENJENO i posebnim odobrenjem po namirnici.
+Svaki faktor: vrednost, izvor sa stranom/tabelom, način pripreme, raspon ako ga izvor daje. Faktori se prepisuju iz izvora u uvozni fajl sa referencom na tabelu i prolaze pregled vlasnika kao i FDC vrednosti.
+
+### K4. Retencija nutrijenata
+Predlog za V1: za N3 nutrijente retencija 1,0 (nema gubitka) **osim masti kod mesa**, gde se gubi deo masti (USDA 2014 daje i „fat change"). Zato se za meso koristi kuvan FDC oblik (K2) kad postoji; ako ne postoji, rezultat je PROCENJENO i „Zašto?" to navodi.
+Retencija vitamina (USDA Table of Nutrient Retention Factors, Release 6, 2007) — nije potrebna dok mikronutrijenti nisu u V1.
+
+### K5. Recepti (priprema za korak 6)
+Nutrijenti recepta = zbir sastojaka u obliku u kome se mere (obično sirovo). Masa gotovog jela: izmerena (ako korisnik izmeri) ili iz faktora prinosa (PROCENJENO). Porcija = udeo mase gotovog jela.
+**[IZVOR]** Ovo je postupak iz EuroFIR smernica za proračun recepata (EuroFIR recipe guideline; Bognár 2002 kao izvor faktora).
+
+---
+
+## Odluke za vlasnika (korak 4)
+1. N1–N2 — Foundation → SR Legacy; dopuna samo po istom NDB broju.
+2. N3 — 8 nutrijenata iz MS §22, bez mikronutrijenata u V1.
+3. N4 — energija po Prilogu 13 (A, preporuka) ili FDC energija (B).
+4. N5 — pravila mapiranja; spisak kandidata `docs/NAMIRNICE_V1.md` (uključujući šta NE ulazi).
+5. N6 — uvoz alatom + izveštaj na odobrenje.
+6. P1–P3 — nivoi, prikaz, zaokruživanje.
+7. K1–K5 — oblici, izvori prinosa, retencija.
