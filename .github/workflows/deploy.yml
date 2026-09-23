@@ -2,7 +2,7 @@
 # Osnova: zvanični Vite primer (docs/guide/static-deploy-github-pages.yaml), akcije fiksirane na SHA.
 # Isti fajl postoji u oba repozitorijuma:
 #   mera-app-test/mera-app-test.github.io  → MERA_ENV=test (https://mera-app-test.github.io/)
-#   mera-app/mera-app.github.io            → MERA_ENV=prod (https://mera-app.github.io/)
+#   mera-ishrana/mera-ishrana.github.io    → MERA_ENV=prod (https://mera-ishrana.github.io/)
 name: Provera i objava
 
 on:
@@ -44,13 +44,13 @@ jobs:
   deploy:
     needs: check
     # Objavljuje se samo iz dve Mera organizacije.
-    if: github.repository_owner == 'mera-app' || github.repository_owner == 'mera-app-test'
+    if: github.repository_owner == 'mera-ishrana' || github.repository_owner == 'mera-app-test'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     env:
-      MERA_ENV: ${{ github.repository_owner == 'mera-app' && 'prod' || 'test' }}
+      MERA_ENV: ${{ github.repository_owner == 'mera-ishrana' && 'prod' || 'test' }}
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
