@@ -16,3 +16,7 @@ export type { TrendAnalysis, AverageResult, SlopeResult } from "../domain";
 export type { FoodService, FoodListItem, FoodDetail, NutrientRow } from "./foods/foodService";
 export { createFoodService } from "./foods/foodService";
 export type { Display, ConfidenceLevel, DisplayNutrient } from "../domain";
+export type { KnowledgeService, KnowledgeOverview, KnowledgeScope } from "./knowledge/knowledgeService";
+export { createKnowledgeService } from "./knowledge/knowledgeService";
+export type { DerivedQuestion, Evaluation, Facts, FactValue } from "../domain";
+export type { KnowledgeEntry, FactDef, SourceRef } from "../schemas";

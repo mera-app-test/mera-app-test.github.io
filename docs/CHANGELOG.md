@@ -63,3 +63,13 @@
 - DECISIONS/0009: način rada — opšte prihvaćeno i provereno, bez mikroskopske preciznosti; manje odluka za vlasnika.
 - Uvoz namirnica 1.1.0 sa pravilom R1: svih 96 namirnica ima energiju; status ODOBRENO.
 - NUTRITION_ENGINE.md deo E (dnevna energija, cilj, bezbednosne granice) — predlog za korak 5.
+
+## 0.5.0 — baza znanja: mehanizam (test)
+- DECISIONS/0010 (pravila izvora, AI_RULES.md), 0011 (AI vezan za bazu, bez obučavanja), 0012 (baza znanja i novi redosled).
+- Šema baze znanja: činjenice sa pitanjima i nivoima, stavke (proračun / bezbednost / objašnjenje) sa izvorima, statusom i verzijom.
+- Evaluator: izvedene vrednosti redom zavisnosti sa tragom (stavka + verzija), bezbednosni status, neodlučena pravila kad fali odgovor.
+- Upitnik izveden iz baze; provera da ne postoji pitanje koje nijedno pravilo ne koristi.
+- Provere baze pri build-u i pokretanju: izvori (ODOBRENO traži original), zavisnosti, kružne veze.
+- Sadržaj 0.1.0: 10 stavki iz prvog predloga, sve PREDLOG; aplikacija koristi samo ODOBRENO.
+- Test ekran „Baza znanja": pravila sa izvorima (original proveren ili ne) i probni upitnik sa rezultatom.
+- Testovi: 123 (+13).

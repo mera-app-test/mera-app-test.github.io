@@ -7,11 +7,12 @@ import { TodayScreen } from "./screens/TodayScreen";
 import { BackupScreen } from "./screens/BackupScreen";
 import { WeightScreen } from "./screens/WeightScreen";
 import { FoodsScreen } from "./screens/FoodsScreen";
+import { KnowledgeScreen } from "./screens/KnowledgeScreen";
 
 /** Ekran provere uređaja postoji samo u test/dev build-u; composition root ga predaje ili ne. */
 export type DiagnosticsScreenComponent = ComponentType<{ onClose: () => void }>;
 
-type Screen = "today" | "backup" | "diagnostics" | "weight-entry" | "weight-list" | "foods";
+type Screen = "today" | "backup" | "diagnostics" | "weight-entry" | "weight-list" | "foods" | "knowledge";
 
 interface AppProps {
   services: AppServices;
@@ -55,6 +56,7 @@ export function App({ services, DiagnosticsScreen }: AppProps) {
             <WeightScreen focusInput={screen === "weight-entry"} onClose={() => setScreen("today")} />
           )}
           {screen === "foods" && <FoodsScreen onClose={() => setScreen("today")} innerBack={innerBack} />}
+          {screen === "knowledge" && <KnowledgeScreen onClose={() => setScreen("today")} />}
           {screen === "backup" && <BackupScreen onClose={() => setScreen("today")} />}
           {screen === "diagnostics" && DiagnosticsScreen && (
             <Suspense fallback={<p className="muted">Učitavam proveru…</p>}>
@@ -69,6 +71,11 @@ export function App({ services, DiagnosticsScreen }: AppProps) {
               <button type="button" className="link-btn" onClick={() => setScreen("backup")}>
                 Rezervna kopija
               </button>
+              {showTest && (
+                <button type="button" className="link-btn" onClick={() => setScreen("knowledge")}>
+                  Baza znanja
+                </button>
+              )}
               {showTest && DiagnosticsScreen && (
                 <button type="button" className="link-btn" onClick={() => setScreen("diagnostics")}>
                   Provera uređaja

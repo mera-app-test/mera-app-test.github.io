@@ -215,7 +215,9 @@ Posledica: potpuni podaci za 11 od 12 namirnica; vrednosti iz 2018. umesto novij
 
 ---
 
-## Deo E — Dnevna energija i cilj (MS §10, §11; korak 5) — PREDLOG, čeka odobrenje
+## Deo E — Dnevna energija i cilj — PRENETO u bazu znanja (docs/KNOWLEDGE_BASE.md, DECISIONS/0012)
+
+Ovaj deo je istorijski zapis prvog predloga; važeći sadržaj je u `reference-data/knowledge/`.
 
 ### E1. Pitanja pri prvom pokretanju
 Pol, godine, visina, masa, kretanje (3 izbora), cilj (smršati / održati). Ženama jedno bezbednosno pitanje: trudnoća ili dojenje (da/ne). Ništa više.

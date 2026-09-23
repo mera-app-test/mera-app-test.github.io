@@ -40,3 +40,14 @@ export {
   type Display,
 } from "./confidence/confidence";
 export { matchesQuery, normalizeForSearch } from "./text/search";
+export {
+  deriveQuestions,
+  evaluate,
+  searchKnowledge,
+  testCondition,
+  validateKnowledge,
+  type DerivedQuestion,
+  type Evaluation,
+  type FactValue,
+  type Facts,
+} from "./knowledge/knowledge";

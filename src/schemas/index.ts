@@ -7,3 +7,4 @@ export * from "./userData";
 export * from "./migrations";
 export * from "./formulas";
 export * from "./foods";
+export * from "./knowledge";

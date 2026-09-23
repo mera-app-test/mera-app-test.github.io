@@ -1,0 +1,628 @@
+{
+ "id": "knowledge",
+ "version": "0.1.0",
+ "document": "docs/KNOWLEDGE_BASE.md; DECISIONS/0011, 0012",
+ "facts": [
+  {
+   "key": "sex",
+   "label": "Pol",
+   "type": "enum",
+   "options": [
+    {
+     "value": "m",
+     "label": "muški"
+    },
+    {
+     "value": "z",
+     "label": "ženski"
+    }
+   ],
+   "question": {
+    "text": "Pol",
+    "level": "osnovni"
+   }
+  },
+  {
+   "key": "ageYears",
+   "label": "Godine",
+   "type": "number",
+   "unit": "godina",
+   "min": 1,
+   "max": 120,
+   "question": {
+    "text": "Koliko imaš godina?",
+    "level": "osnovni"
+   }
+  },
+  {
+   "key": "heightCm",
+   "label": "Visina",
+   "type": "number",
+   "unit": "cm",
+   "min": 50,
+   "max": 250,
+   "question": {
+    "text": "Visina",
+    "level": "osnovni"
+   }
+  },
+  {
+   "key": "massKg",
+   "label": "Telesna masa",
+   "type": "number",
+   "unit": "kg",
+   "min": 20,
+   "max": 400,
+   "question": {
+    "text": "Trenutna masa",
+    "level": "osnovni"
+   }
+  },
+  {
+   "key": "activity",
+   "label": "Kretanje",
+   "type": "enum",
+   "options": [
+    {
+     "value": "sedi",
+     "label": "mahom sedim (kancelarija, vožnja)"
+    },
+    {
+     "value": "aktivan",
+     "label": "dosta sam na nogama ili vežbam redovno"
+    },
+    {
+     "value": "tezak",
+     "label": "težak fizički posao ili mnogo sporta"
+    }
+   ],
+   "question": {
+    "text": "Koliko se krećeš tokom dana?",
+    "level": "osnovni"
+   }
+  },
+  {
+   "key": "goal",
+   "label": "Cilj",
+   "type": "enum",
+   "options": [
+    {
+     "value": "mrsavljenje",
+     "label": "smršati"
+    },
+    {
+     "value": "odrzavanje",
+     "label": "održati masu"
+    }
+   ],
+   "question": {
+    "text": "Šta želiš?",
+    "level": "osnovni"
+   }
+  },
+  {
+   "key": "pregnantOrLactating",
+   "label": "Trudnoća ili dojenje",
+   "type": "boolean",
+   "question": {
+    "text": "Da li si trudna ili dojiš?",
+    "level": "osnovni",
+    "askWhen": {
+     "fact": "sex",
+     "op": "eq",
+     "value": "z"
+    }
+   }
+  },
+  {
+   "key": "rmrKcal",
+   "label": "Potrošnja u mirovanju",
+   "type": "number",
+   "unit": "kcal",
+   "question": null
+  },
+  {
+   "key": "pal",
+   "label": "Nivo aktivnosti (PAL)",
+   "type": "number",
+   "question": null
+  },
+  {
+   "key": "tdeeKcal",
+   "label": "Dnevna potrošnja",
+   "type": "number",
+   "unit": "kcal",
+   "question": null
+  },
+  {
+   "key": "bmi",
+   "label": "Indeks telesne mase",
+   "type": "number",
+   "unit": "kg/m²",
+   "question": null
+  },
+  {
+   "key": "targetKcal",
+   "label": "Dnevni cilj",
+   "type": "number",
+   "unit": "kcal",
+   "question": null
+  }
+ ],
+ "entries": [
+  {
+   "status": "PREDLOG",
+   "version": "0.1.0",
+   "tags": [
+    "bmr",
+    "rmr",
+    "metabolizam",
+    "kalorije",
+    "potrošnja"
+   ],
+   "id": "E-001",
+   "area": "energija",
+   "title": "Potrošnja energije u mirovanju (Mifflin-St Jeor)",
+   "kind": "calculation",
+   "statement": "Potrošnja u mirovanju računa se formulom Mifflin-St Jeor: 10 × masa (kg) + 6,25 × visina (cm) − 5 × godine, plus 5 za muškarce ili minus 161 za žene. To je početna procena; stvarni trend mase je kasnije ispravlja.",
+   "inputs": [
+    "massKg",
+    "heightCm",
+    "ageYears",
+    "sex"
+   ],
+   "output": "rmrKcal",
+   "expr": {
+    "op": "add",
+    "args": [
+     {
+      "op": "mul",
+      "args": [
+       {
+        "const": 10
+       },
+       {
+        "fact": "massKg"
+       }
+      ]
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "const": 6.25
+       },
+       {
+        "fact": "heightCm"
+       }
+      ]
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "const": -5
+       },
+       {
+        "fact": "ageYears"
+       }
+      ]
+     },
+     {
+      "byFact": {
+       "fact": "sex",
+       "values": {
+        "m": 5,
+        "z": -161
+       }
+      }
+     }
+    ]
+   },
+   "sources": [
+    {
+     "tier": 3,
+     "citation": "Mifflin MD, St Jeor ST, Hill LA, Scott BJ, Daugherty SA, Koh YO. A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr 1990;51(2):241–247.",
+     "checkedOriginal": false,
+     "accessed": "2026-09-23",
+     "supports": "Koeficijenti formule."
+    },
+    {
+     "tier": 2,
+     "citation": "Frankenfield D, Roth-Yousey L, Compher C. Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review. J Am Diet Assoc 2005;105(5):775–789.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Mifflin-St Jeor je od često korišćenih formula najčešće u granici ±10 % od izmerenog; greške kod pojedinca postoje (pročitan sažetak na stranici izdavača).",
+     "url": "https://www.jandonline.org/article/S0002-8223(05)00149-5/abstract",
+     "doi": "10.1016/j.jada.2005.02.005"
+    }
+   ]
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.1.0",
+   "tags": [
+    "aktivnost",
+    "kretanje",
+    "pal",
+    "trening"
+   ],
+   "id": "E-002",
+   "area": "energija",
+   "title": "Nivo fizičke aktivnosti (PAL)",
+   "kind": "calculation",
+   "statement": "Kretanje se prevodi u faktor aktivnosti prema primerima FAO/WHO/UNU (2004): mahom sedim 1,53; dosta na nogama ili redovno vežbam 1,76; težak fizički posao ili mnogo sporta 2,25.",
+   "inputs": [
+    "activity"
+   ],
+   "output": "pal",
+   "expr": {
+    "byFact": {
+     "fact": "activity",
+     "values": {
+      "sedi": 1.53,
+      "aktivan": 1.76,
+      "tezak": 2.25
+     }
+    }
+   },
+   "sources": [
+    {
+     "tier": 1,
+     "citation": "FAO/WHO/UNU. Human energy requirements. Report of a Joint FAO/WHO/UNU Expert Consultation. Rome: FAO; 2004. Poglavlje 5, tabela 5.1.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Primeri PAL: sedeći/lak 1,53; aktivan/umereno aktivan 1,76; veoma aktivan 2,25; opsezi 1,40–1,69 / 1,70–1,99 / 2,00–2,40.",
+     "url": "https://www.fao.org/4/y5686e/y5686e07.htm"
+    }
+   ]
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.1.0",
+   "tags": [
+    "tdee",
+    "dnevna potrošnja",
+    "kalorije"
+   ],
+   "id": "E-003",
+   "area": "energija",
+   "title": "Dnevna potrošnja energije",
+   "kind": "calculation",
+   "statement": "Dnevna potrošnja = potrošnja u mirovanju × faktor aktivnosti (FAO/WHO/UNU 2004).",
+   "inputs": [
+    "rmrKcal",
+    "pal"
+   ],
+   "output": "tdeeKcal",
+   "expr": {
+    "op": "mul",
+    "args": [
+     {
+      "fact": "rmrKcal"
+     },
+     {
+      "fact": "pal"
+     }
+    ]
+   },
+   "sources": [
+    {
+     "tier": 1,
+     "citation": "FAO/WHO/UNU. Human energy requirements. Report of a Joint FAO/WHO/UNU Expert Consultation. Rome: FAO; 2004. Poglavlje 5, tabela 5.1.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Primeri PAL: sedeći/lak 1,53; aktivan/umereno aktivan 1,76; veoma aktivan 2,25; opsezi 1,40–1,69 / 1,70–1,99 / 2,00–2,40.",
+     "url": "https://www.fao.org/4/y5686e/y5686e07.htm"
+    }
+   ]
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.1.0",
+   "tags": [
+    "održavanje",
+    "cilj",
+    "kalorije"
+   ],
+   "id": "E-004",
+   "area": "cilj",
+   "title": "Dnevni cilj za održavanje mase",
+   "kind": "calculation",
+   "statement": "Za održavanje mase dnevni cilj je jednak dnevnoj potrošnji.",
+   "appliesWhen": {
+    "fact": "goal",
+    "op": "eq",
+    "value": "odrzavanje"
+   },
+   "inputs": [
+    "goal",
+    "tdeeKcal"
+   ],
+   "output": "targetKcal",
+   "expr": {
+    "fact": "tdeeKcal"
+   },
+   "sources": [
+    {
+     "tier": 1,
+     "citation": "FAO/WHO/UNU. Human energy requirements. Report of a Joint FAO/WHO/UNU Expert Consultation. Rome: FAO; 2004. Poglavlje 5, tabela 5.1.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Primeri PAL: sedeći/lak 1,53; aktivan/umereno aktivan 1,76; veoma aktivan 2,25; opsezi 1,40–1,69 / 1,70–1,99 / 2,00–2,40.",
+     "url": "https://www.fao.org/4/y5686e/y5686e07.htm"
+    }
+   ]
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.1.0",
+   "tags": [
+    "mršavljenje",
+    "deficit",
+    "manjak",
+    "cilj",
+    "kalorije",
+    "minimum"
+   ],
+   "id": "E-005",
+   "area": "cilj",
+   "title": "Dnevni cilj za mršavljenje",
+   "kind": "calculation",
+   "statement": "Za mršavljenje dnevni cilj je 500 kcal manje od dnevne potrošnje, što obično daje oko pola kilograma nedeljno. Cilj nikad nije ispod 1200 kcal za žene i 1500 kcal za muškarce.",
+   "appliesWhen": {
+    "fact": "goal",
+    "op": "eq",
+    "value": "mrsavljenje"
+   },
+   "inputs": [
+    "goal",
+    "tdeeKcal",
+    "sex"
+   ],
+   "output": "targetKcal",
+   "expr": {
+    "op": "max",
+    "args": [
+     {
+      "op": "sub",
+      "args": [
+       {
+        "fact": "tdeeKcal"
+       },
+       {
+        "const": 500
+       }
+      ]
+     },
+     {
+      "byFact": {
+       "fact": "sex",
+       "values": {
+        "m": 1500,
+        "z": 1200
+       }
+      }
+     }
+    ]
+   },
+   "sources": [
+    {
+     "tier": 1,
+     "citation": "NHLBI Obesity Education Initiative Expert Panel. Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report. NIH Publication 98-4083; 1998.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Manjak od 500–1000 kcal/dan kao deo programa mršavljenja; oko 0,5–1 kg nedeljno.",
+     "url": "https://www.ncbi.nlm.nih.gov/books/NBK2009/"
+    },
+    {
+     "tier": 2,
+     "citation": "Jensen MD i sar. 2013 AHA/ACC/TOS Guideline for the Management of Overweight and Obesity in Adults. Circulation 2014;129(25 Suppl 2):S102–S138.",
+     "checkedOriginal": false,
+     "accessed": "2026-09-23",
+     "supports": "Manjak 500 ili 750 kcal/dan; unos 1200–1500 kcal žene, 1500–1800 kcal muškarci. VIĐENO SAMO KAO NAVOD u protokolu kliničke studije — proveriti u originalu."
+    }
+   ],
+   "notes": "Otvoreno (razgovor sa vlasnikom): isti manjak za sve ili zavisan od mase; izbor brzine; granice 1200/1500 proveriti u originalu."
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.1.0",
+   "tags": [
+    "itm",
+    "bmi"
+   ],
+   "id": "E-006",
+   "area": "telesna masa",
+   "title": "Indeks telesne mase (ITM)",
+   "kind": "calculation",
+   "statement": "ITM = masa (kg) / visina (m)². Koristi se samo za bezbednosnu proveru, ne kao ocena korisnika.",
+   "inputs": [
+    "massKg",
+    "heightCm"
+   ],
+   "output": "bmi",
+   "expr": {
+    "op": "div",
+    "args": [
+     {
+      "fact": "massKg"
+     },
+     {
+      "op": "pow",
+      "args": [
+       {
+        "op": "div",
+        "args": [
+         {
+          "fact": "heightCm"
+         },
+         {
+          "const": 100
+         }
+        ]
+       },
+       {
+        "const": 2
+       }
+      ]
+     }
+    ]
+   },
+   "sources": [
+    {
+     "tier": 1,
+     "citation": "WHO. Body mass index (BMI) — definicija i klasifikacija odraslih.",
+     "checkedOriginal": false,
+     "accessed": "2026-09-23",
+     "supports": "Definicija ITM i granica 18,5 za pothranjenost. NIJE PROVERENO u ovoj sesiji — proveriti u originalu."
+    }
+   ]
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.1.0",
+   "tags": [
+    "maloletni",
+    "deca",
+    "bezbednost"
+   ],
+   "id": "S-001",
+   "area": "bezbednost",
+   "title": "Mlađi od 18 godina",
+   "kind": "safety",
+   "statement": "Mera ne pravi plan za osobe mlađe od 18 godina: formule i smernice koje koristi odnose se na odrasle. Za mlađe je potreban pedijatar ili nutricionista.",
+   "inputs": [
+    "ageYears"
+   ],
+   "safety": {
+    "when": {
+     "fact": "ageYears",
+     "op": "lt",
+     "value": 18
+    },
+    "status": "BLOCKED",
+    "message": "Mera je namenjena odraslima. Za plan ishrane mlađih od 18 godina obrati se pedijatru ili nutricionisti."
+   },
+   "sources": [
+    {
+     "tier": 1,
+     "citation": "NHLBI Obesity Education Initiative Expert Panel. Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report. NIH Publication 98-4083; 1998.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Manjak od 500–1000 kcal/dan kao deo programa mršavljenja; oko 0,5–1 kg nedeljno.",
+     "url": "https://www.ncbi.nlm.nih.gov/books/NBK2009/"
+    }
+   ]
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.1.0",
+   "tags": [
+    "trudnoća",
+    "dojenje",
+    "bezbednost"
+   ],
+   "id": "S-002",
+   "area": "bezbednost",
+   "title": "Trudnoća i dojenje",
+   "kind": "safety",
+   "statement": "U trudnoći i tokom dojenja Mera ne pravi manjak kalorija; plan ishrane treba dogovoriti sa lekarom.",
+   "appliesWhen": {
+    "fact": "sex",
+    "op": "eq",
+    "value": "z"
+   },
+   "inputs": [
+    "sex",
+    "pregnantOrLactating"
+   ],
+   "safety": {
+    "when": {
+     "fact": "pregnantOrLactating",
+     "op": "eq",
+     "value": true
+    },
+    "status": "REQUIRES_CLINICAL_REVIEW",
+    "message": "U trudnoći i dojenju plan ishrane dogovori sa lekarom. Mera ne pravi manjak kalorija."
+   },
+   "sources": [
+    {
+     "tier": 2,
+     "citation": "Izvor za trudnoću i dojenje — pronaći (zvanična smernica).",
+     "checkedOriginal": false,
+     "accessed": "2026-09-23",
+     "supports": "NIJE PRONAĐEN pouzdan izvor u ovoj sesiji."
+    }
+   ]
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.1.0",
+   "tags": [
+    "pothranjenost",
+    "itm",
+    "bezbednost"
+   ],
+   "id": "S-003",
+   "area": "bezbednost",
+   "title": "Pothranjenost i mršavljenje",
+   "kind": "safety",
+   "statement": "Ako je ITM ispod 18,5, Mera ne pravi plan za mršavljenje.",
+   "appliesWhen": {
+    "fact": "goal",
+    "op": "eq",
+    "value": "mrsavljenje"
+   },
+   "inputs": [
+    "goal",
+    "bmi"
+   ],
+   "safety": {
+    "when": {
+     "fact": "bmi",
+     "op": "lt",
+     "value": 18.5
+    },
+    "status": "BLOCKED",
+    "message": "Tvoja masa je već ispod preporučenog opsega, pa Mera ne pravi plan za mršavljenje. Posavetuj se sa lekarom."
+   },
+   "sources": [
+    {
+     "tier": 1,
+     "citation": "WHO. Body mass index (BMI) — klasifikacija odraslih.",
+     "checkedOriginal": false,
+     "accessed": "2026-09-23",
+     "supports": "Granica 18,5 za pothranjenost. NIJE PROVERENO u ovoj sesiji."
+    }
+   ]
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.1.0",
+   "tags": [
+    "procena",
+    "tačnost",
+    "korekcija",
+    "trend"
+   ],
+   "id": "X-001",
+   "area": "energija",
+   "title": "Početni broj je procena",
+   "kind": "explanation",
+   "statement": "Dnevni cilj iz formule je početna procena. Kod pojedinca formula može da pogreši, pa Mera posle nekoliko nedelja poredi plan sa stvarnim trendom mase i predlaže korekciju.",
+   "inputs": [],
+   "sources": [
+    {
+     "tier": 2,
+     "citation": "Frankenfield D, Roth-Yousey L, Compher C. Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review. J Am Diet Assoc 2005;105(5):775–789.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Mifflin-St Jeor je od često korišćenih formula najčešće u granici ±10 % od izmerenog; greške kod pojedinca postoje (pročitan sažetak na stranici izdavača).",
+     "url": "https://www.jandonline.org/article/S0002-8223(05)00149-5/abstract",
+     "doi": "10.1016/j.jada.2005.02.005"
+    }
+   ]
+  }
+ ]
+}

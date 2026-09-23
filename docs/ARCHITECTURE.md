@@ -584,6 +584,8 @@ Pravilo: build koji ne prolazi testove se ne objavljuje ni na test adresu.
 
 ## 17. Redosled implementacije V1 (posle odobrenja)
 
+> Od koraka 5 važi novi redosled iz docs/DECISIONS/0012 (baza znanja → upitnik → recepti → planer → AI → unos hrane i adaptacija).
+
 1. Repozitorijum, CI, test i produkcijska organizacija, provera granica slojeva, prazan PWA koji se instalira sa test adrese.
 2. `schemas`, portovi, LocalDataProvider, ugovorni testovi, migracioni okvir, export/import, nedeljni podsetnik. Podaci su zaštićeni pre nego što postoje.
 3. Unos mase + trend (prvi koristan deo; počinje prikupljanje podataka).

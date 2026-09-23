@@ -1,5 +1,5 @@
 // ReferenceDataProvider (ARCHITECTURE.md §7.1): samo čitanje. V1 = statički verzionisani fajlovi; kasnije server.
-import type { DisplayRuleSet, EnergyFormulaSet, Food } from "../../schemas";
+import type { DisplayRuleSet, EnergyFormulaSet, Food, KnowledgeFile } from "../../schemas";
 
 export interface ReferenceDataInfo {
   readonly foodsVersion: string;
@@ -14,4 +14,5 @@ export interface ReferenceDataProvider {
   getFood(id: string): Promise<Food | null>;
   getEnergyFormula(): Promise<EnergyFormulaSet>;
   getDisplayRules(): Promise<DisplayRuleSet>;
+  getKnowledge(): Promise<KnowledgeFile>;
 }
