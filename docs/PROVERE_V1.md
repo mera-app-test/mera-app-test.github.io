@@ -29,3 +29,21 @@ Oznake: **POTVRĐENO** (zvanična dokumentacija) · **DELIMIČNO** (sekundarni i
 
 1. **§9 — trenutak zahteva za trajno skladište:** umesto „pri prvom pokretanju", pri prvom čuvanju podataka (npr. prvi unos mase), kao odgovor na korisnikovu akciju. Razlog: preporuka web.dev. Uticaj: jedna rečenica u §9, bez uticaja na ostale delove.
 2. **Primarni izvor hrane (pre koraka 4):** USDA FoodData Central (CC0) + ručno kurirane lokalne namirnice sa navedenim izvorom; paralelno kontakt sa Institutom za medicinska istraživanja za srpsku bazu.
+
+## Rezultati NA UREĐAJU (2026-09-23)
+
+**Uređaj:** telefon vlasnika (Android, Chrome 153), test verzija 0.2.1 (f9ed104), otvoreno u kartici pregledača.
+
+| Stavka | Rezultat | Zaključak |
+|---|---|---|
+| HTTPS, `crypto.randomUUID()`, SHA-256 | OK | Web Crypto dostupan. |
+| IndexedDB (upis, čitanje, nadogradnja v1→v2, brisanje) | OK | Lokalni data sloj radi na ciljnom uređaju. |
+| Kvota skladišta | 10240 MB | Dovoljno. |
+| Trajno skladište (`persist()`) | odobreno | Radi i u kartici pregledača. |
+| Preuzimanje fajla | OK (fajl u Download) | Izvoz rezervne kopije izvodljiv. |
+| Uvoz fajla | OK (sadržaj ispravan) | Uvoz rezervne kopije izvodljiv. |
+| Deljenje fajla | GREŠKA: NotAllowedError, iako `canShare` vraća „da" | Uzrok nije utvrđen. Ne koristi se: arhitektura koristi preuzimanje i uvoz. |
+| Govor sr-RS | OK, tačno prepoznato (0,93) | Glasovni unos izvodljiv. |
+| Govor sr-RS samo na uređaju | unavailable | Prepoznavanje radi samo preko mreže (Google servis). **Otvoreno pitanje za vlasnika (privatnost), nije hitno.** |
+| BarcodeDetector | OK, ean_13/ean_8/upc_a/upc_e | Rezervna biblioteka za barkod nije potrebna na ovom uređaju. |
+| Open Food Facts iz pregledača | OK (CORS radi, 399 ms) | Poziv bez servera izvodljiv. Licenca i identifikacija aplikacije i dalje otvoreni (DATA_SOURCES.md). |
