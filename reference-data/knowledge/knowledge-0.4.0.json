@@ -1,6 +1,6 @@
 {
  "id": "knowledge",
- "version": "0.3.0",
+ "version": "0.4.0",
  "document": "docs/KNOWLEDGE_BASE.md; DECISIONS/0011, 0012",
  "facts": [
   {
@@ -246,8 +246,8 @@
  ],
  "entries": [
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "bmr",
     "rmr",
@@ -334,12 +334,24 @@
      "doi": "10.1016/j.jada.2005.02.005"
     }
    ],
-   "notes": "Formula je izvedena na odraslima 19–78 godina (Mifflin 1990). KRITERIJUM 2 JOŠ NIJE ISPUNJEN: postoji jedan proveren izvor nivoa 1–2 (sistematski pregled Frankenfield 2005); originalni rad je nivo 3. Potreban je još jedan izvor nivoa 1–2 (npr. stručna smernica koja preporučuje ovu formulu), pročitan u originalu.",
-   "optionalInputs": []
+   "notes": "Formula je izvedena na odraslima 19–78 godina (Mifflin 1990). Kriterijum po DECISIONS/0015: kredibilan izvor (sistematski pregled Frankenfield 2005, nivo 2, original) i nema značajnog stručnog neslaganja. Otvoreno, neblokirajuće: drugi izvor nivoa 1–2 (npr. stručna smernica).",
+   "optionalInputs": [],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-24",
+     "consensus": "KREDIBILAN_IZVOR"
+    }
+   },
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "aktivnost",
     "kretanje",
@@ -382,11 +394,16 @@
      "consensus": "SMERNICA"
     }
    },
-   "optionalInputs": []
+   "optionalInputs": [],
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "tdee",
     "dnevna potrošnja",
@@ -436,11 +453,16 @@
    },
    "optionalInputs": [
     "knownTdeeKcal"
-   ]
+   ],
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "održavanje",
     "cilj",
@@ -481,11 +503,16 @@
      "consensus": "SMERNICA"
     }
    },
-   "optionalInputs": []
+   "optionalInputs": [],
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "mršavljenje",
     "deficit",
@@ -563,11 +590,16 @@
      "consensus": "SMERNICA"
     }
    },
-   "optionalInputs": []
+   "optionalInputs": [],
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "itm",
     "bmi"
@@ -626,11 +658,16 @@
      "consensus": "SMERNICA"
     }
    },
-   "optionalInputs": []
+   "optionalInputs": [],
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "maloletni",
     "deca",
@@ -688,11 +725,16 @@
      "consensus": "DVA_IZVORA"
     }
    },
-   "optionalInputs": []
+   "optionalInputs": [],
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "trudnoća",
     "dojenje",
@@ -746,11 +788,16 @@
     }
    },
    "notes": "Po NICE (navod), postepeno mršavljenje tokom dojenja nije štetno — kada se potvrdi u originalu, dojenje se može odvojiti od trudnoće (novo pitanje) ili ostati oprezno. Odluka o proizvodu.",
-   "optionalInputs": []
+   "optionalInputs": [],
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "pothranjenost",
     "itm",
@@ -796,11 +843,16 @@
      "consensus": "SMERNICA"
     }
    },
-   "optionalInputs": []
+   "optionalInputs": [],
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "procena",
     "tačnost",
@@ -824,11 +876,23 @@
      "doi": "10.1016/j.jada.2005.02.005"
     }
    ],
-   "optionalInputs": []
+   "optionalInputs": [],
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   },
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-24",
+     "consensus": "KREDIBILAN_IZVOR"
+    }
+   }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "potrošnja",
     "tdee",
@@ -853,11 +917,16 @@
    },
    "sources": [],
    "notes": "Podatak korisnika, ne tvrdnja iz struke; bezbednosne granice (E-005, E-008) važe isto.",
-   "userData": true
+   "userData": true,
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "tempo",
     "deficit",
@@ -917,11 +986,16 @@
      "date": "2026-09-23",
      "consensus": "SMERNICA"
     }
+   },
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
    }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "manjak",
     "sam biram",
@@ -972,11 +1046,16 @@
      "consensus": "SMERNICA"
     }
    },
-   "notes": "Manji manjak od 500 kcal je blaži od smernice (opreznija varijanta, kriterijum 3)."
+   "notes": "Manji manjak od 500 kcal je blaži od smernice (opreznija varijanta, kriterijum 3).",
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "tempo",
     "nedeljno",
@@ -1037,11 +1116,16 @@
      "date": "2026-09-23",
      "consensus": "SMERNICA"
     }
+   },
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
    }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "itm",
     "cilj"
@@ -1100,11 +1184,16 @@
      "date": "2026-09-23",
      "consensus": "SMERNICA"
     }
+   },
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
    }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "cilj",
     "pothranjenost",
@@ -1150,11 +1239,16 @@
      "date": "2026-09-23",
      "consensus": "SMERNICA"
     }
+   },
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
    }
   },
   {
-   "status": "PREDLOG",
-   "version": "0.3.0",
+   "status": "ODOBRENO",
+   "version": "0.4.0",
    "tags": [
     "cilj",
     "kako",
@@ -1167,7 +1261,12 @@
    "kind": "explanation",
    "statement": "Korisnik može da kaže koliko želi da ima kilograma i izabere tempo (umereno je preporuka), ili sam da izabere koliko kalorija dnevno manje želi, ili da unese svoju poznatu potrošnju. Svi načini vode na isti proračun i iste bezbednosne granice.",
    "inputs": [],
-   "sources": []
+   "sources": [],
+   "approved": {
+    "by": "razvojni agent po kriterijumima vlasnika",
+    "date": "2026-09-24",
+    "decision": "DECISIONS/0013, 0015"
+   }
   }
  ]
 }

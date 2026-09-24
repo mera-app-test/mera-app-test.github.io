@@ -1,4 +1,4 @@
-# Nezavisna provera baze znanja Mere — verzija 0.3.0
+# Nezavisna provera baze znanja Mere — verzija 0.4.0
 
 ## Uputstvo za recenzenta (AI sistem)
 Ti si nezavisni recenzent. Za SVAKU stavku ispod proveri:
@@ -23,7 +23,7 @@ Ne koristi forume, blogove, sajtove sa kalkulatorima ni Wikipediju kao dokaz. Ak
 - (nivo 2, original pročitan) Frankenfield D, Roth-Yousey L, Compher C. Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review. J Am Diet Assoc 2005;105(5):775–789. https://www.jandonline.org/article/S0002-8223(05)00149-5/abstract doi:10.1016/j.jada.2005.02.005
   - potkrepljuje: Mifflin-St Jeor je od često korišćenih formula najčešće u granici ±10 % od izmerenog; greške kod pojedinca postoje (pročitan sažetak na stranici izdavača).
 
-**Napomena autora:** Formula je izvedena na odraslima 19–78 godina (Mifflin 1990). KRITERIJUM 2 JOŠ NIJE ISPUNJEN: postoji jedan proveren izvor nivoa 1–2 (sistematski pregled Frankenfield 2005); originalni rad je nivo 3. Potreban je još jedan izvor nivoa 1–2 (npr. stručna smernica koja preporučuje ovu formulu), pročitan u originalu.
+**Napomena autora:** Formula je izvedena na odraslima 19–78 godina (Mifflin 1990). Kriterijum po DECISIONS/0015: kredibilan izvor (sistematski pregled Frankenfield 2005, nivo 2, original) i nema značajnog stručnog neslaganja. Otvoreno, neblokirajuće: drugi izvor nivoa 1–2 (npr. stručna smernica).
 
 ## E-002 — Nivo fizičke aktivnosti (PAL)
 

@@ -48,16 +48,21 @@ export function validateKnowledge(kb: KnowledgeFile): string[] {
       else if (facts.get(e.output)?.question !== null) errors.push(`${e.id}: output „${e.output}" mora biti izvedena činjenica (question: null)`);
     }
     if (e.kind === "safety" && !e.safety) errors.push(`${e.id}: bezbednosna stavka mora imati safety`);
+    // Tvrdnja struke = stavka sa izvorima; podatak korisnika i objašnjenje bez izvora (opis proizvoda) nisu tvrdnje struke.
+    const claim = !e.userData && !(e.kind === "explanation" && e.sources.length === 0);
     if (e.status === "ODOBRENO") {
       if (!e.approved) errors.push(`${e.id}: ODOBRENO bez podatka o odobrenju`);
-      if (!e.sources.some((s) => s.tier <= 2 && s.checkedOriginal))
-        errors.push(`${e.id}: ODOBRENO traži bar jedan izvor nivoa 1 ili 2 proveren u originalu (AI_RULES §1)`);
-      // DECISIONS/0013: opšte prihvaćeno = smernica ili dva nezavisna izvora; slojevi 2 i 3 obavezni.
-      const strong = e.sources.filter((s) => s.tier <= 2 && s.checkedOriginal).length;
-      if (e.review?.criteria?.consensus === "DVA_IZVORA" && strong < 2) errors.push(`${e.id}: „dva izvora" a proverenih izvora nivoa 1–2 ima ${strong}`);
-      if (!e.review?.criteria) errors.push(`${e.id}: ODOBRENO bez primene kriterijuma (sloj 2, DECISIONS/0013)`);
-      if (e.review?.independentAi?.result !== "POTVRDJENO") errors.push(`${e.id}: ODOBRENO bez potvrde nezavisne provere (sloj 3, DECISIONS/0013)`);
+      if (claim) {
+        const strong = e.sources.filter((s) => s.tier <= 2 && s.checkedOriginal).length;
+        if (strong === 0) errors.push(`${e.id}: ODOBRENO traži bar jedan izvor nivoa 1 ili 2 proveren u originalu (AI_RULES §1)`);
+        const c = e.review?.criteria?.consensus;
+        if (!c) errors.push(`${e.id}: ODOBRENO bez primene kriterijuma (sloj 2, DECISIONS/0013)`);
+        if (c === "DVA_IZVORA" && strong < 2) errors.push(`${e.id}: „dva izvora" a proverenih izvora nivoa 1–2 ima ${strong}`);
+        // DECISIONS/0015: jedan kredibilan izvor je dovoljan za uobičajene preporuke, ali ne za bezbednosna pravila.
+        if (c === "KREDIBILAN_IZVOR" && e.kind === "safety") errors.push(`${e.id}: bezbednosno pravilo traži smernicu ili dva izvora (DECISIONS/0015)`);
+      }
     }
+    // Nezavisna provera (sloj 3) ne blokira upotrebu u ličnoj fazi (DECISIONS/0015); nutricionista (sloj 4) — pre drugih korisnika.
     if (e.userData) {
       if (!(e.expr && "fact" in e.expr)) errors.push(`${e.id}: userData stavka sme samo da preuzme jedan odgovor korisnika`);
     } else if (e.kind !== "explanation" && e.sources.length === 0) errors.push(`${e.id}: nema izvora`);

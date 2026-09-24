@@ -89,3 +89,8 @@
 
 ## 0.5.3
 - Ekran „Baza znanja": dugme „Kopiraj paket za nezavisnu proveru" (clipboard; ako telefon ne dozvoli — polje za ručno kopiranje).
+
+## 0.5.4 — praktična naučna utemeljenost (test)
+- DECISIONS/0015: jedan kredibilan izvor dovoljan za uobičajene preporuke; strože samo kod stvarnog rizika; nezavisna AI provera ne blokira ličnu fazu; neblokirajuća pitanja u docs/OTVORENA_PITANJA.md.
+- Baza znanja 0.4.0: svih 18 stavki ODOBRENO po kriterijumima; build i dalje odbija bezbednosno pravilo sa samo jednim izvorom.
+- Paket za nezavisnu proveru: docs/REVIZIJA/kb-0.4.0.md.

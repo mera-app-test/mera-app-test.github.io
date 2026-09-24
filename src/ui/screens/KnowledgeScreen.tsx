@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { DerivedQuestion, Evaluation, FactValue, KnowledgeEntry, KnowledgeOverview } from "../../application";
 import { useServices } from "../ServicesContext";
 // Paket za nezavisnu proveru (sloj 3, DECISIONS/0013) — generisan iz baze skriptom scripts/kb-review-package.mjs.
-import reviewPackage from "../../../docs/REVIZIJA/kb-0.3.0.md?raw";
+import reviewPackage from "../../../docs/REVIZIJA/kb-0.4.0.md?raw";
 
 const STATUS_LABEL: Record<KnowledgeEntry["status"], string> = { ODOBRENO: "odobreno", PREDLOG: "predlog", POVUCENO: "povučeno" };
 const SAFETY_LABEL: Record<Evaluation["safetyStatus"], string> = {
@@ -73,8 +73,8 @@ function Entries({ entries }: { entries: readonly KnowledgeEntry[] }) {
                     {e.safety && <p className="muted">Poruka korisniku: „{e.safety.message}"</p>}
                     <h3 className="kb-h">Provera (DECISIONS/0013)</h3>
                     <ul className="kb-sources">
-                      <li><span className={e.review?.criteria ? "kb-orig ok" : "kb-orig no"}>{e.review?.criteria ? `✓ kriterijumi ispunjeni (${e.review.criteria.consensus === "SMERNICA" ? "smernica" : "dva izvora"})` : "✗ kriterijumi još nisu ispunjeni"}</span></li>
-                      <li><span className={e.review?.independentAi?.result === "POTVRDJENO" ? "kb-orig ok" : "kb-orig no"}>{e.review?.independentAi ? `nezavisna AI provera: ${e.review.independentAi.result === "POTVRDJENO" ? "✓ potvrđeno" : "primedbe"}` : "✗ nezavisna AI provera nije urađena"}</span></li>
+                      <li><span className={e.review?.criteria ? "kb-orig ok" : "kb-orig no"}>{e.review?.criteria ? `✓ kriterijumi ispunjeni (${e.review.criteria.consensus === "SMERNICA" ? "smernica" : e.review.criteria.consensus === "DVA_IZVORA" ? "dva izvora" : "kredibilan izvor"})` : "✗ kriterijumi još nisu ispunjeni"}</span></li>
+                      <li><span className={e.review?.independentAi?.result === "POTVRDJENO" ? "kb-orig ok" : e.review?.independentAi ? "kb-orig no" : "kb-tier"}>{e.review?.independentAi ? `nezavisna AI provera: ${e.review.independentAi.result === "POTVRDJENO" ? "✓ potvrđeno" : "primedbe"}` : "nezavisna AI provera još nije urađena (ne blokira, DECISIONS/0015)"}</span></li>
                       <li><span className={e.review?.expert?.result === "POTVRDJENO" ? "kb-orig ok" : "kb-orig no"}>{e.review?.expert ? `nutricionista: ${e.review.expert.result === "POTVRDJENO" ? "✓ potvrđeno" : "primedbe"}` : "✗ nutricionista nije pregledao (obavezno pre drugih korisnika)"}</span></li>
                     </ul>
                     <h3 className="kb-h">Izvori</h3>
@@ -131,7 +131,7 @@ function Questionnaire({ overview }: { overview: KnowledgeOverview }) {
 
   return (
     <div>
-      <p className="food-pending">Pregled: pitanja i računica iz stavki sa statusom „predlog". Aplikacija ih ne koristi dok ih ne odobriš.</p>
+      <p className="food-pending">Probni upitnik: pitanja i računica iz baze znanja (odobrene i predložene stavke).</p>
       <div className="food-forms" role="group" aria-label="Nivo">
         {(["osnovni", "detaljni", "napredni"] as const).map((l) => (
           <button key={l} type="button" className={level === l ? "food-form active" : "food-form"} onClick={() => setLevel(l)}>

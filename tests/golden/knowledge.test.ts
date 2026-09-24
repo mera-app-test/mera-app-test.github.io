@@ -2,7 +2,7 @@
 import { describe, expect, it } from "vitest";
 import { KnowledgeFileSchema, type KnowledgeFile } from "../../src/schemas";
 import { deriveQuestions, evaluate, searchKnowledge, validateKnowledge } from "../../src/domain";
-import raw from "../../reference-data/knowledge/knowledge-0.3.0.json";
+import raw from "../../reference-data/knowledge/knowledge-0.4.0.json";
 
 const kb = KnowledgeFileSchema.parse(raw);
 const ALL = ["PREDLOG", "ODOBRENO"] as const;
@@ -12,8 +12,9 @@ describe("pravi fajl baze znanja", () => {
     expect(validateKnowledge(kb)).toEqual([]);
   });
   it("aplikacija ne koristi ništa što nije ODOBRENO", () => {
-    expect(evaluate(kb, { sex: "m", ageYears: 40, heightCm: 180, massKg: 90, activity: "sedi", goal: "odrzavanje" }).trace).toEqual([]);
-    expect(deriveQuestions(kb, "osnovni", {})).toEqual([]);
+    const allPredlog: KnowledgeFile = { ...kb, entries: kb.entries.map((e) => ({ ...e, status: "PREDLOG" as const })) };
+    expect(evaluate(allPredlog, { sex: "m", ageYears: 40, heightCm: 180, massKg: 90, activity: "sedi", goal: "odrzavanje" }).trace).toEqual([]);
+    expect(deriveQuestions(allPredlog, "osnovni", {})).toEqual([]);
   });
 });
 
@@ -35,22 +36,20 @@ describe("provere hvataju greške", () => {
     });
     expect(errs.some((e) => e.includes("E-001") && e.includes("originalu"))).toBe(true);
   });
-  it("ODOBRENO bez slojeva 2 i 3 (DECISIONS/0013) se odbija", () => {
+  it("ODOBRENO bez primene kriterijuma (sloj 2) se odbija", () => {
     const errs = broken((k) => {
       delete k.entries[0]!.review;
       k.entries[0]!.status = "ODOBRENO";
       k.entries[0]!.approved = { by: "vlasnik", date: "2026-09-23", decision: "test" };
     });
     expect(errs.some((e) => e.includes("E-001") && e.includes("sloj 2"))).toBe(true);
-    expect(errs.some((e) => e.includes("E-001") && e.includes("sloj 3"))).toBe(true);
   });
-  it("sa slojem 2 ali bez nezavisne provere (sloj 3) i dalje se odbija", () => {
+  it("DECISIONS/0015: nezavisna provera (sloj 3) ne blokira; bezbednosno pravilo ne sme sa jednim izvorom", () => {
+    expect(validateKnowledge(kb).filter((e) => e.includes("sloj 3"))).toEqual([]);
     const errs = broken((k) => {
-      const e = k.entries.find((x) => x.id === "E-002")!;
-      e.status = "ODOBRENO";
-      e.approved = { by: "vlasnik", date: "2026-09-23", decision: "test" };
+      k.entries.find((x) => x.id === "S-003")!.review = { criteria: { by: "test", date: "2026-09-24", consensus: "KREDIBILAN_IZVOR" } };
     });
-    expect(errs.filter((e) => e.startsWith("E-002"))).toEqual(["E-002: ODOBRENO bez potvrde nezavisne provere (sloj 3, DECISIONS/0013)"]);
+    expect(errs).toEqual(["S-003: bezbednosno pravilo traži smernicu ili dva izvora (DECISIONS/0015)"]);
   });
   it("„dva izvora\" sa samo jednim proverenim izvorom nivoa 1–2 se odbija", () => {
     const errs = broken((k) => {

@@ -1,6 +1,6 @@
 # KNOWLEDGE_BASE — baza znanja Mere
 
-**Status:** mehanizam implementiran (0.5.0, DECISIONS/0012); slojevi provere (0.5.1, DECISIONS/0013). Sadržaj: verzija 0.3.0 — sve stavke su PREDLOG (fleksibilan cilj, DECISIONS/0014).
+**Status:** mehanizam implementiran (0.5.0, DECISIONS/0012); slojevi provere (0.5.1, DECISIONS/0013). Sadržaj: verzija 0.4.0 — 18 stavki, sve ODOBRENO po kriterijumima (DECISIONS/0013, 0015).
 **Fajl:** `reference-data/knowledge/knowledge-<verzija>.json` · **Šema:** `src/schemas/knowledge.ts` · **Kod:** `src/domain/knowledge/`
 
 ## Zašto ovako
@@ -36,5 +36,5 @@ Mera ima dve baze: znanje (telesna masa, ishrana, medicina) i recepte. AI se ne 
 3. Status ODOBRENO + zapis o odobrenju; nova verzija fajla. Stari rezultati zadržavaju verziju po kojoj su nastali (MS §43).
 
 ## Slojevi provere (DECISIONS/0013)
-Svaka stavka nosi `review`: sloj 2 (kriterijumi primenjeni: smernica ili dva izvora nivoa 1–2 pročitana u originalu), sloj 3 (nezavisna AI provera), sloj 4 (nutricionista-dijetetičar). Build odbija ODOBRENO bez slojeva 2 i 3 i proverava da „dva izvora" zaista postoje.
+Svaka stavka nosi `review`: sloj 2 (kriterijumi primenjeni: smernica ili dva izvora nivoa 1–2 pročitana u originalu), sloj 3 (nezavisna AI provera), sloj 4 (nutricionista-dijetetičar). Build odbija ODOBRENO bez sloja 2, proverava da „dva izvora" zaista postoje i da bezbednosno pravilo nije odobreno samo na jednom izvoru. Sloj 3 ne blokira (DECISIONS/0015); sloj 4 je obavezan pre drugih korisnika.
 Paket za nezavisnu proveru: `node scripts/kb-review-package.mjs reference-data/knowledge/knowledge-<verzija>.json > docs/REVIZIJA/kb-<verzija>.md` — sadrži uputstvo za recenzenta i format odgovora.
