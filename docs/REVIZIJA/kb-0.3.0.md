@@ -1,4 +1,4 @@
-# Nezavisna provera baze znanja Mere — verzija 0.2.0
+# Nezavisna provera baze znanja Mere — verzija 0.3.0
 
 ## Uputstvo za recenzenta (AI sistem)
 Ti si nezavisni recenzent. Za SVAKU stavku ispod proveri:
@@ -39,6 +39,8 @@ Ne koristi forume, blogove, sajtove sa kalkulatorima ni Wikipediju kao dokaz. Ak
 
 **Tvrdnja:** Dnevna potrošnja = potrošnja u mirovanju × faktor aktivnosti (FAO/WHO/UNU 2004).
 
+**Važi kada:** Poznata dnevna potrošnja missing undefined
+
 **Proračun:** Dnevna potrošnja = mul(Potrošnja u mirovanju, Nivo aktivnosti (PAL))
 
 **Izvori:**
@@ -59,11 +61,11 @@ Ne koristi forume, blogove, sajtove sa kalkulatorima ni Wikipediju kao dokaz. Ak
 
 ## E-005 — Dnevni cilj za mršavljenje
 
-**Tvrdnja:** Za mršavljenje dnevni cilj je dnevna potrošnja umanjena za 500 kcal, što obično daje oko pola kilograma nedeljno. Mera ne ide ispod 1200 kcal za žene i 1500 kcal za muškarce: to su donje vrednosti opsega unosa koji smernica navodi kao jedan od načina, a Mera ih koristi kao oprezno dno. Unos ispod 800 kcal dnevno smernica dozvoljava samo uz medicinski nadzor.
+**Tvrdnja:** Za mršavljenje dnevni cilj je dnevna potrošnja umanjena za izabrani manjak. Mera ne ide ispod 1200 kcal za žene i 1500 kcal za muškarce: to su donje vrednosti opsega unosa koji smernica navodi kao jedan od načina, a Mera ih koristi kao oprezno dno. Unos ispod 800 kcal dnevno smernica dozvoljava samo uz medicinski nadzor.
 
 **Važi kada:** Cilj eq "mrsavljenje"
 
-**Proračun:** Dnevni cilj = max(sub(Dnevna potrošnja, 500), [Pol: m=1500, z=1200])
+**Proračun:** Dnevni cilj = max(sub(Dnevna potrošnja, Dnevni manjak), [Pol: m=1500, z=1200])
 
 **Izvori:**
 - (nivo 1, original pročitan) NHLBI Obesity Education Initiative Expert Panel. Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report. NIH Publication 98-4083; 1998. https://www.ncbi.nlm.nih.gov/books/NBK2009/
@@ -71,7 +73,7 @@ Ne koristi forume, blogove, sajtove sa kalkulatorima ni Wikipediju kao dokaz. Ak
 - (nivo 2, original pročitan) Jensen MD i sar. 2013 AHA/ACC/TOS Guideline for the Management of Overweight and Obesity in Adults. Circulation 2014;129(25 Suppl 2):S102–S138. https://pmc.ncbi.nlm.nih.gov/articles/PMC5819889/ doi:10.1161/01.cir.0000437739.71477.ee
   - potkrepljuje: Preporuka 3a (NHLBI ocena A): za smanjenje unosa može se koristiti bilo koji od načina — 1200–1500 kcal/dan žene i 1500–1800 kcal/dan muškarci (prilagođeno masi), ILI manjak od 500 ili 750 kcal/dan (u tekstu dokaza i 30 % manjka), ILI određeni tipovi dijeta. Dijete ispod 800 kcal/dan samo uz medicinski nadzor. Smernica je za odrasle.
 
-**Napomena autora:** ISPRAVKA posle čitanja originala: 1200/1500 u smernici NISU propisani minimum, već donja granica jednog od tri ravnopravna načina. Kao dno ih koristimo po kriterijumu 3 (opreznija varijanta). Otvoreno za odluku o proizvodu: fiksnih 500 kcal ili procenat (smernica navodi i 30 % manjka) i da li korisnik bira brzinu (500 ili 750).
+**Napomena autora:** 1200/1500 u smernici nisu propisani minimum, već donja granica jednog od tri ravnopravna načina; kao dno ih koristimo po kriterijumu 3 (opreznija varijanta).
 
 ## E-006 — Indeks telesne mase (ITM)
 
@@ -132,4 +134,88 @@ Ne koristi forume, blogove, sajtove sa kalkulatorima ni Wikipediju kao dokaz. Ak
 **Izvori:**
 - (nivo 2, original pročitan) Frankenfield D, Roth-Yousey L, Compher C. Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review. J Am Diet Assoc 2005;105(5):775–789. https://www.jandonline.org/article/S0002-8223(05)00149-5/abstract doi:10.1016/j.jada.2005.02.005
   - potkrepljuje: Mifflin-St Jeor je od često korišćenih formula najčešće u granici ±10 % od izmerenog; greške kod pojedinca postoje (pročitan sažetak na stranici izdavača).
+
+## E-007 — Dnevna potrošnja koju korisnik zna
+
+**Tvrdnja:** Ako korisnik zna svoju dnevnu potrošnju (npr. od nutricioniste ili merenja), Mera koristi taj broj umesto formule. Stvarni trend mase ga kasnije proverava kao i svaku procenu.
+
+**Važi kada:** Poznata dnevna potrošnja exists undefined
+
+**Proračun:** Dnevna potrošnja = Poznata dnevna potrošnja
+
+**Izvori:**
+- (objašnjenje, bez izvora)
+
+**Napomena autora:** Podatak korisnika, ne tvrdnja iz struke; bezbednosne granice (E-005, E-008) važe isto.
+
+## E-008 — Dnevni manjak kalorija prema tempu
+
+**Tvrdnja:** Umeren tempo je 500 kcal dnevno manje od potrošnje, brži 750 kcal — to su vrednosti iz smernice za lečenje gojaznosti odraslih. Korisnik može sam da izabere manji manjak (npr. 300 kcal); veći od 750 kcal Mera ne predlaže.
+
+**Važi kada:** Tempo in ["umereno","brze"]
+
+**Proračun:** Dnevni manjak = [Tempo: umereno=500, brze=750]
+
+**Izvori:**
+- (nivo 2, original pročitan) Jensen MD i sar. 2013 AHA/ACC/TOS Guideline for the Management of Overweight and Obesity in Adults. Circulation 2014;129(25 Suppl 2):S102–S138. https://pmc.ncbi.nlm.nih.gov/articles/PMC5819889/ doi:10.1161/01.cir.0000437739.71477.ee
+  - potkrepljuje: Preporuka 3a (NHLBI ocena A): za smanjenje unosa može se koristiti bilo koji od načina — 1200–1500 kcal/dan žene i 1500–1800 kcal/dan muškarci (prilagođeno masi), ILI manjak od 500 ili 750 kcal/dan (u tekstu dokaza i 30 % manjka), ILI određeni tipovi dijeta. Dijete ispod 800 kcal/dan samo uz medicinski nadzor. Smernica je za odrasle.
+- (nivo 1, original pročitan) NHLBI Obesity Education Initiative Expert Panel. Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report. NIH Publication 98-4083; 1998. https://www.ncbi.nlm.nih.gov/books/NBK2009/
+  - potkrepljuje: Manjak od 500–1000 kcal/dan kao deo programa mršavljenja; oko 0,5–1 kg nedeljno.
+
+## E-009 — Manjak koji korisnik sam bira
+
+**Tvrdnja:** Kada korisnik sam bira manjak, Mera prihvata svaki manjak do 750 kcal dnevno; veći se svodi na 750 kcal (gornja vrednost iz smernice). Donja granica unosa (E-005) važi i ovde.
+
+**Važi kada:** Tempo eq "sam"
+
+**Proračun:** Dnevni manjak = min(Manjak koji biraš, 750)
+
+**Izvori:**
+- (nivo 2, original pročitan) Jensen MD i sar. 2013 AHA/ACC/TOS Guideline for the Management of Overweight and Obesity in Adults. Circulation 2014;129(25 Suppl 2):S102–S138. https://pmc.ncbi.nlm.nih.gov/articles/PMC5819889/ doi:10.1161/01.cir.0000437739.71477.ee
+  - potkrepljuje: Preporuka 3a (NHLBI ocena A): za smanjenje unosa može se koristiti bilo koji od načina — 1200–1500 kcal/dan žene i 1500–1800 kcal/dan muškarci (prilagođeno masi), ILI manjak od 500 ili 750 kcal/dan (u tekstu dokaza i 30 % manjka), ILI određeni tipovi dijeta. Dijete ispod 800 kcal/dan samo uz medicinski nadzor. Smernica je za odrasle.
+
+**Napomena autora:** Manji manjak od 500 kcal je blaži od smernice (opreznija varijanta, kriterijum 3).
+
+## E-010 — Početni tempo mršavljenja
+
+**Tvrdnja:** Na početku, oko 500 kcal dnevnog manjka daje oko pola kilograma nedeljno (1000 kcal oko 1 kg). Mršavljenje se vremenom usporava jer se organizam prilagođava, pa Mera ne obećava datum — prati stvarni trend mase i predlaže korekciju.
+
+**Proračun:** Početni tempo = div(Dnevni manjak, 1000)
+
+**Izvori:**
+- (nivo 1, original pročitan) NHLBI Obesity Education Initiative Expert Panel. Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report. NIH Publication 98-4083; 1998. https://www.ncbi.nlm.nih.gov/books/NBK2009/
+  - potkrepljuje: Manjak od 500–1000 kcal/dan kao deo programa mršavljenja; oko 0,5–1 kg nedeljno.
+- (nivo 3, original pročitan) Hall KD, Sacks G, Chandramohan D i sar. Quantification of the effect of energy imbalance on bodyweight. Lancet 2011;378(9793):826–837. https://www.sciencedirect.com/science/article/abs/pii/S014067361160812X doi:10.1016/S0140-6736(11)60812-X
+  - potkrepljuje: Pravilo „500 kcal dnevno = stalnih 0,5 kg nedeljno" (3500 kcal po funti) ne uzima u obzir prilagođavanje organizma i precenjuje gubitak; mršavljenje se vremenom usporava (sažetak, izdavač). Autori su istraživači NIH-a.
+- (nivo 1, NIJE pročitan original) NICE. Weight management before, during and after pregnancy. PH27 (2010) — načela dobre prakse programa mršavljenja.
+  - potkrepljuje: Očekivati gubitak ne veći od 0,5–1 kg nedeljno. VIĐENO u kopiji PDF-a na drugom serveru — proveriti na nice.org.uk.
+
+## E-011 — ITM pri željenoj masi
+
+**Tvrdnja:** ITM pri željenoj masi = željena masa (kg) / visina (m)². Koristi se samo za bezbednosnu proveru cilja.
+
+**Proračun:** ITM pri željenoj masi = div(Željena masa, pow(div(Visina, 100), 2))
+
+**Izvori:**
+- (nivo 1, original pročitan) WHO. Nutrition Landscape Information System (NLiS) — Body mass index: moderate and severe thinness, underweight, overweight, obesity. https://apps.who.int/nutrition/landscape/help.aspx?menu=0&helpid=420
+  - potkrepljuje: ITM = kg/m²; ITM < 18,5 pothranjenost; < 17 mršavost (umereni rizik); < 16 znatno povećan rizik. Vrednosti važe za odrasle, oba pola.
+
+## S-004 — Cilj ispod zdravog opsega
+
+**Tvrdnja:** Mera ne pravi plan ka masi pri kojoj bi ITM bio ispod 18,5 (pothranjenost po SZO).
+
+**Važi kada:** Cilj eq "mrsavljenje"
+
+**Bezbednost:** kada ITM pri željenoj masi lt 18.5 → BLOCKED. Poruka: „Željena masa je ispod zdravog opsega za tvoju visinu (ITM ispod 18,5). Izaberi veću željenu masu."
+
+**Izvori:**
+- (nivo 1, original pročitan) WHO. Nutrition Landscape Information System (NLiS) — Body mass index: moderate and severe thinness, underweight, overweight, obesity. https://apps.who.int/nutrition/landscape/help.aspx?menu=0&helpid=420
+  - potkrepljuje: ITM = kg/m²; ITM < 18,5 pothranjenost; < 17 mršavost (umereni rizik); < 16 znatno povećan rizik. Vrednosti važe za odrasle, oba pola.
+
+## X-002 — Više načina da se zada cilj
+
+**Tvrdnja:** Korisnik može da kaže koliko želi da ima kilograma i izabere tempo (umereno je preporuka), ili sam da izabere koliko kalorija dnevno manje želi, ili da unese svoju poznatu potrošnju. Svi načini vode na isti proračun i iste bezbednosne granice.
+
+**Izvori:**
+- (objašnjenje, bez izvora)
 

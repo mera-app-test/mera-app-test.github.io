@@ -6,7 +6,7 @@ import type { ReferenceDataProvider } from "../../ports/data";
 import foodsRaw from "../../../reference-data/foods/foods-1.1.0.json";
 import energyRaw from "../../../reference-data/formulas/energy-label-1.0.0.json";
 import displayRaw from "../../../reference-data/formulas/display-1.0.0.json";
-import knowledgeRaw from "../../../reference-data/knowledge/knowledge-0.2.0.json";
+import knowledgeRaw from "../../../reference-data/knowledge/knowledge-0.3.0.json";
 
 export function createStaticReferenceData(): ReferenceDataProvider {
   const foodsFile = FoodsFileSchema.parse(foodsRaw);

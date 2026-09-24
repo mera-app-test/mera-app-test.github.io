@@ -2,7 +2,7 @@
 import { describe, expect, it } from "vitest";
 import { KnowledgeFileSchema, type KnowledgeFile } from "../../src/schemas";
 import { deriveQuestions, evaluate, searchKnowledge, validateKnowledge } from "../../src/domain";
-import raw from "../../reference-data/knowledge/knowledge-0.2.0.json";
+import raw from "../../reference-data/knowledge/knowledge-0.3.0.json";
 
 const kb = KnowledgeFileSchema.parse(raw);
 const ALL = ["PREDLOG", "ODOBRENO"] as const;
@@ -78,7 +78,7 @@ describe("provere hvataju greške", () => {
 describe("proračun (sa PREDLOG stavkama, samo radi provere mehanizma)", () => {
   it("ručno izračunat slučaj: muškarac 40 god., 180 cm, 90 kg, sedi, mršavljenje", () => {
     // 10·90 + 6,25·180 − 5·40 + 5 = 1830; × 1,53 = 2799,9; − 500 = 2299,9
-    const r = evaluate(kb, { sex: "m", ageYears: 40, heightCm: 180, massKg: 90, activity: "sedi", goal: "mrsavljenje" }, ALL);
+    const r = evaluate(kb, { sex: "m", ageYears: 40, heightCm: 180, massKg: 90, activity: "sedi", goal: "mrsavljenje", pace: "umereno", targetMassKg: 80 }, ALL);
     expect(r.facts.rmrKcal).toBeCloseTo(1830, 9);
     expect(r.facts.tdeeKcal).toBeCloseTo(2799.9, 9);
     expect(r.facts.targetKcal).toBeCloseTo(2299.9, 9);
@@ -88,7 +88,7 @@ describe("proračun (sa PREDLOG stavkama, samo radi provere mehanizma)", () => {
   });
   it("donja granica: žena 60 god., 155 cm, 50 kg, sedi → cilj 1200", () => {
     // 10·50 + 6,25·155 − 5·60 − 161 = 1007,75; × 1,53 = 1541,8575; − 500 = 1041,86 → 1200
-    const r = evaluate(kb, { sex: "z", ageYears: 60, heightCm: 155, massKg: 50, activity: "sedi", goal: "mrsavljenje", pregnantOrLactating: false }, ALL);
+    const r = evaluate(kb, { sex: "z", ageYears: 60, heightCm: 155, massKg: 50, activity: "sedi", goal: "mrsavljenje", pace: "umereno", targetMassKg: 48, pregnantOrLactating: false }, ALL);
     expect(r.facts.targetKcal).toBe(1200);
   });
   it("bezbednost: maloletnik, trudnoća, pothranjenost", () => {
@@ -100,6 +100,41 @@ describe("proračun (sa PREDLOG stavkama, samo radi provere mehanizma)", () => {
     const r = evaluate(kb, { sex: "z", goal: "mrsavljenje" }, ALL);
     expect(r.safetyStatus).toBe("SAFE");
     expect(r.undecidedSafety).toEqual(expect.arrayContaining(["S-001", "S-002", "S-003"]));
+  });
+});
+
+describe("fleksibilan cilj (DECISIONS/0014)", () => {
+  const base = { sex: "m", ageYears: 40, heightCm: 180, massKg: 90, activity: "sedi", goal: "mrsavljenje", targetMassKg: 80 } as const;
+  it("brži tempo: manjak 750, početni tempo 0,75 kg nedeljno", () => {
+    const r = evaluate(kb, { ...base, pace: "brze" }, ALL);
+    expect(r.facts.deficitKcal).toBe(750);
+    expect(r.facts.weeklyLossKg).toBeCloseTo(0.75, 12);
+    expect(r.facts.targetKcal).toBeCloseTo(2799.9 - 750, 9);
+  });
+  it("korisnik bira 300 kcal: cilj = potrošnja − 300; 1200 se svodi na 750", () => {
+    expect(evaluate(kb, { ...base, pace: "sam", customDeficitKcal: 300 }, ALL).facts.targetKcal).toBeCloseTo(2499.9, 9);
+    expect(evaluate(kb, { ...base, pace: "sam", customDeficitKcal: 1200 }, ALL).facts.deficitKcal).toBe(750);
+  });
+  it("poznata potrošnja zamenjuje formulu", () => {
+    const r = evaluate(kb, { ...base, pace: "umereno", knownTdeeKcal: 2600 }, ALL);
+    expect(r.facts.tdeeKcal).toBe(2600);
+    expect(r.facts.targetKcal).toBe(2100);
+    expect(r.trace.find((t) => t.output === "tdeeKcal")?.entryId).toBe("E-007");
+    expect(r.errors).toEqual([]);
+  });
+  it("željena masa ispod zdravog opsega se blokira", () => {
+    // 55 kg pri 180 cm: 55 / 1,8² = 16,98
+    const r = evaluate(kb, { ...base, pace: "umereno", targetMassKg: 55 }, ALL);
+    expect(r.safetyStatus).toBe("BLOCKED");
+    expect(r.safety.map((s) => s.entryId)).toEqual(["S-004"]);
+  });
+  it("pitanja se granaju: tempo i željena masa samo za mršavljenje, manjak samo kad bira sam", () => {
+    const keys = (a: Record<string, string | number | boolean>) => deriveQuestions(kb, "osnovni", a, ALL).map((q) => q.fact.key);
+    expect(keys({ sex: "m", goal: "odrzavanje" })).not.toContain("pace");
+    expect(keys({ sex: "m", goal: "mrsavljenje" })).toEqual(expect.arrayContaining(["targetMassKg", "pace"]));
+    expect(keys({ sex: "m", goal: "mrsavljenje" })).not.toContain("customDeficitKcal");
+    expect(keys({ sex: "m", goal: "mrsavljenje", pace: "sam" })).toContain("customDeficitKcal");
+    expect(deriveQuestions(kb, "napredni", { sex: "m" }, ALL).map((q) => q.fact.key)).toContain("knownTdeeKcal");
   });
 });
 
@@ -117,6 +152,6 @@ describe("upitnik izveden iz baze", () => {
 describe("pretraga za AI", () => {
   it("nalazi stavke po temi, latinicom i ćirilicom", () => {
     expect(searchKnowledge(kb, "trudnoća", ALL).map((e) => e.id)).toEqual(["S-002"]);
-    expect(searchKnowledge(kb, "дефицит", ALL).map((e) => e.id)).toEqual(["E-005"]);
+    expect(searchKnowledge(kb, "дефицит", ALL).map((e) => e.id)).toContain("E-005");
   });
 });

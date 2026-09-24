@@ -35,8 +35,9 @@ export function validateKnowledge(kb: KnowledgeFile): string[] {
   for (const e of kb.entries) {
     if (ids.has(e.id)) errors.push(`${e.id}: ID nije jedinstven`);
     ids.add(e.id);
-    const inputs = new Set(e.inputs);
+    const inputs = new Set([...e.inputs, ...e.optionalInputs]);
     for (const k of inputs) if (!facts.has(k)) errors.push(`${e.id}: nepoznata ulazna činjenica „${k}"`);
+    for (const k of e.optionalInputs) if (facts.get(k)?.question == null) errors.push(`${e.id}: neobavezan ulaz „${k}" mora biti pitanje (ne izvedena vrednost)`);
     const used = new Set<string>();
     if (e.expr) exprFacts(e.expr, used);
     if (e.appliesWhen) condFacts(e.appliesWhen, used);
@@ -57,10 +58,12 @@ export function validateKnowledge(kb: KnowledgeFile): string[] {
       if (!e.review?.criteria) errors.push(`${e.id}: ODOBRENO bez primene kriterijuma (sloj 2, DECISIONS/0013)`);
       if (e.review?.independentAi?.result !== "POTVRDJENO") errors.push(`${e.id}: ODOBRENO bez potvrde nezavisne provere (sloj 3, DECISIONS/0013)`);
     }
-    if (e.kind !== "explanation" && e.sources.length === 0) errors.push(`${e.id}: nema izvora`);
+    if (e.userData) {
+      if (!(e.expr && "fact" in e.expr)) errors.push(`${e.id}: userData stavka sme samo da preuzme jedan odgovor korisnika`);
+    } else if (e.kind !== "explanation" && e.sources.length === 0) errors.push(`${e.id}: nema izvora`);
   }
   // Pitanje sme da postoji samo ako ga koristi bar jedna stavka (nema „praznih" pitanja).
-  const usedAnywhere = new Set(kb.entries.filter((e) => e.status !== "POVUCENO").flatMap((e) => e.inputs));
+  const usedAnywhere = new Set(kb.entries.filter((e) => e.status !== "POVUCENO").flatMap((e) => [...e.inputs, ...e.optionalInputs]));
   for (const f of kb.facts) {
     if (f.question && !usedAnywhere.has(f.key)) errors.push(`pitanje „${f.key}" ne koristi nijedna stavka — ne sme postojati`);
     if (f.question?.askWhen) for (const k of condFacts(f.question.askWhen, new Set())) if (!facts.has(k)) errors.push(`pitanje „${f.key}": askWhen koristi nepoznato „${k}"`);
@@ -94,6 +97,9 @@ export function testCondition(c: Condition, facts: Facts): boolean | undefined {
     const r = c.any.map((x) => testCondition(x, facts));
     return r.includes(true) ? true : r.includes(undefined) ? undefined : false;
   }
+  if (c.op === "exists") return facts[c.fact] !== undefined;
+  if (c.op === "missing") return facts[c.fact] === undefined;
+  if (!("value" in c)) return undefined;
   const v = facts[c.fact];
   if (v === undefined) return undefined; // nepoznato ≠ netačno
   switch (c.op) {
@@ -185,6 +191,8 @@ export interface DerivedQuestion {
   readonly fact: FactDef;
   /** Stavke koje koriste ovaj odgovor — razlog zašto pitanje postoji. */
   readonly usedBy: readonly string[];
+  /** true = nijedna stavka ga ne traži obavezno (korisnik sme da preskoči). */
+  readonly optional: boolean;
 }
 
 const LEVEL_ORDER = ["osnovni", "detaljni", "napredni"] as const;
@@ -203,11 +211,12 @@ export function deriveQuestions(
   const entries = kb.entries.filter((e) => allowed.includes(e.status));
   // Uključi i ulaze stavki koje računaju izvedene vrednosti potrebne drugim stavkama (lanac do pitanja).
   const usedBy = new Map<string, Set<string>>();
-  for (const e of entries) for (const k of e.inputs) usedBy.set(k, (usedBy.get(k) ?? new Set()).add(e.id));
+  const required = new Set(entries.flatMap((e) => e.inputs));
+  for (const e of entries) for (const k of [...e.inputs, ...e.optionalInputs]) usedBy.set(k, (usedBy.get(k) ?? new Set()).add(e.id));
   return kb.facts
     .filter((f) => f.question && LEVEL_ORDER.indexOf(f.question.level) <= maxLevel && usedBy.has(f.key))
     .filter((f) => !f.question!.askWhen || testCondition(f.question!.askWhen, answers) === true)
-    .map((f) => ({ fact: f, usedBy: [...usedBy.get(f.key)!].sort() }));
+    .map((f) => ({ fact: f, usedBy: [...usedBy.get(f.key)!].sort(), optional: !required.has(f.key) }));
 }
 
 // ---------- Pretraga (AI dobija stavke pre odgovora — DECISIONS/0011) ----------

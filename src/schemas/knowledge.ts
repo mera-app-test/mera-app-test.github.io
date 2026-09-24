@@ -9,11 +9,13 @@ const EntryId = z.string().regex(/^[A-Z]{1,4}-[0-9]{3}$/);
 export type Condition =
   | { all: Condition[] }
   | { any: Condition[] }
-  | { fact: string; op: "eq" | "ne" | "lt" | "lte" | "gt" | "gte" | "in"; value: number | string | boolean | (number | string)[] };
+  | { fact: string; op: "eq" | "ne" | "lt" | "lte" | "gt" | "gte" | "in"; value: number | string | boolean | (number | string)[] }
+  | { fact: string; op: "exists" | "missing" };
 export const ConditionSchema: z.ZodType<Condition> = z.lazy(() =>
   z.union([
     z.object({ all: z.array(ConditionSchema).min(1) }).strict(),
     z.object({ any: z.array(ConditionSchema).min(1) }).strict(),
+    z.object({ fact: FactKey, op: z.enum(["exists", "missing"]) }).strict(),
     z
       .object({
         fact: FactKey,
@@ -88,6 +90,8 @@ export const EntrySchema = z
     tags: z.array(z.string()).default([]),
     appliesWhen: ConditionSchema.optional(),
     inputs: z.array(FactKey),
+    /** Neobavezni ulazi: samo pitanja na koja korisnik ne mora da odgovori (npr. „znam koliko trošim"). Stavka se računa i bez njih. */
+    optionalInputs: z.array(FactKey).default([]),
     /** calculation: vrednost koju stavka izračunava. */
     output: FactKey.optional(),
     expr: ExprSchema.optional(),
@@ -101,6 +105,8 @@ export const EntrySchema = z
       .strict()
       .optional(),
     sources: z.array(SourceSchema),
+    /** true = stavka samo preuzima podatak korisnika (npr. poznata potrošnja); nije tvrdnja struke, pa nema izvor. */
+    userData: z.literal(true).optional(),
     approved: z.object({ by: z.string(), date: z.iso.date(), decision: z.string() }).strict().optional(),
     /** Slojevi provere (DECISIONS/0013). */
     review: z

@@ -79,3 +79,10 @@
 - Baza 0.2.0: izvori pročitani u originalu (Mifflin 1990 sažetak, AHA/ACC/TOS 2013, WHO NLiS, NICE PH27). Ispravke: 1200/1500 kcal nisu minimum iz smernice nego donja granica jednog od načina — koristi se kao oprezno dno; trudnoća po NICE. E-001 još ne ispunjava kriterijum 2 (fali drugi izvor nivoa 1–2) — uhvatila automatska provera.
 - Paket za nezavisnu AI proveru: docs/REVIZIJA/kb-0.2.0.md (scripts/kb-review-package.mjs).
 - Ekran „Baza znanja": status slojeva provere za svaku stavku.
+
+## 0.5.2 — fleksibilan cilj; baza znanja 0.3.0 (test)
+- DECISIONS/0014: cilj preko željene mase i tempa, ručno izabranog manjka ili poznate potrošnje; iste granice za sve načine.
+- Baza 0.3.0: E-007 (poznata potrošnja), E-008/E-009 (manjak prema tempu / ručno, najviše 750), E-010 (početni tempo; Hall 2011 — bez obećanog datuma), E-011 + S-004 (željena masa ne ispod ITM 18,5), X-002.
+- Mehanizam: uslovi „postoji / ne postoji odgovor", neobavezna pitanja, stavke koje samo preuzimaju podatak korisnika (userData).
+- Test ekran: izbor nivoa upitnika, pitanja koja mogu da se preskoče, zastareli odgovori se brišu kad pitanje prestane da važi.
+- Paket za nezavisnu proveru: docs/REVIZIJA/kb-0.3.0.md. Testovi: 131.

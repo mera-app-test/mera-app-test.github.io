@@ -1,6 +1,6 @@
 {
  "id": "knowledge",
- "version": "0.2.0",
+ "version": "0.3.0",
  "document": "docs/KNOWLEDGE_BASE.md; DECISIONS/0011, 0012",
  "facts": [
   {
@@ -101,6 +101,68 @@
    }
   },
   {
+   "key": "targetMassKg",
+   "label": "Željena masa",
+   "type": "number",
+   "unit": "kg",
+   "min": 20,
+   "max": 400,
+   "question": {
+    "text": "Koliko želiš da imaš kilograma?",
+    "level": "osnovni",
+    "askWhen": {
+     "fact": "goal",
+     "op": "eq",
+     "value": "mrsavljenje"
+    }
+   }
+  },
+  {
+   "key": "pace",
+   "label": "Tempo",
+   "type": "enum",
+   "options": [
+    {
+     "value": "umereno",
+     "label": "umereno — oko 0,5 kg nedeljno (preporuka)"
+    },
+    {
+     "value": "brze",
+     "label": "brže — oko 0,75 kg nedeljno"
+    },
+    {
+     "value": "sam",
+     "label": "sam biram koliko kalorija manje"
+    }
+   ],
+   "question": {
+    "text": "Kojim tempom?",
+    "level": "osnovni",
+    "askWhen": {
+     "fact": "goal",
+     "op": "eq",
+     "value": "mrsavljenje"
+    }
+   }
+  },
+  {
+   "key": "customDeficitKcal",
+   "label": "Manjak koji biraš",
+   "type": "number",
+   "unit": "kcal dnevno",
+   "min": 50,
+   "max": 2000,
+   "question": {
+    "text": "Koliko kalorija dnevno manje od potrošnje?",
+    "level": "osnovni",
+    "askWhen": {
+     "fact": "pace",
+     "op": "eq",
+     "value": "sam"
+    }
+   }
+  },
+  {
    "key": "pregnantOrLactating",
    "label": "Trudnoća ili dojenje",
    "type": "boolean",
@@ -147,12 +209,45 @@
    "type": "number",
    "unit": "kcal",
    "question": null
+  },
+  {
+   "key": "knownTdeeKcal",
+   "label": "Poznata dnevna potrošnja",
+   "type": "number",
+   "unit": "kcal",
+   "min": 800,
+   "max": 6000,
+   "question": {
+    "text": "Ako znaš koliko kalorija dnevno trošiš (npr. od nutricioniste ili merenja), upiši. Ako ne znaš, preskoči.",
+    "level": "napredni"
+   }
+  },
+  {
+   "key": "deficitKcal",
+   "label": "Dnevni manjak",
+   "type": "number",
+   "unit": "kcal",
+   "question": null
+  },
+  {
+   "key": "weeklyLossKg",
+   "label": "Početni tempo",
+   "type": "number",
+   "unit": "kg nedeljno",
+   "question": null
+  },
+  {
+   "key": "targetBmi",
+   "label": "ITM pri željenoj masi",
+   "type": "number",
+   "unit": "kg/m²",
+   "question": null
   }
  ],
  "entries": [
   {
    "status": "PREDLOG",
-   "version": "0.2.0",
+   "version": "0.3.0",
    "tags": [
     "bmr",
     "rmr",
@@ -239,11 +334,12 @@
      "doi": "10.1016/j.jada.2005.02.005"
     }
    ],
-   "notes": "Formula je izvedena na odraslima 19–78 godina (Mifflin 1990). KRITERIJUM 2 JOŠ NIJE ISPUNJEN: postoji jedan proveren izvor nivoa 1–2 (sistematski pregled Frankenfield 2005); originalni rad je nivo 3. Potreban je još jedan izvor nivoa 1–2 (npr. stručna smernica koja preporučuje ovu formulu), pročitan u originalu."
+   "notes": "Formula je izvedena na odraslima 19–78 godina (Mifflin 1990). KRITERIJUM 2 JOŠ NIJE ISPUNJEN: postoji jedan proveren izvor nivoa 1–2 (sistematski pregled Frankenfield 2005); originalni rad je nivo 3. Potreban je još jedan izvor nivoa 1–2 (npr. stručna smernica koja preporučuje ovu formulu), pročitan u originalu.",
+   "optionalInputs": []
   },
   {
    "status": "PREDLOG",
-   "version": "0.2.0",
+   "version": "0.3.0",
    "tags": [
     "aktivnost",
     "kretanje",
@@ -285,11 +381,12 @@
      "date": "2026-09-23",
      "consensus": "SMERNICA"
     }
-   }
+   },
+   "optionalInputs": []
   },
   {
    "status": "PREDLOG",
-   "version": "0.2.0",
+   "version": "0.3.0",
    "tags": [
     "tdee",
     "dnevna potrošnja",
@@ -332,11 +429,18 @@
      "date": "2026-09-23",
      "consensus": "SMERNICA"
     }
-   }
+   },
+   "appliesWhen": {
+    "fact": "knownTdeeKcal",
+    "op": "missing"
+   },
+   "optionalInputs": [
+    "knownTdeeKcal"
+   ]
   },
   {
    "status": "PREDLOG",
-   "version": "0.2.0",
+   "version": "0.3.0",
    "tags": [
     "održavanje",
     "cilj",
@@ -376,11 +480,12 @@
      "date": "2026-09-23",
      "consensus": "SMERNICA"
     }
-   }
+   },
+   "optionalInputs": []
   },
   {
    "status": "PREDLOG",
-   "version": "0.2.0",
+   "version": "0.3.0",
    "tags": [
     "mršavljenje",
     "deficit",
@@ -393,7 +498,7 @@
    "area": "cilj",
    "title": "Dnevni cilj za mršavljenje",
    "kind": "calculation",
-   "statement": "Za mršavljenje dnevni cilj je dnevna potrošnja umanjena za 500 kcal, što obično daje oko pola kilograma nedeljno. Mera ne ide ispod 1200 kcal za žene i 1500 kcal za muškarce: to su donje vrednosti opsega unosa koji smernica navodi kao jedan od načina, a Mera ih koristi kao oprezno dno. Unos ispod 800 kcal dnevno smernica dozvoljava samo uz medicinski nadzor.",
+   "statement": "Za mršavljenje dnevni cilj je dnevna potrošnja umanjena za izabrani manjak. Mera ne ide ispod 1200 kcal za žene i 1500 kcal za muškarce: to su donje vrednosti opsega unosa koji smernica navodi kao jedan od načina, a Mera ih koristi kao oprezno dno. Unos ispod 800 kcal dnevno smernica dozvoljava samo uz medicinski nadzor.",
    "appliesWhen": {
     "fact": "goal",
     "op": "eq",
@@ -402,6 +507,7 @@
    "inputs": [
     "goal",
     "tdeeKcal",
+    "deficitKcal",
     "sex"
    ],
    "output": "targetKcal",
@@ -415,7 +521,7 @@
         "fact": "tdeeKcal"
        },
        {
-        "const": 500
+        "fact": "deficitKcal"
        }
       ]
      },
@@ -449,18 +555,19 @@
      "doi": "10.1161/01.cir.0000437739.71477.ee"
     }
    ],
-   "notes": "ISPRAVKA posle čitanja originala: 1200/1500 u smernici NISU propisani minimum, već donja granica jednog od tri ravnopravna načina. Kao dno ih koristimo po kriterijumu 3 (opreznija varijanta). Otvoreno za odluku o proizvodu: fiksnih 500 kcal ili procenat (smernica navodi i 30 % manjka) i da li korisnik bira brzinu (500 ili 750).",
+   "notes": "1200/1500 u smernici nisu propisani minimum, već donja granica jednog od tri ravnopravna načina; kao dno ih koristimo po kriterijumu 3 (opreznija varijanta).",
    "review": {
     "criteria": {
      "by": "razvojni agent",
      "date": "2026-09-23",
      "consensus": "SMERNICA"
     }
-   }
+   },
+   "optionalInputs": []
   },
   {
    "status": "PREDLOG",
-   "version": "0.2.0",
+   "version": "0.3.0",
    "tags": [
     "itm",
     "bmi"
@@ -518,11 +625,12 @@
      "date": "2026-09-23",
      "consensus": "SMERNICA"
     }
-   }
+   },
+   "optionalInputs": []
   },
   {
    "status": "PREDLOG",
-   "version": "0.2.0",
+   "version": "0.3.0",
    "tags": [
     "maloletni",
     "deca",
@@ -579,11 +687,12 @@
      "date": "2026-09-23",
      "consensus": "DVA_IZVORA"
     }
-   }
+   },
+   "optionalInputs": []
   },
   {
    "status": "PREDLOG",
-   "version": "0.2.0",
+   "version": "0.3.0",
    "tags": [
     "trudnoća",
     "dojenje",
@@ -636,11 +745,12 @@
      "consensus": "SMERNICA"
     }
    },
-   "notes": "Po NICE (navod), postepeno mršavljenje tokom dojenja nije štetno — kada se potvrdi u originalu, dojenje se može odvojiti od trudnoće (novo pitanje) ili ostati oprezno. Odluka o proizvodu."
+   "notes": "Po NICE (navod), postepeno mršavljenje tokom dojenja nije štetno — kada se potvrdi u originalu, dojenje se može odvojiti od trudnoće (novo pitanje) ili ostati oprezno. Odluka o proizvodu.",
+   "optionalInputs": []
   },
   {
    "status": "PREDLOG",
-   "version": "0.2.0",
+   "version": "0.3.0",
    "tags": [
     "pothranjenost",
     "itm",
@@ -685,11 +795,12 @@
      "date": "2026-09-23",
      "consensus": "SMERNICA"
     }
-   }
+   },
+   "optionalInputs": []
   },
   {
    "status": "PREDLOG",
-   "version": "0.2.0",
+   "version": "0.3.0",
    "tags": [
     "procena",
     "tačnost",
@@ -712,7 +823,351 @@
      "url": "https://www.jandonline.org/article/S0002-8223(05)00149-5/abstract",
      "doi": "10.1016/j.jada.2005.02.005"
     }
-   ]
+   ],
+   "optionalInputs": []
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.3.0",
+   "tags": [
+    "potrošnja",
+    "tdee",
+    "znam"
+   ],
+   "optionalInputs": [],
+   "id": "E-007",
+   "area": "energija",
+   "title": "Dnevna potrošnja koju korisnik zna",
+   "kind": "calculation",
+   "statement": "Ako korisnik zna svoju dnevnu potrošnju (npr. od nutricioniste ili merenja), Mera koristi taj broj umesto formule. Stvarni trend mase ga kasnije proverava kao i svaku procenu.",
+   "appliesWhen": {
+    "fact": "knownTdeeKcal",
+    "op": "exists"
+   },
+   "inputs": [
+    "knownTdeeKcal"
+   ],
+   "output": "tdeeKcal",
+   "expr": {
+    "fact": "knownTdeeKcal"
+   },
+   "sources": [],
+   "notes": "Podatak korisnika, ne tvrdnja iz struke; bezbednosne granice (E-005, E-008) važe isto.",
+   "userData": true
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.3.0",
+   "tags": [
+    "tempo",
+    "deficit",
+    "manjak",
+    "brzina",
+    "mršavljenje"
+   ],
+   "optionalInputs": [],
+   "id": "E-008",
+   "area": "cilj",
+   "title": "Dnevni manjak kalorija prema tempu",
+   "kind": "calculation",
+   "statement": "Umeren tempo je 500 kcal dnevno manje od potrošnje, brži 750 kcal — to su vrednosti iz smernice za lečenje gojaznosti odraslih. Korisnik može sam da izabere manji manjak (npr. 300 kcal); veći od 750 kcal Mera ne predlaže.",
+   "appliesWhen": {
+    "fact": "pace",
+    "op": "in",
+    "value": [
+     "umereno",
+     "brze"
+    ]
+   },
+   "inputs": [
+    "pace"
+   ],
+   "output": "deficitKcal",
+   "expr": {
+    "byFact": {
+     "fact": "pace",
+     "values": {
+      "umereno": 500,
+      "brze": 750
+     }
+    }
+   },
+   "sources": [
+    {
+     "tier": 2,
+     "citation": "Jensen MD i sar. 2013 AHA/ACC/TOS Guideline for the Management of Overweight and Obesity in Adults. Circulation 2014;129(25 Suppl 2):S102–S138.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Preporuka 3a (NHLBI ocena A): za smanjenje unosa može se koristiti bilo koji od načina — 1200–1500 kcal/dan žene i 1500–1800 kcal/dan muškarci (prilagođeno masi), ILI manjak od 500 ili 750 kcal/dan (u tekstu dokaza i 30 % manjka), ILI određeni tipovi dijeta. Dijete ispod 800 kcal/dan samo uz medicinski nadzor. Smernica je za odrasle.",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5819889/",
+     "doi": "10.1161/01.cir.0000437739.71477.ee"
+    },
+    {
+     "tier": 1,
+     "citation": "NHLBI Obesity Education Initiative Expert Panel. Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report. NIH Publication 98-4083; 1998.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Manjak od 500–1000 kcal/dan kao deo programa mršavljenja; oko 0,5–1 kg nedeljno.",
+     "url": "https://www.ncbi.nlm.nih.gov/books/NBK2009/"
+    }
+   ],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "SMERNICA"
+    }
+   }
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.3.0",
+   "tags": [
+    "manjak",
+    "sam biram",
+    "deficit"
+   ],
+   "optionalInputs": [],
+   "id": "E-009",
+   "area": "cilj",
+   "title": "Manjak koji korisnik sam bira",
+   "kind": "calculation",
+   "statement": "Kada korisnik sam bira manjak, Mera prihvata svaki manjak do 750 kcal dnevno; veći se svodi na 750 kcal (gornja vrednost iz smernice). Donja granica unosa (E-005) važi i ovde.",
+   "appliesWhen": {
+    "fact": "pace",
+    "op": "eq",
+    "value": "sam"
+   },
+   "inputs": [
+    "pace",
+    "customDeficitKcal"
+   ],
+   "output": "deficitKcal",
+   "expr": {
+    "op": "min",
+    "args": [
+     {
+      "fact": "customDeficitKcal"
+     },
+     {
+      "const": 750
+     }
+    ]
+   },
+   "sources": [
+    {
+     "tier": 2,
+     "citation": "Jensen MD i sar. 2013 AHA/ACC/TOS Guideline for the Management of Overweight and Obesity in Adults. Circulation 2014;129(25 Suppl 2):S102–S138.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Preporuka 3a (NHLBI ocena A): za smanjenje unosa može se koristiti bilo koji od načina — 1200–1500 kcal/dan žene i 1500–1800 kcal/dan muškarci (prilagođeno masi), ILI manjak od 500 ili 750 kcal/dan (u tekstu dokaza i 30 % manjka), ILI određeni tipovi dijeta. Dijete ispod 800 kcal/dan samo uz medicinski nadzor. Smernica je za odrasle.",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5819889/",
+     "doi": "10.1161/01.cir.0000437739.71477.ee"
+    }
+   ],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "SMERNICA"
+    }
+   },
+   "notes": "Manji manjak od 500 kcal je blaži od smernice (opreznija varijanta, kriterijum 3)."
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.3.0",
+   "tags": [
+    "tempo",
+    "nedeljno",
+    "koliko brzo",
+    "datum",
+    "usporavanje"
+   ],
+   "optionalInputs": [],
+   "id": "E-010",
+   "area": "cilj",
+   "title": "Početni tempo mršavljenja",
+   "kind": "calculation",
+   "statement": "Na početku, oko 500 kcal dnevnog manjka daje oko pola kilograma nedeljno (1000 kcal oko 1 kg). Mršavljenje se vremenom usporava jer se organizam prilagođava, pa Mera ne obećava datum — prati stvarni trend mase i predlaže korekciju.",
+   "inputs": [
+    "deficitKcal"
+   ],
+   "output": "weeklyLossKg",
+   "expr": {
+    "op": "div",
+    "args": [
+     {
+      "fact": "deficitKcal"
+     },
+     {
+      "const": 1000
+     }
+    ]
+   },
+   "sources": [
+    {
+     "tier": 1,
+     "citation": "NHLBI Obesity Education Initiative Expert Panel. Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report. NIH Publication 98-4083; 1998.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Manjak od 500–1000 kcal/dan kao deo programa mršavljenja; oko 0,5–1 kg nedeljno.",
+     "url": "https://www.ncbi.nlm.nih.gov/books/NBK2009/"
+    },
+    {
+     "tier": 3,
+     "citation": "Hall KD, Sacks G, Chandramohan D i sar. Quantification of the effect of energy imbalance on bodyweight. Lancet 2011;378(9793):826–837.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "Pravilo „500 kcal dnevno = stalnih 0,5 kg nedeljno\" (3500 kcal po funti) ne uzima u obzir prilagođavanje organizma i precenjuje gubitak; mršavljenje se vremenom usporava (sažetak, izdavač). Autori su istraživači NIH-a.",
+     "url": "https://www.sciencedirect.com/science/article/abs/pii/S014067361160812X",
+     "doi": "10.1016/S0140-6736(11)60812-X"
+    },
+    {
+     "tier": 1,
+     "citation": "NICE. Weight management before, during and after pregnancy. PH27 (2010) — načela dobre prakse programa mršavljenja.",
+     "checkedOriginal": false,
+     "accessed": "2026-09-23",
+     "supports": "Očekivati gubitak ne veći od 0,5–1 kg nedeljno. VIĐENO u kopiji PDF-a na drugom serveru — proveriti na nice.org.uk."
+    }
+   ],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "SMERNICA"
+    }
+   }
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.3.0",
+   "tags": [
+    "itm",
+    "cilj"
+   ],
+   "optionalInputs": [],
+   "id": "E-011",
+   "area": "telesna masa",
+   "title": "ITM pri željenoj masi",
+   "kind": "calculation",
+   "statement": "ITM pri željenoj masi = željena masa (kg) / visina (m)². Koristi se samo za bezbednosnu proveru cilja.",
+   "inputs": [
+    "targetMassKg",
+    "heightCm"
+   ],
+   "output": "targetBmi",
+   "expr": {
+    "op": "div",
+    "args": [
+     {
+      "fact": "targetMassKg"
+     },
+     {
+      "op": "pow",
+      "args": [
+       {
+        "op": "div",
+        "args": [
+         {
+          "fact": "heightCm"
+         },
+         {
+          "const": 100
+         }
+        ]
+       },
+       {
+        "const": 2
+       }
+      ]
+     }
+    ]
+   },
+   "sources": [
+    {
+     "tier": 1,
+     "citation": "WHO. Nutrition Landscape Information System (NLiS) — Body mass index: moderate and severe thinness, underweight, overweight, obesity.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "ITM = kg/m²; ITM < 18,5 pothranjenost; < 17 mršavost (umereni rizik); < 16 znatno povećan rizik. Vrednosti važe za odrasle, oba pola.",
+     "url": "https://apps.who.int/nutrition/landscape/help.aspx?menu=0&helpid=420"
+    }
+   ],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "SMERNICA"
+    }
+   }
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.3.0",
+   "tags": [
+    "cilj",
+    "pothranjenost",
+    "bezbednost"
+   ],
+   "optionalInputs": [],
+   "id": "S-004",
+   "area": "bezbednost",
+   "title": "Cilj ispod zdravog opsega",
+   "kind": "safety",
+   "statement": "Mera ne pravi plan ka masi pri kojoj bi ITM bio ispod 18,5 (pothranjenost po SZO).",
+   "appliesWhen": {
+    "fact": "goal",
+    "op": "eq",
+    "value": "mrsavljenje"
+   },
+   "inputs": [
+    "goal",
+    "targetBmi"
+   ],
+   "safety": {
+    "when": {
+     "fact": "targetBmi",
+     "op": "lt",
+     "value": 18.5
+    },
+    "status": "BLOCKED",
+    "message": "Željena masa je ispod zdravog opsega za tvoju visinu (ITM ispod 18,5). Izaberi veću željenu masu."
+   },
+   "sources": [
+    {
+     "tier": 1,
+     "citation": "WHO. Nutrition Landscape Information System (NLiS) — Body mass index: moderate and severe thinness, underweight, overweight, obesity.",
+     "checkedOriginal": true,
+     "accessed": "2026-09-23",
+     "supports": "ITM = kg/m²; ITM < 18,5 pothranjenost; < 17 mršavost (umereni rizik); < 16 znatno povećan rizik. Vrednosti važe za odrasle, oba pola.",
+     "url": "https://apps.who.int/nutrition/landscape/help.aspx?menu=0&helpid=420"
+    }
+   ],
+   "review": {
+    "criteria": {
+     "by": "razvojni agent",
+     "date": "2026-09-23",
+     "consensus": "SMERNICA"
+    }
+   }
+  },
+  {
+   "status": "PREDLOG",
+   "version": "0.3.0",
+   "tags": [
+    "cilj",
+    "kako",
+    "načini"
+   ],
+   "optionalInputs": [],
+   "id": "X-002",
+   "area": "cilj",
+   "title": "Više načina da se zada cilj",
+   "kind": "explanation",
+   "statement": "Korisnik može da kaže koliko želi da ima kilograma i izabere tempo (umereno je preporuka), ili sam da izabere koliko kalorija dnevno manje želi, ili da unese svoju poznatu potrošnju. Svi načini vode na isti proračun i iste bezbednosne granice.",
+   "inputs": [],
+   "sources": []
   }
  ]
 }

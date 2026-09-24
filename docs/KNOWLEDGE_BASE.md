@@ -1,6 +1,6 @@
 # KNOWLEDGE_BASE — baza znanja Mere
 
-**Status:** mehanizam implementiran (0.5.0, DECISIONS/0012); slojevi provere (0.5.1, DECISIONS/0013). Sadržaj: verzija 0.2.0 — sve stavke su PREDLOG.
+**Status:** mehanizam implementiran (0.5.0, DECISIONS/0012); slojevi provere (0.5.1, DECISIONS/0013). Sadržaj: verzija 0.3.0 — sve stavke su PREDLOG (fleksibilan cilj, DECISIONS/0014).
 **Fajl:** `reference-data/knowledge/knowledge-<verzija>.json` · **Šema:** `src/schemas/knowledge.ts` · **Kod:** `src/domain/knowledge/`
 
 ## Zašto ovako

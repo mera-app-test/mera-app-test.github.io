@@ -101,13 +101,20 @@ function Entries({ entries }: { entries: readonly KnowledgeEntry[] }) {
 function Questionnaire({ overview }: { overview: KnowledgeOverview }) {
   const { knowledge } = useServices();
   const [answers, setAnswers] = useState<Record<string, FactValue>>({});
+  const [level, setLevel] = useState<"osnovni" | "detaljni" | "napredni">("osnovni");
   const [questions, setQuestions] = useState<readonly DerivedQuestion[]>([]);
   const [result, setResult] = useState<Evaluation | null>(null);
 
   useEffect(() => {
-    void knowledge.questions("osnovni", answers, "sa-predlozima").then(setQuestions);
+    void knowledge.questions(level, answers, "sa-predlozima").then((qs) => {
+      setQuestions(qs);
+      // Odgovor na pitanje koje više ne važi (npr. promenjen cilj) ne sme da utiče na račun.
+      const keys = new Set(qs.map((q) => q.fact.key));
+      const stale = Object.keys(answers).filter((k) => !keys.has(k));
+      if (stale.length) setAnswers((a) => Object.fromEntries(Object.entries(a).filter(([k]) => keys.has(k))));
+    });
     void knowledge.evaluate(answers, "sa-predlozima").then(setResult);
-  }, [knowledge, answers]);
+  }, [knowledge, answers, level]);
 
   const set = (key: string, v: FactValue | undefined) =>
     setAnswers((a) => {
@@ -117,12 +124,19 @@ function Questionnaire({ overview }: { overview: KnowledgeOverview }) {
       return n;
     });
 
-  const complete = questions.every((q) => answers[q.fact.key] !== undefined);
+  const complete = questions.every((q) => q.optional || answers[q.fact.key] !== undefined);
 
   return (
     <div>
       <p className="food-pending">Pregled: pitanja i računica iz stavki sa statusom „predlog". Aplikacija ih ne koristi dok ih ne odobriš.</p>
-      <p className="muted">Osnovni nivo · {questions.length} pitanja. Ispod svakog piše koje pravilo ga koristi.</p>
+      <div className="food-forms" role="group" aria-label="Nivo">
+        {(["osnovni", "detaljni", "napredni"] as const).map((l) => (
+          <button key={l} type="button" className={level === l ? "food-form active" : "food-form"} onClick={() => setLevel(l)}>
+            {l}
+          </button>
+        ))}
+      </div>
+      <p className="muted">{questions.length} pitanja. Ispod svakog piše koje pravilo ga koristi.</p>
       <div className="kb-form">
         {questions.map((q) => (
           <div key={q.fact.key} className="kb-q">
@@ -155,7 +169,7 @@ function Questionnaire({ overview }: { overview: KnowledgeOverview }) {
                 })}
               </div>
             )}
-            <span className="kb-used">koristi: {q.usedBy.join(", ")}</span>
+            <span className="kb-used">koristi: {q.usedBy.join(", ")}{q.optional ? " · može da se preskoči" : ""}</span>
           </div>
         ))}
       </div>
