@@ -2,6 +2,8 @@
 import { useEffect, useMemo, useState } from "react";
 import type { DerivedQuestion, Evaluation, FactValue, KnowledgeEntry, KnowledgeOverview } from "../../application";
 import { useServices } from "../ServicesContext";
+// Paket za nezavisnu proveru (sloj 3, DECISIONS/0013) — generisan iz baze skriptom scripts/kb-review-package.mjs.
+import reviewPackage from "../../../docs/REVIZIJA/kb-0.3.0.md?raw";
 
 const STATUS_LABEL: Record<KnowledgeEntry["status"], string> = { ODOBRENO: "odobreno", PREDLOG: "predlog", POVUCENO: "povučeno" };
 const SAFETY_LABEL: Record<Evaluation["safetyStatus"], string> = {
@@ -37,6 +39,7 @@ export function KnowledgeScreen({ onClose }: { onClose: () => void }) {
           Upitnik iz baze
         </button>
       </div>
+      {tab === "baza" && <CopyPackage />}
       {tab === "baza" && overview && <Entries entries={overview.entries} />}
       {tab === "upitnik" && overview && <Questionnaire overview={overview} />}
       <button type="button" className="btn btn-secondary block back" onClick={onClose}>
@@ -191,6 +194,33 @@ function Questionnaire({ overview }: { overview: KnowledgeOverview }) {
             ))}
         </div>
       )}
+    </div>
+  );
+}
+
+function CopyPackage() {
+  const [state, setState] = useState<"idle" | "ok" | "manual">("idle");
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(reviewPackage);
+      setState("ok");
+    } catch {
+      setState("manual");
+    }
+  };
+  return (
+    <div className="kb-copy">
+      <button type="button" className="btn btn-primary block" onClick={() => void copy()}>
+        Kopiraj paket za nezavisnu proveru
+      </button>
+      {state === "ok" && <p className="kb-copy-ok">Kopirano. Nalepi ga drugom AI-ju i njegov odgovor vrati razvojnom agentu.</p>}
+      {state === "manual" && (
+        <>
+          <p className="muted">Telefon nije dozvolio automatsko kopiranje. Dodirni polje, izaberi sve i kopiraj.</p>
+          <textarea className="kb-copy-text" readOnly value={reviewPackage} onFocus={(e) => e.target.select()} />
+        </>
+      )}
+      <p className="muted kb-copy-size">{Math.round(reviewPackage.length / 1000)} hiljada znakova · sva pravila, izvori i uputstvo za recenzenta</p>
     </div>
   );
 }

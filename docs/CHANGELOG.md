@@ -86,3 +86,6 @@
 - Mehanizam: uslovi „postoji / ne postoji odgovor", neobavezna pitanja, stavke koje samo preuzimaju podatak korisnika (userData).
 - Test ekran: izbor nivoa upitnika, pitanja koja mogu da se preskoče, zastareli odgovori se brišu kad pitanje prestane da važi.
 - Paket za nezavisnu proveru: docs/REVIZIJA/kb-0.3.0.md. Testovi: 131.
+
+## 0.5.3
+- Ekran „Baza znanja": dugme „Kopiraj paket za nezavisnu proveru" (clipboard; ako telefon ne dozvoli — polje za ručno kopiranje).

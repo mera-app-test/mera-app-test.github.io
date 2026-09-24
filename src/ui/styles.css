@@ -409,3 +409,7 @@ body {
 .kb-options { margin: 0; }
 .kb-used { font-size: 13px; color: var(--ink-soft); }
 .kb-trace { margin: 4px 0; }
+.kb-copy { margin: 8px 0 8px; }
+.kb-copy-ok { color: var(--ok); font-weight: 650; margin: 10px 0 0; }
+.kb-copy-text { width: 100%; min-height: 160px; font: 13px/1.4 ui-monospace, monospace; margin-top: 8px; border: 1.5px solid var(--line); border-radius: 10px; padding: 8px; }
+.kb-copy-size { font-size: 13px; margin-top: 6px; }
