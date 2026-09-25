@@ -114,3 +114,8 @@
 
 ## 0.6.3
 - Dugme „Pogledaj predlog izgleda“ premešteno na vrh ekrana Danas i ispravljena širina (u 0.6.2 bilo na dnu i izlazilo van ekrana — greška agenta).
+
+## 0.6.4 — prototip prema odlukama vlasnika (DECISIONS/0017)
+- Dobrodošlica i odmah početni ekran; upitnik samo na zahtev („Prilagodi meni“), može da se prekine.
+- Danas: zaglavlje u dva reda, ispod samo obroci; pre upitnika jasno „primer dana“.
+- Razgovor: tekstualno polje i diktiranje preko tastature umesto mikrofona u aplikaciji.
