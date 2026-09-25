@@ -53,6 +53,10 @@ export default defineConfig({
       workbox: {
         globPatterns: ["**/*.{js,css,html,png,svg,webmanifest}"],
         navigateFallback: "/index.html",
+        // Prototip izgleda nije deo aplikacije: service worker ga ne sme zameniti glavnim ekranom.
+        navigateFallbackDenylist: [/^\/prototip\.html/],
+        // Vlasnik otvara linkove sa ?v=… (zaobilaženje keša); parametar ne sme da menja koji se fajl služi.
+        ignoreURLParametersMatching: [/^utm_/, /^fbclid$/, /^v$/],
       },
     }),
   ],

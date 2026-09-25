@@ -107,3 +107,7 @@
 ## 0.6.1 — prototip celog izgleda (test)
 - `prototip.html`: klikabilan prototip cele aplikacije (upitnik, Danas, recept, zamena, kuvanje, Nedelja, Kupovina, Napredak, razgovor, Ja) sa izmišljenim primerima; ne koristi kod ni podatke aplikacije.
 - docs/UI_SPEC.md: ciljna struktura, uzori (MacroFactor, Eat This Much, Mealime), stavke van obuhvata V1 koje traže odluku.
+
+## 0.6.2 — ispravka: link na prototip otvarao aplikaciju
+- Uzrok (greška agenta): service worker je svaki navigacioni zahtev koji nije tačno u kešu (npr. `prototip.html?v=061`) posluživao kao glavni ekran. Ispravka: prototip isključen iz te zamene; parametar `v` se zanemaruje pri traženju u kešu.
+- Test verzija: dugme „Pogledaj predlog izgleda“ na ekranu Danas.

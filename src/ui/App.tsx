@@ -67,6 +67,11 @@ export function App({ services, DiagnosticsScreen }: AppProps) {
             </Suspense>
           )}
         </main>
+        {showTest && screen === "today" && (
+          <a className="btn btn-primary block" style={{ margin: "0 16px 16px", textDecoration: "none" }} href="/prototip.html">
+            Pogledaj predlog izgleda
+          </a>
+        )}
         <footer className="footer">
           <span className="muted">Verzija {formatVersionLabel(services.build)}</span>
           {screen === "today" && (
