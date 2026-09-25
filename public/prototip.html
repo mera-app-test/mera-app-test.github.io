@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F4A40">
+<title>Mera – prototip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#1F4A40; --pine-2:#2E6A5A; --leaf:#DDEBE3; --paper:#F3F6F4; --white:#FFFFFF;
+  --ink:#16241F; --soft:#5A6D66; --line:#DCE4E0; --saffron:#F0B23E; --saffron-bg:#FDF1DA;
+  --red:#B23A2B;
+  --font:"Onest",system-ui,"Roboto",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html,body{height:100%;margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.4;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
+input{font:inherit}
+.app{max-width:480px;margin:0 auto;min-height:100%;position:relative;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+.ribbon{background:var(--saffron-bg);color:#7A5410;font-size:13px;text-align:center;padding:6px 12px}
+.screen{padding:12px 18px 24px}
+h1{font-size:30px;font-weight:800;letter-spacing:-.02em;margin:4px 0 2px}
+h2{font-size:20px;font-weight:700;margin:22px 0 10px}
+.sub{color:var(--soft);font-size:15px;margin:0}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--pine);color:#fff;font-weight:700;display:grid;place-items:center}
+.icon-btn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--white);border:1px solid var(--line);font-size:20px}
+
+/* dnevna traka */
+.days{display:flex;gap:6px;margin:16px -2px 4px;overflow-x:auto}
+.day{flex:1;min-width:44px;padding:8px 0 10px;border-radius:14px;text-align:center;background:var(--white);border:1px solid var(--line)}
+.day b{display:block;font-size:17px}
+.day span{font-size:12px;color:var(--soft)}
+.day.on{background:var(--pine);border-color:var(--pine);color:#fff}
+.day.on span{color:#cfe2da}
+
+/* zbir dana */
+.sum{margin-top:14px;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:16px 18px}
+.sum-row{display:flex;justify-content:space-between;align-items:baseline}
+.big{font-size:34px;font-weight:800;letter-spacing:-.02em}
+.big small{font-size:16px;font-weight:600;color:var(--soft)}
+.bar{height:10px;border-radius:5px;background:var(--leaf);margin:12px 0 8px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--pine);border-radius:5px}
+.sum-meta{display:flex;justify-content:space-between;font-size:14px;color:var(--soft)}
+.link{color:var(--pine);font-weight:600;font-size:15px;text-decoration:underline;text-underline-offset:3px}
+
+/* obroci – tanjiri */
+.meal{display:flex;gap:14px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:12px 12px 12px 12px;margin-bottom:10px}
+.plate{flex:none;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-size:32px;position:relative;box-shadow:inset 0 0 0 6px rgba(255,255,255,.75)}
+.plate.lg{width:150px;height:150px;font-size:74px;box-shadow:inset 0 0 0 12px rgba(255,255,255,.75)}
+.plate.sm{width:44px;height:44px;font-size:21px;box-shadow:inset 0 0 0 4px rgba(255,255,255,.75)}
+.t1{background:#F6E3C4}.t2{background:#DDEBD6}.t3{background:#F3D6CF}.t4{background:#D6E6EE}.t5{background:#EDE3F1}
+.meal-body{flex:1;min-width:0;display:block;width:100%}
+.meal-when{font-size:13px;color:var(--soft)}
+.meal-name{font-weight:700;font-size:17px;line-height:1.25;margin:2px 0 4px}
+.meal-kcal{font-size:15px}
+.meal-kcal b{font-weight:700}
+.meal-actions{display:flex;flex-direction:column;gap:8px;align-items:center}
+.check{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:20px;color:transparent}
+.check.done{background:var(--pine);border-color:var(--pine);color:#fff}
+.swap{font-size:13px;font-weight:600;color:var(--pine);padding:4px 2px}
+.meal.done{background:#F7FAF8}
+.meal.done .meal-name{color:var(--soft)}
+
+.card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:16px 18px;margin-bottom:10px}
+.card.accent{background:var(--saffron-bg);border-color:#F2D9A4}
+.card.pine{background:var(--pine);border-color:var(--pine);color:#fff}
+.card.pine .sub{color:#cfe2da}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;border-radius:16px;padding:0 20px;font-weight:700;font-size:17px;width:100%}
+.btn-p{background:var(--pine);color:#fff}
+.btn-s{background:var(--white);border:1.5px solid var(--line)}
+.btn-y{background:var(--saffron);color:#3B2A06}
+.btn-row{display:flex;gap:10px;margin-top:14px}
+.btn-row .btn{flex:1}
+
+/* donja navigacija */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(255,255,255,.96);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.nav-in{max-width:480px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 88px 1fr 1fr;align-items:end;height:72px}
+.tab{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:600;color:var(--soft);padding-bottom:10px}
+.tab .ic{font-size:22px;line-height:1}
+.tab.on{color:var(--pine)}
+.mic{justify-self:center;width:74px;height:74px;border-radius:50%;background:var(--pine);color:#fff;font-size:30px;display:grid;place-items:center;transform:translateY(-18px);box-shadow:0 8px 22px rgba(31,74,64,.35);border:5px solid var(--paper)}
+
+/* listovi odozdo */
+.shade{position:fixed;inset:0;background:rgba(15,30,25,.45);z-index:40;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--paper);width:100%;max-width:480px;max-height:92%;overflow:auto;border-radius:26px 26px 0 0;padding:10px 18px calc(22px + env(safe-area-inset-bottom,0px));animation:up .22s ease-out}
+@keyframes up{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.sheet{animation:none}}
+.grab{width:44px;height:5px;border-radius:3px;background:#C6D2CC;margin:4px auto 12px}
+.sheet h2{margin-top:4px}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:0 16px;border-radius:22px;background:var(--white);border:1.5px solid var(--line);font-size:15px;font-weight:600;display:inline-flex;align-items:center}
+.chip.on{background:var(--pine);border-color:var(--pine);color:#fff}
+
+.opt{display:flex;gap:14px;align-items:center;text-align:left;width:100%;background:var(--white);border:1.5px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:10px}
+.opt.on{border-color:var(--pine);box-shadow:0 0 0 2px var(--pine) inset}
+.opt .e{font-size:30px;width:40px;text-align:center}
+.opt b{display:block;font-size:17px;color:var(--ink)}
+.opt span{font-size:14px;color:var(--soft)}
+.tag{display:inline-block;font-size:12px;font-weight:700;background:var(--leaf);color:var(--pine);padding:3px 8px;border-radius:8px;margin-left:6px;vertical-align:2px}
+
+/* upitnik */
+.onb{min-height:calc(100vh - 32px);min-height:calc(100dvh - 32px);display:flex;flex-direction:column;padding:14px 20px calc(20px + env(safe-area-inset-bottom,0px));max-width:480px;margin:0 auto}
+.steps{display:flex;gap:5px;margin:6px 0 22px}
+.steps i{flex:1;height:5px;border-radius:3px;background:var(--line)}
+.steps i.on{background:var(--pine)}
+.onb h1{font-size:28px;line-height:1.15}
+.onb .grow{flex:1}
+.field{background:var(--white);border:1.5px solid var(--line);border-radius:16px;padding:10px 16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.field label{font-size:15px;color:var(--soft)}
+.field input{border:0;outline:0;background:none;text-align:right;font-size:24px;font-weight:700;width:120px;color:var(--ink)}
+.field em{font-style:normal;color:var(--soft);margin-left:6px}
+.seg{display:flex;background:var(--white);border:1.5px solid var(--line);border-radius:16px;padding:4px;margin-bottom:10px}
+.seg button{flex:1;min-height:48px;border-radius:12px;font-weight:600}
+.seg button.on{background:var(--pine);color:#fff}
+.back{font-weight:600;color:var(--soft);min-height:44px}
+.hero{display:flex;gap:10px;margin:30px 0 26px}
+.welcome-title{font-size:40px;line-height:1.05;letter-spacing:-.03em;font-weight:800;margin:0 0 14px}
+
+/* recept */
+.recipe-top{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:6px}
+.macros{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0 4px}
+.macros div{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center}
+.macros b{display:block;font-size:19px}
+.macros span{font-size:12px;color:var(--soft)}
+.ing{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
+.ing:last-child{border-bottom:0}
+.step{display:flex;gap:12px;padding:10px 0}
+.step .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--leaf);color:var(--pine);font-weight:700;display:grid;place-items:center;font-size:15px}
+
+/* kuvanje */
+.cook{position:fixed;inset:0;z-index:60;background:var(--pine);color:#fff;display:flex;flex-direction:column;padding:calc(18px + env(safe-area-inset-top,0px)) 22px calc(22px + env(safe-area-inset-bottom,0px))}
+.cook-text{flex:1;display:flex;align-items:center;font-size:28px;font-weight:600;line-height:1.3}
+.cook .btn-s{background:transparent;border-color:rgba(255,255,255,.4);color:#fff}
+.timer{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);border-radius:14px;padding:12px 16px;font-weight:700;margin-bottom:14px;align-self:flex-start}
+
+/* kupovina */
+.shop-sec{font-size:14px;font-weight:700;color:var(--soft);margin:18px 0 6px}
+.item{display:flex;align-items:center;gap:14px;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:0 16px;min-height:56px;margin-bottom:6px;width:100%;text-align:left}
+.box{width:26px;height:26px;border-radius:8px;border:2px solid #B9C7C0;display:grid;place-items:center;font-size:15px;color:transparent;flex:none}
+.item.done .box{background:var(--pine);border-color:var(--pine);color:#fff}
+.item.done .nm{text-decoration:line-through;color:var(--soft)}
+.item .nm{flex:1}
+.item .q{color:var(--soft);font-size:15px}
+
+/* nedelja */
+.wday{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--line);border-radius:20px;padding:12px 14px;margin-bottom:8px}
+.wday .d{width:48px;text-align:center}
+.wday .d b{display:block;font-size:20px}
+.wday .d span{font-size:12px;color:var(--soft)}
+.wday .pl{display:flex;gap:-6px;flex:1}
+.wday .pl .plate{margin-right:-8px}
+.wday.today{border-color:var(--pine);box-shadow:0 0 0 1.5px var(--pine) inset}
+
+/* napredak */
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0}
+.stats div{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:12px 10px}
+.stats b{display:block;font-size:20px}
+.stats span{font-size:12px;color:var(--soft)}
+.chart{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:12px 8px 6px}
+.chart svg{width:100%;height:auto;display:block}
+
+/* razgovor */
+.chat{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.msg{max-width:84%;padding:12px 14px;border-radius:18px;font-size:16px}
+.msg.me{align-self:flex-end;background:var(--pine);color:#fff;border-bottom-right-radius:6px}
+.msg.mera{align-self:flex-start;background:var(--white);border:1px solid var(--line);border-bottom-left-radius:6px}
+.propose{display:flex;gap:12px;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.listen{display:flex;flex-direction:column;align-items:center;gap:10px;padding:10px 0 4px}
+.listen .mic{transform:none;border-color:var(--paper)}
+.pulse{animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(31,74,64,.35)}50%{box-shadow:0 0 0 16px rgba(31,74,64,0)}}
+@media (prefers-reduced-motion:reduce){.pulse{animation:none}}
+
+/* ja */
+.mem{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.mem:last-child{border-bottom:0}
+.mem .x{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--soft);font-size:18px}
+.kind{font-size:12px;color:var(--soft)}
+.why-row{padding:12px 0;border-bottom:1px solid var(--line)}
+.why-row:last-child{border-bottom:0}
+.why-row b{display:block;font-size:14px;color:var(--soft);font-weight:600;margin-bottom:2px}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:14px;z-index:80;font-size:15px;max-width:90%}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+// PROTOTIP IZGLEDA. Svi brojevi, obroci i merenja su izmišljeni primeri samo za pregled izgleda i toka.
+// Ništa odavde se ne koristi u aplikaciji; prava aplikacija broji isključivo iz proverenih podataka.
+const S = {
+  view: "welcome", step: 0, tab: "danas", sheet: null, cook: null, toast: null,
+  a: { goal: "lose", sex: "m", age: "52", h: "180", kg: "94", act: "stand", pace: "mod", target: "85", meals: "3", no: ["Riba"], time: "30" },
+  eaten: { d: true }, bought: {}, hideBought: false, chat: [], listening: false, checkin: "open", mem: null
+};
+const MEALS = {
+  d: { when: "Doručak", time: "8:00", name: "Omlet sa povrćem i integralnim hlebom", e: "🍳", t: "t1", kcal: 480, p: 32, f: 22, c: 36, min: 15 },
+  r: { when: "Ručak", time: "14:00", name: "Piletina u sosu od paprike sa pirinčem", e: "🍗", t: "t3", kcal: 720, p: 52, f: 18, c: 82, min: 30 },
+  u: { when: "Užina", time: "17:30", name: "Grčki jogurt sa jabukom i orasima", e: "🥣", t: "t5", kcal: 260, p: 18, f: 11, c: 22, min: 5 },
+  v: { when: "Večera", time: "20:00", name: "Salata sa junetinom, leblebijom i pečenim povrćem", e: "🥗", t: "t2", kcal: 390, p: 34, f: 16, c: 26, min: 25 }
+};
+const ALT = [
+  { name: "Ćuretina sa pečenim krompirom i salatom", e: "🥔", t: "t1", kcal: 700, p: 50, min: 35, why: "isti proteini" },
+  { name: "Pasulj sa junećim mesom", e: "🫘", t: "t3", kcal: 690, p: 44, min: 20, why: "od juče ostalo" },
+  { name: "Integralna pasta sa ćuretinom i paradajzom", e: "🍝", t: "t4", kcal: 730, p: 47, min: 20, why: "brže" }
+];
+const TARGET = 1850;
+const $ = (h) => h;
+
+function kcalEaten() { return Object.keys(S.eaten).filter(k => S.eaten[k]).reduce((s, k) => s + MEALS[k].kcal, 0); }
+function protEaten() { return Object.keys(S.eaten).filter(k => S.eaten[k]).reduce((s, k) => s + MEALS[k].p, 0); }
+function fmt(n) { return n.toLocaleString("sr-Latn-RS"); }
+
+/* ---------- UPITNIK ---------- */
+const ONB = [
+  { title: "Šta želiš da postigneš?", body: () => opts("goal", [
+      ["lose", "⬇️", "Da smršam", "Manje kilograma, uz očuvanje mišića"],
+      ["keep", "⚖️", "Da zadržim masu", "Jedem dovoljno, bez gojenja"],
+      ["gain", "⬆️", "Da dobijem na masi", "Postepeno i kontrolisano"],
+      ["muscle", "💪", "Više mišića, manje masti", "Uz redovan trening snage"]]) },
+  { title: "Malo o tebi", note: "Treba nam za procenu koliko energije trošiš.", body: () => `
+      <div class="seg">${[["m","Muškarac"],["f","Žena"]].map(([v,l]) => `<button data-set="sex:${v}" class="${S.a.sex===v?"on":""}">${l}</button>`).join("")}</div>
+      ${field("Godine","age","god.")}${field("Visina","h","cm")}${field("Masa danas","kg","kg")}
+      ${S.a.sex==="f" ? `<p class="sub" style="margin:4px 0 8px">Da li si trudna ili dojiš?</p><div class="seg"><button class="on">Ne</button><button>Da</button></div>` : ""}` },
+  { title: "Koliko se krećeš tokom dana?", note: "Misli na običan dan, ne na najbolji.", body: () => opts("act", [
+      ["sit", "🪑", "Uglavnom sedim", "Kancelarija, vožnja, malo hodanja"],
+      ["stand", "🚶", "Dosta stojim i hodam", "Radnja, servis, kuhinja"],
+      ["phys", "🏗️", "Težak fizički posao", "Nošenje, podizanje ceo dan"],
+      ["train", "🏋️", "Posao + trening 3 ili više puta nedeljno", ""]]) },
+  { title: "Koliko brzo?", note: "Umereno je lakše izdržati i bolje čuva mišiće.", body: () => `
+      ${field("Željena masa","target","kg")}
+      ${opts("pace", [
+        ["mod", "🐢", "Umereno", "Oko 0,5 kg nedeljno na početku", "preporuka"],
+        ["fast", "🐇", "Brže", "Oko 0,75 kg nedeljno na početku"],
+        ["own", "✍️", "Sam biram", "Upisujem koliko kalorija manje dnevno"]])}` },
+  { title: "Kako želiš da jedeš?", note: "Ovo možeš kasnije reći i glasom: „ne volim ribu“.", body: () => `
+      <p class="sub" style="margin:0 0 8px">Broj obroka dnevno</p>
+      <div class="seg">${["2","3","4","5"].map(v => `<button data-set="meals:${v}" class="${S.a.meals===v?"on":""}">${v}</button>`).join("")}</div>
+      <p class="sub" style="margin:14px 0 8px">Šta ne jedeš</p>
+      <div class="chips">${["Riba","Svinjetina","Mleko","Jaja","Pečurke","Meso uopšte","Gluten","Orašasti plodovi"].map(v => `<button class="chip ${S.a.no.includes(v)?"on":""}" data-toggle-no="${v}">${v}</button>`).join("")}</div>
+      <p class="sub" style="margin:16px 0 8px">Koliko vremena imaš za kuvanje</p>
+      <div class="seg">${[["15","do 15 min"],["30","do 30 min"],["60","nije bitno"]].map(([v,l]) => `<button data-set="time:${v}" class="${S.a.time===v?"on":""}">${l}</button>`).join("")}</div>` },
+  { title: "Tvoj plan je spreman", body: () => `
+      <div class="card pine" style="padding:22px">
+        <p class="sub">Dnevni cilj</p>
+        <div class="big" style="color:#fff">≈ ${fmt(TARGET)} <small style="color:#cfe2da">kcal</small></div>
+        <p style="margin:10px 0 0">Na početku oko 0,5 kg nedeljno, do ${S.a.target} kg.</p>
+      </div>
+      <div class="card">
+        <p style="margin:0">Ovo je početna procena. Posle dve do tri nedelje merenja Mera je proverava prema tvom stvarnom rezultatu i predlaže korekciju. Ti odlučuješ.</p>
+      </div>
+      <button class="link" data-sheet="why-goal">Zašto baš ovoliko?</button>` }
+];
+function opts(key, list) {
+  return list.map(([v, e, t, s, tag]) => `<button class="opt ${S.a[key]===v?"on":""}" data-set="${key}:${v}"><span class="e">${e}</span><span><b>${t}${tag?`<span class="tag">${tag}</span>`:""}</b>${s?`<span>${s}</span>`:""}</span></button>`).join("");
+}
+function field(label, key, unit) {
+  return `<div class="field"><label for="f-${key}">${label}</label><span><input id="f-${key}" inputmode="decimal" value="${S.a[key]}" data-in="${key}"><em>${unit}</em></span></div>`;
+}
+function renderWelcome() {
+  return `<div class="onb">
+    <div class="hero"><div class="plate t1">🍳</div><div class="plate t3">🍗</div><div class="plate t2">🥗</div></div>
+    <h1 class="welcome-title">Svaki dan znaš šta da jedeš. I koliko.</h1>
+    <p class="sub" style="font-size:17px">Mera pravi jelovnik prema tvom cilju, od hrane koju voliš, i usput ga popravlja prema tome kako ti ide.</p>
+    <div class="grow"></div>
+    <button class="btn btn-p" data-go="onb">Počni</button>
+    <p class="sub" style="text-align:center;margin-top:10px">Šest kratkih pitanja, oko dva minuta</p>
+  </div>`;
+}
+function renderOnb() {
+  const st = ONB[S.step], last = S.step === ONB.length - 1;
+  return `<div class="onb">
+    <div class="row"><button class="back" data-back>‹ Nazad</button><span class="sub">${S.step + 1} od ${ONB.length}</span></div>
+    <div class="steps">${ONB.map((_, i) => `<i class="${i <= S.step ? "on" : ""}"></i>`).join("")}</div>
+    <h1>${st.title}</h1>${st.note ? `<p class="sub" style="margin-bottom:16px">${st.note}</p>` : `<div style="height:14px"></div>`}
+    ${st.body()}
+    <div class="grow" style="min-height:20px"></div>
+    <button class="btn btn-p" data-next>${last ? "Napravi moj jelovnik" : "Dalje"}</button>
+  </div>`;
+}
+
+/* ---------- DANAS ---------- */
+function mealCard(k) {
+  const m = MEALS[k], done = !!S.eaten[k];
+  return `<div class="meal ${done ? "done" : ""}">
+    <button class="plate ${m.t}" data-sheet="recipe:${k}" aria-label="Recept">${m.e}</button>
+    <button class="meal-body" style="text-align:left" data-sheet="recipe:${k}">
+      <div class="meal-when">${m.when}, ${m.time}</div>
+      <div class="meal-name">${m.name}</div>
+      <div class="meal-kcal"><b>${m.kcal}</b> kcal <span class="sub" style="display:inline">&nbsp;${m.p} g proteina</span></div>
+    </button>
+    <div class="meal-actions">
+      <button class="check ${done ? "done" : ""}" data-eat="${k}" aria-label="Pojeo sam">✓</button>
+      <button class="swap" data-sheet="swap:${k}">Zameni</button>
+    </div>
+  </div>`;
+}
+function renderDanas() {
+  const e = kcalEaten(), pct = Math.min(100, Math.round(e / TARGET * 100));
+  const days = [["Po",22],["Ut",23],["Sr",24],["Če",25],["Pe",26],["Su",27],["Ne",28]];
+  return `<div class="screen">
+    <div class="top"><div><p class="sub">Petak, 26. septembar</p><h1>Danas</h1></div><button class="avatar" data-tab="ja" aria-label="Ja">Z</button></div>
+    <div class="days">${days.map(([d,n]) => `<button class="day ${n===26?"on":""}"><b>${n}</b><span>${d}</span></button>`).join("")}</div>
+    <div class="sum">
+      <div class="sum-row"><div class="big">${fmt(e)} <small>od ≈ ${fmt(TARGET)} kcal</small></div></div>
+      <div class="bar"><i style="width:${pct}%"></i></div>
+      <div class="sum-meta"><span>Proteini ${protEaten()} od 130 g</span><button class="link" data-sheet="why-goal">Zašto?</button></div>
+    </div>
+    ${S.checkin === "open" ? `<button class="card accent" style="display:block;width:100%;text-align:left;margin-top:10px" data-tab="napredak"><b>Nedeljni pregled je spreman</b><p class="sub" style="color:#6d5315">Pogledaj kako ti ide i šta Mera predlaže.</p></button>` : ""}
+    <h2>Jelovnik</h2>
+    ${Object.keys(MEALS).map(mealCard).join("")}
+    <div class="card row" style="margin-top:14px">
+      <div><b>Masa jutros</b><p class="sub">Poslednje: 91,6 kg, juče</p></div>
+      <button class="btn btn-s" style="width:auto;min-height:48px" data-sheet="weigh">Unesi</button>
+    </div>
+    <button class="btn btn-s" style="margin-top:6px" data-sheet="ate-other">Pojeo sam nešto drugo</button>
+  </div>`;
+}
+
+/* ---------- NEDELJA ---------- */
+function renderNedelja() {
+  const wk = [["Po",22,["🥣","🍝","🥗"]],["Ut",23,["🍳","🫘","🐔"]],["Sr",24,["🥣","🍗","🥗"]],["Če",25,["🍳","🥔","🍲"]],["Pe",26,["🍳","🍗","🥗"]],["Su",27,["🥞","🍖","🥗"]],["Ne",28,["🍳","🍲","🥪"]]];
+  const tints = ["t1","t3","t2"];
+  return `<div class="screen">
+    <div class="top"><div><p class="sub">22 – 28. septembar</p><h1>Nedelja</h1></div><button class="icon-btn" data-toast="Nova nedelja: Mera pravi 7 dana prema tvom cilju i onome što voliš." aria-label="Nova nedelja">↻</button></div>
+    <p class="sub" style="margin:8px 0 14px">Ostaci se koriste sledećeg dana: pasulj iz srede je ručak u četvrtak.</p>
+    ${wk.map(([d,n,pl]) => `<div class="wday ${n===26?"today":""}">
+      <div class="d"><b>${n}</b><span>${d}</span></div>
+      <div class="pl">${pl.map((e,i) => `<span class="plate sm ${tints[i]}">${e}</span>`).join("")}</div>
+      <div style="text-align:right"><b>≈ 1.850</b><div class="sub" style="font-size:13px">kcal</div></div>
+    </div>`).join("")}
+    <button class="btn btn-p" style="margin-top:12px" data-tab="kupovina">Lista za kupovinu za ovu nedelju</button>
+  </div>`;
+}
+
+/* ---------- KUPOVINA ---------- */
+const SHOP = [
+  ["Voće i povrće", [["Paprika crvena","1 kg"],["Paradajz","1 kg"],["Crni luk","1 kg"],["Jabuke","1,5 kg"],["Zelena salata","2 glavice"],["Krompir","2 kg"]]],
+  ["Meso", [["Pileći file","1,2 kg"],["Junetina za gulaš","500 g"],["Ćureća prsa","600 g"]]],
+  ["Mleko i jaja", [["Jaja","20 kom"],["Grčki jogurt","4 × 150 g"],["Mladi sir","500 g"]]],
+  ["Hleb i žitarice", [["Integralni hleb","2 vekne"],["Pirinač","1 kg"],["Ovsene pahuljice","500 g"]]],
+  ["Ostalo", [["Leblebija, konzerva","2 kom"],["Orasi","200 g"],["Maslinovo ulje","imaš kod kuće"]]]
+];
+function renderKupovina() {
+  return `<div class="screen">
+    <div class="top"><div><p class="sub">Za 22 – 28. septembar</p><h1>Kupovina</h1></div><button class="icon-btn" data-toast="Lista se šalje kao poruka (Viber, SMS…)." aria-label="Podeli">⤴</button></div>
+    <p class="sub" style="margin-top:8px">Količine su zaokružene na pakovanja iz prodavnice.</p>
+    <div class="row" style="margin-top:10px"><span class="sub">Sakrij kupljeno</span><div class="seg" style="margin:0;width:140px"><button data-hide="0" class="${S.hideBought?"":"on"}">Ne</button><button data-hide="1" class="${S.hideBought?"on":""}">Da</button></div></div>
+    ${SHOP.map(([sec, items]) => {
+      const vis = items.filter(([n]) => !(S.hideBought && S.bought[n]));
+      if (!vis.length) return "";
+      return `<div class="shop-sec">${sec}</div>` + vis.map(([n,q]) => `<button class="item ${S.bought[n]?"done":""}" data-buy="${n}"><span class="box">✓</span><span class="nm">${n}</span><span class="q">${q}</span></button>`).join("");
+    }).join("")}
+  </div>`;
+}
+
+/* ---------- NAPREDAK ---------- */
+function chart() {
+  const pts = [94.0,93.6,93.9,93.4,93.5,93.1,93.3,92.9,93.0,92.6,92.8,92.3,92.5,92.2,92.4,92.0,91.9,92.1,91.7,91.8,91.4,91.6,91.3,91.5,91.1,91.2,90.9,91.6];
+  const W = 340, H = 170, min = 90.4, max = 94.4, x = i => 14 + i * (W - 28) / (pts.length - 1), y = v => 12 + (max - v) / (max - min) * (H - 34);
+  const dots = pts.map((v, i) => `<circle cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="3.2" fill="#9DB5AB"/>`).join("");
+  const n = pts.length, mx = (n - 1) / 2, my = pts.reduce((s, v) => s + v, 0) / n;
+  const b = pts.reduce((s, v, i) => s + (i - mx) * (v - my), 0) / pts.reduce((s, _, i) => s + (i - mx) ** 2, 0), a = my - b * mx;
+  const line = `<line x1="${x(0)}" y1="${y(a)}" x2="${x(pts.length-1)}" y2="${y(a + b*(pts.length-1))}" stroke="#1F4A40" stroke-width="3.5" stroke-linecap="round"/>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Masa poslednje 4 nedelje: tačke su dnevna merenja, linija je trend">
+    ${[92,94].map(v => `<line x1="10" x2="${W-10}" y1="${y(v)}" y2="${y(v)}" stroke="#E6ECE9"/><text x="${W-10}" y="${y(v)-4}" text-anchor="end" font-size="11" fill="#5A6D66">${v} kg</text>`).join("")}
+    ${dots}${line}
+    <text x="14" y="${H-4}" font-size="11" fill="#5A6D66">29. avg</text><text x="${W-14}" y="${H-4}" text-anchor="end" font-size="11" fill="#5A6D66">danas</text>
+  </svg>`;
+}
+function renderNapredak() {
+  const ci = S.checkin === "open" ? `<div class="card pine">
+      <b style="font-size:19px">Nedeljni pregled</b>
+      <p style="margin:8px 0 0">Gubiš oko 0,6 kg nedeljno. To je malo brže od plana, ali u sigurnim granicama. Jeo si prema planu 6 od 7 dana.</p>
+      <p style="margin:10px 0 0"><b>Predlog: bez promene.</b></p>
+      <div class="btn-row"><button class="btn btn-y" data-checkin="ok">U redu</button><button class="btn btn-s" style="background:transparent;border-color:rgba(255,255,255,.4);color:#fff" data-sheet="why-checkin">Zašto?</button></div>
+    </div>` : `<div class="card"><b>Nedeljni pregled prihvaćen</b><p class="sub">Sledeći pregled u petak, 3. oktobra.</p></div>`;
+  return `<div class="screen">
+    <div class="top"><div><p class="sub">Poslednje 4 nedelje</p><h1>Napredak</h1></div><button class="icon-btn" data-sheet="weigh" aria-label="Unesi masu">＋</button></div>
+    <div class="stats"><div><b>91,3</b><span>kg, prosek 7 dana</span></div><div><b>−0,6</b><span>kg nedeljno</span></div><div><b>−2,7</b><span>kg od početka</span></div></div>
+    <div class="chart">${chart()}</div>
+    <p class="sub" style="margin:8px 4px 14px">Tačke su dnevna merenja, linija je stvarni trend. Jedno merenje ne menja plan.</p>
+    ${ci}
+    <div class="card row"><div><b>Cilj</b><p class="sub">85 kg, umereno</p></div><button class="link" data-tab="ja">Izmeni</button></div>
+  </div>`;
+}
+
+/* ---------- JA ---------- */
+function renderJa() {
+  const mem = S.mem || (S.mem = [["Ne jede ribu","trajno"],["Kuva najviše 30 minuta","trajno, osim kad kaže drugačije"],["Ručak oko 14 h","navika"],["Ne voli pečurke","trajno"],["Nema piletinu kod kuće","samo danas"]]);
+  return `<div class="screen">
+    <div class="top"><div><p class="sub">Tvoj profil</p><h1>Ja</h1></div><button class="icon-btn" data-tab="danas" aria-label="Zatvori">✕</button></div>
+    <div class="card" style="margin-top:14px"><div class="row"><div><b>Cilj: 85 kg, umereno</b><p class="sub">Dnevno ≈ 1.850 kcal, 4 obroka</p></div><button class="link" data-go="onb">Izmeni</button></div></div>
+    <h2>Šta Mera pamti o tebi</h2>
+    <div class="card">${mem.map(([t,k],i) => `<div class="mem"><div style="flex:1"><div>${t}</div><div class="kind">${k}</div></div><button class="x" data-forget="${i}" aria-label="Zaboravi">✕</button></div>`).join("")}</div>
+    <p class="sub" style="margin:-2px 4px 0">Mera ovo uči iz razgovora. Sve možeš da izmeniš ili obrišeš.</p>
+    <h2>Podešavanja</h2>
+    <button class="opt"><span class="e">💾</span><span><b>Rezervna kopija</b><span>Poslednja: pre 3 dana</span></span></button>
+    <button class="opt"><span class="e">🔑</span><span><b>AI ključ</b><span>Sačuvan na ovom telefonu</span></span></button>
+    <button class="opt"><span class="e">📚</span><span><b>Odakle su podaci</b><span>Izvori namirnica i pravila</span></span></button>
+  </div>`;
+}
+
+/* ---------- LISTOVI ODOZDO ---------- */
+function sheetHtml() {
+  const [kind, arg] = (S.sheet || "").split(":");
+  if (kind === "recipe") {
+    const m = MEALS[arg];
+    return `<div class="recipe-top"><div class="plate lg ${m.t}">${m.e}</div><p class="sub" style="margin-top:12px">${m.when}, ${m.min} min</p><h2 style="margin:4px 0 0">${m.name}</h2></div>
+      <div class="macros"><div><b>${m.kcal}</b><span>kcal</span></div><div><b>${m.p} g</b><span>proteini</span></div><div><b>${m.f} g</b><span>masti</span></div><div><b>${m.c} g</b><span>ugljeni h.</span></div></div>
+      <p class="sub" style="text-align:center;margin:6px 0 0">Izračunato iz sastojaka. <button class="link" data-sheet="why-meal:${arg}">Zašto?</button></p>
+      <h2>Sastojci</h2>
+      <div class="card">${[["Pileći file","180 g"],["Crvena paprika","150 g"],["Crni luk","60 g"],["Pirinač, sirov","70 g"],["Maslinovo ulje","10 g"],["Začini po ukusu",""]].map(([n,q]) => `<div class="ing"><span>${n}</span><b>${q}</b></div>`).join("")}</div>
+      <h2>Priprema</h2>
+      ${["Skuvaj pirinač prema uputstvu na pakovanju.","Iseci piletinu na kocke, a papriku i luk na trake.","Na ulju prži luk 3 minuta, dodaj piletinu i peci dok ne porumeni.","Dodaj papriku i malo vode, pa kuvaj 10 minuta poklopljeno."].map((s,i) => `<div class="step"><span class="n">${i+1}</span><span>${s}</span></div>`).join("")}
+      <div class="btn-row"><button class="btn btn-p" data-cook="0">Kuvaj korak po korak</button></div>
+      <div class="btn-row"><button class="btn btn-s" data-sheet="swap:${arg}">Zameni obrok</button></div>`;
+  }
+  if (kind === "swap") {
+    const m = MEALS[arg];
+    return `<h2>Zameni: ${m.when.toLowerCase()}</h2>
+      <p class="sub" style="margin-bottom:12px">Sve opcije se uklapaju u tvoj dan, oko ${m.kcal} kcal.</p>
+      <div class="chips" style="margin-bottom:14px">${["Brže","Jeftinije","Bez mesa","Od onoga što imam"].map(c => `<button class="chip">${c}</button>`).join("")}</div>
+      ${ALT.map((a,i) => `<button class="opt" data-pick="${arg}:${i}"><span class="plate sm ${a.t}" style="width:54px;height:54px;font-size:26px">${a.e}</span><span style="flex:1"><b>${a.name}</b><span>${a.kcal} kcal, ${a.p} g proteina, ${a.min} min${a.why?`, ${a.why}`:""}</span></span></button>`).join("")}
+      <button class="btn btn-s" data-chat="Promeni ${m.when.toLowerCase()}, želim nešto sa krompirom">🎤 Reci šta bi voleo</button>`;
+  }
+  if (kind === "why-goal") return `<h2>Zašto ≈ 1.850 kcal?</h2>
+      <div class="card">
+      <div class="why-row"><b>Koliko trošiš</b>≈ 2.350 kcal dnevno. Procena iz godina, visine, mase i kretanja, po formuli koju koriste stručne smernice.</div>
+      <div class="why-row"><b>Manjak za umereno mršavljenje</b>500 kcal dnevno.</div>
+      <div class="why-row"><b>Dnevni cilj</b>2.350 − 500 = 1.850 kcal</div>
+      <div class="why-row"><b>Koliko je pouzdano</b>Procena. Kod većine ljudi stvarna potrošnja je u rasponu od nekoliko stotina kalorija, zato Mera posle 2–3 nedelje proverava cilj prema tvojoj vagi.</div>
+      <div class="why-row"><b>Bezbednost</b>Proveren je najniži dozvoljeni unos i željena masa. Sve u redu.</div></div>
+      <p class="sub">Izvor i verzija svakog pravila vide se u „Odakle su podaci“.</p>`;
+  if (kind === "why-meal") return `<h2>Zašto ovaj obrok?</h2>
+      <div class="card">
+      <div class="why-row"><b>Uklapa se u dan</b>Ručak je planiran za ≈ 700 kcal; ostatak dana ostaje u cilju.</div>
+      <div class="why-row"><b>Proteini</b>52 g, pomaže da sačuvaš mišiće dok mršaviš.</div>
+      <div class="why-row"><b>Tvoje želje</b>Bez ribe i pečuraka, gotovo za 30 minuta.</div>
+      <div class="why-row"><b>Odakle su brojevi</b>Iz sastojaka, po bazi USDA FoodData Central. Pouzdanost: dobro potvrđeno.</div></div>`;
+  if (kind === "why-checkin") return `<h2>Kako je Mera odlučila</h2>
+      <div class="card">
+      <div class="why-row"><b>Trend mase</b>−0,6 kg nedeljno u poslednje 4 nedelje (24 merenja).</div>
+      <div class="why-row"><b>Plan</b>Oko −0,5 kg nedeljno. Razlika je mala i u sigurnim granicama.</div>
+      <div class="why-row"><b>Pridržavanje</b>6 od 7 dana potvrđeno kao pojedeno.</div>
+      <div class="why-row"><b>Pravilo</b>Promena se predlaže tek kad se trend jasno i duže vreme razlikuje od plana.</div></div>`;
+  if (kind === "weigh") return `<h2>Masa jutros</h2>
+      <div class="field"><label>Masa</label><span><input inputmode="decimal" value="91,4" autofocus><em>kg</em></span></div>
+      <p class="sub">Najbolje ujutru, posle toaleta, pre doručka.</p>
+      <div class="btn-row"><button class="btn btn-p" data-close data-toast-after="Sačuvano. Trend se računa iz više dana, ne iz jednog merenja.">Sačuvaj</button></div>`;
+  if (kind === "ate-other") return `<h2>Šta si pojeo?</h2>
+      <p class="sub" style="margin-bottom:12px">Reci ili napiši svojim rečima. Mera će pitati samo ako nešto nije jasno.</p>
+      <button class="opt" data-chat="Za ručak sam pojeo tanjir pasulja i parče hleba"><span class="e">🎤</span><span><b>Reci glasom</b><span>npr. „tanjir pasulja i parče hleba“</span></span></button>
+      <button class="opt" data-toast="Skeniranje barkoda: dolazi u kasnijem koraku."><span class="e">▥</span><span><b>Skeniraj barkod</b><span>za proizvode iz prodavnice</span></span></button>`;
+  return "";
+}
+
+/* ---------- RAZGOVOR ---------- */
+function chatHtml() {
+  const sugg = ["Promeni večeru","Nemam piletinu","Danas imam samo 15 minuta","Ovo mi je preskupo"];
+  return `<h2>Pitaj Meru</h2>
+    <div class="chat">${S.chat.length ? S.chat.map(m => m.me ? `<div class="msg me">${m.t}</div>` : `<div class="msg mera">${m.t}${m.p ? `<div class="propose"><span class="plate sm ${m.p.t}">${m.p.e}</span><span style="flex:1"><b>${m.p.name}</b><br><span class="sub">${m.p.kcal} kcal, ${m.p.min} min</span></span></div><div class="btn-row"><button class="btn btn-p" data-accept>Prihvati</button><button class="btn btn-s" data-chat="Nešto drugo">Drugo</button></div>` : ""}</div>`).join("") : `<p class="sub">Govori ili piši normalno, kao nutricionisti. Na primer:</p>`}</div>
+    ${S.chat.length ? "" : `<div class="chips" style="margin-bottom:16px">${sugg.map(s => `<button class="chip" data-chat="${s}">${s}</button>`).join("")}</div>`}
+    <div class="listen"><button class="mic ${S.listening?"pulse":""}" data-listen aria-label="Govori">🎤</button><span class="sub">${S.listening ? "Slušam…" : "Dodirni i govori"}</span></div>`;
+}
+function reply(t) {
+  const x = t.toLowerCase();
+  if (x.includes("piletin")) return { t: "Važi, danas bez piletine. Za ručak predlažem ovo, isto se uklapa u tvoj dan:", p: ALT[0] };
+  if (x.includes("15")) return { t: "Za danas biram jela do 15 minuta. Ručak menjam u:", p: { name: "Tortilja sa ćuretinom, sirom i povrćem", e: "🌯", t: "t4", kcal: 690, min: 12 } };
+  if (x.includes("skup")) return { t: "Razumem, pamtim da ti je budžet bitan. Umesto junetine predlažem:", p: { name: "Salata sa jajima, leblebijom i pečenim povrćem", e: "🥗", t: "t2", kcal: 400, min: 20 } };
+  if (x.includes("pasulj")) return { t: "Upisao sam: pasulj, oko 350 g, i hleb, oko 60 g. Ukupno ≈ 520 kcal (procena, jer je količina od oka). Tačno?" };
+  if (x.includes("drugo")) return { t: "Evo još jedne opcije:", p: ALT[2] };
+  return { t: "Evo predloga za večeru, uklapa se u ostatak dana:", p: ALT[1] };
+}
+
+/* ---------- KUVANJE ---------- */
+const STEPS = ["Skuvaj pirinač prema uputstvu na pakovanju.","Iseci piletinu na kocke, a papriku i luk na trake.","Na ulju prži luk 3 minuta, dodaj piletinu i peci dok ne porumeni.","Dodaj papriku i malo vode, pa kuvaj 10 minuta poklopljeno."];
+function cookHtml() {
+  const i = S.cook;
+  return `<div class="cook">
+    <div class="row"><span style="opacity:.8">Korak ${i+1} od ${STEPS.length}</span><button class="icon-btn" style="background:transparent;border-color:rgba(255,255,255,.4);color:#fff" data-cook-close aria-label="Zatvori">✕</button></div>
+    <div class="steps" style="margin-top:14px">${STEPS.map((_,j) => `<i style="background:${j<=i?"#F0B23E":"rgba(255,255,255,.25)"}"></i>`).join("")}</div>
+    <div class="cook-text">${STEPS[i]}</div>
+    ${i===2||i===3 ? `<button class="timer" data-toast="Tajmer pokrenut">⏱ ${i===2?"3:00":"10:00"} pokreni tajmer</button>` : ""}
+    <div class="btn-row"><button class="btn btn-s" data-cook-step="-1" ${i===0?"disabled style='opacity:.4'":""}>Nazad</button><button class="btn btn-y" data-cook-step="1">${i===STEPS.length-1?"Gotovo":"Sledeći"}</button></div>
+    <p style="text-align:center;opacity:.75;font-size:14px;margin:12px 0 0">Ekran ostaje upaljen. Možeš reći „sledeći“.</p>
+  </div>`;
+}
+
+/* ---------- RENDER ---------- */
+function render() {
+  let h = `<div class="ribbon">Prototip izgleda. Svi brojevi i jela su primer, nisu stvarni.</div>`;
+  if (S.view === "welcome") h += renderWelcome();
+  else if (S.view === "onb") h += renderOnb();
+  else {
+    const T = { danas: renderDanas, nedelja: renderNedelja, kupovina: renderKupovina, napredak: renderNapredak, ja: renderJa };
+    h += `<div class="app">${T[S.tab]()}</div>`;
+    const tab = (k, ic, l) => `<button class="tab ${S.tab===k?"on":""}" data-tab="${k}"><span class="ic">${ic}</span>${l}</button>`;
+    h += `<nav class="nav"><div class="nav-in">${tab("danas","🍽","Danas")}${tab("nedelja","📅","Nedelja")}<button class="mic" data-sheet="chat" aria-label="Razgovor">🎤</button>${tab("kupovina","🛒","Kupovina")}${tab("napredak","📈","Napredak")}</div></nav>`;
+  }
+  if (S.sheet) h += `<div class="shade" data-shade><div class="sheet" role="dialog"><div class="grab"></div>${S.sheet === "chat" ? chatHtml() : sheetHtml()}</div></div>`;
+  if (S.cook !== null) h += cookHtml();
+  if (S.toast) h += `<div class="toast">${S.toast}</div>`;
+  const keepScroll = document.querySelector(".sheet")?.scrollTop;
+  document.getElementById("root").innerHTML = h;
+  if (keepScroll && document.querySelector(".sheet")) document.querySelector(".sheet").scrollTop = keepScroll;
+}
+function toast(t) { S.toast = t; render(); clearTimeout(toast.h); toast.h = setTimeout(() => { S.toast = null; render(); }, 2600); }
+
+document.addEventListener("click", (ev) => {
+  const el = ev.target.closest("button,[data-shade]");
+  if (!el) return;
+  const d = el.dataset;
+  if ("shade" in d) { if (ev.target === el) { S.sheet = null; S.listening = false; render(); } return; }
+  if (d.go === "onb") { S.view = "onb"; S.step = 0; S.sheet = null; }
+  else if ("next" in d) { if (S.step < ONB.length - 1) S.step++; else { S.view = "app"; S.tab = "danas"; } scrollTo(0,0); }
+  else if ("back" in d) { if (S.step > 0) S.step--; else S.view = S.tab === "ja" ? "app" : "welcome"; }
+  else if (d.set) { const [k, v] = d.set.split(":"); S.a[k] = v; }
+  else if (d.toggleNo) { const v = d.toggleNo; S.a.no = S.a.no.includes(v) ? S.a.no.filter(x => x !== v) : [...S.a.no, v]; }
+  else if (d.tab) { S.tab = d.tab; S.sheet = null; scrollTo(0,0); }
+  else if (d.sheet) { S.sheet = d.sheet; if (d.sheet === "chat") S.chat = []; }
+  else if (d.eat) { S.eaten[d.eat] = !S.eaten[d.eat]; }
+  else if (d.pick) { const [k, i] = d.pick.split(":"); Object.assign(MEALS[k], ALT[+i]); S.sheet = null; return toast("Zamenjeno. Dan je i dalje u cilju."); }
+  else if (d.buy) { S.bought[d.buy] = !S.bought[d.buy]; }
+  else if (d.hide) { S.hideBought = d.hide === "1"; }
+  else if (d.checkin) { S.checkin = "done"; return toast("Plan ostaje isti. Sledeći pregled za nedelju dana."); }
+  else if (d.forget) { S.mem.splice(+d.forget, 1); return toast("Zaboravljeno."); }
+  else if (d.chat) { S.sheet = "chat"; S.chat.push({ me: true, t: d.chat }); S.chat.push(reply(d.chat)); }
+  else if ("listen" in d) { if (!S.listening) { S.listening = true; render(); setTimeout(() => { if (!S.listening) return; S.listening = false; S.chat.push({ me: true, t: "Promeni večeru" }); S.chat.push(reply("večer")); render(); }, 1800); return; } S.listening = false; }
+  else if ("accept" in d) { S.sheet = null; return toast("Prihvaćeno. Jelovnik je ažuriran."); }
+  else if (d.cook !== undefined && d.cook !== "") { S.cook = 0; S.sheet = null; }
+  else if (d.cookStep) { const n = S.cook + +d.cookStep; if (n >= STEPS.length) { S.cook = null; return toast("Prijatno! Obrok je označen kao pojeden."); } S.cook = Math.max(0, n); }
+  else if ("cookClose" in d) { S.cook = null; }
+  else if ("close" in d) { S.sheet = null; if (d.toastAfter) return toast(d.toastAfter); }
+  else if (d.toast) { return toast(d.toast); }
+  render();
+});
+document.addEventListener("input", (ev) => { const k = ev.target.dataset.in; if (k) S.a[k] = ev.target.value; });
+render();
+</script>
+</body>
+</html>

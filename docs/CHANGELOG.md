@@ -103,3 +103,7 @@
 - Masa iz upitnika = merenje mase (isti podatak); cilj se ne menja sam od sebe posle merenja (MS §11).
 - Podaci: šema 2 (`profile_snapshots`) sa migracijom; ispravljena greška čitanja stare baze pri migraciji.
 - Tehničke napomene: docs/DECISIONS/0016. Testovi: 148 (+17: upitnik, proračun ručno proveren, bezbednost, brisanje, migracija v1→v2 nad bazom kao kod vlasnika, uvoz starog backup-a).
+
+## 0.6.1 — prototip celog izgleda (test)
+- `prototip.html`: klikabilan prototip cele aplikacije (upitnik, Danas, recept, zamena, kuvanje, Nedelja, Kupovina, Napredak, razgovor, Ja) sa izmišljenim primerima; ne koristi kod ni podatke aplikacije.
+- docs/UI_SPEC.md: ciljna struktura, uzori (MacroFactor, Eat This Much, Mealime), stavke van obuhvata V1 koje traže odluku.
