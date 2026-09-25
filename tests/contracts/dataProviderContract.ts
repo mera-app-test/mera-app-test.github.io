@@ -122,7 +122,7 @@ export function runDataProviderContract(name: string, factory: () => Promise<Dat
       const snapshot = await dp.backup.readAllUserData();
       expect(snapshot.measurements.length).toBe(1);
       expect(snapshot.audit_events.length).toBe(1);
-      await dp.backup.replaceAllUserData({ measurements: [], audit_events: [] });
+      await dp.backup.replaceAllUserData({ measurements: [], audit_events: [], profile_snapshots: [] });
       expect(await dp.measurements.countActive()).toBe(0);
       await dp.backup.replaceAllUserData(snapshot);
       expect(await dp.backup.readAllUserData()).toEqual(snapshot);

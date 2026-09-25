@@ -14,7 +14,13 @@ export interface DataMigration {
 }
 
 /** Verzija 1 je početna šema i nema transformaciju. Nove migracije se dodaju na kraj. */
-export const DATA_MIGRATIONS: readonly DataMigration[] = [];
+export const DATA_MIGRATIONS: readonly DataMigration[] = [
+  {
+    toVersion: 2,
+    description: "Odgovori na upitnik (profile_snapshots); postojeći podaci se ne menjaju.",
+    transform: (d) => ({ ...d, profile_snapshots: d.profile_snapshots ?? [] }),
+  },
+];
 
 export class MigrationError extends Error {}
 

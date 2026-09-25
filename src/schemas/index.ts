@@ -3,6 +3,7 @@ export * from "./common";
 export * from "./measurement";
 export * from "./audit";
 export * from "./settings";
+export * from "./profile";
 export * from "./userData";
 export * from "./migrations";
 export * from "./formulas";

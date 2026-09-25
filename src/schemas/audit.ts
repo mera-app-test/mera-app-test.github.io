@@ -2,7 +2,7 @@
 import { z } from "zod";
 import { BaseRecordSchema, IsoDateTimeSchema, UuidSchema } from "./common";
 
-export const EntityNameSchema = z.enum(["measurements", "audit_events"]);
+export const EntityNameSchema = z.enum(["measurements", "audit_events", "profile_snapshots"]);
 export type EntityName = z.infer<typeof EntityNameSchema>;
 
 export const EntityRefSchema = z.object({ entity: EntityNameSchema, id: UuidSchema });

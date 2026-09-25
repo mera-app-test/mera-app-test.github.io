@@ -29,4 +29,12 @@ export const STRUCTURE_STEPS: readonly StructureStep[] = [
       a.createIndex("at", "at");
     },
   },
+  {
+    // Upitnik iz baze znanja (DECISIONS/0016).
+    toVersion: 2,
+    apply(db) {
+      const p = db.createObjectStore("profile_snapshots", { keyPath: "id" });
+      p.createIndex("createdAt", "createdAt");
+    },
+  },
 ];

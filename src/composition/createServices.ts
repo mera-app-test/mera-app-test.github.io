@@ -1,6 +1,6 @@
 // COMPOSITION ROOT — jedino mesto gde se biraju implementacije portova (ARCHITECTURE.md §6.1, §12.1).
 // Prelazak na server menja samo ovaj fajl i infrastructure/, ne UI ni domain.
-import { createBackupService, createFoodService, createKnowledgeService, createWeightService, type AppServices, type BuildInfo } from "../application";
+import { createBackupService, createFoodService, createKnowledgeService, createProfileService, createWeightService, type AppServices, type BuildInfo } from "../application";
 import { createLocalDataProvider } from "../infrastructure/data-local";
 import { loadTrendFormulaSet } from "../infrastructure/reference-static/formulaSets";
 import { createStaticReferenceData } from "../infrastructure/reference-static/referenceData";
@@ -31,7 +31,8 @@ export async function createServices(): Promise<AppServices> {
 
   const persistence = createBrowserStoragePersistence();
   const appVersion = `${build.version}+${build.sha}`;
-  const weight = createWeightService({ data, clock, ids, persistence, appVersion, trendFormulas: loadTrendFormulaSet() });
+  const trendFormulas = loadTrendFormulaSet();
+  const weight = createWeightService({ data, clock, ids, persistence, appVersion, trendFormulas });
 
   const backup = createBackupService({
     data,
@@ -58,6 +59,7 @@ export async function createServices(): Promise<AppServices> {
   const reference = createStaticReferenceData();
   const foods = createFoodService(reference);
   const knowledge = createKnowledgeService(reference);
+  const profile = createProfileService({ data, reference, clock, ids, persistence, appVersion, trendFormulas });
 
-  return { build, backup, weight, foods, knowledge, loadDiagnostics };
+  return { build, backup, weight, foods, knowledge, profile, loadDiagnostics };
 }

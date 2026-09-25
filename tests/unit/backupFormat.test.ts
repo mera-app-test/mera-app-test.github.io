@@ -11,7 +11,7 @@ const meta = { appVersion: "0.1.0+test", exportedAt: "2026-09-23T10:00:00.000Z",
 function sampleData(): UserData {
   const c = ctx("2026-09-20T06:00:00.000Z", seqIds("b"));
   const m = mass(c, 92.4, "2026-09-20T06:00:00.000Z", "2026-09-20");
-  return { measurements: [m], audit_events: [putNew(c, m).audit] };
+  return { measurements: [m], audit_events: [putNew(c, m).audit], profile_snapshots: [] };
 }
 
 describe("canonicalJson", () => {
@@ -28,7 +28,7 @@ describe("backup format", () => {
     expect(r.ok).toBe(true);
     if (!r.ok) return;
     expect(r.backup.data).toEqual(data);
-    expect(r.backup.counts).toEqual({ measurements: 1, audit_events: 1 });
+    expect(r.backup.counts).toEqual({ measurements: 1, audit_events: 1, profile_snapshots: 0 });
     expect(r.backup.originalSchemaVersion).toBe(CURRENT_SCHEMA_VERSION);
   });
 
@@ -61,6 +61,20 @@ describe("backup format", () => {
     const broken = { ...data, measurements: [{ ...data.measurements[0]!, value: -1 }] };
     const r = await parseBackupText(await buildBackupText(broken as UserData, meta, hash), hash);
     expect(r.ok ? null : r.error.code).toBe("INVALID_RECORDS");
+  });
+
+  it("kopija iz šeme 1 (pre upitnika) se uvozi: migracija dodaje prazne odgovore", async () => {
+    const data = sampleData();
+    const oldStores = { measurements: data.measurements, audit_events: data.audit_events };
+    const doc = JSON.parse(await buildBackupText(data, meta, hash));
+    doc.schemaVersion = 1;
+    doc.stores = oldStores;
+    doc.checksum = await hash(canonicalJson(oldStores));
+    const r = await parseBackupText(JSON.stringify(doc), hash);
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    expect(r.backup.originalSchemaVersion).toBe(1);
+    expect(r.backup.data).toEqual({ ...oldStores, profile_snapshots: [] });
   });
 
   it("ime fajla sadrži datum izvoza", () => {

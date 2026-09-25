@@ -8,11 +8,12 @@ import { BackupScreen } from "./screens/BackupScreen";
 import { WeightScreen } from "./screens/WeightScreen";
 import { FoodsScreen } from "./screens/FoodsScreen";
 import { KnowledgeScreen } from "./screens/KnowledgeScreen";
+import { ProfileScreen } from "./screens/ProfileScreen";
 
 /** Ekran provere uređaja postoji samo u test/dev build-u; composition root ga predaje ili ne. */
 export type DiagnosticsScreenComponent = ComponentType<{ onClose: () => void }>;
 
-type Screen = "today" | "backup" | "diagnostics" | "weight-entry" | "weight-list" | "foods" | "knowledge";
+type Screen = "today" | "backup" | "diagnostics" | "weight-entry" | "weight-list" | "foods" | "knowledge" | "profile";
 
 interface AppProps {
   services: AppServices;
@@ -50,11 +51,13 @@ export function App({ services, DiagnosticsScreen }: AppProps) {
               onEnterWeight={() => setScreen("weight-entry")}
               onOpenWeights={() => setScreen("weight-list")}
               onOpenFoods={() => setScreen("foods")}
+              onOpenProfile={() => setScreen("profile")}
             />
           )}
           {(screen === "weight-entry" || screen === "weight-list") && (
             <WeightScreen focusInput={screen === "weight-entry"} onClose={() => setScreen("today")} />
           )}
+          {screen === "profile" && <ProfileScreen onClose={() => setScreen("today")} innerBack={innerBack} />}
           {screen === "foods" && <FoodsScreen onClose={() => setScreen("today")} innerBack={innerBack} />}
           {screen === "knowledge" && <KnowledgeScreen onClose={() => setScreen("today")} />}
           {screen === "backup" && <BackupScreen onClose={() => setScreen("today")} />}

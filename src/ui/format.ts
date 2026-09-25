@@ -50,17 +50,28 @@ function num(value: number, decimals: number): string {
   return f.format(value);
 }
 
-export function formatDisplay(d: Display, unit: string): string {
+/** Samo broj sa oznakom pouzdanosti („≈2.300"), bez jedinice — za prikaze gde je jedinica posebno složena. */
+export function formatDisplayNumber(d: Display): string {
   switch (d.kind) {
     case "exact":
-      return `${num(d.value, d.decimals)} ${unit}`;
+      return num(d.value, d.decimals);
     case "approx":
-      return `≈${num(d.value, d.decimals)} ${unit}`;
+      return `≈${num(d.value, d.decimals)}`;
     case "range":
-      return `${num(d.low, d.decimals)}–${num(d.high, d.decimals)} ${unit}`;
+      return `${num(d.low, d.decimals)}–${num(d.high, d.decimals)}`;
     case "trace":
-      return `< ${num(d.below, 1)} ${unit}`;
+      return `< ${num(d.below, 1)}`;
     case "unknown":
       return "nepoznato";
   }
+}
+
+export function formatDisplay(d: Display, unit: string): string {
+  return d.kind === "unknown" ? "nepoznato" : `${formatDisplayNumber(d)}${unit ? ` ${unit}` : ""}`;
+}
+
+const answerNumber = new Intl.NumberFormat("sr-Latn-RS", { maximumFractionDigits: 2 });
+/** Broj kako ga je korisnik upisao (92,4), bez nepotrebnih decimala. */
+export function formatAnswerNumber(value: number): string {
+  return answerNumber.format(value);
 }

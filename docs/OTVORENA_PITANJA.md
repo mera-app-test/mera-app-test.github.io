@@ -15,3 +15,7 @@ Evidentirana radi kasnije provere; razvoj ne čeka na njih. Blokirajuće stvari 
 - Faktori prinosa (sirovo → kuvano; USDA 2014, Bognár 2002) — nisu uvezeni; kuvani oblici dolaze direktno iz USDA. Licenca za Bognár nije navedena.
 - Srpske namirnice bez pouzdanog izvora: beli sir, kajmak, ajvar, kačkavalj, mleko/jogurt 2,8 %, hleb, pavlaka, suvomesnato — poseban razgovor o hrani.
 - Kućne mere (FDC porcije su američke) — ne prikazuju se u V1.
+
+## Upitnik i profil (0.6.0)
+- Godine se čuvaju kako su unete; posle godinu dana treba ih ažurirati (datum rođenja ili podsetnik) — razlika ~5 kcal godišnje, neblokirajuće.
+- Broj pitanja u upitniku raste kad se pojave uslovna pitanja (npr. „1 od 6" → „8 od 8"); ako smeta, prikazati samo traku bez broja.

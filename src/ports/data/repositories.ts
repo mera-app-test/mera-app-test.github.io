@@ -1,6 +1,6 @@
 // Repozitorijumi: čitanje po domenskim upitima (ARCHITECTURE.md §7.1, §7.2).
 // Filtriranje i sortiranje radi repozitorijum, ne UI. Svi metodi su asinhroni.
-import type { AuditEvent, EntityRef, Measurement, MeasurementType, SettingKey, Settings } from "../../schemas";
+import type { AuditEvent, EntityRef, Measurement, MeasurementType, ProfileSnapshot, SettingKey, Settings } from "../../schemas";
 
 export interface MeasurementRepository {
   get(id: string): Promise<Measurement>; // NotFound ako ne postoji ili je obrisan
@@ -10,6 +10,13 @@ export interface MeasurementRepository {
   latest(type: MeasurementType): Promise<Measurement | null>;
   /** Broj neobrisanih merenja (za podsetnik o rezervnoj kopiji). */
   countActive(): Promise<number>;
+}
+
+/** Odgovori na upitnik (DECISIONS/0016). Važeći = poslednji neobrisani snapshot po createdAt. */
+export interface ProfileRepository {
+  current(): Promise<ProfileSnapshot | null>;
+  /** Svi neobrisani snapshot-ovi (istorija), sortirano po createdAt rastuće. */
+  listActive(): Promise<ProfileSnapshot[]>;
 }
 
 export interface AuditRepository {

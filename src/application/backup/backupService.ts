@@ -77,7 +77,7 @@ export function createBackupService(d: BackupDeps): BackupService {
         summary: `Uvoz rezervne kopije od ${backup.exportedAt} (šema ${backup.originalSchemaVersion}); merenja: ${backup.counts.measurements}.`,
       });
       await d.data.backup.replaceAllUserData({
-        measurements: backup.data.measurements,
+        ...backup.data,
         audit_events: [...backup.data.audit_events, importAudit],
       });
     },

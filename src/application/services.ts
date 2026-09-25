@@ -5,6 +5,7 @@ import type { BackupService } from "./backup/backupService";
 import type { WeightService } from "./weight/weightService";
 import type { FoodService } from "./foods/foodService";
 import type { KnowledgeService } from "./knowledge/knowledgeService";
+import type { ProfileService } from "./profile/profileService";
 
 export interface AppServices {
   readonly build: BuildInfo;
@@ -12,6 +13,7 @@ export interface AppServices {
   readonly weight: WeightService;
   readonly foods: FoodService;
   readonly knowledge: KnowledgeService;
+  readonly profile: ProfileService;
   /** Postoji samo u test/dev okruženju; u produkciji je null i kod se ne uključuje u build. */
   readonly loadDiagnostics: (() => Promise<DiagnosticsService>) | null;
 }

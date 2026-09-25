@@ -1,13 +1,14 @@
 // ChangeSet — jedna atomska poruka upisa (ARCHITECTURE.md §7.1).
 // Lokalno: jedna IndexedDB transakcija. Kasnije: jedan API poziv koji server izvršava transakciono.
-import type { AuditEvent, Measurement } from "../../schemas";
+import type { AuditEvent, Measurement, ProfileSnapshot } from "../../schemas";
 
 export type ChangeRecord =
-  | { readonly entity: "measurements"; readonly record: Measurement };
+  | { readonly entity: "measurements"; readonly record: Measurement }
+  | { readonly entity: "profile_snapshots"; readonly record: ProfileSnapshot };
 
 export type ChangeOperation = ChangeRecord & {
   /** put: upis nove verzije; softDelete: nova verzija sa postavljenim deletedAt.
-   *  „purge" (§8.2) se uvodi zajedno sa prvim entitetom kome treba (MemoryItem). */
+   *  Brisanje na zahtev korisnika (§8.2) za profil = softDelete zapisa bez sadržaja (DECISIONS/0016). */
   readonly op: "put" | "softDelete";
   /** Očekivana trenutna verzija u skladištu; null = zapis ne sme postojati. */
   readonly expectedRev: number | null;

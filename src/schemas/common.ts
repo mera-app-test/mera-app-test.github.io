@@ -7,7 +7,7 @@ export const IsoDateTimeSchema = z.iso.datetime({ offset: false });
 export const LocalDateSchema = z.iso.date();
 
 /** Trenutna verzija šeme korisničkih podataka. Menja se isključivo uz novu migraciju. */
-export const CURRENT_SCHEMA_VERSION = 1 as const;
+export const CURRENT_SCHEMA_VERSION = 2 as const;
 
 export const BaseRecordSchema = z.object({
   id: UuidSchema,

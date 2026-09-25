@@ -1,8 +1,9 @@
-// Glavni ekran „DANAS" (MS §15). Plan još ne postoji — prazno stanje, kartica „Masa" i podsetnik za rezervnu kopiju.
+// Glavni ekran „DANAS" (MS §15): dnevni cilj iz upitnika, kartica „Masa", namirnice i podsetnik za rezervnu kopiju. Jelovnik još ne postoji.
 import { useEffect, useState } from "react";
 import type { BackupStatus } from "../../application";
 import { useServices } from "../ServicesContext";
 import { WeightCard } from "../components/WeightCard";
+import { GoalCard } from "../components/GoalCard";
 
 const dateFormatter = new Intl.DateTimeFormat("sr-Latn-RS", { weekday: "long", day: "numeric", month: "long" });
 
@@ -11,9 +12,10 @@ interface TodayProps {
   onEnterWeight: () => void;
   onOpenWeights: () => void;
   onOpenFoods: () => void;
+  onOpenProfile: () => void;
 }
 
-export function TodayScreen({ onOpenBackup, onEnterWeight, onOpenWeights, onOpenFoods }: TodayProps) {
+export function TodayScreen({ onOpenBackup, onEnterWeight, onOpenWeights, onOpenFoods, onOpenProfile }: TodayProps) {
   const { backup } = useServices();
   const [status, setStatus] = useState<BackupStatus | null>(null);
   const today = dateFormatter.format(new Date());
@@ -40,12 +42,7 @@ export function TodayScreen({ onOpenBackup, onEnterWeight, onOpenWeights, onOpen
         <h1 id="today-title" className="today-title">Danas</h1>
         <p className="today-date">{today}</p>
       </header>
-      <div className="empty">
-        <p className="empty-lead">Plan za danas još ne postoji.</p>
-        <p className="empty-body">
-          Mera je u izradi. Ovde će stajati obroci za danas, sa količinama i kalorijama.
-        </p>
-      </div>
+      <GoalCard onOpenQuestionnaire={onOpenProfile} />
       <WeightCard onEnter={onEnterWeight} onOpenList={onOpenWeights} />
       <section className="weight-card food-entry" aria-labelledby="foods-card-title">
         <h2 id="foods-card-title" className="weight-card-title">Namirnice</h2>

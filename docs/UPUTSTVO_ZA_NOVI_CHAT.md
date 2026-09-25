@@ -6,9 +6,9 @@ Za razvojnog AI agenta. Vlasnik projekta: Zoran. Radi na telefonu (mobilni Chrom
 1. Kloniraj: `git clone https://github.com/mera-app-test/mera-app-test.github.io mera`
 2. Pročitaj redom:
    - `docs/UPUTSTVO_ZA_NOVI_CHAT.md` (ovaj fajl)
-   - `docs/SNAPSHOTS/2026-09-24-baza-znanja.md` — gde smo stali
+   - `docs/SNAPSHOTS/2026-09-25-upitnik.md` — gde smo stali
    - `/mnt/project/MASTER_SPECIFICATION` (knowledge fajl projekta) i `docs/ARCHITECTURE.md` (§17 zamenjen redosledom iz DECISIONS/0012)
-   - **sve u `docs/DECISIONS/`**, obavezno 0005, 0009–0015
+   - **sve u `docs/DECISIONS/`**, obavezno 0005, 0009–0016
    - `docs/AI_RULES.md`, `docs/KNOWLEDGE_BASE.md`, `docs/NUTRITION_ENGINE.md`, `docs/DATA_SOURCES.md`, `docs/OTVORENA_PITANJA.md`, `docs/CHANGELOG.md`
 3. `npm ci` pa `npm run check` — mora proći pre izmena.
 
@@ -47,11 +47,11 @@ Za razvojnog AI agenta. Vlasnik projekta: Zoran. Radi na telefonu (mobilni Chrom
 - Nova verzija baze: novi fajl `knowledge-X.json`, stari `git rm`, zameni putanje u `src`/`tests`, regeneriši paket: `node scripts/kb-review-package.mjs reference-data/knowledge/knowledge-X.json > docs/REVIZIJA/kb-X.md` i putanju u `src/ui/screens/KnowledgeScreen.tsx`.
 - Formule i pravila prikaza: `reference-data/formulas/`.
 
-## 6. Sledeći korak (DECISIONS/0012, tačka 2)
-**Upitnik osnovnog nivoa u pravom toku + dnevni cilj na ekranu Danas.**
-- Prvo pokretanje: pitanja iz `knowledge.questions("osnovni", …, "odobreno")`, jedno ekran-po-ekran ili kratka forma — predloži izgled, objavi na test, vlasnik odlučuje.
-- Odgovori se čuvaju lokalno (postojeći sloj podataka), mogu da se izmene i obrišu (MS §8).
-- Na ekranu Danas: dnevni cilj u kcal („≈", MS §30), sa „Zašto?" (stavke i verzije iz `evaluate().trace`).
-- Bezbednost: BLOCKED / REQUIRES_CLINICAL_REVIEW → nema plana, jasna poruka iz baze; neodlučena bezbednosna pravila → nema plana dok se ne odgovori.
-- Masa iz upitnika i unosi mase (koraci 2–3) treba da budu isti podatak — utvrdi u postojećem kodu kako.
-- Posle toga: razgovor o hrani i receptima (vlasnik želi poseban razgovor), pa planer.
+## 6. Sledeći korak
+**Urađeno u 0.6.0 (DECISIONS/0016):** upitnik osnovnog nivoa u pravom toku + dnevni cilj na ekranu Danas. Kod: `src/application/profile/profileService.ts`, `src/ui/screens/ProfileScreen.tsx`, `src/ui/components/GoalCard.tsx`; testovi `tests/infrastructure/profileService.test.ts`.
+1. **Prvo:** vlasnik pregleda 0.6.0 na telefonu — ispraviti ono što traži (izgled i tok odlučuje on, DECISIONS/0005, 0013).
+2. **Zatim:** razgovor o hrani i receptima (vlasnik želi poseban razgovor), pa baza recepata i dopuna namirnica (DECISIONS/0012 tačka 3), pa planer.
+
+## 7. Rad u više odgovora i dužina chata
+- Po jednom odgovoru postoji ograničen broj koraka (alata). Posao deliti na celine; pre nego što se limit približi, međurezultat gurnuti na radnu granu (ne `main`, jer `main` objavljuje na test).
+- Kada razgovor postane predugačak, agent sam predlaže prelazak u novi chat — na granici koraka, posle objave i ažuriranja ovog uputstva i snapshot-a.

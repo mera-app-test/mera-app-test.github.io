@@ -94,3 +94,12 @@
 - DECISIONS/0015: jedan kredibilan izvor dovoljan za uobičajene preporuke; strože samo kod stvarnog rizika; nezavisna AI provera ne blokira ličnu fazu; neblokirajuća pitanja u docs/OTVORENA_PITANJA.md.
 - Baza znanja 0.4.0: svih 18 stavki ODOBRENO po kriterijumima; build i dalje odbija bezbednosno pravilo sa samo jednim izvorom.
 - Paket za nezavisnu proveru: docs/REVIZIJA/kb-0.4.0.md.
+
+## 0.6.0 — upitnik osnovnog nivoa i dnevni cilj (test)
+- Prvo pokretanje: kartica „Tvoj dnevni cilj" → upitnik iz baze znanja (samo ODOBRENO, osnovni nivo), jedno pitanje po ekranu; uslovna pitanja iz baze (trudnoća samo ženama, željena masa i tempo samo za mršavljenje, manjak samo za „sam biram").
+- Pregled odgovora sa izračunatim ciljem pre čuvanja; dodir na odgovor = izmena; „Obriši moje odgovore" (merenja ostaju).
+- Danas: dnevni cilj „≈ X kcal", cilj i tempo, „Zašto?" (račun red po red, pravilo i verzija za svaki broj, X-001, masa, bezbednost, verzija baze).
+- Bezbednost: BLOCKED / REQUIRES_CLINICAL_REVIEW → nema cilja, poruka iz baze, upitnik se odmah zaustavlja; neodgovoreno bezbednosno pitanje → nema cilja.
+- Masa iz upitnika = merenje mase (isti podatak); cilj se ne menja sam od sebe posle merenja (MS §11).
+- Podaci: šema 2 (`profile_snapshots`) sa migracijom; ispravljena greška čitanja stare baze pri migraciji.
+- Tehničke napomene: docs/DECISIONS/0016. Testovi: 148 (+17: upitnik, proračun ručno proveren, bezbednost, brisanje, migracija v1→v2 nad bazom kao kod vlasnika, uvoz starog backup-a).

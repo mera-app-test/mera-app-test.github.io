@@ -6,6 +6,7 @@ import {
   CURRENT_SCHEMA_VERSION,
   DEFAULT_SETTINGS,
   MeasurementSchema,
+  ProfileSnapshotSchema,
   SettingsSchema,
   USER_STORE_NAMES,
   UserDataSchema,
@@ -13,6 +14,7 @@ import {
   type EntityRef,
   type Measurement,
   type MeasurementType,
+  type ProfileSnapshot,
   type SettingKey,
   type Settings,
   type UserData,
@@ -25,6 +27,7 @@ import {
   type CommitResult,
   type DataProvider,
   type MeasurementRepository,
+  type ProfileRepository,
   type SecretStore,
   type SettingsRepository,
   type UnitOfWork,
@@ -89,6 +92,26 @@ class LocalMeasurements implements MeasurementRepository {
     return all.filter((r) => (r as { deletedAt: string | null }).deletedAt === null).length;
   }
 }
+
+class LocalProfiles implements ProfileRepository {
+  constructor(private readonly db: MeraDb) {}
+
+  async listActive(): Promise<ProfileSnapshot[]> {
+    const all = await this.db.getAllFromIndex("profile_snapshots", "createdAt").catch(mapIdbError);
+    return all
+      .map((r) => parseOrThrow(ProfileSnapshotSchema, r, "profile_snapshots"))
+      .filter((p) => p.deletedAt === null)
+      .sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+  }
+
+  async current(): Promise<ProfileSnapshot | null> {
+    const list = await this.listActive();
+    return list.at(-1) ?? null;
+  }
+}
+
+/** Šema zapisa po skladištu — svaki upis kroz UnitOfWork prolazi šemu svog entiteta. */
+const RECORD_SCHEMAS = { measurements: MeasurementSchema, profile_snapshots: ProfileSnapshotSchema } as const;
 
 class LocalAudit implements AuditRepository {
   constructor(private readonly db: MeraDb) {}
@@ -157,7 +180,7 @@ class LocalUnitOfWork implements UnitOfWork {
     const audit = parseOrThrow(AuditEventSchema, cs.audit, "audit_events");
     if (audit.userId !== this.userId) throw new DataError("ValidationFailed", "Audit događaj pripada drugom korisniku.");
     const ops = cs.operations.map((op) => {
-      const record = parseOrThrow(MeasurementSchema, op.record, op.entity);
+      const record = parseOrThrow<{ id: string; userId: string; rev: number; deletedAt: string | null }>(RECORD_SCHEMAS[op.entity], op.record, op.entity);
       if (record.userId !== this.userId) throw new DataError("ValidationFailed", `Zapis ${record.id} pripada drugom korisniku.`);
       if (op.op === "softDelete" && record.deletedAt === null) throw new DataError("ValidationFailed", "softDelete zahteva postavljen deletedAt.");
       if (op.op === "put" && record.deletedAt !== null) throw new DataError("ValidationFailed", "put ne sme imati deletedAt; koristi softDelete.");
@@ -240,6 +263,7 @@ export async function createLocalDataProvider(opts: OpenOptions): Promise<DataPr
   const { db, userId, migratedFrom } = await openMeraDatabase(opts);
   return {
     measurements: new LocalMeasurements(db),
+    profiles: new LocalProfiles(db),
     audit: new LocalAudit(db),
     settings: new LocalSettings(db),
     secrets: new LocalSecrets(),

@@ -20,3 +20,17 @@ export type { KnowledgeService, KnowledgeOverview, KnowledgeScope } from "./know
 export { createKnowledgeService } from "./knowledge/knowledgeService";
 export type { DerivedQuestion, Evaluation, Facts, FactValue } from "../domain";
 export type { KnowledgeEntry, FactDef, SourceRef } from "../schemas";
+export type {
+  ProfileService,
+  ProfileState,
+  ProfileResultView,
+  QuestionView,
+  QuestionOption,
+  WhyItem,
+  SafetyNotice,
+  QuestionnaireStart,
+  ParseAnswerResult,
+  Preview,
+  SaveResult,
+} from "./profile/profileService";
+export { createProfileService } from "./profile/profileService";

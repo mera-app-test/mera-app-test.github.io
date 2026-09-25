@@ -76,9 +76,10 @@ async function openAt(version: number, opts: OpenOptions): Promise<MeraDb> {
           // Greška u transformaciji prekida celu nadogradnju (tx.abort) — baza ostaje na staroj verziji.
           void (async () => {
             const raw: RawUserData = {};
-            for (const s of USER_STORE_NAMES) raw[s] = await tx.objectStore(s).getAll();
+            const present = existingUserStores(database);
+            for (const s of present) raw[s] = await tx.objectStore(s).getAll();
             const out = dataMigration.transform(raw);
-            for (const s of USER_STORE_NAMES) {
+            for (const s of present) {
               const store = tx.objectStore(s);
               await store.clear();
               for (const rec of out[s] ?? []) await store.put(rec);
@@ -100,10 +101,16 @@ async function openAt(version: number, opts: OpenOptions): Promise<MeraDb> {
   return db;
 }
 
+/** Korisnička skladišta koja postoje u ovoj verziji baze (starija verzija nema skladišta dodata kasnijim migracijama). */
+function existingUserStores(db: MeraDb): string[] {
+  return USER_STORE_NAMES.filter((s) => db.objectStoreNames.contains(s));
+}
+
 async function readRaw(db: MeraDb): Promise<RawUserData> {
-  const tx = db.transaction([...USER_STORE_NAMES], "readonly");
+  const stores = existingUserStores(db);
+  const tx = db.transaction(stores, "readonly");
   const raw: RawUserData = {};
-  for (const s of USER_STORE_NAMES) raw[s] = await tx.objectStore(s).getAll();
+  for (const s of stores) raw[s] = await tx.objectStore(s).getAll();
   await tx.done;
   return raw;
 }

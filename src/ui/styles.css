@@ -413,3 +413,80 @@ body {
 .kb-copy-ok { color: var(--ok); font-weight: 650; margin: 10px 0 0; }
 .kb-copy-text { width: 100%; min-height: 160px; font: 13px/1.4 ui-monospace, monospace; margin-top: 8px; border: 1.5px solid var(--line); border-radius: 10px; padding: 8px; }
 .kb-copy-size { font-size: 13px; margin-top: 6px; }
+
+/* Dnevni cilj — spruce linija levo označava „plan"; broj je jedini naglašen element ekrana. */
+.goal { border-left: 4px solid var(--spruce); padding: 2px 0 4px 16px; display: grid; gap: 10px; }
+.goal-title { font-size: 20px; font-weight: 650; margin: 0; }
+.goal-lead { margin: 0; color: var(--ink-soft); max-width: 38ch; }
+.goal-number { margin: 0; font-size: 60px; line-height: 1; font-weight: 750; letter-spacing: -0.03em; color: var(--spruce); }
+.goal-unit { font-size: 24px; font-weight: 600; color: var(--ink-soft); letter-spacing: 0; margin-left: 8px; }
+.goal-context { display: grid; gap: 2px; color: var(--ink-soft); font-size: 16px; }
+.goal-context p { margin: 0; }
+.goal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+.goal-next { margin: 2px 0 0; font-size: 15px; color: var(--ink-soft); }
+.goal-stop { background: var(--amber-bg); border: 1px solid #e8d3ae; border-radius: 14px; padding: 12px 14px; }
+.goal-stop p { margin: 0; color: var(--amber); font-weight: 600; }
+.goal-stop p + p { margin-top: 8px; }
+.goal-stale { background: var(--amber-bg); border-radius: 12px; padding: 10px 12px; display: grid; gap: 8px; }
+.goal-stale p { margin: 0; color: var(--amber); font-size: 15px; font-weight: 600; }
+.goal-why { margin-top: 2px; }
+.goal-explain { margin: 12px 0 0; font-size: 15px; color: var(--ink-soft); }
+.why-meta { margin-top: 14px; }
+
+/* „Zašto?": račun kao na papiru — redovi sabiraka, zaključak ispod pune linije. */
+.ledger { list-style: none; margin: 0; padding: 0; }
+.ledger-row {
+  width: 100%; display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  min-height: 48px; padding: 8px 0; background: none; border: 0; border-bottom: 1px solid var(--line);
+  font: inherit; color: inherit; text-align: left; cursor: pointer;
+}
+.ledger-label { color: var(--ink-soft); }
+.ledger-value { font-weight: 650; white-space: nowrap; }
+.ledger-item.total .ledger-row { border-top: 2px solid var(--ink); border-bottom: 0; }
+.ledger-item.total .ledger-label { color: var(--ink); font-weight: 650; }
+.ledger-item.total .ledger-value { font-size: 20px; font-weight: 750; color: var(--spruce); }
+.ledger-detail { padding: 6px 0 10px; font-size: 15px; }
+.ledger-detail p { margin: 0 0 4px; }
+.ledger-rule { color: var(--ink-soft); font-size: 14px; }
+.ledger-hint { font-size: 14px; color: var(--ink-soft); margin: 8px 0 0; }
+
+/* Upitnik: jedno pitanje po ekranu. */
+.q-top { display: flex; justify-content: space-between; align-items: center; min-height: var(--tap); }
+.q-back { padding-left: 0; text-decoration: none; }
+.q-count { font-size: 15px; color: var(--ink-soft); }
+.q-progress { display: flex; gap: 4px; margin-top: 4px; }
+.q-seg { flex: 1; height: 4px; border-radius: 2px; background: var(--line); }
+.q-seg.done { background: var(--spruce); }
+.q-form { display: grid; gap: 12px; }
+.q-text { display: block; font-size: 28px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 28px 0 8px; }
+.q-options { display: grid; gap: 10px; }
+.q-option {
+  min-height: 60px; padding: 12px 16px; text-align: left;
+  border: 1.5px solid var(--line); border-radius: 14px; background: var(--surface);
+  font: inherit; font-size: 18px; font-weight: 600; color: var(--ink); cursor: pointer; touch-action: manipulation;
+}
+.q-option:active { background: #e8efeb; }
+.q-option.selected { border-color: var(--spruce); background: #e3eee9; box-shadow: inset 0 0 0 1px var(--spruce); }
+.q-option:disabled { cursor: default; }
+.q-option:focus-visible { outline: 3px solid #7fb3a3; outline-offset: 2px; }
+.q-hint { margin: 0; font-size: 15px; color: var(--ink-soft); }
+.q-notice { min-height: 1.45em; }
+
+/* Pregled odgovora */
+.review-result { margin-bottom: 8px; }
+.review-list { list-style: none; margin: 16px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.review-row {
+  width: 100%; display: grid; gap: 1px; min-height: 60px; padding: 10px 0;
+  background: none; border: 0; border-bottom: 1px solid var(--line);
+  font: inherit; color: inherit; text-align: left; cursor: pointer;
+}
+.review-row:active { background: #e8efeb; }
+.review-q { font-size: 15px; color: var(--ink-soft); }
+.review-a { font-weight: 650; }
+.review-a.missing { color: var(--amber); text-decoration: underline; text-underline-offset: 3px; }
+.review-clear { margin-top: 16px; }
+.review-bar {
+  position: sticky; bottom: 0; margin: 20px -20px 0; padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+  background: var(--paper); border-top: 1px solid var(--line); display: grid; gap: 0;
+}
+.review-bar .block:first-of-type { margin-top: 0; }
