@@ -50,7 +50,9 @@ Za razvojnog AI agenta. Vlasnik projekta: Zoran. Radi na telefonu (mobilni Chrom
 
 ## 6. Sledeći korak
 **Urađeno u 0.6.0 (DECISIONS/0016):** upitnik osnovnog nivoa u pravom toku + dnevni cilj na ekranu Danas. Kod: `src/application/profile/profileService.ts`, `src/ui/screens/ProfileScreen.tsx`, `src/ui/components/GoalCard.tsx`; testovi `tests/infrastructure/profileService.test.ts`.
-1. **Prvo:** vlasnik pregleda 0.6.0 na telefonu — ispraviti ono što traži (izgled i tok odlučuje on, DECISIONS/0005, 0013).
+**0.6.1:** vlasnik je tražio da prvo vidi celu aplikaciju umesto pojedinačnih ekrana. Napravljen prototip celog izgleda `public/prototip.html` i `docs/UI_SPEC.md` (uzori MacroFactor, Eat This Much, Mealime). Pregled 0.6.0 zamenjen pregledom prototipa.
+0. **Prvo:** vlasnik pregleda prototip (https://mera-app-test.github.io/prototip.html?v=061) i odlučuje o stavkama van obuhvata V1 (UI_SPEC, poslednji deo). Posle toga prava aplikacija se preslaže prema prototipu (upitnik 0.6.0 → koraci upitnika, GoalCard → zbir na Danas).
+1. **Ranije:** vlasnik pregleda 0.6.0 na telefonu — ispraviti ono što traži (izgled i tok odlučuje on, DECISIONS/0005, 0013).
 2. **Zatim:** razgovor o hrani i receptima (vlasnik želi poseban razgovor), pa baza recepata i dopuna namirnica (DECISIONS/0012 tačka 3), pa planer.
 
 ## 7. Rad u više odgovora i dužina chata
