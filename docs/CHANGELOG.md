@@ -111,3 +111,6 @@
 ## 0.6.2 — ispravka: link na prototip otvarao aplikaciju
 - Uzrok (greška agenta): service worker je svaki navigacioni zahtev koji nije tačno u kešu (npr. `prototip.html?v=061`) posluživao kao glavni ekran. Ispravka: prototip isključen iz te zamene; parametar `v` se zanemaruje pri traženju u kešu.
 - Test verzija: dugme „Pogledaj predlog izgleda“ na ekranu Danas.
+
+## 0.6.3
+- Dugme „Pogledaj predlog izgleda“ premešteno na vrh ekrana Danas i ispravljena širina (u 0.6.2 bilo na dnu i izlazilo van ekrana — greška agenta).

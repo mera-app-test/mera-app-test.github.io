@@ -44,6 +44,13 @@ export function App({ services, DiagnosticsScreen }: AppProps) {
             TEST verzija. Podaci su odvojeni od prave aplikacije.
           </div>
         )}
+        {showTest && screen === "today" && (
+          <div style={{ padding: "12px 16px 0" }}>
+            <a className="btn btn-primary" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", boxSizing: "border-box", textDecoration: "none" }} href="/prototip.html">
+              Pogledaj predlog izgleda
+            </a>
+          </div>
+        )}
         <main className="main">
           {screen === "today" && (
             <TodayScreen
@@ -67,11 +74,6 @@ export function App({ services, DiagnosticsScreen }: AppProps) {
             </Suspense>
           )}
         </main>
-        {showTest && screen === "today" && (
-          <a className="btn btn-primary block" style={{ margin: "0 16px 16px", textDecoration: "none" }} href="/prototip.html">
-            Pogledaj predlog izgleda
-          </a>
-        )}
         <footer className="footer">
           <span className="muted">Verzija {formatVersionLabel(services.build)}</span>
           {screen === "today" && (
