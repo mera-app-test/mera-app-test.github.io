@@ -28,6 +28,7 @@ Za razvojnog AI agenta. Vlasnik projekta: Zoran. Radi na telefonu (mobilni Chrom
 - Srpski, latinica, direktno i iskreno; bez ulepšavanja.
 - Linkove slati kao **običan tekst sa verzijom na kraju**, npr. `https://mera-app-test.github.io/?v=055` (zbog keša u Chrome-u).
 - Kod grešaka: prvo proveri svoj kod; ne izmišljaj spoljne uzroke; njegove snimke ekrana tretiraj kao činjenicu.
+- Kada chat postane predugačak — upozoriti vlasnika da pređe u novi chat (detalji u delu 7).
 - Kad nešto treba da iskopira (npr. za drugi AI), daj mu dugme u aplikaciji ili tekst koji se lako kopira.
 
 ## 4. Objava (agent radi sam)
@@ -54,4 +55,6 @@ Za razvojnog AI agenta. Vlasnik projekta: Zoran. Radi na telefonu (mobilni Chrom
 
 ## 7. Rad u više odgovora i dužina chata
 - Po jednom odgovoru postoji ograničen broj koraka (alata). Posao deliti na celine; pre nego što se limit približi, međurezultat gurnuti na radnu granu (ne `main`, jer `main` objavljuje na test).
-- Kada razgovor postane predugačak, agent sam predlaže prelazak u novi chat — na granici koraka, posle objave i ažuriranja ovog uputstva i snapshot-a.
+- **Obavezno (zahtev vlasnika):** kada razgovor postane predugačak, agent **sam i jasno upozori vlasnika** da treba preći u novi chat — ne čeka da vlasnik pita. Znaci: mnogo pročitanih fajlova i dugih izlaza komandi, više završenih koraka u istom chatu, nesigurnost u detalje iz ranijeg dela razgovora.
+- Pre upozorenja: sav posao gurnut na GitHub, ažurirani ovo uputstvo i snapshot. U upozorenju napisati da novi chat počinje istom početnom porukom.
+- Prelazak predlagati na granici koraka (posle objave), ne usred posla, osim ako dužina već ugrožava tačnost.
