@@ -22,7 +22,8 @@ html,body{height:100%;margin:0}
 body{background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.4;-webkit-tap-highlight-color:transparent}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
 input{font:inherit}
-.app{max-width:480px;margin:0 auto;min-height:100%;position:relative;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+.app{max-width:480px;margin:0 auto;min-height:100%;position:relative;padding-bottom:24px}
+.app.withdock{padding-bottom:calc(150px + env(safe-area-inset-bottom,0px))}
 .ribbon{background:var(--saffron-bg);color:#7A5410;font-size:13px;text-align:center;padding:6px 12px}
 .screen{padding:12px 18px 24px}
 h1{font-size:30px;font-weight:800;letter-spacing:-.02em;margin:4px 0 2px}
@@ -205,6 +206,45 @@ h2{font-size:20px;font-weight:700;margin:22px 0 10px}
 .compose{display:flex;gap:8px;align-items:center;background:var(--white);border:1.5px solid var(--line);border-radius:18px;padding:6px 6px 6px 14px}
 .compose input{flex:1;border:0;outline:0;background:none;font-size:17px;min-height:44px;color:var(--ink)}
 .send{width:44px;height:44px;border-radius:50%;background:var(--pine);color:#fff;font-size:20px;font-weight:700}
+.mh{position:sticky;top:0;z-index:5;background:var(--paper);padding:14px 16px 12px}
+.mh1{display:flex;align-items:center;gap:8px;min-height:52px}
+.mh1 .title{font-size:30px;font-weight:800;letter-spacing:-.02em;flex:1}
+.ib{position:relative;flex:none;width:52px;height:52px;border-radius:16px;background:var(--white);border:1px solid var(--line);display:grid;place-items:center;font-size:23px}
+.ib .dot{position:absolute;top:8px;right:8px;width:9px;height:9px;border-radius:50%;background:var(--saffron);border:1.5px solid #fff}
+.stat{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:12px;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:10px 16px;text-align:left}
+.stat .l,.stat .r{white-space:nowrap}
+.pill small{display:block;font-size:12px;font-weight:600}
+.stat .l b{display:block;font-size:17px;color:var(--pine)}
+.stat .l span{font-size:14px;color:var(--soft)}
+.stat .r{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.stat .r small{font-size:14px;font-weight:600;color:var(--soft)}
+.stat.invite{background:var(--saffron-bg);border-color:#F2D9A4}
+.stat.invite .r{font-size:16px;color:var(--pine);font-weight:700}
+.list{padding:2px 16px 16px}
+.mc{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:12px 14px;margin-bottom:10px}
+.mc .mid{flex:1;min-width:0}
+.mc .plate{width:58px;height:58px;font-size:28px}
+.mc .nm{font-size:17px;font-weight:600;line-height:1.25}
+.mc .ds{font-size:14px;color:var(--soft);margin-top:3px}
+.pill{flex:none;min-width:64px;text-align:center;padding:7px 8px;border-radius:14px;line-height:1.15;background:var(--leaf);color:var(--pine);font-weight:700;font-size:15px}
+.pill.ok{background:var(--pine);color:#fff}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--paper);border-top:1px solid var(--line);padding:10px 16px calc(12px + env(safe-area-inset-bottom,0px))}
+.dock-in{max-width:480px;margin:0 auto}
+.dock input{width:100%;min-height:52px;border-radius:26px;border:1.5px solid var(--line);background:var(--white);padding:0 20px;font-size:17px;color:var(--ink);outline:0}
+.dock-row{display:flex;gap:12px;align-items:center;margin-top:10px}
+.round{flex:none;width:56px;height:56px;border-radius:50%;background:var(--white);border:1.5px solid var(--line);display:grid;place-items:center;font-size:22px;color:var(--pine)}
+.go-btn{flex:1;height:56px;border-radius:28px;background:var(--pine);color:#fff;font-size:24px;display:grid;place-items:center}
+.sh{display:flex;align-items:center;gap:8px;padding:14px 12px 12px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--paper);z-index:5}
+.sh button.bk{width:48px;height:48px;font-size:30px;color:var(--ink)}
+.sh h1{font-size:24px;margin:0;flex:1}
+.sh .sub{font-size:14px}
+.set{display:flex;align-items:center;gap:16px;width:100%;text-align:left;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:16px 18px;margin-bottom:12px}
+.set .e{font-size:30px;width:40px;text-align:center}
+.set .mid{flex:1}
+.set b{display:block;font-size:18px}
+.set span.d{font-size:14px;color:var(--soft)}
+.set .ch{color:var(--soft);font-size:22px}
+.set.danger b{color:var(--red)}
 :focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
 </style>
 </head>
@@ -307,37 +347,45 @@ function renderOnb() {
 /* ---------- DANAS ---------- */
 function mealCard(k) {
   const m = MEALS[k], done = !!S.eaten[k];
-  return `<div class="meal ${done ? "done" : ""}">
-    <button class="plate ${m.t}" data-sheet="recipe:${k}" aria-label="Recept">${m.e}</button>
-    <button class="meal-body" style="text-align:left" data-sheet="recipe:${k}">
-      <div class="meal-when">${m.when}, ${m.time}</div>
-      <div class="meal-name">${m.name}</div>
-      <div class="meal-kcal"><b>${m.kcal}</b> kcal</div>
-    </button>
-    <div class="meal-actions">
-      <button class="check ${done ? "done" : ""}" data-eat="${k}" aria-label="Pojeo sam">✓</button>
-      <button class="swap" data-sheet="swap:${k}">Zameni</button>
-    </div>
-  </div>`;
+  return `<button class="mc" data-sheet="recipe:${k}">
+    <span class="plate ${m.t}">${m.e}</span>
+    <span class="mid"><span class="nm">${m.name}</span><span class="ds" style="display:block">${m.when} ${m.time}, ${m.min} min</span></span>
+    <span class="pill ${done ? "ok" : ""}">${done ? "✓ " : ""}${m.kcal}<small>kcal</small></span>
+  </button>`;
 }
 function renderDanas() {
-  const e = kcalEaten(), pct = Math.min(100, Math.round(e / TARGET * 100));
-  const row2 = S.profile
-    ? `<button class="hdr2" data-sheet="why-goal"><span><b>${fmt(e)}</b> od ≈ ${fmt(TARGET)} kcal</span><span class="bar"><i style="width:${pct}%"></i></span></button>`
-    : `<button class="hdr2 invite" data-go="onb"><span>Ovo je primer dana.</span><span class="go">Prilagodi meni</span></button>`;
-  return `<header class="hdr">
-      <div class="hdr1"><h1>Danas <span class="date">petak, 26. sep</span></h1><button class="avatar" data-tab="ja" aria-label="Ja">${S.profile ? "Z" : "☺"}</button></div>
-      ${row2}
+  const e = kcalEaten(), n = Object.keys(MEALS).length, done = Object.values(S.eaten).filter(Boolean).length;
+  const stat = S.profile
+    ? `<button class="stat" data-sheet="why-goal"><span class="l"><b>danas</b><span>${done} od ${n} obroka</span></span><span class="r">${fmt(e)} <small>/ ≈ ${fmt(TARGET)} kcal</small></span></button>`
+    : `<button class="stat invite" data-go="onb"><span class="l"><b>primer dana</b><span>nije prilagođen tebi</span></span><span class="r">Prilagodi meni ›</span></button>`;
+  return `<header class="mh">
+      <div class="mh1">
+        <span class="title">Mera</span>
+        <button class="ib" data-tab="nedelja" aria-label="Nedelja">📅</button>
+        <button class="ib" data-tab="kupovina" aria-label="Kupovina">🛒<span class="dot"></span></button>
+        <button class="ib" data-tab="napredak" aria-label="Napredak">📈${S.checkin==="open" ? `<span class="dot"></span>` : ""}</button>
+        <button class="ib" data-tab="ja" aria-label="Podešavanja">⚙️</button>
+      </div>
+      ${stat}
     </header>
-    <div class="meals">${Object.keys(MEALS).map(mealCard).join("")}</div>`;
+    <div class="list">${Object.keys(MEALS).map(mealCard).join("")}</div>`;
+}
+function dockHtml() {
+  return `<div class="dock"><div class="dock-in">
+    <input id="dock-in" placeholder="ukucaj ili koristi mikrofon na tastaturi..." enterkeyhint="send">
+    <div class="dock-row">
+      <button class="round" data-sheet="chat" aria-label="Razgovor">💬</button>
+      <button class="go-btn" data-dock-send aria-label="Pošalji">➤</button>
+      <button class="round" data-sheet="add" aria-label="Dodaj">＋</button>
+    </div></div></div>`;
 }
 
 /* ---------- NEDELJA ---------- */
 function renderNedelja() {
   const wk = [["Po",22,["🥣","🍝","🥗"]],["Ut",23,["🍳","🫘","🐔"]],["Sr",24,["🥣","🍗","🥗"]],["Če",25,["🍳","🥔","🍲"]],["Pe",26,["🍳","🍗","🥗"]],["Su",27,["🥞","🍖","🥗"]],["Ne",28,["🍳","🍲","🥪"]]];
   const tints = ["t1","t3","t2"];
-  return `<div class="screen">
-    <div class="top"><div><p class="sub">22 – 28. septembar</p><h1>Nedelja</h1></div><button class="icon-btn" data-toast="Nova nedelja: Mera pravi 7 dana prema tvom cilju i onome što voliš." aria-label="Nova nedelja">↻</button></div>
+  return `<div class="sh"><button class="bk" data-tab="danas" aria-label="Nazad">‹</button><div style="flex:1"><h1>Nedelja</h1><p class="sub">22 – 28. septembar</p></div><button class="icon-btn" data-toast="Nova nedelja: Mera pravi 7 dana prema tvom cilju i onome što voliš." aria-label="Nova nedelja">↻</button></div>
+    <div class="screen">
     <p class="sub" style="margin:8px 0 14px">Ostaci se koriste sledećeg dana: pasulj iz srede je ručak u četvrtak.</p>
     ${wk.map(([d,n,pl]) => `<div class="wday ${n===26?"today":""}">
       <div class="d"><b>${n}</b><span>${d}</span></div>
@@ -357,8 +405,8 @@ const SHOP = [
   ["Ostalo", [["Leblebija, konzerva","2 kom"],["Orasi","200 g"],["Maslinovo ulje","imaš kod kuće"]]]
 ];
 function renderKupovina() {
-  return `<div class="screen">
-    <div class="top"><div><p class="sub">Za 22 – 28. septembar</p><h1>Kupovina</h1></div><button class="icon-btn" data-toast="Lista se šalje kao poruka (Viber, SMS…)." aria-label="Podeli">⤴</button></div>
+  return `<div class="sh"><button class="bk" data-tab="danas" aria-label="Nazad">‹</button><div style="flex:1"><h1>Kupovina</h1><p class="sub">Za 22 – 28. septembar</p></div><button class="icon-btn" data-toast="Lista se šalje kao poruka (Viber, SMS…)." aria-label="Podeli">⤴</button></div>
+    <div class="screen">
     <p class="sub" style="margin-top:8px">Količine su zaokružene na pakovanja iz prodavnice.</p>
     <div class="row" style="margin-top:10px"><span class="sub">Sakrij kupljeno</span><div class="seg" style="margin:0;width:140px"><button data-hide="0" class="${S.hideBought?"":"on"}">Ne</button><button data-hide="1" class="${S.hideBought?"on":""}">Da</button></div></div>
     ${SHOP.map(([sec, items]) => {
@@ -390,8 +438,8 @@ function renderNapredak() {
       <p style="margin:10px 0 0"><b>Predlog: bez promene.</b></p>
       <div class="btn-row"><button class="btn btn-y" data-checkin="ok">U redu</button><button class="btn btn-s" style="background:transparent;border-color:rgba(255,255,255,.4);color:#fff" data-sheet="why-checkin">Zašto?</button></div>
     </div>` : `<div class="card"><b>Nedeljni pregled prihvaćen</b><p class="sub">Sledeći pregled u petak, 3. oktobra.</p></div>`;
-  return `<div class="screen">
-    <div class="top"><div><p class="sub">Poslednje 4 nedelje</p><h1>Napredak</h1></div><button class="icon-btn" data-sheet="weigh" aria-label="Unesi masu">＋</button></div>
+  return `<div class="sh"><button class="bk" data-tab="danas" aria-label="Nazad">‹</button><div style="flex:1"><h1>Napredak</h1><p class="sub">Poslednje 4 nedelje</p></div><button class="icon-btn" data-sheet="weigh" aria-label="Unesi masu">＋</button></div>
+    <div class="screen">
     <div class="stats"><div><b>91,3</b><span>kg, prosek 7 dana</span></div><div><b>−0,6</b><span>kg nedeljno</span></div><div><b>−2,7</b><span>kg od početka</span></div></div>
     <div class="chart">${chart()}</div>
     <p class="sub" style="margin:8px 4px 14px">Tačke su dnevna merenja, linija je stvarni trend. Jedno merenje ne menja plan.</p>
@@ -402,18 +450,18 @@ function renderNapredak() {
 
 /* ---------- JA ---------- */
 function renderJa() {
-  const mem = S.mem || (S.mem = [["Ne jede ribu","trajno"],["Kuva najviše 30 minuta","trajno, osim kad kaže drugačije"],["Ručak oko 14 h","navika"],["Ne voli pečurke","trajno"],["Nema piletinu kod kuće","samo danas"]]);
-  return `<div class="screen">
-    <div class="top"><div><p class="sub">Tvoj profil</p><h1>Ja</h1></div><button class="icon-btn" data-tab="danas" aria-label="Zatvori">✕</button></div>
-    ${S.profile ? `<div class="card" style="margin-top:14px"><div class="row"><div><b>Cilj: 85 kg, umereno</b><p class="sub">Dnevno ≈ 1.850 kcal, 4 obroka</p></div><button class="link" data-go="onb">Izmeni</button></div></div>` : `<button class="card accent" style="display:block;width:100%;text-align:left;margin-top:14px" data-go="onb"><b>Prilagodi Meru sebi</b><p class="sub" style="color:#6d5315">Nekoliko pitanja da jelovnik bude prema tvom cilju.</p></button>`}
-    <h2>Šta Mera pamti o tebi</h2>
-    <div class="card">${mem.map(([t,k],i) => `<div class="mem"><div style="flex:1"><div>${t}</div><div class="kind">${k}</div></div><button class="x" data-forget="${i}" aria-label="Zaboravi">✕</button></div>`).join("")}</div>
-    <p class="sub" style="margin:-2px 4px 0">Mera ovo uči iz razgovora. Sve možeš da izmeniš ili obrišeš.</p>
-    <h2>Podešavanja</h2>
-    <button class="opt"><span class="e">💾</span><span><b>Rezervna kopija</b><span>Poslednja: pre 3 dana</span></span></button>
-    <button class="opt"><span class="e">🔑</span><span><b>AI ključ</b><span>Sačuvan na ovom telefonu</span></span></button>
-    <button class="opt"><span class="e">📚</span><span><b>Odakle su podaci</b><span>Izvori namirnica i pravila</span></span></button>
-  </div>`;
+  const it = (e, t, d, act, cls="") => `<button class="set ${cls}" ${act}><span class="e">${e}</span><span class="mid"><b>${t}</b><span class="d">${d}</span></span><span class="ch">›</span></button>`;
+  return `<div class="sh"><button class="bk" data-tab="danas" aria-label="Nazad">‹</button><h1>podešavanja</h1></div>
+    <div class="screen">
+    ${it("🎯", S.profile ? "moj cilj i podaci" : "prilagodi Meru sebi", S.profile ? "85 kg, umereno, ≈ 1.850 kcal" : "nekoliko pitanja, kad ti odgovara", 'data-go="onb"')}
+    ${it("🍽️", "ishrana", "4 obroka, bez ribe, do 30 min", 'data-toast="Broj obroka, šta ne jedeš, vreme za kuvanje."')}
+    ${it("🧠", "šta Mera pamti", "5 stavki, možeš da menjaš i brišeš", 'data-sheet="memory"')}
+    ${it("💾", "rezervna kopija", "poslednja rezervna kopija: 24.09.2026", 'data-toast="Rezervna kopija: sačuvaj ili vrati iz fajla."')}
+    ${it("🔑", "AI ključ", "ključ je unet", 'data-toast="Unos AI ključa."')}
+    ${it("📚", "odakle su podaci", "izvori namirnica i pravila", 'data-toast="Izvori i verzije podataka."')}
+    <div style="height:10px"></div>
+    ${it("🗑️", "obriši moje podatke", "trajno briše odgovore i merenja", 'data-toast="Traži potvrdu pre brisanja."', "danger")}
+    </div>`;
 }
 
 /* ---------- LISTOVI ODOZDO ---------- */
@@ -428,8 +476,8 @@ function sheetHtml() {
       <div class="card">${[["Pileći file","180 g"],["Crvena paprika","150 g"],["Crni luk","60 g"],["Pirinač, sirov","70 g"],["Maslinovo ulje","10 g"],["Začini po ukusu",""]].map(([n,q]) => `<div class="ing"><span>${n}</span><b>${q}</b></div>`).join("")}</div>
       <h2>Priprema</h2>
       ${["Skuvaj pirinač prema uputstvu na pakovanju.","Iseci piletinu na kocke, a papriku i luk na trake.","Na ulju prži luk 3 minuta, dodaj piletinu i peci dok ne porumeni.","Dodaj papriku i malo vode, pa kuvaj 10 minuta poklopljeno."].map((s,i) => `<div class="step"><span class="n">${i+1}</span><span>${s}</span></div>`).join("")}
-      <div class="btn-row"><button class="btn btn-p" data-cook="0">Kuvaj korak po korak</button></div>
-      <div class="btn-row"><button class="btn btn-s" data-sheet="swap:${arg}">Zameni obrok</button></div>`;
+      <div class="btn-row"><button class="btn ${S.eaten[arg] ? "btn-s" : "btn-p"}" data-eat="${arg}" data-close>${S.eaten[arg] ? "Poništi „pojeo sam“" : "✓ Pojeo sam"}</button><button class="btn btn-s" data-sheet="swap:${arg}">Zameni</button></div>
+      <div class="btn-row"><button class="btn btn-y" data-cook="0">Kuvaj korak po korak</button></div>`;
   }
   if (kind === "swap") {
     const m = MEALS[arg];
@@ -459,14 +507,21 @@ function sheetHtml() {
       <div class="why-row"><b>Plan</b>Oko −0,5 kg nedeljno. Razlika je mala i u sigurnim granicama.</div>
       <div class="why-row"><b>Pridržavanje</b>6 od 7 dana potvrđeno kao pojedeno.</div>
       <div class="why-row"><b>Pravilo</b>Promena se predlaže tek kad se trend jasno i duže vreme razlikuje od plana.</div></div>`;
+  if (kind === "memory") {
+    const mem = S.mem || (S.mem = [["Ne jede ribu","trajno"],["Kuva najviše 30 minuta","trajno, osim kad kaže drugačije"],["Ručak oko 14 h","navika"],["Ne voli pečurke","trajno"],["Nema piletinu kod kuće","samo danas"]]);
+    return `<h2>Šta Mera pamti</h2><div class="card">${mem.map(([t,k],i) => `<div class="mem"><div style="flex:1"><div>${t}</div><div class="kind">${k}</div></div><button class="x" data-forget="${i}" aria-label="Zaboravi">✕</button></div>`).join("")}</div><p class="sub">Mera ovo uči iz razgovora. Sve možeš da obrišeš.</p>`;
+  }
+  if (kind === "add") return `<h2>Dodaj</h2>
+      <button class="set" data-sheet="ate-other"><span class="e">🍴</span><span class="mid"><b>pojeo sam nešto drugo</b><span class="d">van plana</span></span><span class="ch">›</span></button>
+      <button class="set" data-sheet="weigh"><span class="e">⚖️</span><span class="mid"><b>masa jutros</b><span class="d">poslednje: 91,6 kg, juče</span></span><span class="ch">›</span></button>
+      <button class="set" data-toast="Skeniranje barkoda: kasniji korak."><span class="e">▥</span><span class="mid"><b>skeniraj proizvod</b><span class="d">barkod sa pakovanja</span></span><span class="ch">›</span></button>`;
   if (kind === "weigh") return `<h2>Masa jutros</h2>
       <div class="field"><label>Masa</label><span><input inputmode="decimal" value="91,4" autofocus><em>kg</em></span></div>
       <p class="sub">Najbolje ujutru, posle toaleta, pre doručka.</p>
       <div class="btn-row"><button class="btn btn-p" data-close data-toast-after="Sačuvano. Trend se računa iz više dana, ne iz jednog merenja.">Sačuvaj</button></div>`;
   if (kind === "ate-other") return `<h2>Šta si pojeo?</h2>
-      <p class="sub" style="margin-bottom:12px">Reci ili napiši svojim rečima. Mera će pitati samo ako nešto nije jasno.</p>
-      <button class="opt" data-chat="Za ručak sam pojeo tanjir pasulja i parče hleba"><span class="e">🎤</span><span><b>Reci glasom</b><span>npr. „tanjir pasulja i parče hleba“</span></span></button>
-      <button class="opt" data-toast="Skeniranje barkoda: dolazi u kasnijem koraku."><span class="e">▥</span><span><b>Skeniraj barkod</b><span>za proizvode iz prodavnice</span></span></button>`;
+      <p class="sub" style="margin-bottom:12px">Napiši svojim rečima ili diktiraj preko tastature, npr. „tanjir pasulja i parče hleba“.</p>
+      <button class="btn btn-p" data-chat="Za ručak sam pojeo tanjir pasulja i parče hleba">Primer: tanjir pasulja i hleb</button>`;
   return "";
 }
 
@@ -511,9 +566,8 @@ function render() {
   else if (S.view === "onb") h += renderOnb();
   else {
     const T = { danas: renderDanas, nedelja: renderNedelja, kupovina: renderKupovina, napredak: renderNapredak, ja: renderJa };
-    h += `<div class="app">${T[S.tab]()}</div>`;
-    const tab = (k, ic, l) => `<button class="tab ${S.tab===k?"on":""}" data-tab="${k}"><span class="ic">${ic}</span>${l}${k==="napredak" && S.checkin==="open" ? `<span class="badge"></span>` : ""}</button>`;
-    h += `<nav class="nav"><div class="nav-in">${tab("danas","🍽","Danas")}${tab("nedelja","📅","Nedelja")}<button class="mic" data-sheet="chat" aria-label="Pitaj Meru">💬</button>${tab("kupovina","🛒","Kupovina")}${tab("napredak","📈","Napredak")}</div></nav>`;
+    h += `<div class="app ${S.tab==="danas" ? "withdock" : ""}">${T[S.tab]()}</div>`;
+    if (S.tab === "danas") h += dockHtml();
   }
   if (S.sheet) h += `<div class="shade" data-shade><div class="sheet" role="dialog"><div class="grab"></div>${S.sheet === "chat" ? chatHtml() : sheetHtml()}</div></div>`;
   if (S.cook !== null) h += cookHtml();
@@ -529,7 +583,8 @@ document.addEventListener("click", (ev) => {
   if (!el) return;
   const d = el.dataset;
   if ("shade" in d) { if (ev.target === el) { S.sheet = null; S.listening = false; render(); } return; }
-  if ("enter" in d) { S.view = "app"; S.tab = "danas"; }
+  if ("dockSend" in d) { const v = (document.getElementById("dock-in")?.value || "").trim(); if (!v) return; S.sheet = "chat"; S.chat = [{ me: true, t: v }, reply(v)]; }
+  else if ("enter" in d) { S.view = "app"; S.tab = "danas"; }
   else if ("send" in d) { const v = (document.getElementById("chat-in")?.value || "").trim(); if (!v) return; S.chat.push({ me: true, t: v }); S.chat.push(reply(v)); }
   else if (d.go === "onb") { S.view = "onb"; S.step = 0; S.sheet = null; }
   else if ("next" in d) { if (S.step < ONB.length - 1) S.step++; else { S.view = "app"; S.tab = "danas"; S.profile = true; } scrollTo(0,0); }
@@ -537,8 +592,8 @@ document.addEventListener("click", (ev) => {
   else if (d.set) { const [k, v] = d.set.split(":"); S.a[k] = v; }
   else if (d.toggleNo) { const v = d.toggleNo; S.a.no = S.a.no.includes(v) ? S.a.no.filter(x => x !== v) : [...S.a.no, v]; }
   else if (d.tab) { S.tab = d.tab; S.sheet = null; scrollTo(0,0); }
-  else if (d.sheet) { S.sheet = d.sheet; if (d.sheet === "chat") S.chat = []; }
-  else if (d.eat) { S.eaten[d.eat] = !S.eaten[d.eat]; }
+  else if (d.sheet) { S.sheet = d.sheet; }
+  else if (d.eat) { S.eaten[d.eat] = !S.eaten[d.eat]; if ("close" in d) S.sheet = null; }
   else if (d.pick) { const [k, i] = d.pick.split(":"); Object.assign(MEALS[k], ALT[+i]); S.sheet = null; return toast("Zamenjeno. Dan je i dalje u cilju."); }
   else if (d.buy) { S.bought[d.buy] = !S.bought[d.buy]; }
   else if (d.hide) { S.hideBought = d.hide === "1"; }
@@ -554,7 +609,7 @@ document.addEventListener("click", (ev) => {
   else if (d.toast) { return toast(d.toast); }
   render();
 });
-document.addEventListener("keydown", (ev) => { if (ev.key === "Enter" && ev.target.id === "chat-in") document.querySelector("[data-send]")?.click(); });
+document.addEventListener("keydown", (ev) => { if (ev.key === "Enter" && ev.target.id === "chat-in") document.querySelector("[data-send]")?.click(); if (ev.key === "Enter" && ev.target.id === "dock-in") document.querySelector("[data-dock-send]")?.click(); });
 document.addEventListener("input", (ev) => { const k = ev.target.dataset.in; if (k) S.a[k] = ev.target.value; });
 render();
 </script>

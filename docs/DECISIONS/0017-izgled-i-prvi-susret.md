@@ -10,3 +10,11 @@
 
 ## Posledica koju treba rešiti pri ugradnji (napomena agenta)
 Pre upitnika Mera ne zna ništa o korisniku, pa jelovnik ne može biti lični. Prikazuje se kao **primer dana** i tako je jasno označen; lični cilj i bezbednosne provere (baza znanja) važe tek posle upitnika. Sadržaj primera dana (koji obroci, koje kalorije) odlučuje se u razgovoru o hrani i receptima.
+
+## Dopuna (isti dan): obrazac početnog ekrana kao u Troškovima i Kućnoj apoteci
+Vlasnik je pokazao početne ekrane svojih aplikacija kao uzor. Mera preuzima isti raspored:
+- **Red 1:** naziv „Mera“ + četiri dugmeta-ikonice: nedelja, kupovina, napredak (tačka kad je nedeljni pregled spreman), podešavanja.
+- **Red 2:** zbir dana (pojedeno od ≈ cilja, broj obroka) ili, pre upitnika, „primer dana — Prilagodi meni“.
+- **Lista:** obroci kao kartice (tanjir, naziv, obrok i vreme, oznaka sa kalorijama desno; zelena sa ✓ kad je pojedeno). Dodir otvara recept sa „Pojeo sam“, „Zameni“ i „Kuvaj korak po korak“.
+- **Dno:** polje „ukucaj ili koristi mikrofon na tastaturi…“ + red: razgovor, pošalji, dodaj (pojeo sam nešto drugo, masa, barkod).
+- **Donja traka sa karticama se ukida.** Nedelja, kupovina, napredak i podešavanja su posebni ekrani sa strelicom nazad; podešavanja su lista stavki sa ikonicom i strelicom.

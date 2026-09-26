@@ -7,7 +7,7 @@ Prototip je samo izgled i tok. Svi brojevi, jela i merenja u njemu su izmišljen
 Vlasnik (2026-09-25): delovi aplikacije ne čine celinu; pre testiranja pojedinačnih ekrana treba videti kako Mera izgleda na kraju. Zato prvo celovit prototip, pa se prava aplikacija preslaže prema njemu.
 
 ## Struktura
-Donja traka: **Danas · Nedelja · [mikrofon] · Kupovina · Napredak**. Profil („Ja“) preko inicijala gore desno.
+Raspored kao u Troškovima i Kućnoj apoteci (DECISIONS/0017, dopuna): gore naziv + ikonice (nedelja, kupovina, napredak, podešavanja), zbir dana, lista obroka, dole polje za tekst i red razgovor / pošalji / dodaj. Bez donje trake sa karticama.
 - **Dobrodošlica:** jedna rečenica i „Uđi“ → odmah Danas. Bez prijave i pitanja.
 - **Upitnik (opcija, pokreće ga korisnik: „Prilagodi meni“ na Danas ili iz „Ja“; 6 koraka, može da se prekine):** cilj → pol, godine, visina, masa (trudnoća samo za žene) → kretanje → tempo i željena masa → broj obroka, šta ne jede, vreme za kuvanje → rezultat sa „Zašto?“.
 - **Danas:** zaglavlje u dva reda — (1) „Danas“, datum, profil; (2) „pojedeno od ≈ cilj“ sa trakom, a pre upitnika „Ovo je primer dana. Prilagodi meni“. Ispod samo obroci kao tanjiri (naziv, kcal), kvačica „pojeo sam“ (PLANNED ≠ REPORTED, MS §12) i „Zameni“.

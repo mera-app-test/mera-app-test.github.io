@@ -119,3 +119,8 @@
 - Dobrodošlica i odmah početni ekran; upitnik samo na zahtev („Prilagodi meni“), može da se prekine.
 - Danas: zaglavlje u dva reda, ispod samo obroci; pre upitnika jasno „primer dana“.
 - Razgovor: tekstualno polje i diktiranje preko tastature umesto mikrofona u aplikaciji.
+
+## 0.6.5 — prototip: početni ekran po obrascu Troškova i Kućne apoteke
+- Zaglavlje: „Mera“ + ikonice nedelja, kupovina, napredak, podešavanja; zbir dana ili poziv „Prilagodi meni“.
+- Obroci kao kartice sa oznakom kalorija; „Pojeo sam“, „Zameni“ i kuvanje u receptu.
+- Dno: polje za tekst + razgovor / pošalji / dodaj. Donja traka ukinuta; podekrani sa strelicom nazad; podešavanja kao lista.
